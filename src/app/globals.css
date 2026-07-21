@@ -1,1 +1,137 @@
 @import "../shadcn/shadcn.css";
+
+@layer base {
+}
+
+@layer components {
+}
+
+@theme inline {
+  --color-ods__base-50: #f8fafc;
+  --color-ods__base-100: #f1f5f9;
+  --color-ods__base-200: #e2e8f0;
+  --color-ods__base-300: #cbd5e1;
+  --color-ods__base-400: #94a3b8;
+  --color-ods__base-500: #64748b;
+  --color-ods__base-600: #475569;
+  --color-ods__base-700: #334155;
+  --color-ods__base-800: #1e293b;
+  --color-ods__base-900: #0f172a;
+
+  --color-ods__white: #ffffff;
+  --color-ods__black: #000000;
+
+  --color-ods__baselayout-bgcolor: #fffcec;
+
+  /* Blue */
+  --color-ods__blue-container: #f4f9ff;
+  --color-ods__on-blue-container: #497bb5;
+}
+
+/* Typography */
+@utility ods__display-large {
+  font-size: 57px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 64px;
+  letter-spacing: -0.25px;
+}
+@utility ods__display-medium {
+  font-size: 45px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 52px;
+}
+@utility ods__display-small {
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 44px;
+}
+@utility ods__headline-large {
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 40px;
+}
+@utility ods__headline-medium {
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 36px;
+}
+@utility ods__headline-small {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 32px;
+}
+@utility ods__title-large {
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px;
+}
+@utility ods__title-medium {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.024px;
+}
+@utility ods__title-small {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.014px;
+}
+@utility ods__label-large {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.014px;
+}
+@utility ods__label-medium {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0.06px;
+}
+@utility ods__label-small {
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0.055px;
+}
+@utility ods__body-large {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.08px;
+}
+@utility ods__body-medium {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.035px;
+}
+@utility ods__body-small {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0.048px;
+}
+@utility ods__caption {
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0.04px;
+}
