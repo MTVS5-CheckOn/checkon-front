@@ -1,0 +1,4 @@
+{
+  // tailwind rule 린트 경고 제거
+  "css.lint.unknownAtRules": "ignore"
+}
