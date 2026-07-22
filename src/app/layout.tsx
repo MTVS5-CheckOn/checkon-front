@@ -3,8 +3,9 @@ import "./globals.css";
 
 import { ThemeProvider } from "next-themes";
 import localFont from "next/font/local";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 
-import { cn } from "@/shadcn/lib/utils";
+import { cn } from "@/ui/utils/tailwind/cn";
 
 const pretendard = localFont({
   src: "./fonts/pretendard/PretendardVariable.woff2",
@@ -28,13 +29,13 @@ export default function RootLayout({
       lang="ko"
       className={cn(
         pretendard.className,
-        "h-full antialiased", //
+        "min-h-full antialiased", //
       )}
       suppressHydrationWarning
     >
-      <body className="flex min-h-full flex-col">
+      <body className="flex flex-col">
         <ThemeProvider attribute="class" defaultTheme="light">
-          {children}
+          <NuqsAdapter>{children}</NuqsAdapter>
         </ThemeProvider>
       </body>
     </html>

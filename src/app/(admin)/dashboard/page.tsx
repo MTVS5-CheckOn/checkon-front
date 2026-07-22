@@ -1,9 +1,7 @@
-import { LogoHorizontal } from "@/ui/components/Logo/LogoHorizontal";
-
 export default function Page() {
   return (
-    <div className="w-[400px] overflow-hidden">
-      <LogoHorizontal />
+    <div className="bg-ods__white border-ods__base-100 flex h-full flex-col rounded-tl-4xl border">
+      cccc
     </div>
   );
 }
