@@ -56,7 +56,7 @@ export const LNB__AcademySelector = () => {
         <Select.Positioner>
           <Select.Popup
             className={cn(
-              "h-fit p-1",
+              "ods__animate__popup-open h-fit p-1",
               "bg-ods__white border-ods__base-100 rounded-[8px] border shadow-[0px_4px_6px_0px_rgba(0,0,0,0.09)]",
               // Offset 맞추기 위해 추가
               "ml-1.75",
@@ -72,6 +72,7 @@ export const LNB__AcademySelector = () => {
                   className={cn(
                     "flex gap-2 p-2",
                     "rounded-sm",
+                    "ods__animate__button-hover",
                     "hover:bg-ods__base-200",
                     "ods__body-medium text-ods__base-600 font-bold",
                   )}
@@ -100,6 +101,7 @@ export const LNB__AcademySelector = () => {
                       className={cn(
                         "flex gap-2 p-2",
                         "rounded-sm",
+                        "ods__animate__button-hover",
                         "hover:bg-ods__base-200",
                         "ods__body-small text-ods__base-600",
                         isSelected && "bg-ods__base-100",

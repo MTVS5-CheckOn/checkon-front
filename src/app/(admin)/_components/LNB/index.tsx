@@ -1,7 +1,9 @@
-import { LogoHorizontal } from "@/ui/components/Logo/LogoHorizontal";
-import { LNB__TopSection } from "./sections/TopSection";
-import { LNB__MenuSection } from "./sections/MenuSection";
 import Link from "next/link";
+
+import { LogoHorizontal } from "@/ui/components/Logo/LogoHorizontal";
+
+import { LNB__MenuSection } from "./sections/MenuSection";
+import { LNB__TopSection } from "./sections/TopSection";
 
 /**
  * Left Navigation Bar
