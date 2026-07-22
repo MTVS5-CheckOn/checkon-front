@@ -1,6 +1,11 @@
 @import "../shadcn/shadcn.css";
 
 @layer base {
+  * {
+    button {
+      cursor: pointer;
+    }
+  }
 }
 
 @layer components {

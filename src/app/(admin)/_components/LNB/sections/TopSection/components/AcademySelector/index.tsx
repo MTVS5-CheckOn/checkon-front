@@ -67,7 +67,7 @@ export const LNB__AcademySelector = () => {
             }}
           >
             <Select.List className="flex flex-1 flex-col">
-              <button className="cursor-pointer" onClick={handleMyAcademyClick}>
+              <button onClick={handleMyAcademyClick}>
                 <Select.Label
                   className={cn(
                     "flex gap-2 p-2",
@@ -94,7 +94,7 @@ export const LNB__AcademySelector = () => {
                 const isSelected = selectedValue === value;
 
                 return (
-                  <button key={label} className="cursor-pointer">
+                  <button key={label}>
                     <Select.Item
                       value={value}
                       className={cn(
