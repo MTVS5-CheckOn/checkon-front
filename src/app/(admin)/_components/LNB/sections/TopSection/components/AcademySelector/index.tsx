@@ -45,7 +45,9 @@ export const LNB__AcademySelector = () => {
           "border-ods__base-200 bg-ods__white rounded-[8px] border",
         )}
       >
-        <Select.Value className={"ods__label-medium text-ods__base-600"} />
+        <Select.Value
+          className={"ods__typo__label-medium text-ods__base-600"}
+        />
 
         <Select.Icon className={cn("flex items-center", "text-ods__base-400")}>
           <ChevronDownIcon className="size-4" />
@@ -74,7 +76,7 @@ export const LNB__AcademySelector = () => {
                     "rounded-sm",
                     "ods__animate__button-hover",
                     "hover:bg-ods__base-200",
-                    "ods__body-medium text-ods__base-600 font-bold",
+                    "ods__typo__body-medium text-ods__base-600 font-semibold",
                   )}
                 >
                   {/* Icon Space */}
@@ -103,7 +105,7 @@ export const LNB__AcademySelector = () => {
                         "rounded-sm",
                         "ods__animate__button-hover",
                         "hover:bg-ods__base-200",
-                        "ods__body-small text-ods__base-600",
+                        "ods__typo__body-small text-ods__base-600",
                         isSelected && "bg-ods__base-100",
                       )}
                     >
