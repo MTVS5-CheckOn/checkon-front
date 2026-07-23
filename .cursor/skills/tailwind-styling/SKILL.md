@@ -11,7 +11,9 @@ description: Enforces Tailwind CSS class ordering and cn() usage for checkon-fro
 
 - 조건부 스타일링 및 클래스 병합 시 반드시 `cn()` 유틸리티 함수를 사용합니다.
 - 클래스 목록은 속성 간 충돌을 방지하고 코드 가독성을 확보하기 위해 **지정된 위계(Layer) 순서**대로 그룹화하여 배치합니다.
+- 한 문자열 안에 서로 다른 레이어를 섞지 말고, **레이어가 바뀌면 다음 `cn()` 인자에서 분리**합니다.
 - `cn` import 경로: `@/ui/utils/tailwind/cn`
+- 스타일은 별도 변수로 분리하여 참조하지 않고 className에 인라인으로 작성합니다.
 
 ---
 
@@ -84,7 +86,7 @@ import { cn } from "@/ui/utils/tailwind/cn";
 
 코드 작성·수정 시 아래를 확인합니다:
 
-- [ ] `className` 문자열 병합에 `cn()` 사용
+- [ ] `className` 문자열 병합에 `cn()` 사용 (className 개수가 적더라도 필수 적용)
 - [ ] 6단계 위계 순서 준수 (Layout → Typography → Color → Shadow/Border → Interaction → Utility)
-- [ ] 각 그룹별 주석으로 레이어 구분 (복잡한 className일 때)
+- [ ] 각 그룹별 주석 작성 (위계 질서 구분이 3개 이상일 때 가독성을 위한 주석)
 - [ ] 프로젝트 커스텀 클래스(`ods__*`)는 해당 레이어에 배치
