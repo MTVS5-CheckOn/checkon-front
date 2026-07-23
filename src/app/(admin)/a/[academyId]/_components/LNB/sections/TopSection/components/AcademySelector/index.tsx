@@ -1,26 +1,20 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-"use client";
-
 import { CheckIcon, ChevronDownIcon } from "lucide-react";
-import { useQueryState } from "nuqs";
-import { useEffect } from "react";
 
 import { cn } from "@/ui/utils/tailwind/cn";
 import { Select } from "@base-ui/react/select";
 import { Separator } from "@base-ui/react/separator";
 
+import { useParams, useRouter } from "next/navigation";
 import { useMyAcademies } from "../../hooks/useMyAcademies";
 
 /**
  * LNB - Academy Selector
  */
 export const LNB__AcademySelector = () => {
-  const academies = useMyAcademies();
-  const [selectedValue, setSelectedValue] = useQueryState("academyId");
+  const { academyId } = useParams<{ academyId: string }>();
+  const router = useRouter();
 
-  useEffect(() => {
-    setSelectedValue(academies[0]?.value);
-  }, [academies]);
+  const academies = useMyAcademies();
 
   const handleMyAcademyClick = () => {
     console.log("handleMyAcademyClick");
@@ -28,13 +22,13 @@ export const LNB__AcademySelector = () => {
   };
 
   const handleAcademyItemClick = (v: string) => {
-    setSelectedValue(v);
+    router.push(`/a/${v}/dashboard`);
   };
 
   return (
     <Select.Root
       items={academies}
-      value={selectedValue}
+      value={academyId}
       onValueChange={(v) => {
         handleAcademyItemClick(v as string);
       }}
@@ -42,11 +36,12 @@ export const LNB__AcademySelector = () => {
       <Select.Trigger
         className={cn(
           "flex w-full justify-between px-3 py-2",
-          "border-ods__base-200 bg-ods__white rounded-[8px] border",
+          "bg-ods__white",
+          "border-ods__base-200 rounded-[8px] border",
         )}
       >
         <Select.Value
-          className={"ods__typo__label-medium text-ods__base-600"}
+          className={cn("ods__typo__label-medium", "text-ods__base-600")}
         />
 
         <Select.Icon className={cn("flex items-center", "text-ods__base-400")}>
@@ -58,10 +53,10 @@ export const LNB__AcademySelector = () => {
         <Select.Positioner>
           <Select.Popup
             className={cn(
-              "ods__animate__popup-open h-fit p-1",
-              "bg-ods__white border-ods__base-100 rounded-[8px] border shadow-[0px_4px_6px_0px_rgba(0,0,0,0.09)]",
-              // Offset 맞추기 위해 추가
-              "ml-1.75",
+              "ml-1.75 h-fit p-1",
+              "bg-ods__white",
+              "border-ods__base-100 rounded-[8px] border shadow-[0px_4px_6px_0px_rgba(0,0,0,0.09)]",
+              "ods__animate__popup-open",
             )}
             style={{
               // 셀렉터 width 동기화
@@ -73,10 +68,10 @@ export const LNB__AcademySelector = () => {
                 <Select.Label
                   className={cn(
                     "flex gap-2 p-2",
+                    "ods__typo__body-medium font-semibold",
+                    "text-ods__base-600",
                     "rounded-sm",
-                    "ods__animate__button-hover",
-                    "hover:bg-ods__base-200",
-                    "ods__typo__body-medium text-ods__base-600 font-semibold",
+                    "ods__animate__button-hover hover:bg-ods__base-200",
                   )}
                 >
                   {/* Icon Space */}
@@ -88,13 +83,13 @@ export const LNB__AcademySelector = () => {
 
               <Separator
                 orientation="horizontal"
-                className={"bg-ods__base-100 h-px"}
+                className={cn("h-px", "bg-ods__base-100")}
               />
 
               <div className="h-1" />
 
               {academies.map(({ label, value }) => {
-                const isSelected = selectedValue === value;
+                const isSelected = academyId === value;
 
                 return (
                   <button key={label}>
@@ -102,10 +97,10 @@ export const LNB__AcademySelector = () => {
                       value={value}
                       className={cn(
                         "flex gap-2 p-2",
+                        "ods__typo__body-small",
+                        "text-ods__base-600",
                         "rounded-sm",
-                        "ods__animate__button-hover",
-                        "hover:bg-ods__base-200",
-                        "ods__typo__body-small text-ods__base-600",
+                        "ods__animate__button-hover hover:bg-ods__base-200",
                         isSelected && "bg-ods__base-100",
                       )}
                     >

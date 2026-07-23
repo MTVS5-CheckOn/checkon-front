@@ -28,10 +28,6 @@
   --color-ods__black: #000000;
 
   --color-ods__baselayout-bgcolor: #fffcec;
-
-  /* Blue */
-  --color-ods__blue-container: #f4f9ff;
-  --color-ods__on-blue-container: #497bb5;
 }
 
 /* Typography */
@@ -146,11 +142,11 @@
 @utility ods__animate__popup-open {
   @apply animate-bounce-fade-in animate-duration-200;
 }
-@utility ods__animate__button-hover {
-  @apply transition duration-200 ease-in-out;
+@utility ods__animate__default {
+  @apply transition-all duration-200 ease-in-out;
 }
 
 /* Interaction */
 @utility ods__decorate__hover {
-  @apply hover:bg-ods__base-200 ods__animate__button-hover;
+  @apply hover:bg-ods__base-200 ods__animate__default;
 }

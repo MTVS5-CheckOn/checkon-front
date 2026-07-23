@@ -11,8 +11,8 @@ export const Ods__IconButton = ({
     <button
       className={cn(
         "relative flex aspect-square items-center justify-center",
-        "ods__decorate__hover",
         "rounded-4xl",
+        "ods__decorate__hover",
         className,
       )}
       {...props}

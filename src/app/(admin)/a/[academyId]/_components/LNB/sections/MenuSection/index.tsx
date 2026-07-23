@@ -63,11 +63,11 @@ const MenuItem = ({
     <div
       className={cn(
         "flex items-center gap-2 p-2",
+        "ods__typo__label-large font-medium",
+        "text-ods__base-500",
         "rounded-[8px]",
-        "ods__typo__title-small text-ods__base-500 font-normal",
-        "ods__animate__button-hover",
-        "hover:bg-ods__base-200",
-        isActive && "bg-ods__blue-container text-ods__on-blue-container",
+        "ods__animate__button-hover hover:bg-ods__base-200",
+        isActive && "bg-blue-50 text-ods__base-500",
       )}
     >
       <span>{icon}</span>
