@@ -40,7 +40,7 @@ export const LNB__AcademySelector = () => {
           // 3. Color
           "bg-ods__white",
           // 4. Shadow & Border
-          "rounded-lg border border-ods__base-200",
+          "border-ods__base-200 rounded-lg border",
         )}
       >
         <Select.Value
@@ -61,7 +61,7 @@ export const LNB__AcademySelector = () => {
               // 3. Color
               "bg-ods__white",
               // 4. Shadow & Border
-              "rounded-lg border border-ods__base-100 shadow-md",
+              "border-ods__base-100 rounded-lg border shadow-md",
               // 5. Interaction
               "ods__animate__popup-open",
             )}
@@ -83,7 +83,7 @@ export const LNB__AcademySelector = () => {
                     // 4. Shadow & Border
                     "rounded-sm",
                     // 5. Interaction
-                    "ods__animate__button-hover hover:bg-ods__base-200",
+                    "ods__decorate__hover hover:bg-ods__base-200",
                   )}
                 >
                   {/* Icon Space */}
@@ -118,7 +118,7 @@ export const LNB__AcademySelector = () => {
                         // 4. Shadow & Border
                         "rounded-sm",
                         // 5. Interaction
-                        "ods__animate__button-hover hover:bg-ods__base-200",
+                        "ods__decorate__hover hover:bg-ods__base-200",
                       )}
                     >
                       <Select.Icon className={cn("size-4")}>

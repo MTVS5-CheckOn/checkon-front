@@ -78,7 +78,7 @@ export const Dashboard__StudentSignalItem = ({
           // 3. Color
           colorPalette.bgColor && colorPalette.bgColor,
           // 4. Shadow & Border
-          "border-b border-ods__base-100",
+          "border-ods__base-100 border-b",
           // 5. Interaction
           "group-hover:bg-transparent",
         )}
