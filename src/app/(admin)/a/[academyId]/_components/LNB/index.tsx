@@ -4,14 +4,17 @@ import { LogoHorizontal } from "@/ui/components/Logo/LogoHorizontal";
 
 import { LNB__MenuSection } from "./sections/MenuSection";
 import { LNB__TopSection } from "./sections/TopSection";
+import { useParams } from "next/navigation";
 
 /**
  * Left Navigation Bar
  */
 export const LNB = () => {
+  const { academyId } = useParams<{ academyId: string }>();
+
   return (
     <div className="flex w-65 shrink-0 flex-col items-start justify-start gap-5 px-3 py-2">
-      <Link href="/">
+      <Link href={`/a/${academyId}/dashboard`}>
         <LogoHorizontal />
       </Link>
 

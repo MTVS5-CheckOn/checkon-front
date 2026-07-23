@@ -1,25 +1,20 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-
 import { CheckIcon, ChevronDownIcon } from "lucide-react";
-import { useQueryState } from "nuqs";
-import { useEffect } from "react";
 
 import { cn } from "@/ui/utils/tailwind/cn";
 import { Select } from "@base-ui/react/select";
 import { Separator } from "@base-ui/react/separator";
 
+import { useParams, useRouter } from "next/navigation";
 import { useMyAcademies } from "../../hooks/useMyAcademies";
 
 /**
  * LNB - Academy Selector
  */
 export const LNB__AcademySelector = () => {
-  const academies = useMyAcademies();
-  const [selectedValue, setSelectedValue] = useQueryState("academyId");
+  const { academyId } = useParams<{ academyId: string }>();
+  const router = useRouter();
 
-  useEffect(() => {
-    setSelectedValue(academies[0]?.value);
-  }, [academies]);
+  const academies = useMyAcademies();
 
   const handleMyAcademyClick = () => {
     console.log("handleMyAcademyClick");
@@ -27,13 +22,13 @@ export const LNB__AcademySelector = () => {
   };
 
   const handleAcademyItemClick = (v: string) => {
-    setSelectedValue(v);
+    router.push(`/a/${v}/dashboard`);
   };
 
   return (
     <Select.Root
       items={academies}
-      value={selectedValue}
+      value={academyId}
       onValueChange={(v) => {
         handleAcademyItemClick(v as string);
       }}
@@ -94,7 +89,7 @@ export const LNB__AcademySelector = () => {
               <div className="h-1" />
 
               {academies.map(({ label, value }) => {
-                const isSelected = selectedValue === value;
+                const isSelected = academyId === value;
 
                 return (
                   <button key={label}>
