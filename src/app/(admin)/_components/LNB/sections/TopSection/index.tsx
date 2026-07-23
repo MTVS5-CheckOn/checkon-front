@@ -1,4 +1,4 @@
-"use client";
+import { cn } from "@/ui/utils/tailwind/cn";
 
 import { LNB__AcademySelector } from "./components/AcademySelector";
 
@@ -8,7 +8,12 @@ import { LNB__AcademySelector } from "./components/AcademySelector";
 export const LNB__TopSection = () => {
   return (
     <div className="flex w-full flex-col items-center gap-3">
-      <div className="ods__typo__title-medium text-ods__base-600 font-bold">{`Free · 김서현 선생님`}</div>
+      <div
+        className={cn(
+          "ods__typo__title-medium font-bold",
+          "text-ods__base-600",
+        )}
+      >{`Free · 김서현 선생님`}</div>
 
       <LNB__AcademySelector />
     </div>

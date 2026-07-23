@@ -1,5 +1,3 @@
-"use client";
-
 import { BellIcon } from "lucide-react";
 import Image from "next/image";
 
@@ -26,7 +24,7 @@ const NotificationIconButton = () => {
 
   return (
     <Ods__IconButton
-      className="text-ods__base-500 h-auto w-12"
+      className={cn("h-auto w-12", "text-ods__base-500")}
       onClick={handleClick}
     >
       <BellIcon />

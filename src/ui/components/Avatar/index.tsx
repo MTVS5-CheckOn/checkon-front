@@ -16,10 +16,18 @@ export const Ods__Avatar = ({
 }: Ods__AvatarProps) => {
   return (
     <Avatar.Root
-      className={cn("relative size-10 overflow-hidden rounded-4xl", className)}
+      className={cn(
+        "relative size-10",
+        "rounded-4xl",
+        "overflow-hidden",
+        className,
+      )}
       {...props}
     >
-      <Avatar.Image src={src} className="h-full w-full object-cover" />
+      <Avatar.Image
+        src={src}
+        className={cn("h-full w-full", "object-cover")}
+      />
       <Avatar.Fallback>{fallback}</Avatar.Fallback>
     </Avatar.Root>
   );

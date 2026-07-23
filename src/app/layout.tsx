@@ -29,7 +29,8 @@ export default function RootLayout({
       lang="ko"
       className={cn(
         pretendard.className,
-        "min-h-full antialiased", //
+        "min-h-full",
+        "antialiased",
       )}
       suppressHydrationWarning
     >
