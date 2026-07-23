@@ -60,8 +60,8 @@ const ProfileAvatar = () => {
         fallback={
           <Image
             src={fallbackImageUrl}
-            layout="fill"
-            objectFit="cover"
+            fill
+            className="object-cover"
             alt="fallback"
           />
         }
