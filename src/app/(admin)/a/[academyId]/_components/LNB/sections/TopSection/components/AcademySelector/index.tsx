@@ -35,9 +35,12 @@ export const LNB__AcademySelector = () => {
     >
       <Select.Trigger
         className={cn(
+          // 1. Layout
           "flex w-full justify-between px-3 py-2",
+          // 3. Color
           "bg-ods__white",
-          "border-ods__base-200 rounded-[8px] border",
+          // 4. Shadow & Border
+          "rounded-lg border border-ods__base-200",
         )}
       >
         <Select.Value
@@ -45,7 +48,7 @@ export const LNB__AcademySelector = () => {
         />
 
         <Select.Icon className={cn("flex items-center", "text-ods__base-400")}>
-          <ChevronDownIcon className="size-4" />
+          <ChevronDownIcon className={cn("size-4")} />
         </Select.Icon>
       </Select.Trigger>
 
@@ -53,9 +56,13 @@ export const LNB__AcademySelector = () => {
         <Select.Positioner>
           <Select.Popup
             className={cn(
+              // 1. Layout
               "ml-1.75 h-fit p-1",
+              // 3. Color
               "bg-ods__white",
-              "border-ods__base-100 rounded-[8px] border shadow-[0px_4px_6px_0px_rgba(0,0,0,0.09)]",
+              // 4. Shadow & Border
+              "rounded-lg border border-ods__base-100 shadow-md",
+              // 5. Interaction
               "ods__animate__popup-open",
             )}
             style={{
@@ -63,19 +70,24 @@ export const LNB__AcademySelector = () => {
               width: "var(--anchor-width)",
             }}
           >
-            <Select.List className="flex flex-1 flex-col">
+            <Select.List className={cn("flex flex-1 flex-col")}>
               <button onClick={handleMyAcademyClick}>
                 <Select.Label
                   className={cn(
+                    // 1. Layout
                     "flex gap-2 p-2",
+                    // 2. Typography
                     "ods__typo__body-medium font-semibold",
+                    // 3. Color
                     "text-ods__base-600",
+                    // 4. Shadow & Border
                     "rounded-sm",
+                    // 5. Interaction
                     "ods__animate__button-hover hover:bg-ods__base-200",
                   )}
                 >
                   {/* Icon Space */}
-                  <div className="size-4"></div>
+                  <div className={cn("size-4")}></div>
 
                   <span>{"내 학원 관리"}</span>
                 </Select.Label>
@@ -86,7 +98,7 @@ export const LNB__AcademySelector = () => {
                 className={cn("h-px", "bg-ods__base-100")}
               />
 
-              <div className="h-1" />
+              <div className={cn("h-1")} />
 
               {academies.map(({ label, value }) => {
                 const isSelected = academyId === value;
@@ -96,16 +108,21 @@ export const LNB__AcademySelector = () => {
                     <Select.Item
                       value={value}
                       className={cn(
+                        // 1. Layout
                         "flex gap-2 p-2",
+                        // 2. Typography
                         "ods__typo__body-small",
+                        // 3. Color
                         "text-ods__base-600",
-                        "rounded-sm",
-                        "ods__animate__button-hover hover:bg-ods__base-200",
                         isSelected && "bg-ods__base-100",
+                        // 4. Shadow & Border
+                        "rounded-sm",
+                        // 5. Interaction
+                        "ods__animate__button-hover hover:bg-ods__base-200",
                       )}
                     >
-                      <Select.Icon className="size-4">
-                        {isSelected && <CheckIcon className="size-4" />}
+                      <Select.Icon className={cn("size-4")}>
+                        {isSelected && <CheckIcon className={cn("size-4")} />}
                       </Select.Icon>
 
                       <Select.ItemText>{label}</Select.ItemText>

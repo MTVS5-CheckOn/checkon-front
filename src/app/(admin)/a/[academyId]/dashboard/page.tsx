@@ -2,88 +2,48 @@
 
 import { cn } from "@/ui/utils/tailwind/cn";
 
-import { Tabs } from "@base-ui/react/tabs";
-
-const dashboardTabs = [
-  {
-    label: "오늘의 브리핑",
-    value: "briefing",
-  },
-  {
-    label: "통계",
-    value: "stats",
-  },
-] as const;
-
-function DashboardTabs() {
-  return (
-    <Tabs.Root
-      defaultValue="briefing"
-      onValueChange={(v) => {
-        console.log(v);
-      }}
-    >
-      <Tabs.List
-        className={cn("relative flex items-start justify-start gap-1")}
-      >
-        <Tabs.Indicator
-          className={cn(
-            "absolute bottom-0 left-[calc(var(--active-tab-left)+10px)] z-1",
-            "flex h-0.5 w-[calc(var(--active-tab-width)-20px)] flex-col items-stretch justify-end",
-            "bg-sky-700 opacity-60",
-            "rounded-tl-lg rounded-tr-lg",
-            "ods__animate__default",
-          )}
-        />
-
-        {dashboardTabs.map(({ label, value }) => (
-          <Tabs.Tab
-            key={value}
-            className={cn(
-              "flex min-w-25 flex-col items-center justify-center px-2.5 py-2",
-              "ods__typo__label-large font-normal data-active:font-semibold",
-              "text-ods__base-400 data-active:bg-blue-50 data-active:text-sky-700",
-              "rounded-tl-lg rounded-tr-lg",
-              "ods__animate__default transition-colors",
-            )}
-            value={value}
-          >
-            <span>{label}</span>
-          </Tabs.Tab>
-        ))}
-      </Tabs.List>
-    </Tabs.Root>
-  );
-}
+import { useQueryState } from "nuqs";
+import { Dashboard__SignalSection } from "./_sections/SignalSection";
+import { Dashboard__TabsSection } from "./_sections/TabsSection";
+import { Dashboard__FollowUpSection } from "./_sections/FollowUpSection";
+import { Dashboard__TodayTodoSection } from "./_sections/TodayTodoSection";
 
 export default function Page() {
+  const [activeTab] = useQueryState("tab", {
+    defaultValue: "briefing",
+  });
+
   return (
     <div
       className={cn(
+        // 1. Layout
         "flex h-full flex-col",
+        // 3. Color
         "bg-ods__white",
-        "border-ods__base-100 rounded-tl-4xl border",
+        // 4. Shadow & Border
+        "rounded-tl-4xl border border-ods__base-100",
+        // 6. Utility
+        "overflow-auto",
       )}
     >
-      <div className={cn("border-ods__base-100 border-b px-6 pt-6")}>
-        <DashboardTabs />
-      </div>
+      <Dashboard__TabsSection />
+
+      {activeTab === "briefing" && (
+        <div className={cn("flex w-full flex-col gap-6 px-6 pt-5 pb-10")}>
+          <div className={cn("flex h-50 w-full", "bg-red-200")}>calendar</div>
+
+          <div className={cn("flex w-full gap-6")}>
+            <div className={cn("flex flex-1 flex-col gap-8")}>
+              <Dashboard__SignalSection />
+              <Dashboard__FollowUpSection />
+            </div>
+
+            <Dashboard__TodayTodoSection />
+          </div>
+        </div>
+      )}
+
+      {activeTab === "stats" && <div>통계</div>}
     </div>
   );
-}
-
-{
-  /* 
-      <Tabs.Panel
-        className={cn("flex-1 p-4", "ods__typo__body-small")}
-        value="briefing"
-      >
-        <p>오늘의 브리핑 콘텐츠</p>
-      </Tabs.Panel>
-      <Tabs.Panel
-        className={cn("flex-1 p-4", "ods__typo__body-small")}
-        value="stats"
-      >
-        <p>통계 콘텐츠</p>
-      </Tabs.Panel> */
 }

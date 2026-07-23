@@ -35,7 +35,7 @@ const items = [
  */
 export const LNB__MenuSection = () => {
   return (
-    <div className="flex flex-col gap-2">
+    <div className={cn("flex flex-col gap-2")}>
       {items.map((it, index) => {
         // TODO: URL 기반 매칭으로 변경하기
         const isActive = index === 0;
@@ -62,12 +62,17 @@ const MenuItem = ({
   return (
     <div
       className={cn(
+        // 1. Layout
         "flex items-center gap-2 p-2",
+        // 2. Typography
         "ods__typo__label-large font-medium",
+        // 3. Color
         "text-ods__base-500",
-        "rounded-[8px]",
-        "ods__animate__button-hover hover:bg-ods__base-200",
         isActive && "bg-blue-50 text-ods__base-500",
+        // 4. Shadow & Border
+        "rounded-lg",
+        // 5. Interaction
+        "ods__animate__button-hover hover:bg-ods__base-200",
       )}
     >
       <span>{icon}</span>

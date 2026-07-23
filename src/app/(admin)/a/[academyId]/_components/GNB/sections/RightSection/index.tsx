@@ -7,7 +7,7 @@ import { cn } from "@/ui/utils/tailwind/cn";
 
 export const GNB__RightSection = () => {
   return (
-    <div className="flex gap-2 p-2">
+    <div className={cn("flex gap-2 p-2")}>
       <NotificationIconButton />
       <ProfileAvatar />
     </div>
@@ -32,9 +32,12 @@ const NotificationIconButton = () => {
       {hasNotification && (
         <span
           className={cn(
+            // 1. Layout
             "absolute top-3 right-3 flex aspect-square w-1.5 items-center justify-center",
-            "rounded-full",
+            // 3. Color
             "bg-red-600", // TODO: 테마 컬러 정의 후, 적용
+            // 4. Shadow & Border
+            "rounded-full",
           )}
         ></span>
       )}
@@ -61,7 +64,7 @@ const ProfileAvatar = () => {
           <Image
             src={fallbackImageUrl}
             fill
-            className="object-cover"
+            className={cn("object-cover")}
             alt="fallback"
           />
         }
