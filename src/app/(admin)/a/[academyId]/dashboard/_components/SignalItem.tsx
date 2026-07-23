@@ -151,21 +151,21 @@ export const Dashboard__StudentSignalItem = ({
         <div
           className={cn(
             // 1. Layout
-            "flex flex-col items-start justify-start",
+            "flex w-full flex-col items-start justify-start",
             // 6. Utility
             "overflow-hidden",
           )}
         >
-          <div
+          <p
             className={cn(
               // 2. Typography
-              "ods__typo__body-small whitespace-pre-line",
+              "ods__typo__body-small text-start whitespace-pre-line",
               // 3. Color
               "text-ods__base-500",
             )}
           >
             {model.content}
-          </div>
+          </p>
         </div>
       </div>
     </button>
