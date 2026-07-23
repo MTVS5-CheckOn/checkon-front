@@ -9,14 +9,16 @@ export default function layout({ children }: { children: React.ReactNode }) {
   return (
     <div
       className={cn(
-        "flex min-h-screen w-full flex-col",
+        // 1. Layout
+        "min-w-breakpoint-w flex h-screen w-full flex-col",
+        // 3. Color
         "bg-ods__baselayout-bgcolor",
       )}
     >
-      <div className="flex w-full flex-1">
+      <div className={cn("flex h-full w-full flex-1")}>
         <LNB />
 
-        <div className="flex w-full flex-col">
+        <div className={cn("flex w-full flex-col")}>
           <GNB />
           {children}
         </div>

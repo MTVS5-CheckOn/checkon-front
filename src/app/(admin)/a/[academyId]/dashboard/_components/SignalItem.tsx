@@ -66,7 +66,7 @@ export const Dashboard__StudentSignalItem = ({
       className={cn(
         // 1. Layout
         "group flex w-full",
-        // 6. Utility
+        // 5. Interaction
         "ods__decorate__hover",
       )}
       onClick={onClick}
@@ -75,10 +75,11 @@ export const Dashboard__StudentSignalItem = ({
         className={cn(
           // 1. Layout
           "flex w-full flex-col items-start justify-start gap-2 p-3",
-          // 4. Shadow & Border
-          "border-ods__base-100 border-b",
           // 3. Color
           colorPalette.bgColor && colorPalette.bgColor,
+          // 4. Shadow & Border
+          "border-b border-ods__base-100",
+          // 5. Interaction
           "group-hover:bg-transparent",
         )}
       >

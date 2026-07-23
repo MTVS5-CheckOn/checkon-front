@@ -20,7 +20,16 @@ export const Dashboard__TabsSection = () => {
   });
 
   return (
-    <div className={cn("px-6 pt-6", "border-ods__base-100 border-b")}>
+    <div
+      className={cn(
+        // 1. Layout
+        "sticky top-0 z-10 px-6 pt-6",
+        // 3. Color
+        "bg-ods__white",
+        // 4. Shadow & Border
+        "border-b border-ods__base-100",
+      )}
+    >
       <Tabs.Root
         value={activeTab}
         onValueChange={(v) => {

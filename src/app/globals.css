@@ -13,6 +13,9 @@
 }
 
 @theme inline {
+  /* 최소 지원 너비 */
+  --spacing-breakpoint-w: 1440px;
+
   --color-ods__base-50: #f8fafc;
   --color-ods__base-100: #f1f5f9;
   --color-ods__base-200: #e2e8f0;
