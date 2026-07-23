@@ -27,7 +27,7 @@ export const Dashboard__TabsSection = () => {
         // 3. Color
         "bg-ods__white",
         // 4. Shadow & Border
-        "border-b border-ods__base-100",
+        "border-ods__base-100 border-b",
       )}
     >
       <Tabs.Root
@@ -66,7 +66,7 @@ export const Dashboard__TabsSection = () => {
                 // 4. Shadow & Border
                 "rounded-tl-lg rounded-tr-lg",
                 // 5. Interaction
-                "ods__animate__default transition-colors",
+                "ods__animate__default ods__decorate__hover transition-colors",
               )}
               value={value}
             >
