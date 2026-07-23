@@ -27,11 +27,7 @@ export default function RootLayout({
   return (
     <html
       lang="ko"
-      className={cn(
-        pretendard.className,
-        "min-h-full",
-        "antialiased",
-      )}
+      className={cn(pretendard.className, "min-h-full", "antialiased")}
       suppressHydrationWarning
     >
       <body className="flex flex-col">
