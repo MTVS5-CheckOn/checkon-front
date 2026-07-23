@@ -2,14 +2,14 @@ import { cn } from "@/ui/utils/tailwind/cn";
 
 import { CardMoreBottomButton } from "@/ui/components/CardMoreBottomButton";
 import {
-  Dashboard__SignalItem,
-  Dashboard__SignalItemModel,
-} from "./components/SignalItem";
+  Dashboard__StudentSignalItem,
+  Dashboard__StudentSignalItemModel,
+} from "../../_components/SignalItem";
 
 export const Dashboard__SignalSection = () => {
   const data: {
     signalCount: number;
-    items: Dashboard__SignalItemModel[];
+    items: Dashboard__StudentSignalItemModel[];
   } = {
     signalCount: 3,
     items: [
@@ -98,7 +98,7 @@ export const Dashboard__SignalSection = () => {
         )}
       >
         {data.items.map((item) => (
-          <Dashboard__SignalItem
+          <Dashboard__StudentSignalItem
             key={item.studentName + item.createdAt.toISOString()}
             model={item}
             onClick={handleMoreClick}

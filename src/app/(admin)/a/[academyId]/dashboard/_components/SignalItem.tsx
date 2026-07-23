@@ -1,25 +1,26 @@
 import { DateUtilForKo } from "@/ui/utils/date/date-util";
 import { cn } from "@/ui/utils/tailwind/cn";
 
-export type Dashboard__SignalItemStatus = "POSITIVE" | "WARNING" | "DANGER";
+export type Dashboard__StudentSignalItemStatus =
+  "POSITIVE" | "WARNING" | "DANGER";
 
-export type Dashboard__SignalItemModel = {
+export type Dashboard__StudentSignalItemModel = {
   studentName: string;
-  status: Dashboard__SignalItemStatus;
+  status: Dashboard__StudentSignalItemStatus;
   statusLabel: string;
   createdAt: Date;
   content: string;
 };
 
-export type Dashboard__SignalItemProps = {
-  model: Dashboard__SignalItemModel;
+export type Dashboard__StudentSignalItemProps = {
+  model: Dashboard__StudentSignalItemModel;
   onClick?: () => void;
 };
 
-export const Dashboard__SignalItem = ({
+export const Dashboard__StudentSignalItem = ({
   model,
   onClick,
-}: Dashboard__SignalItemProps) => {
+}: Dashboard__StudentSignalItemProps) => {
   const colorPalette = (() => {
     switch (model.status) {
       case "POSITIVE":
