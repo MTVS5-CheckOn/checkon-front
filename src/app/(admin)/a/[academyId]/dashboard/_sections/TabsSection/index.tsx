@@ -27,7 +27,7 @@ export const Dashboard__TabsSection = () => {
         // 3. Color
         "bg-ods__white",
         // 4. Shadow & Border
-        "border-b border-ods__base-100",
+        "border-ods__base-100 border-b",
       )}
     >
       <Tabs.Root
@@ -45,7 +45,7 @@ export const Dashboard__TabsSection = () => {
               "absolute bottom-0 left-[calc(var(--active-tab-left)+10px)] z-1",
               "flex h-0.5 w-[calc(var(--active-tab-width)-20px)] flex-col items-stretch justify-end",
               // 3. Color
-              "bg-sky-700 opacity-60",
+              "bg-ods__blue-400 opacity-60",
               // 4. Shadow & Border
               "rounded-tl-lg rounded-tr-lg",
               // 5. Interaction
@@ -62,11 +62,11 @@ export const Dashboard__TabsSection = () => {
                 // 2. Typography
                 "ods__typo__label-large font-normal data-active:font-semibold",
                 // 3. Color
-                "text-ods__base-400 data-active:bg-blue-50 data-active:text-sky-700",
+                "text-ods__base-400 data-active:bg-ods__blue-20 data-active:text-ods__blue-500",
                 // 4. Shadow & Border
                 "rounded-tl-lg rounded-tr-lg",
                 // 5. Interaction
-                "ods__animate__default transition-colors",
+                "ods__animate__default hover:bg-ods__hover transition-colors",
               )}
               value={value}
             >

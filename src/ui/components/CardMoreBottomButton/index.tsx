@@ -16,8 +16,8 @@ export const CardMoreBottomButton = ({
       className={cn(
         // 1. Layout
         "flex h-10 w-full items-center justify-center p-3",
-        // 6. Utility
-        "ods__decorate__hover",
+        // 5. Interaction
+        "ods__animate__default hover:bg-ods__hover",
         className,
       )}
       {...props}

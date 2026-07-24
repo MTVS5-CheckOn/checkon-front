@@ -40,7 +40,7 @@ export const LNB__AcademySelector = () => {
           // 3. Color
           "bg-ods__white",
           // 4. Shadow & Border
-          "rounded-lg border border-ods__base-200",
+          "border-ods__base-200 rounded-lg border",
         )}
       >
         <Select.Value
@@ -61,7 +61,7 @@ export const LNB__AcademySelector = () => {
               // 3. Color
               "bg-ods__white",
               // 4. Shadow & Border
-              "rounded-lg border border-ods__base-100 shadow-md",
+              "border-ods__base-100 rounded-lg border shadow-md",
               // 5. Interaction
               "ods__animate__popup-open",
             )}
@@ -70,7 +70,7 @@ export const LNB__AcademySelector = () => {
               width: "var(--anchor-width)",
             }}
           >
-            <Select.List className={cn("flex flex-1 flex-col")}>
+            <Select.List className={cn("flex flex-1 flex-col gap-1")}>
               <button onClick={handleMyAcademyClick}>
                 <Select.Label
                   className={cn(
@@ -83,7 +83,7 @@ export const LNB__AcademySelector = () => {
                     // 4. Shadow & Border
                     "rounded-sm",
                     // 5. Interaction
-                    "ods__animate__button-hover hover:bg-ods__base-200",
+                    "ods__animate__default hover:bg-ods__hover",
                   )}
                 >
                   {/* Icon Space */}
@@ -98,38 +98,38 @@ export const LNB__AcademySelector = () => {
                 className={cn("h-px", "bg-ods__base-100")}
               />
 
-              <div className={cn("h-1")} />
+              <div className={cn("flex flex-col gap-1")}>
+                {academies.map(({ label, value }) => {
+                  const isSelected = academyId === value;
 
-              {academies.map(({ label, value }) => {
-                const isSelected = academyId === value;
+                  return (
+                    <button key={label}>
+                      <Select.Item
+                        value={value}
+                        className={cn(
+                          // 1. Layout
+                          "flex gap-2 p-2",
+                          // 2. Typography
+                          "ods__typo__body-small",
+                          // 3. Color
+                          "text-ods__base-600",
+                          isSelected && "bg-ods__base-100",
+                          // 4. Shadow & Border
+                          "rounded-sm",
+                          // 5. Interaction
+                          "ods__animate__default hover:bg-ods__hover",
+                        )}
+                      >
+                        <Select.Icon className={cn("size-4")}>
+                          {isSelected && <CheckIcon className={cn("size-4")} />}
+                        </Select.Icon>
 
-                return (
-                  <button key={label}>
-                    <Select.Item
-                      value={value}
-                      className={cn(
-                        // 1. Layout
-                        "flex gap-2 p-2",
-                        // 2. Typography
-                        "ods__typo__body-small",
-                        // 3. Color
-                        "text-ods__base-600",
-                        isSelected && "bg-ods__base-100",
-                        // 4. Shadow & Border
-                        "rounded-sm",
-                        // 5. Interaction
-                        "ods__animate__button-hover hover:bg-ods__base-200",
-                      )}
-                    >
-                      <Select.Icon className={cn("size-4")}>
-                        {isSelected && <CheckIcon className={cn("size-4")} />}
-                      </Select.Icon>
-
-                      <Select.ItemText>{label}</Select.ItemText>
-                    </Select.Item>
-                  </button>
-                );
-              })}
+                        <Select.ItemText>{label}</Select.ItemText>
+                      </Select.Item>
+                    </button>
+                  );
+                })}
+              </div>
             </Select.List>
           </Select.Popup>
         </Select.Positioner>

@@ -7,6 +7,11 @@
       cursor: pointer;
     }
   }
+  html {
+    max-width: 100%;
+    max-height: 100%;
+    overflow-y: hidden;
+  }
 }
 
 @layer components {
@@ -27,10 +32,68 @@
   --color-ods__base-800: #1e293b;
   --color-ods__base-900: #0f172a;
 
+  --color-ods__blue-20: #f8f9ff;
+  --color-ods__blue-30: #f3f6ff;
+  --color-ods__blue-40: #eff4ff;
+  --color-ods__blue-50: #eaf1ff;
+  --color-ods__blue-100: #d3e4ff;
+  --color-ods__blue-200: #a1c9ff;
+  --color-ods__blue-300: #6daffd;
+  --color-ods__blue-400: #4f94e0;
+  --color-ods__blue-500: #307ac4;
+  --color-ods__blue-600: #0060a8;
+  --color-ods__blue-700: #004880;
+  --color-ods__blue-800: #00325b;
+  --color-ods__blue-900: #001c38;
+
+  --color-ods__red-20: #fff8f7;
+  --color-ods__red-30: #fff4f3;
+  --color-ods__red-40: #fff1ee;
+  --color-ods__red-50: #ffedea;
+  --color-ods__red-100: #ffdad6;
+  --color-ods__red-200: #ffb4ab;
+  --color-ods__red-300: #ff897d;
+  --color-ods__red-400: #ff5449;
+  --color-ods__red-500: #de3730;
+  --color-ods__red-600: #ba1a1a;
+  --color-ods__red-700: #93000a;
+  --color-ods__red-800: #690005;
+  --color-ods__red-900: #410002;
+
+  --color-ods__yellow-20: #fff8f1;
+  --color-ods__yellow-30: #fff5e5;
+  --color-ods__yellow-40: #fff2d9;
+  --color-ods__yellow-50: #ffefcd;
+  --color-ods__yellow-100: #ffe08b;
+  --color-ods__yellow-200: #f1c100;
+  --color-ods__yellow-300: #d0a600;
+  --color-ods__yellow-400: #b08c00;
+  --color-ods__yellow-500: #927300;
+  --color-ods__yellow-600: #745b00;
+  --color-ods__yellow-700: #584400;
+  --color-ods__yellow-800: #3d2f00;
+  --color-ods__yellow-900: #241a00;
+
+  --color-ods__bronze-20: #fff8f5;
+  --color-ods__bronze-30: #fff4ef;
+  --color-ods__bronze-40: #fff1e9;
+  --color-ods__bronze-50: #ffede3;
+  --color-ods__bronze-100: #ffdcc4;
+  --color-ods__bronze-200: #f0bc97;
+  --color-ods__bronze-300: #d2a17e;
+  --color-ods__bronze-400: #b58766;
+  --color-ods__bronze-500: #996e4e;
+  --color-ods__bronze-600: #7d5638;
+  --color-ods__bronze-700: #623f23;
+  --color-ods__bronze-800: #48290e;
+  --color-ods__bronze-900: #2f1400;
+
   --color-ods__white: #ffffff;
   --color-ods__black: #000000;
 
-  --color-ods__baselayout-bgcolor: #fffcec;
+  --color-ods__hover: rgba(241, 245, 249, 0.7);
+
+  --color-ods__baselayout-bgcolor: #fffef6;
 }
 
 /* Typography */
@@ -147,9 +210,4 @@
 }
 @utility ods__animate__default {
   @apply transition-all duration-200 ease-in-out;
-}
-
-/* Interaction */
-@utility ods__decorate__hover {
-  @apply hover:bg-ods__base-200 ods__animate__default;
 }
