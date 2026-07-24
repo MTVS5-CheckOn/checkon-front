@@ -19,7 +19,7 @@ export const Dashboard__TodayTodoSection__TodoListSection = () => {
     },
     {
       title: "최수아 재출 피책 확인",
-      status: "DEFAULT",
+      status: "DANGER",
       statusLabel: "이해 저하",
       deadlinedAt: new Date(),
     },
