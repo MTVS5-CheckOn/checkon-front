@@ -7,6 +7,7 @@ import { Dashboard__SignalSection } from "./_sections/SignalSection";
 import { Dashboard__TabsSection } from "./_sections/TabsSection";
 import { Dashboard__FollowUpSection } from "./_sections/FollowUpSection";
 import { Dashboard__TodayTodoSection } from "./_sections/TodayTodoSection";
+import { Dashboard__WeeklyCalendarSection } from "./_sections/WeeklyCalendarSection";
 
 export default function Page() {
   const [activeTab] = useQueryState("tab", {
@@ -29,8 +30,8 @@ export default function Page() {
       <Dashboard__TabsSection />
 
       {activeTab === "briefing" && (
-        <div className={cn("flex w-full flex-col gap-6 px-6 pt-5 pb-10")}>
-          <div className={cn("flex h-50 w-full", "bg-red-200")}>calendar</div>
+        <div className={cn("flex w-full flex-col gap-8 px-6 pt-5 pb-10")}>
+          <Dashboard__WeeklyCalendarSection />
 
           <div className={cn("flex w-full gap-6")}>
             <div className={cn("flex flex-1 flex-col gap-8")}>

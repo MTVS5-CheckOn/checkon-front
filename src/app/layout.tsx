@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import "swiper/css";
 import "./globals.css";
 
 import { ThemeProvider } from "next-themes";

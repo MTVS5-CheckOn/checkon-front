@@ -18,7 +18,7 @@ export default function layout({ children }: { children: React.ReactNode }) {
       <div className={cn("flex h-full w-full flex-1")}>
         <LNB />
 
-        <div className={cn("flex w-full flex-col")}>
+        <div className={cn("flex w-full flex-col", "overflow-auto")}>
           <GNB />
           {children}
         </div>
