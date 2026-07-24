@@ -7,6 +7,9 @@
       cursor: pointer;
     }
   }
+  html {
+    overflow-y: hidden;
+  }
 }
 
 @layer components {
@@ -206,8 +209,3 @@
 @utility ods__animate__default {
   @apply transition-all duration-200 ease-in-out;
 }
-
-/* Interaction */
-/* @utility ods__decorate__hover {
-  @apply hover:bg-ods__base-100 ods__animate__default;
-} */
