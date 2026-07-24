@@ -21,7 +21,7 @@ export default function Page() {
         // 3. Color
         "bg-ods__white",
         // 4. Shadow & Border
-        "rounded-tl-4xl border border-ods__base-100",
+        "border-ods__base-100 rounded-tl-4xl border",
         // 6. Utility
         "overflow-auto",
       )}

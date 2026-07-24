@@ -15,6 +15,33 @@ description: Enforces Tailwind CSS class ordering and cn() usage for checkon-fro
 - `cn` import 경로: `@/ui/utils/tailwind/cn`
 - 스타일은 별도 변수로 분리하여 참조하지 않고 className에 인라인으로 작성합니다.
 
+### 적용 제외 (조건부 스타일링)
+
+**삼항 연산자** 또는 **`&&` 조건부 스타일링**이 적용된 **해당 라인**은 개발자가 의도적으로 배치한 코드입니다. 위계 질서 규칙 적용 대상에서 **제외**하며, **어떤 형태로도 조작하지 않습니다.** 나머지 정적 클래스 라인에만 이 SKILL을 적용합니다.
+
+적용 제외 예시:
+
+```tsx
+className={cn(
+  // 1. Layout
+  "flex items-center gap-2 p-2",
+  // 2. Typography
+  "ods__typo__label-large font-medium",
+  // 3. Color
+  "text-ods__base-500",
+  // 4. Shadow & Border
+  "rounded-lg",
+  // 5. Interaction
+  "ods__decorate__hover hover:bg-ods__base-200",
+  // ↓ 개발자 의도 배치 — 위치·내용·형태 변경 금지
+  isActive && "text-ods__blue-600 bg-ods__blue-20",
+)}
+```
+
+- **조작 금지 (해당 라인)**: `isActive && "..."`, `condition ? "..." : "..."` 등 조건 연산자가 붙은 라인
+  - 위치 이동, 레이어 분리, 삼항 연산자 변환, 클래스 순서 변경, 주석 추가·수정 등 **일체 금지**
+- **적용 대상**: Layout ~ Interaction 등 **정적 클래스 라인** — 레이어 분리·주석·순서 정렬 가능
+
 ---
 
 ## 2. Tailwind Layering 위계 질서 (Priority Order)
@@ -86,6 +113,7 @@ import { cn } from "@/ui/utils/tailwind/cn";
 
 코드 작성·수정 시 아래를 확인합니다:
 
+- [ ] 조건부 스타일링 **해당 라인**은 개발자 의도 배치이므로 **조작 금지** (정적 라인만 SKILL 적용)
 - [ ] `className` 문자열 병합에 `cn()` 사용 (className 개수가 적더라도 필수 적용)
 - [ ] 6단계 위계 순서 준수 (Layout → Typography → Color → Shadow/Border → Interaction → Utility)
 - [ ] 각 그룹별 주석 작성 (위계 질서 구분이 3개 이상일 때 가독성을 위한 주석)

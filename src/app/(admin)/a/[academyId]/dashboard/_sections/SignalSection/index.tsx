@@ -5,6 +5,7 @@ import {
   Dashboard__StudentSignalItem,
   Dashboard__StudentSignalItemModel,
 } from "../../_components/SignalItem";
+import { StatusLabel } from "@/ui/components/StatusLabel";
 
 export const Dashboard__SignalSection = () => {
   const data: {
@@ -62,27 +63,7 @@ export const Dashboard__SignalSection = () => {
           </div>
 
           {/* 신호 개수 */}
-          <div
-            className={cn(
-              // 1. Layout
-              "flex flex-col items-start justify-start px-1.5 py-0.5",
-              // 3. Color
-              "bg-orange-100",
-              // 4. Shadow & Border
-              "rounded-full",
-            )}
-          >
-            <div
-              className={cn(
-                // 2. Typography
-                "ods__typo__caption font-semibold",
-                // 3. Color
-                "text-yellow-700",
-              )}
-            >
-              {`${data.signalCount}건`}
-            </div>
-          </div>
+          <StatusLabel status="POSITIVE">{`${data.signalCount}건`}</StatusLabel>
         </div>
       </div>
 
@@ -93,8 +74,6 @@ export const Dashboard__SignalSection = () => {
           "flex w-full flex-col items-start justify-start",
           // 4. Shadow & Border
           "border-ods__base-100 rounded-xl border",
-          // 6. Utility
-          "overflow-hidden",
         )}
       >
         {data.items.map((item) => (

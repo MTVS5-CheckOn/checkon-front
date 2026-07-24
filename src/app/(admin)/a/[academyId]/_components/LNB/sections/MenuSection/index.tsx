@@ -68,11 +68,12 @@ const MenuItem = ({
         "ods__typo__label-large font-medium",
         // 3. Color
         "text-ods__base-500",
-        isActive && "text-ods__base-500 bg-blue-50",
         // 4. Shadow & Border
         "rounded-lg",
         // 5. Interaction
-        "ods__decorate__hover hover:bg-ods__base-200",
+        "ods__animate__default hover:bg-ods__hover",
+        //
+        isActive && "text-ods__blue-600 bg-ods__blue-20",
       )}
     >
       <span>{icon}</span>
