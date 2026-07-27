@@ -3,9 +3,9 @@
 import { cn } from "@/ui/utils/tailwind/cn";
 
 import { useQueryState } from "nuqs";
+import { Dashboard__FollowUpSection } from "./_sections/FollowUpSection";
 import { Dashboard__SignalSection } from "./_sections/SignalSection";
 import { Dashboard__TabsSection } from "./_sections/TabsSection";
-import { Dashboard__FollowUpSection } from "./_sections/FollowUpSection";
 import { Dashboard__TodayTodoSection } from "./_sections/TodayTodoSection";
 import { Dashboard__WeeklyCalendarSection } from "./_sections/WeeklyCalendarSection";
 
@@ -22,7 +22,7 @@ export default function Page() {
         // 3. Color
         "bg-ods__white",
         // 4. Shadow & Border
-        "border-ods__base-100 rounded-tl-4xl border",
+        "border-ods__border rounded-tl-4xl border",
         // 6. Utility
         "overflow-auto",
       )}
@@ -44,6 +44,7 @@ export default function Page() {
         </div>
       )}
 
+      {/* TODO: 통계 섹션 추가 */}
       {activeTab === "stats" && <div>통계</div>}
     </div>
   );

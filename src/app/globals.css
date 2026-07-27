@@ -94,6 +94,8 @@
   --color-ods__hover: rgba(241, 245, 249, 0.7);
 
   --color-ods__baselayout-bgcolor: #fffef6;
+
+  --color-ods__border: #e2e8f0;
 }
 
 /* Typography */

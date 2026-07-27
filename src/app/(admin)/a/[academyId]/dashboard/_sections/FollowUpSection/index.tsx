@@ -75,7 +75,7 @@ export const Dashboard__FollowUpSection = () => {
           // 1. Layout
           "flex w-full flex-col items-start justify-start",
           // 4. Shadow & Border
-          "border-ods__base-100 rounded-xl border",
+          "border-ods__border rounded-xl border",
         )}
       >
         {data.items.map((item) => (
