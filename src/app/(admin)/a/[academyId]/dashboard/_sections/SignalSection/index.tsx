@@ -6,6 +6,8 @@ import {
   SignalItemModel,
 } from "@/ui/components/SignalListItem/SignalItem";
 import { StatusLabel } from "@/ui/components/StatusLabel";
+import { overlay } from "overlay-kit";
+import { WeeklyCalendar__SignalDetailDialog } from "../WeeklyCalendarSection/components/WeeklyCalendar/components/SignalDetailDialog";
 
 export const Dashboard__SignalSection = () => {
   const data: {
@@ -41,7 +43,9 @@ export const Dashboard__SignalSection = () => {
   };
 
   const handleMoreClick = () => {
-    alert("확인이 필요한 신호 더보기");
+    overlay.open(({ isOpen, close }) => (
+      <WeeklyCalendar__SignalDetailDialog isOpen={isOpen} onClose={close} />
+    ));
   };
 
   return (

@@ -1,7 +1,18 @@
 import { cn } from "@/ui/utils/tailwind/cn";
+import {
+  CheckCircleIcon,
+  InfoIcon,
+  TriangleAlertIcon,
+  XCircleIcon,
+} from "lucide-react";
 
 export type AlertProps = {
   variant?: "default" | "success" | "warning" | "error";
+  /**
+   * undefined인 경우, 기본 아이콘 반환
+   *
+   * null인 경우, 아이콘 미노출
+   */
   icon?: React.ReactNode;
   title?: React.ReactNode;
   description?: React.ReactNode;
@@ -13,6 +24,33 @@ export const Alert = ({
   title,
   description,
 }: AlertProps) => {
+  const alertIcon = (() => {
+    if (!!icon) {
+      return icon;
+    }
+
+    /**
+     * undefined인 경우, 기본 아이콘 반환
+     */
+    if (icon === undefined) {
+      switch (variant) {
+        case "default":
+          return <InfoIcon />;
+        case "success":
+          return <CheckCircleIcon />;
+        case "warning":
+          return <TriangleAlertIcon />;
+        case "error":
+          return <XCircleIcon />;
+      }
+    }
+
+    /**
+     * 명시적으로 null을 전달한 경우, undefined 반환
+     */
+    return undefined;
+  })();
+
   const colorPalette = (() => {
     switch (variant) {
       case "default":
@@ -66,7 +104,7 @@ export const Alert = ({
           colorPalette.iconColor,
         )}
       >
-        {icon}
+        {alertIcon}
       </div>
 
       {/* Content Container */}
@@ -78,7 +116,7 @@ export const Alert = ({
       >
         {title && (
           <dt className={cn("flex w-full flex-col")}>
-            <div
+            <span
               className={cn(
                 // 2. Typography
                 "ods__typo__title-medium font-medium",
@@ -87,22 +125,22 @@ export const Alert = ({
               )}
             >
               {title}
-            </div>
+            </span>
           </dt>
         )}
 
         {description && (
           <dd className={cn("flex w-full flex-col")}>
-            <div
+            <p
               className={cn(
                 // 2. Typography
-                "ods__typo__body-medium",
+                "ods__typo__body-medium whitespace-pre-line",
                 // 3. Color
                 colorPalette.descriptionColor,
               )}
             >
               {description}
-            </div>
+            </p>
           </dd>
         )}
       </dl>
