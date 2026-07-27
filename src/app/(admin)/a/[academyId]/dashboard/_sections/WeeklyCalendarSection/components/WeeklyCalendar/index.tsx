@@ -64,7 +64,7 @@ export const WeeklyCalendar = () => {
   /**
    * 선택된 날짜 - 포맷팅
    */
-  const formatedSelectedDate = format(selectedDate, "M월 dd일 (E)", {
+  const formatedSelectedDate = format(selectedDate, "M월 d일 (E)", {
     locale: ko,
   });
 
