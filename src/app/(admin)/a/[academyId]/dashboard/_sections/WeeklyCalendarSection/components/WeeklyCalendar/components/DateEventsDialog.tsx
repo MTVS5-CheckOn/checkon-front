@@ -92,41 +92,48 @@ export const WeeklyCalendar__DateEventsDialog = ({
 
           <div
             className={cn(
-              // 2. Typography
-              "ods__typo__title-small font-semibold",
-              // 3. Color
-              "text-ods__base-500",
-            )}
-          >
-            {`이벤트 (${data.items.length}개)`}
-          </div>
-
-          <div
-            className={cn(
               // 1. Layout
               "flex w-full flex-col items-start justify-start",
-              // 6. Utility
-              "overflow-auto",
             )}
           >
-            {data.items.map((item, index) => {
-              const isLast = index === data.items.length - 1;
+            <div
+              className={cn(
+                // 2. Typography
+                "ods__typo__title-small font-semibold",
+                // 3. Color
+                "text-ods__base-500",
+              )}
+            >
+              {`이벤트 (${data.items.length}개)`}
+            </div>
 
-              return (
-                <div
-                  key={item.title + item.caption}
-                  className={cn(
-                    // 1. Layout
-                    "flex w-full",
-                    // 4. Shadow & Border
-                    "border-ods__border border-b",
-                    isLast && "border-b-0",
-                  )}
-                >
-                  <SignalItem model={item} />
-                </div>
-              );
-            })}
+            <div
+              className={cn(
+                // 1. Layout
+                "flex w-full flex-col items-start justify-start",
+                // 6. Utility
+                "overflow-auto",
+              )}
+            >
+              {data.items.map((item, index) => {
+                const isLast = index === data.items.length - 1;
+
+                return (
+                  <div
+                    key={item.title + item.caption}
+                    className={cn(
+                      // 1. Layout
+                      "flex w-full",
+                      // 4. Shadow & Border
+                      "border-ods__border border-b",
+                      isLast && "border-b-0",
+                    )}
+                  >
+                    <SignalItem model={item} />
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       }
