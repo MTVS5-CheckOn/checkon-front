@@ -11,17 +11,17 @@ import { ko } from "date-fns/locale/ko";
 export type WeeklyCalendar__DateEventsDialogProps = {
   isOpen: boolean;
   onClose: () => void;
+  selectedDate: Date;
 };
 
 export const WeeklyCalendar__DateEventsDialog = ({
   isOpen,
   onClose,
+  selectedDate,
 }: WeeklyCalendar__DateEventsDialogProps) => {
   const data: {
-    selectedDate: Date;
     items: SignalItemModel[];
   } = {
-    selectedDate: new Date("2026-07-21"),
     items: [
       {
         title: "박서연",
@@ -57,7 +57,7 @@ export const WeeklyCalendar__DateEventsDialog = ({
     ],
   };
 
-  const formatedSelectedDate = format(data.selectedDate, "M월 d일 (E)", {
+  const formatedSelectedDate = format(selectedDate, "M월 d일 (E)", {
     locale: ko,
   });
 
@@ -83,7 +83,7 @@ export const WeeklyCalendar__DateEventsDialog = ({
         <div
           className={cn(
             // 1. Layout
-            "flex w-full flex-col items-start justify-start gap-3",
+            "flex w-full flex-col items-start justify-start gap-4",
             // 6. Utility
             "overflow-hidden",
           )}
