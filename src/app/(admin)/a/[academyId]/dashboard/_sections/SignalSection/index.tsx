@@ -42,10 +42,14 @@ export const Dashboard__SignalSection = () => {
     ],
   };
 
-  const handleMoreClick = () => {
+  const handleSignalItemClick = () => {
     overlay.open(({ isOpen, close }) => (
       <WeeklyCalendar__SignalDetailDialog isOpen={isOpen} onClose={close} />
     ));
+  };
+
+  const handleSignalItemMoreClick = () => {
+    alert("확인이 필요한 신호 더보기");
   };
 
   return (
@@ -86,12 +90,12 @@ export const Dashboard__SignalSection = () => {
           <SignalItem
             key={item.title + item.caption}
             model={item}
-            onClick={handleMoreClick}
+            onClick={handleSignalItemClick}
           />
         ))}
 
         {/* 더보기 버튼 */}
-        <CardMoreBottomButton onClick={handleMoreClick} />
+        <CardMoreBottomButton onClick={handleSignalItemMoreClick} />
       </div>
     </div>
   );
