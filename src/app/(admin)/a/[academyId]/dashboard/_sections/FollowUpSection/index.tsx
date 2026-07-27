@@ -3,39 +3,39 @@ import { cn } from "@/ui/utils/tailwind/cn";
 import { CardMoreBottomButton } from "@/ui/components/CardMoreBottomButton";
 
 import {
-  Dashboard__StudentSignalItem,
-  Dashboard__StudentSignalItemModel,
-} from "../../_components/SignalItem";
+  SignalItem,
+  SignalItemModel,
+} from "@/ui/components/SignalListItem/SignalItem";
 import { StatusLabel } from "@/ui/components/StatusLabel";
 
 export const Dashboard__FollowUpSection = () => {
   const data: {
     signalCount: number;
-    items: Dashboard__StudentSignalItemModel[];
+    items: SignalItemModel[];
   } = {
     signalCount: 3,
     items: [
       {
-        studentName: "박서연",
+        title: "박서연",
         status: "POSITIVE",
         statusLabel: "경과 양호",
-        createdAt: new Date("2026-07-18"),
+        caption: "5일 전",
         content:
           "6/26 상담 이후: 제출률 50%→100% · 정답률 62%→74% · 풀이시간 정상 범위",
       },
       {
-        studentName: "김민준",
+        title: "김민준",
         status: "WARNING",
         statusLabel: "재검토",
-        createdAt: new Date("2026-07-19"),
+        caption: "4일 전",
         content:
           "6/26 상담 이후: 제출률 50%→100% · 정답률 62%→74% · 풀이시간 정상 범위",
       },
       {
-        studentName: "박서연",
+        title: "박서연",
         status: "DANGER",
         statusLabel: "결과 부정확",
-        createdAt: new Date("2026-07-20"),
+        caption: "3일 전",
         content:
           "6/26 상담 이후: 제출률 50%→100% · 정답률 62%→74% · 풀이시간 정상 범위",
       },
@@ -76,11 +76,13 @@ export const Dashboard__FollowUpSection = () => {
           "flex w-full flex-col items-start justify-start",
           // 4. Shadow & Border
           "border-ods__border rounded-xl border",
+          // 6. Utility
+          "overflow-hidden",
         )}
       >
         {data.items.map((item) => (
-          <Dashboard__StudentSignalItem
-            key={item.studentName + item.createdAt.toISOString()}
+          <SignalItem
+            key={item.title + item.caption}
             model={item}
             onClick={handleMoreClick}
           />

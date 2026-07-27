@@ -5,8 +5,10 @@ import { DateUtilForKo } from "@/ui/utils/date/date-util";
 import { Button } from "@base-ui/react/button";
 import { format, isSameDay, isWeekend } from "date-fns";
 import { ko } from "date-fns/locale/ko";
+import { overlay } from "overlay-kit";
 import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { WeeklyCalendar__DateEventsDialog } from "./components/DateEventsDialog";
 import { WeeklyCalendar__DayCell } from "./components/DayCell";
 import { WeeklyCalendar__NavButton } from "./components/NavButton";
 import { useWeeklyCalendar__Dates } from "./hooks/useDates";
@@ -52,6 +54,11 @@ export const WeeklyCalendar = () => {
 
     // 네비게이션 버튼 상태 새로고침
     refreshNavButtonState();
+
+    // 선택 날짜 이벤트 목록 다이얼로그 열기
+    overlay.open(({ isOpen, close }) => (
+      <WeeklyCalendar__DateEventsDialog isOpen={isOpen} onClose={close} />
+    ));
   };
 
   /**
@@ -95,7 +102,7 @@ export const WeeklyCalendar = () => {
         </div>
       </div>
 
-      <Separator variants="dashed" />
+      <Separator variants="dashed" thickness="2px" />
 
       {/* Weeks */}
       <div

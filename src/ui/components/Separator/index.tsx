@@ -1,22 +1,34 @@
 import { cn } from "@/ui/utils/tailwind/cn";
 
 export const Separator = ({
-  variants = "line",
+  variants = "default",
+  thickness = "2px",
 }: {
-  variants?: "line" | "dashed";
+  variants?: "default" | "dashed";
+  thickness?: string;
 }) => {
   return (
-    <svg width="100%" height="2" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      width="100%"
+      height={thickness}
+      xmlns="http://www.w3.org/2000/svg"
+      style={{
+        minHeight: thickness,
+      }}
+    >
       <line
         x1="0"
-        y1="2"
+        y1="1"
         x2="100%"
-        y2="2"
+        y2="1"
         className={cn(
-          "stroke-ods__border stroke-2",
+          "stroke-ods__border",
           //
           variants === "dashed" && "[stroke-dasharray:8_6]",
         )}
+        style={{
+          strokeWidth: thickness,
+        }}
       />
     </svg>
   );

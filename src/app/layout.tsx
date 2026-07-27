@@ -5,6 +5,7 @@ import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import localFont from "next/font/local";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
+import { OverlayProvider } from "overlay-kit";
 
 import { cn } from "@/ui/utils/tailwind/cn";
 
@@ -33,7 +34,9 @@ export default function RootLayout({
     >
       <body className="flex flex-col">
         <ThemeProvider attribute="class" defaultTheme="light">
-          <NuqsAdapter>{children}</NuqsAdapter>
+          <NuqsAdapter>
+            <OverlayProvider>{children}</OverlayProvider>
+          </NuqsAdapter>
         </ThemeProvider>
       </body>
     </html>
