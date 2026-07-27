@@ -61,7 +61,7 @@ export const LNB__AcademySelector = () => {
               // 3. Color
               "bg-ods__white",
               // 4. Shadow & Border
-              "border-ods__base-100 rounded-lg border shadow-md",
+              "border-ods__border rounded-lg border shadow-md",
               // 5. Interaction
               "ods__animate__popup-open",
             )}

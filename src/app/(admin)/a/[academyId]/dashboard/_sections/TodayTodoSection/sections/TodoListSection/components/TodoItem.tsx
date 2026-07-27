@@ -51,7 +51,7 @@ export const TodoItem = ({ model, onClick }: TodoItemProps) => {
           // 3. Color
           colorPalette.bgColor,
           // 4. Shadow & Border
-          "border-ods__base-100 border-b",
+          "border-ods__border border-b",
           // 5. Interaction
           "ods__animate__default hover:bg-ods__hover",
         )}

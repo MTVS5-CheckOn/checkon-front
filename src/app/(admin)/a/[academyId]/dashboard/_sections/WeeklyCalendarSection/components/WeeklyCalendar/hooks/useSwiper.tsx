@@ -16,6 +16,16 @@ export const useWeeklyCalendar__Swiper = () => {
   });
 
   /**
+   * 스와이퍼 네비게이션 버튼 상태 새로고침
+   */
+  const refreshNavButtonState = () => {
+    setNavButtonState({
+      isBeginning: swiper?.isBeginning ?? false,
+      isEnd: swiper?.isEnd ?? false,
+    });
+  };
+
+  /**
    * 이전 슬라이드로 이동
    */
   const handleSlidePrev = () => {
@@ -25,10 +35,7 @@ export const useWeeklyCalendar__Swiper = () => {
 
     swiper?.slidePrev();
 
-    setNavButtonState({
-      isBeginning: swiper?.isBeginning ?? false,
-      isEnd: swiper?.isEnd ?? false,
-    });
+    refreshNavButtonState();
   };
 
   /**
@@ -41,10 +48,7 @@ export const useWeeklyCalendar__Swiper = () => {
 
     swiper?.slideNext();
 
-    setNavButtonState({
-      isBeginning: swiper?.isBeginning ?? false,
-      isEnd: swiper?.isEnd ?? false,
-    });
+    refreshNavButtonState();
   };
 
   /**
@@ -62,6 +66,7 @@ export const useWeeklyCalendar__Swiper = () => {
     swiper,
     setSwiper,
     navButtonState,
+    refreshNavButtonState,
     handleSlidePrev,
     handleSlideNext,
     handleSlideTo,

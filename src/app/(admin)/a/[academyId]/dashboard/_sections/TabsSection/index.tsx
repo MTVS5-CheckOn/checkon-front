@@ -27,7 +27,7 @@ export const Dashboard__TabsSection = () => {
         // 3. Color
         "bg-ods__white",
         // 4. Shadow & Border
-        "border-ods__base-100 border-b",
+        "border-ods__border border-b",
       )}
     >
       <Tabs.Root

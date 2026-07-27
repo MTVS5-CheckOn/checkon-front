@@ -39,7 +39,7 @@ export const Dashboard__TodayTodoSection__TodoListSection = () => {
         // 1. Layout
         "flex flex-col",
         // 4. Shadow & Border
-        "border-ods__base-100 rounded-xl border",
+        "border-ods__border rounded-xl border",
         // 6. Utility
         "overflow-hidden",
       )}

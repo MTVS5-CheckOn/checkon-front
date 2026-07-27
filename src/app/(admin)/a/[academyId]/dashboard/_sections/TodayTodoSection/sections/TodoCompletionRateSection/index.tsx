@@ -12,7 +12,7 @@ export const Dashboard__TodayTodoSection__TodoCompletionRateSection = () => {
         // 1. Layout
         "flex flex-col px-3.5 py-3",
         // 4. Shadow & Border
-        "border-ods__base-100 rounded-xl border",
+        "border-ods__border rounded-xl border",
       )}
     >
       <div className={cn("flex justify-between")}>

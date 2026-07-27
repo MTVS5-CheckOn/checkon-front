@@ -1,26 +1,22 @@
 import { StatusLabel, StatusLabelStatus } from "@/ui/components/StatusLabel";
-import { DateUtilForKo } from "@/ui/utils/date/date-util";
 import { cn } from "@/ui/utils/tailwind/cn";
 
-export type Dashboard__StudentSignalItemStatus = StatusLabelStatus;
+export type SignalItemStatus = StatusLabelStatus;
 
-export type Dashboard__StudentSignalItemModel = {
-  studentName: string;
-  status: Dashboard__StudentSignalItemStatus;
+export type SignalItemModel = {
+  title: string;
+  status: SignalItemStatus;
   statusLabel: string;
-  createdAt: Date;
+  caption: string;
   content: string;
 };
 
-export type Dashboard__StudentSignalItemProps = {
-  model: Dashboard__StudentSignalItemModel;
+export type SignalItemProps = {
+  model: SignalItemModel;
   onClick?: () => void;
 };
 
-export const Dashboard__StudentSignalItem = ({
-  model,
-  onClick,
-}: Dashboard__StudentSignalItemProps) => {
+export const SignalItem = ({ model, onClick }: SignalItemProps) => {
   const colorPalette = (() => {
     switch (model.status) {
       case "POSITIVE":
@@ -46,23 +42,14 @@ export const Dashboard__StudentSignalItem = ({
     }
   })();
 
-  const createdAtText = DateUtilForKo.formatDistanceToNow({
-    date: model.createdAt,
-    options: {
-      addSuffix: true,
-    },
-  });
-
   return (
     <button className={cn("flex w-full")} onClick={onClick}>
       <div
         className={cn(
           // 1. Layout
-          "flex w-full flex-col items-start justify-start gap-2 p-3",
+          "flex min-h-20.5 w-full flex-col items-start justify-start gap-2 p-3",
           // 3. Color
           colorPalette.bgColor && colorPalette.bgColor,
-          // 4. Shadow & Border
-          "border-ods__base-100 border-b",
           // 5. Interaction
           "ods__animate__default hover:bg-ods__hover",
         )}
@@ -91,7 +78,7 @@ export const Dashboard__StudentSignalItem = ({
                   "text-ods__base-500",
                 )}
               >
-                {model.studentName}
+                {model.title}
               </div>
             </div>
 
@@ -107,7 +94,7 @@ export const Dashboard__StudentSignalItem = ({
                 "text-ods__base-400",
               )}
             >
-              {createdAtText}
+              {model.caption}
             </div>
           </div>
         </div>
