@@ -16,6 +16,7 @@ export type AlertProps = {
   icon?: React.ReactNode;
   title?: React.ReactNode;
   description?: React.ReactNode;
+  caption?: React.ReactNode;
 };
 
 export const Alert = ({
@@ -23,6 +24,7 @@ export const Alert = ({
   icon,
   title,
   description,
+  caption,
 }: AlertProps) => {
   const alertIcon = (() => {
     if (!!icon) {
@@ -114,8 +116,8 @@ export const Alert = ({
           "flex w-full flex-col gap-1",
         )}
       >
-        {title && (
-          <dt className={cn("flex w-full flex-col")}>
+        {(title || caption) && (
+          <dt className={cn("flex w-full items-start justify-between")}>
             <span
               className={cn(
                 // 2. Typography
@@ -125,6 +127,17 @@ export const Alert = ({
               )}
             >
               {title}
+            </span>
+
+            <span
+              className={cn(
+                // 2. Typography
+                "ods__typo__caption",
+                // 3. Color
+                colorPalette.descriptionColor,
+              )}
+            >
+              {caption}
             </span>
           </dt>
         )}

@@ -51,7 +51,7 @@ export const WeeklyCalendar__SignalDetailDialog = ({
             "text-ods__base-500",
           )}
         >
-          신호 상세정보
+          학생 신호 정보
         </div>
       }
       dialogContent={
@@ -75,7 +75,6 @@ export const WeeklyCalendar__SignalDetailDialog = ({
             <WeeklyCalendar__SignalDetailDialog__StudentInfoSection
               studentName={data.studentName}
               studentClassTitle={data.studentClassTitle}
-              signalCreatedAt={data.signalCreatedAt}
               studentProfileImageUrl={data.studentProfileImageUrl}
             />
 
@@ -84,6 +83,7 @@ export const WeeklyCalendar__SignalDetailDialog = ({
               variant={data.signalStatusVariant}
               signalStatusTitle={data.signalStatusTitle}
               signalStatusDescription={data.signalStatusDescription}
+              signalCreatedAt={data.signalCreatedAt}
             />
 
             {/* Layer 3: Signal Reason */}

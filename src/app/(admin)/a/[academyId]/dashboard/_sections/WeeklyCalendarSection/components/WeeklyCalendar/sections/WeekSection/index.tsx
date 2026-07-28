@@ -63,7 +63,7 @@ export const WeeklyCalendar__WeekSection = ({
     },
     {
       isPreventDefault: true,
-      delay: 500,
+      delay: 300,
     },
   );
 

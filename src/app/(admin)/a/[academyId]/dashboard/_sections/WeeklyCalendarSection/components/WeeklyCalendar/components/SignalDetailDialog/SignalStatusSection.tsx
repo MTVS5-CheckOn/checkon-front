@@ -1,17 +1,25 @@
 import { Alert } from "@/ui/components/Alert";
 import { cn } from "@/ui/utils/tailwind/cn";
+import { format } from "date-fns";
 
 export type WeeklyCalendar__SignalDetailDialog__SignalStatusSectionProps = {
   variant: "warning" | "error" | "success" | "default";
   signalStatusTitle: string;
   signalStatusDescription: string;
+  signalCreatedAt: Date;
 };
 
 export const WeeklyCalendar__SignalDetailDialog__SignalStatusSection = ({
   variant,
   signalStatusTitle,
   signalStatusDescription,
+  signalCreatedAt,
 }: WeeklyCalendar__SignalDetailDialog__SignalStatusSectionProps) => {
+  const signalCreatedAtLabel = format(
+    signalCreatedAt,
+    "yyyy년 MM월 dd일 HH:mm 생성",
+  );
+
   return (
     <section
       className={cn(
@@ -34,6 +42,7 @@ export const WeeklyCalendar__SignalDetailDialog__SignalStatusSection = ({
         variant={variant}
         title={signalStatusTitle}
         description={signalStatusDescription}
+        caption={signalCreatedAtLabel}
       />
     </section>
   );

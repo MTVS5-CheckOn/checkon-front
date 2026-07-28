@@ -1,14 +1,8 @@
 "use client";
 
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/shadcn/components/ui/tooltip";
 import { cn } from "@/ui/utils/tailwind/cn";
 import { format } from "date-fns";
 import { ko } from "date-fns/locale/ko";
-import { CircleQuestionMarkIcon } from "lucide-react";
 
 /**
  * 헤더 섹션
@@ -41,24 +35,10 @@ export const WeeklyCalendar__HeaderSection = ({
         {formatedSelectedDate}
       </div>
 
-      {/* Tooltip */}
-      <Tooltip>
-        <TooltipTrigger>
-          <CircleQuestionMarkIcon
-            size={20}
-            className={cn(
-              "text-ods__base-400",
-              "ods__animate__default hover:text-ods__base-600",
-            )}
-          />
-        </TooltipTrigger>
-
-        <TooltipContent>
-          <p className={cn("ods__typo__body-small")}>
-            날짜를 길게 눌러 이벤트 목록을 확인 할 수 있어요
-          </p>
-        </TooltipContent>
-      </Tooltip>
+      {/* Caption */}
+      <span className={cn("ods__typo__body-small text-ods__base-400")}>
+        날짜를 길게 눌러 이벤트 목록을 확인 할 수 있어요
+      </span>
     </section>
   );
 };
