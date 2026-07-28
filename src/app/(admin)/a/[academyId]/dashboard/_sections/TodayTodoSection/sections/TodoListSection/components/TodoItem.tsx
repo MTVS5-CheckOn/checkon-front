@@ -25,14 +25,12 @@ export const TodoItem = ({ model, onClick }: TodoItemProps) => {
     if (status === "DANGER") {
       return {
         bgColor: "bg-ods__red-20",
-        titleColor: "text-ods__red-600",
         deadlineColor: "text-ods__red-500",
       };
     }
 
     return {
       bgColor: undefined,
-      titleColor: "text-ods__base-500",
       deadlineColor: "text-ods__base-400",
     };
   })();
@@ -83,7 +81,7 @@ export const TodoItem = ({ model, onClick }: TodoItemProps) => {
                   // 2. Typography
                   "ods__typo__label-medium font-medium",
                   // 3. Color
-                  colorPalette.titleColor,
+                  "text-ods__base-500",
                 )}
               >
                 {title}

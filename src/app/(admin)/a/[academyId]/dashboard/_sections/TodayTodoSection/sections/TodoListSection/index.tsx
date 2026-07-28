@@ -2,6 +2,8 @@ import { cn } from "@/ui/utils/tailwind/cn";
 
 import { CardMoreBottomButton } from "@/ui/components/CardMoreBottomButton";
 import { TodoItem, TodoItemModel } from "./components/TodoItem";
+import { overlay } from "overlay-kit";
+import { WeeklyCalendar__DateEventsDialog } from "../../../WeeklyCalendarSection/components/WeeklyCalendar/components/DateEventsDialog";
 
 export const Dashboard__TodayTodoSection__TodoListSection = () => {
   const data: TodoItemModel[] = [
@@ -26,11 +28,19 @@ export const Dashboard__TodayTodoSection__TodoListSection = () => {
   ];
 
   const handleTodoItemClick = () => {
-    alert(`할 일 상세 페이지로 이동`);
+    alert(`해당 할 일 상세 페이지로 이동`);
   };
 
   const handleMoreClick = () => {
-    alert("오늘 할 일 더보기");
+    const today = new Date();
+
+    overlay.open(({ isOpen, close }) => (
+      <WeeklyCalendar__DateEventsDialog
+        isOpen={isOpen}
+        onClose={close}
+        selectedDate={today}
+      />
+    ));
   };
 
   return (
