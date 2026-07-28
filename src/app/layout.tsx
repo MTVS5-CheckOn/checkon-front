@@ -9,6 +9,8 @@ import { OverlayProvider } from "overlay-kit";
 
 import { cn } from "@/ui/utils/tailwind/cn";
 
+import AppProvider from "./providers";
+
 const pretendard = localFont({
   src: "./fonts/pretendard/PretendardVariable.woff2",
   display: "swap",
@@ -33,11 +35,13 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="flex flex-col">
-        <ThemeProvider attribute="class" defaultTheme="light">
-          <NuqsAdapter>
-            <OverlayProvider>{children}</OverlayProvider>
-          </NuqsAdapter>
-        </ThemeProvider>
+        <AppProvider>
+          <ThemeProvider attribute="class" defaultTheme="light">
+            <NuqsAdapter>
+              <OverlayProvider>{children}</OverlayProvider>
+            </NuqsAdapter>
+          </ThemeProvider>
+        </AppProvider>
       </body>
     </html>
   );

@@ -37,7 +37,7 @@ export const WeeklyCalendar__HeaderSection = ({
 
       {/* Caption */}
       <span className={cn("ods__typo__body-small text-ods__base-400")}>
-        날짜를 길게 눌러 이벤트 목록을 확인 할 수 있어요
+        날짜를 더블 클릭하여 이벤트 목록을 확인 할 수 있어요
       </span>
     </section>
   );

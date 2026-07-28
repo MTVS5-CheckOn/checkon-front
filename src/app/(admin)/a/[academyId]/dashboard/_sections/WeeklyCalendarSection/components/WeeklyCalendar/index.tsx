@@ -1,7 +1,7 @@
 import { cn } from "@/ui/utils/tailwind/cn";
 
 import { Separator } from "@/ui/components/Separator";
-import { useState } from "react";
+import { useController, useFormContext } from "react-hook-form";
 import { useWeeklyCalendar__Dates } from "./hooks/useDates";
 import { WeeklyCalendar__HeaderSection } from "./sections/HeaderSection";
 import { WeeklyCalendar__WeekSection } from "./sections/WeekSection";
@@ -14,10 +14,19 @@ export const WeeklyCalendar = () => {
    * 날짜 목록 가져오기
    */
   const { currentDate, dates } = useWeeklyCalendar__Dates();
+
+  /**
+   * 폼 컨텍스트
+   */
+  const { control } = useFormContext();
   /**
    * 선택된 날짜
    */
-  const [selectedDate, setSelectedDate] = useState(currentDate);
+  const { field } = useController({
+    control,
+    name: "selectedDate",
+    defaultValue: currentDate,
+  });
 
   return (
     <div
@@ -30,13 +39,13 @@ export const WeeklyCalendar = () => {
         "overflow-hidden",
       )}
     >
-      <WeeklyCalendar__HeaderSection selectedDate={selectedDate} />
+      <WeeklyCalendar__HeaderSection selectedDate={field.value} />
       <Separator variants="dashed" thickness="2px" />
 
       <WeeklyCalendar__WeekSection
         dates={dates}
-        selectedDate={selectedDate}
-        onDateSelect={setSelectedDate}
+        selectedDate={field.value}
+        onDateSelect={(date) => field.onChange(date)}
       />
     </div>
   );
