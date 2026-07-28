@@ -2,22 +2,22 @@ import { BaseDialog } from "@/ui/components/BaseDialog";
 import { Separator } from "@/ui/components/Separator";
 import { cn } from "@/ui/utils/tailwind/cn";
 
-import { SignalDetailDialog__SignalReasonSection } from "./ReasonSection";
-import { SignalDetailDialog__SignalStatusSection } from "./StatusSection";
-import { SignalDetailDialog__StudentInfoSection } from "./StudentInfoSection";
+import { FollowUpDetailDialog__FollowUpHistorySection } from "./historySection";
+import { FollowUpDetailDialog__FollowUpStatusSection } from "./StatusSection";
+import { FollowUpDetailDialog__StudentInfoSection } from "./StudentInfoSection";
 
-export type SignalDetailDialogProps = {
+export type FollowUpDetailDialogProps = {
   isOpen: boolean;
   onClose: () => void;
 };
 
 /**
- * 대시보드 > 신호 섹션 > 신호 상세 다이얼로그
+ * 대시보드 > 팔로업 섹션 > 팔로업 상세 다이얼로그
  */
-export const SignalDetailDialog = ({
+export const FollowUpDetailDialog = ({
   isOpen,
   onClose,
-}: SignalDetailDialogProps) => {
+}: FollowUpDetailDialogProps) => {
   const data: {
     studentName: string;
     studentClassTitle: string;
@@ -54,7 +54,7 @@ export const SignalDetailDialog = ({
             "text-ods__base-500",
           )}
         >
-          학생 신호 정보
+          팔로업 정보
         </div>
       }
       dialogContent={
@@ -75,14 +75,14 @@ export const SignalDetailDialog = ({
             )}
           >
             {/* Layer 1: Student Info */}
-            <SignalDetailDialog__StudentInfoSection
+            <FollowUpDetailDialog__StudentInfoSection
               studentName={data.studentName}
               studentClassTitle={data.studentClassTitle}
               studentProfileImageUrl={data.studentProfileImageUrl}
             />
 
-            {/* Layer 2: Signal Status */}
-            <SignalDetailDialog__SignalStatusSection
+            {/* Layer 2: Follow Up Status */}
+            <FollowUpDetailDialog__FollowUpStatusSection
               variant={data.signalStatusVariant}
               statusTitle={data.signalStatusTitle}
               statusDescription={data.signalStatusDescription}
@@ -90,9 +90,7 @@ export const SignalDetailDialog = ({
             />
 
             {/* Layer 3: Signal Reason */}
-            <SignalDetailDialog__SignalReasonSection
-              signalReasonContent={data.signalReasonContent}
-            />
+            <FollowUpDetailDialog__FollowUpHistorySection />
           </div>
         </div>
       }

@@ -7,6 +7,8 @@ import {
   SignalItemModel,
 } from "@/ui/components/SignalListItem/SignalItem";
 import { StatusLabel } from "@/ui/components/StatusLabel";
+import { overlay } from "overlay-kit";
+import { FollowUpDetailDialog } from "./components/FollowUpDetailDialog";
 
 export const Dashboard__FollowUpSection = () => {
   const data: {
@@ -40,6 +42,12 @@ export const Dashboard__FollowUpSection = () => {
           "6/26 상담 이후: 제출률 50%→100% · 정답률 62%→74% · 풀이시간 정상 범위",
       },
     ],
+  };
+
+  const handleItemClick = () => {
+    overlay.open(({ isOpen, close }) => (
+      <FollowUpDetailDialog isOpen={isOpen} onClose={close} />
+    ));
   };
 
   const handleMoreClick = () => {
@@ -84,7 +92,7 @@ export const Dashboard__FollowUpSection = () => {
           <SignalItem
             key={item.title + item.caption}
             model={item}
-            onClick={handleMoreClick}
+            onClick={handleItemClick}
           />
         ))}
 

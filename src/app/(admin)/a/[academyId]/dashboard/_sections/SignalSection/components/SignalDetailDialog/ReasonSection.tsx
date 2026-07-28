@@ -1,13 +1,13 @@
 import { CardMoreBottomButton } from "@/ui/components/CardMoreBottomButton";
 import { cn } from "@/ui/utils/tailwind/cn";
 
-export type WeeklyCalendar__SignalDetailDialog__SignalReasonSectionProps = {
+export type SignalDetailDialog__SignalReasonSectionProps = {
   signalReasonContent: string;
 };
 
-export const WeeklyCalendar__SignalDetailDialog__SignalReasonSection = ({
+export const SignalDetailDialog__SignalReasonSection = ({
   signalReasonContent,
-}: WeeklyCalendar__SignalDetailDialog__SignalReasonSectionProps) => {
+}: SignalDetailDialog__SignalReasonSectionProps) => {
   return (
     <section
       className={cn(

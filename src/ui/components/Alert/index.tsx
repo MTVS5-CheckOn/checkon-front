@@ -7,7 +7,7 @@ import {
 } from "lucide-react";
 
 export type AlertProps = {
-  variant?: "default" | "success" | "warning" | "error";
+  variant?: "default" | "success" | "warning" | "danger";
   /**
    * undefined인 경우, 기본 아이콘 반환
    *
@@ -42,7 +42,7 @@ export const Alert = ({
           return <CheckCircleIcon />;
         case "warning":
           return <TriangleAlertIcon />;
-        case "error":
+        case "danger":
           return <XCircleIcon />;
       }
     }
@@ -76,7 +76,7 @@ export const Alert = ({
           titleColor: "text-ods__bronze-700",
           descriptionColor: "text-ods__bronze-600",
         };
-      case "error":
+      case "danger":
         return {
           bgColor: "bg-ods__red-20",
           iconColor: "text-ods__red-600",

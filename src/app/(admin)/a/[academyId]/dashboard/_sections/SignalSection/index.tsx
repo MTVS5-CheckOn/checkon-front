@@ -7,7 +7,7 @@ import {
 } from "@/ui/components/SignalListItem/SignalItem";
 import { StatusLabel } from "@/ui/components/StatusLabel";
 import { overlay } from "overlay-kit";
-import { WeeklyCalendar__SignalDetailDialog } from "./components/SignalDetailDialog";
+import { SignalDetailDialog } from "./components/SignalDetailDialog";
 
 export const Dashboard__SignalSection = () => {
   const data: {
@@ -42,9 +42,9 @@ export const Dashboard__SignalSection = () => {
     ],
   };
 
-  const handleSignalItemClick = () => {
+  const handleItemClick = () => {
     overlay.open(({ isOpen, close }) => (
-      <WeeklyCalendar__SignalDetailDialog isOpen={isOpen} onClose={close} />
+      <SignalDetailDialog isOpen={isOpen} onClose={close} />
     ));
   };
 
@@ -90,7 +90,7 @@ export const Dashboard__SignalSection = () => {
           <SignalItem
             key={item.title + item.caption}
             model={item}
-            onClick={handleSignalItemClick}
+            onClick={handleItemClick}
           />
         ))}
 

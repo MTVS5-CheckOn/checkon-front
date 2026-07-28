@@ -2,17 +2,17 @@ import { Ods__Avatar } from "@/ui/components/Avatar";
 import { cn } from "@/ui/utils/tailwind/cn";
 import Image from "next/image";
 
-export type SignalDetailDialog__StudentInfoSectionProps = {
+export type FollowUpDetailDialog__StudentInfoSectionProps = {
   studentName: string;
   studentClassTitle: string;
   studentProfileImageUrl: string;
 };
 
-export const SignalDetailDialog__StudentInfoSection = ({
+export const FollowUpDetailDialog__StudentInfoSection = ({
   studentName,
   studentClassTitle,
   studentProfileImageUrl,
-}: SignalDetailDialog__StudentInfoSectionProps) => {
+}: FollowUpDetailDialog__StudentInfoSectionProps) => {
   const studentNameLabel = `${studentName} 학생`;
 
   return (
