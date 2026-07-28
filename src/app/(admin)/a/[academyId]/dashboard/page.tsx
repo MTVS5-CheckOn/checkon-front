@@ -4,7 +4,6 @@ import { cn } from "@/ui/utils/tailwind/cn";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useQueryState } from "nuqs";
-import { Suspense } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { z } from "zod";
 import { Dashboard__FollowUpSection } from "./_sections/FollowUpSection";
@@ -12,6 +11,7 @@ import { Dashboard__SignalSection } from "./_sections/SignalSection";
 import { Dashboard__TabsSection } from "./_sections/TabsSection";
 import { Dashboard__TodayTodoSection } from "./_sections/TodayTodoSection";
 import { Dashboard__WeeklyCalendarSection } from "./_sections/WeeklyCalendarSection";
+import { Suspense } from "react";
 import { LoadingFallback } from "@/ui/components/LoadingFallback";
 
 export const DashboardPageModel = z.object({
@@ -47,27 +47,34 @@ export default function Page() {
           "overflow-auto",
         )}
       >
-        <Suspense fallback={<LoadingFallback />}>
-          <Dashboard__TabsSection />
+        <Dashboard__TabsSection />
 
-          {activeTab === "briefing" && (
-            <div className={cn("flex w-full flex-col gap-8 px-6 pt-5 pb-10")}>
+        {activeTab === "briefing" && (
+          <div className={cn("flex w-full flex-col gap-8 px-6 pt-5 pb-10")}>
+            <Suspense fallback={<LoadingFallback />}>
               <Dashboard__WeeklyCalendarSection />
+            </Suspense>
 
-              <div className={cn("flex w-full gap-6")}>
-                <div className={cn("flex flex-1 flex-col gap-8")}>
+            <div className={cn("flex w-full gap-6")}>
+              <div className={cn("flex flex-1 flex-col gap-8")}>
+                <Suspense fallback={<LoadingFallback />}>
                   <Dashboard__SignalSection />
+                </Suspense>
+
+                <Suspense fallback={<LoadingFallback />}>
                   <Dashboard__FollowUpSection />
-                </div>
-
-                <Dashboard__TodayTodoSection />
+                </Suspense>
               </div>
-            </div>
-          )}
 
-          {/* TODO: 통계 섹션 추가 */}
-          {activeTab === "stats" && <div>통계</div>}
-        </Suspense>
+              <Suspense fallback={<LoadingFallback />}>
+                <Dashboard__TodayTodoSection />
+              </Suspense>
+            </div>
+          </div>
+        )}
+
+        {/* TODO: 통계 섹션 추가 */}
+        {activeTab === "stats" && <div>통계</div>}
       </div>
     </FormProvider>
   );

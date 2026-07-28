@@ -8,6 +8,11 @@ export type SignalDetailDialog__SignalReasonSectionProps = {
 export const SignalDetailDialog__SignalReasonSection = ({
   signalReasonContent,
 }: SignalDetailDialog__SignalReasonSectionProps) => {
+  const handleMoreClick = () => {
+    // TODO: 해당 학생 상세 페이지로 이동.
+    alert("TODO: 해당 학생 상세 페이지로 이동.");
+  };
+
   return (
     <section
       className={cn(
@@ -61,10 +66,7 @@ export const SignalDetailDialog__SignalReasonSection = ({
             // 4. Shadow & Border
             "border-ods__border rounded-lg border",
           )}
-          onClick={() => {
-            // TODO: 해당 학생 상세 페이지로 이동.
-            alert("해당 학생 상세 페이지로 이동.");
-          }}
+          onClick={handleMoreClick}
         >
           <CardMoreBottomButton />
         </div>

@@ -6,7 +6,7 @@ import { cn } from "@/ui/utils/tailwind/cn";
 import { format } from "date-fns";
 import { ko } from "date-fns/locale/ko";
 import { Suspense } from "react";
-import { useDateEventsDialog } from "./useDateEventsDialog";
+import { useDateEventsDialog } from "./hooks/useDateEventsDialog";
 
 export type WeeklyCalendar__DateEventsDialogProps = {
   isOpen: boolean;
