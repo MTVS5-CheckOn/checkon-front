@@ -7,7 +7,7 @@ import {
 } from "@/ui/components/SignalListItem/SignalItem";
 import { StatusLabel } from "@/ui/components/StatusLabel";
 import { overlay } from "overlay-kit";
-import { WeeklyCalendar__SignalDetailDialog } from "../WeeklyCalendarSection/components/WeeklyCalendar/components/SignalDetailDialog";
+import { WeeklyCalendar__SignalDetailDialog } from "./components/SignalDetailDialog";
 
 export const Dashboard__SignalSection = () => {
   const data: {
