@@ -1,11 +1,13 @@
 import { cn } from "@/ui/utils/tailwind/cn";
 import { Progress } from "@base-ui/react/progress";
 
-export const Dashboard__TodayTodoSection__TodoCompletionRateSection = () => {
-  const data = {
-    completionRate: 20,
-  };
+export type Dashboard__TodayTodoSection__TodoCompletionRateSectionProps = {
+  completionRate: number;
+};
 
+export const Dashboard__TodayTodoSection__TodoCompletionRateSection = ({
+  completionRate,
+}: Dashboard__TodayTodoSection__TodoCompletionRateSectionProps) => {
   return (
     <div
       className={cn(
@@ -35,12 +37,12 @@ export const Dashboard__TodayTodoSection__TodoCompletionRateSection = () => {
             "text-ods__base-400",
           )}
         >
-          {`${data.completionRate}%`}
+          {`${completionRate}%`}
         </div>
       </div>
 
       <div className={cn("flex flex-col items-start justify-start pt-1.5")}>
-        <ProgressBar value={data.completionRate} />
+        <ProgressBar value={completionRate} />
       </div>
     </div>
   );

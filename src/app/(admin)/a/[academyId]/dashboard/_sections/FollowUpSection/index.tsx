@@ -1,57 +1,36 @@
 import { cn } from "@/ui/utils/tailwind/cn";
 
 import { CardMoreBottomButton } from "@/ui/components/CardMoreBottomButton";
-
-import {
-  SignalItem,
-  SignalItemModel,
-} from "@/ui/components/SignalListItem/SignalItem";
+import { SignalItem } from "@/ui/components/SignalListItem/SignalItem";
 import { StatusLabel } from "@/ui/components/StatusLabel";
 import { overlay } from "overlay-kit";
+import { useFormContext } from "react-hook-form";
 import { FollowUpDetailDialog } from "./components/FollowUpDetailDialog";
+import { useFollowUpSection } from "./hooks/useFollowUpSection";
 
 export const Dashboard__FollowUpSection = () => {
-  const data: {
-    signalCount: number;
-    items: SignalItemModel[];
-  } = {
-    signalCount: 3,
-    items: [
-      {
-        title: "박서연",
-        status: "POSITIVE",
-        statusLabel: "경과 양호",
-        caption: "5일 전",
-        content:
-          "6/26 상담 이후: 제출률 50%→100% · 정답률 62%→74% · 풀이시간 정상 범위",
-      },
-      {
-        title: "김민준",
-        status: "WARNING",
-        statusLabel: "재검토",
-        caption: "4일 전",
-        content:
-          "6/26 상담 이후: 제출률 50%→100% · 정답률 62%→74% · 풀이시간 정상 범위",
-      },
-      {
-        title: "박서연",
-        status: "DANGER",
-        statusLabel: "결과 부정확",
-        caption: "3일 전",
-        content:
-          "6/26 상담 이후: 제출률 50%→100% · 정답률 62%→74% · 풀이시간 정상 범위",
-      },
-    ],
-  };
+  /**
+   * 폼 컨텍스트
+   */
+  const { watch } = useFormContext();
+
+  /**
+   * 팔로업 목록 데이터
+   */
+  const { data } = useFollowUpSection(watch("selectedDate"));
 
   const handleItemClick = () => {
     overlay.open(({ isOpen, close }) => (
-      <FollowUpDetailDialog isOpen={isOpen} onClose={close} />
+      <FollowUpDetailDialog
+        isOpen={isOpen}
+        onClose={close}
+        followUpId={"TODO:"}
+      />
     ));
   };
 
-  const handleMoreClick = () => {
-    alert("확인이 필요한 신호 더보기");
+  const handleFollowUpItemMoreClick = () => {
+    alert("팔로업 진행 중 더보기");
   };
 
   return (
@@ -72,12 +51,12 @@ export const Dashboard__FollowUpSection = () => {
             </div>
           </div>
 
-          {/* 신호 개수 */}
-          <StatusLabel status="POSITIVE">{`${data.signalCount}건`}</StatusLabel>
+          {/* 팔로업 개수 */}
+          <StatusLabel status="POSITIVE">{`${data.followUpCount}건`}</StatusLabel>
         </div>
       </div>
 
-      {/* 신호 목록 */}
+      {/* 팔로업 목록 */}
       <div
         className={cn(
           // 1. Layout
@@ -97,7 +76,7 @@ export const Dashboard__FollowUpSection = () => {
         ))}
 
         {/* 더보기 버튼 */}
-        <CardMoreBottomButton onClick={handleMoreClick} />
+        <CardMoreBottomButton onClick={handleFollowUpItemMoreClick} />
       </div>
     </div>
   );
