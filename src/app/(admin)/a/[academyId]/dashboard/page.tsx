@@ -61,7 +61,7 @@ export default function Page() {
               fallback={
                 <div
                   className={cn(
-                    "flex w-full flex-1 items-center justify-center",
+                    "flex h-200 w-full flex-1 items-center justify-center",
                   )}
                 >
                   <LoadingFallback />
