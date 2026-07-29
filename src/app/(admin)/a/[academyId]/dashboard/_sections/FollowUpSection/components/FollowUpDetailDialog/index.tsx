@@ -39,7 +39,13 @@ export const FollowUpDetailDialog = ({
         </div>
       }
       dialogContent={
-        <Suspense fallback={<LoadingFallback />}>
+        <Suspense
+          fallback={
+            <LoadingFallback
+              className={cn("flex h-100 w-full items-center justify-center")}
+            />
+          }
+        >
           <Content followUpId={followUpId} />
         </Suspense>
       }

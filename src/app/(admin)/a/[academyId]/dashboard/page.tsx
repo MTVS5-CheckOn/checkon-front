@@ -38,7 +38,7 @@ export default function Page() {
       <div
         className={cn(
           // 1. Layout
-          "flex h-full flex-col",
+          "flex h-full w-full flex-col",
           // 3. Color
           "bg-ods__white",
           // 4. Shadow & Border
@@ -50,26 +50,34 @@ export default function Page() {
         <Dashboard__TabsSection />
 
         {activeTab === "briefing" && (
-          <div className={cn("flex w-full flex-col gap-8 px-6 pt-5 pb-10")}>
-            <Suspense fallback={<LoadingFallback />}>
+          <div
+            className={cn("flex h-full w-full flex-col gap-8 px-6 pt-5 pb-10")}
+          >
+            <Suspense fallback={<div />}>
               <Dashboard__WeeklyCalendarSection />
             </Suspense>
 
-            <div className={cn("flex w-full gap-6")}>
-              <div className={cn("flex flex-1 flex-col gap-8")}>
-                <Suspense fallback={<LoadingFallback />}>
+            <Suspense
+              fallback={
+                <div
+                  className={cn(
+                    "flex w-full flex-1 items-center justify-center",
+                  )}
+                >
+                  <LoadingFallback />
+                </div>
+              }
+            >
+              <div className={cn("flex w-full gap-6")}>
+                <div className={cn("flex w-full flex-col gap-8")}>
                   <Dashboard__SignalSection />
-                </Suspense>
 
-                <Suspense fallback={<LoadingFallback />}>
                   <Dashboard__FollowUpSection />
-                </Suspense>
-              </div>
+                </div>
 
-              <Suspense fallback={<LoadingFallback />}>
                 <Dashboard__TodayTodoSection />
-              </Suspense>
-            </div>
+              </div>
+            </Suspense>
           </div>
         )}
 

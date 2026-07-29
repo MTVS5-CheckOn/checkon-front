@@ -42,7 +42,13 @@ export const WeeklyCalendar__DateEventsDialog = ({
         </div>
       }
       dialogContent={
-        <Suspense fallback={<LoadingFallback className="h-100" />}>
+        <Suspense
+          fallback={
+            <LoadingFallback
+              className={cn("flex h-100 w-full items-center justify-center")}
+            />
+          }
+        >
           <Content selectedDate={selectedDate} />
         </Suspense>
       }
