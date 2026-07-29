@@ -1,5 +1,4 @@
 import { cn } from "@/ui/utils/tailwind/cn";
-import { useLongPress } from "react-use";
 
 import { DateUtilForKo } from "@/ui/utils/date/date-util";
 import { Button } from "@base-ui/react/button";
@@ -7,8 +6,12 @@ import { isSameDay, isWeekend } from "date-fns";
 import { overlay } from "overlay-kit";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { WeeklyCalendar__DateEventsDialog } from "../../components/DateEventsDialog";
-import { WeeklyCalendar__DayCell } from "../../components/DayCell";
+import {
+  WeeklyCalendar__DayCell,
+  WeeklyCalendar__DayCellModel,
+} from "../../components/DayCell";
 import { WeeklyCalendar__NavButton } from "../../components/NavButton";
+import { useWeeklyCalendar__EventCountEachDate } from "../../hooks/useEventCountEachDate";
 import { useWeeklyCalendar__Swiper } from "../../hooks/useSwiper";
 
 /**
@@ -48,24 +51,9 @@ export const WeeklyCalendar__WeekSection = ({
   );
 
   /**
-   * 날짜 아이템 롱 클릭 이벤트
+   * 날짜별 이벤트 개수 조회
    */
-  const longPressEvent = useLongPress(
-    () => {
-      // 선택 날짜 이벤트 목록 다이얼로그 열기
-      overlay.open(({ isOpen, close }) => (
-        <WeeklyCalendar__DateEventsDialog
-          isOpen={isOpen}
-          onClose={close}
-          selectedDate={selectedDate}
-        />
-      ));
-    },
-    {
-      isPreventDefault: true,
-      delay: 500,
-    },
-  );
+  const { data } = useWeeklyCalendar__EventCountEachDate(dates);
 
   /**
    * 날짜 아이템 클릭 핸들러
@@ -79,6 +67,20 @@ export const WeeklyCalendar__WeekSection = ({
 
     // 네비게이션 버튼 상태 새로고침
     refreshNavButtonState();
+  };
+
+  /**
+   * 날짜 아이템 더블 클릭 이벤트
+   */
+  const handleDayItemDoubleClick = () => {
+    // 선택 날짜 이벤트 목록 다이얼로그 열기
+    overlay.open(({ isOpen, close }) => (
+      <WeeklyCalendar__DateEventsDialog
+        isOpen={isOpen}
+        onClose={close}
+        selectedDate={selectedDate}
+      />
+    ));
   };
 
   return (
@@ -103,17 +105,17 @@ export const WeeklyCalendar__WeekSection = ({
         centeredSlidesBounds={true}
         onSwiper={(swiper) => setSwiper(swiper)}
       >
-        {dates.map((date, index) => {
-          const isSelected = isSameDay(date, selectedDate);
-
-          // TODO: 임시 값
-          const eventCount = index % 2 === 0 ? 0 : 10;
-
-          // 요일명
-          const weekLabelShort = DateUtilForKo.formatWeekLabel({
-            date,
-            formatString: "short",
-          });
+        {data?.map(({ date, eventCount }) => {
+          const dayCellModel: WeeklyCalendar__DayCellModel = {
+            weekLabel: DateUtilForKo.formatWeekLabel({
+              date,
+              formatString: "short",
+            }),
+            dayLabel: date.getDate().toString(),
+            isSelected: isSameDay(date, selectedDate),
+            isHolyday: isWeekend(date),
+            eventCount,
+          };
 
           return (
             <SwiperSlide key={date.toString()}>
@@ -122,17 +124,9 @@ export const WeeklyCalendar__WeekSection = ({
                   "flex h-full w-full items-center justify-between gap-2",
                 )}
                 onClick={() => handleDayItemClick(date)}
-                {...longPressEvent}
+                onDoubleClick={handleDayItemDoubleClick}
               >
-                <WeeklyCalendar__DayCell
-                  model={{
-                    weekLabel: weekLabelShort,
-                    dayLabel: date.getDate().toString(),
-                    isSelected,
-                    isHolyday: isWeekend(date),
-                    eventCount,
-                  }}
-                />
+                <WeeklyCalendar__DayCell model={dayCellModel} />
               </Button>
             </SwiperSlide>
           );

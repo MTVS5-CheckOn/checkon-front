@@ -7,7 +7,7 @@ import {
 } from "lucide-react";
 
 export type AlertProps = {
-  variant?: "default" | "success" | "warning" | "error";
+  variant?: "default" | "success" | "warning" | "danger";
   /**
    * undefined인 경우, 기본 아이콘 반환
    *
@@ -16,6 +16,7 @@ export type AlertProps = {
   icon?: React.ReactNode;
   title?: React.ReactNode;
   description?: React.ReactNode;
+  caption?: React.ReactNode;
 };
 
 export const Alert = ({
@@ -23,6 +24,7 @@ export const Alert = ({
   icon,
   title,
   description,
+  caption,
 }: AlertProps) => {
   const alertIcon = (() => {
     if (!!icon) {
@@ -40,7 +42,7 @@ export const Alert = ({
           return <CheckCircleIcon />;
         case "warning":
           return <TriangleAlertIcon />;
-        case "error":
+        case "danger":
           return <XCircleIcon />;
       }
     }
@@ -74,7 +76,7 @@ export const Alert = ({
           titleColor: "text-ods__bronze-700",
           descriptionColor: "text-ods__bronze-600",
         };
-      case "error":
+      case "danger":
         return {
           bgColor: "bg-ods__red-20",
           iconColor: "text-ods__red-600",
@@ -114,8 +116,8 @@ export const Alert = ({
           "flex w-full flex-col gap-1",
         )}
       >
-        {title && (
-          <dt className={cn("flex w-full flex-col")}>
+        {(title || caption) && (
+          <dt className={cn("flex w-full items-start justify-between")}>
             <span
               className={cn(
                 // 2. Typography
@@ -125,6 +127,17 @@ export const Alert = ({
               )}
             >
               {title}
+            </span>
+
+            <span
+              className={cn(
+                // 2. Typography
+                "ods__typo__caption",
+                // 3. Color
+                colorPalette.descriptionColor,
+              )}
+            >
+              {caption}
             </span>
           </dt>
         )}

@@ -88,7 +88,7 @@ export const TodoItem = ({ model, onClick }: TodoItemProps) => {
               </div>
             </div>
 
-            <StatusLabel>{statusLabel}</StatusLabel>
+            <StatusLabel status={status}>{statusLabel}</StatusLabel>
           </div>
 
           {/* Bottom Section */}

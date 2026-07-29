@@ -1,12 +1,18 @@
+import { CardMoreBottomButton } from "@/ui/components/CardMoreBottomButton";
 import { cn } from "@/ui/utils/tailwind/cn";
 
-export type WeeklyCalendar__SignalDetailDialog__SignalReasonSectionProps = {
+export type SignalDetailDialog__SignalReasonSectionProps = {
   signalReasonContent: string;
 };
 
-export const WeeklyCalendar__SignalDetailDialog__SignalReasonSection = ({
+export const SignalDetailDialog__SignalReasonSection = ({
   signalReasonContent,
-}: WeeklyCalendar__SignalDetailDialog__SignalReasonSectionProps) => {
+}: SignalDetailDialog__SignalReasonSectionProps) => {
+  const handleMoreClick = () => {
+    // TODO: 해당 학생 상세 페이지로 이동.
+    alert("TODO: 해당 학생 상세 페이지로 이동.");
+  };
+
   return (
     <section
       className={cn(
@@ -51,6 +57,18 @@ export const WeeklyCalendar__SignalDetailDialog__SignalReasonSection = ({
           >
             {signalReasonContent}
           </p>
+        </div>
+
+        <div
+          className={cn(
+            // 1. Layout
+            "flex w-full items-center justify-center",
+            // 4. Shadow & Border
+            "border-ods__border rounded-lg border",
+          )}
+          onClick={handleMoreClick}
+        >
+          <CardMoreBottomButton />
         </div>
       </div>
     </section>
