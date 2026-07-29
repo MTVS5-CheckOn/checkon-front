@@ -1,18 +1,19 @@
 "use client";
 
-import { cn } from "@/ui/utils/tailwind/cn";
+import { useQueryState } from 'nuqs';
+import { Suspense } from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
+import { z } from 'zod';
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useQueryState } from "nuqs";
-import { FormProvider, useForm } from "react-hook-form";
-import { z } from "zod";
-import { Dashboard__FollowUpSection } from "./_sections/FollowUpSection";
-import { Dashboard__SignalSection } from "./_sections/SignalSection";
-import { Dashboard__TabsSection } from "./_sections/TabsSection";
-import { Dashboard__TodayTodoSection } from "./_sections/TodayTodoSection";
-import { Dashboard__WeeklyCalendarSection } from "./_sections/WeeklyCalendarSection";
-import { Suspense } from "react";
-import { LoadingFallback } from "@/ui/components/LoadingFallback";
+import { LoadingFallback } from '@/ui/components/LoadingFallback';
+import { cn } from '@/ui/utils/tailwind/cn';
+import { zodResolver } from '@hookform/resolvers/zod';
+
+import { Dashboard__FollowUpSection } from './_sections/FollowUpSection';
+import { Dashboard__SignalSection } from './_sections/SignalSection';
+import { Dashboard__TabsSection } from './_sections/TabsSection';
+import { Dashboard__TodayTodoSection } from './_sections/TodayTodoSection';
+import { Dashboard__WeeklyCalendarSection } from './_sections/WeeklyCalendarSection';
 
 export const DashboardPageModel = z.object({
   /**
