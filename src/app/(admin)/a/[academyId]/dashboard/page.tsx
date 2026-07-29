@@ -1,19 +1,19 @@
 "use client";
 
-import { useQueryState } from 'nuqs';
-import { Suspense } from 'react';
-import { FormProvider, useForm } from 'react-hook-form';
-import { z } from 'zod';
+import { useQueryState } from "nuqs";
+import { Suspense } from "react";
+import { FormProvider, useForm } from "react-hook-form";
+import { z } from "zod";
 
-import { LoadingFallback } from '@/ui/components/LoadingFallback';
-import { cn } from '@/ui/utils/tailwind/cn';
-import { zodResolver } from '@hookform/resolvers/zod';
+import { LoadingFallback } from "@/ui/components/LoadingFallback";
+import { cn } from "@/ui/utils/tailwind/cn";
+import { zodResolver } from "@hookform/resolvers/zod";
 
-import { Dashboard__FollowUpSection } from './_sections/FollowUpSection';
-import { Dashboard__SignalSection } from './_sections/SignalSection';
-import { Dashboard__TabsSection } from './_sections/TabsSection';
-import { Dashboard__TodayTodoSection } from './_sections/TodayTodoSection';
-import { Dashboard__WeeklyCalendarSection } from './_sections/WeeklyCalendarSection';
+import { Dashboard__FollowUpSection } from "./_sections/FollowUpSection";
+import { Dashboard__SignalSection } from "./_sections/SignalSection";
+import { Dashboard__TabsSection } from "./_sections/TabsSection";
+import { Dashboard__TodayTodoSection } from "./_sections/TodayTodoSection";
+import { Dashboard__WeeklyCalendarSection } from "./_sections/WeeklyCalendarSection";
 
 export const DashboardPageModel = z.object({
   /**
@@ -62,7 +62,7 @@ export default function Page() {
               fallback={
                 <div
                   className={cn(
-                    "flex h-200 w-full flex-1 items-center justify-center",
+                    "flex min-h-200 w-full flex-1 items-center justify-center",
                   )}
                 >
                   <LoadingFallback />
