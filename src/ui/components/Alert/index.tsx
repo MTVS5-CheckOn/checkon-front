@@ -90,7 +90,7 @@ export const Alert = ({
     <div
       className={cn(
         // 1. Layout
-        "flex w-full items-start gap-3 px-5 py-4",
+        "flex min-h-26 w-full items-start gap-3 px-5 py-4",
         // 3. Color
         colorPalette.bgColor,
         // 4. Shadow & Border

@@ -43,17 +43,17 @@ export const StatusLabel = ({
     <div
       className={cn(
         // 1. Layout
-        "flex flex-col items-center justify-center px-1.5 py-px",
+        "flex flex-col items-center justify-center px-2 py-0.5",
         // 3. Color
         colorPalette.bgColor,
         // 4. Shadow & Border
-        "rounded-[6px]",
+        "rounded-[8px]",
       )}
     >
       <div
         className={cn(
           // 2. Typography
-          "ods__typo__caption font-semibold",
+          "ods__typo__body-small font-medium",
           // 3. Color
           colorPalette.textColor,
         )}

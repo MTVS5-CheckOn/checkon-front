@@ -23,7 +23,7 @@ export const Dashboard__TabsSection = () => {
     <div
       className={cn(
         // 1. Layout
-        "sticky top-0 z-10 px-6 pt-6",
+        "sticky top-0 z-10 flex w-full items-center justify-center",
         // 3. Color
         "bg-ods__white",
         // 4. Shadow & Border
@@ -31,6 +31,9 @@ export const Dashboard__TabsSection = () => {
       )}
     >
       <Tabs.Root
+        className={cn(
+          "max-w-ods__layout-container-max-width flex w-full px-6 pt-6",
+        )}
         value={activeTab}
         onValueChange={(v) => {
           setActiveTab(v);

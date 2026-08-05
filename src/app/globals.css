@@ -19,7 +19,10 @@
 
 @theme inline {
   /* 최소 지원 너비 */
-  --spacing-breakpoint-w: 1440px;
+  --spacing-breakpoint-tablet: 640px;
+
+  /* 콘텐츠 레이아웃 최대 너비 */
+  --spacing-ods__layout-container-max-width: 1200px;
 
   --color-ods__base-50: #f8fafc;
   --color-ods__base-100: #f1f5f9;

@@ -3,9 +3,7 @@ import { cn } from "@/ui/utils/tailwind/cn";
 import { DateUtilForKo } from "@/ui/utils/date/date-util";
 import { Button } from "@base-ui/react/button";
 import { isSameDay, isWeekend } from "date-fns";
-import { overlay } from "overlay-kit";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { WeeklyCalendar__DateEventsDialog } from "../../components/DateEventsDialog";
 import {
   WeeklyCalendar__DayCell,
   WeeklyCalendar__DayCellModel,
@@ -15,9 +13,12 @@ import { useWeeklyCalendar__EventCountEachDate } from "../../hooks/useEventCount
 import { useWeeklyCalendar__Swiper } from "../../hooks/useSwiper";
 
 /**
- * 한 주간 날짜 수 (7일)
+ * 표시할 날짜 수
  */
-const WEEK_COUNT = 7;
+const WEEK_COUNTS = {
+  md: 5,
+  default: 7,
+};
 
 /**
  * 주간 섹션
@@ -69,25 +70,9 @@ export const WeeklyCalendar__WeekSection = ({
     refreshNavButtonState();
   };
 
-  /**
-   * 날짜 아이템 더블 클릭 이벤트
-   */
-  const handleDayItemDoubleClick = () => {
-    // 선택 날짜 이벤트 목록 다이얼로그 열기
-    overlay.open(({ isOpen, close }) => (
-      <WeeklyCalendar__DateEventsDialog
-        isOpen={isOpen}
-        onClose={close}
-        selectedDate={selectedDate}
-      />
-    ));
-  };
-
   return (
     <section
-      className={cn(
-        "flex h-23 w-full items-center justify-start gap-2 px-4 py-2",
-      )}
+      className={cn("flex w-full items-center justify-start gap-2 px-5 py-4")}
     >
       <WeeklyCalendar__NavButton
         direction="left"
@@ -99,11 +84,19 @@ export const WeeklyCalendar__WeekSection = ({
         className={cn("flex h-full w-full")}
         allowTouchMove={false} // 스와이퍼 이동 방지
         spaceBetween={"8px"}
-        slidesPerView={WEEK_COUNT}
+        slidesPerView={WEEK_COUNTS.default}
         initialSlide={initialSlideIndex}
         centeredSlides={true}
         centeredSlidesBounds={true}
         onSwiper={(swiper) => setSwiper(swiper)}
+        breakpoints={{
+          0: {
+            slidesPerView: WEEK_COUNTS.md,
+          },
+          1024: {
+            slidesPerView: WEEK_COUNTS.default,
+          },
+        }}
       >
         {data?.map(({ date, eventCount }) => {
           const dayCellModel: WeeklyCalendar__DayCellModel = {
@@ -124,7 +117,6 @@ export const WeeklyCalendar__WeekSection = ({
                   "flex h-full w-full items-center justify-between gap-2",
                 )}
                 onClick={() => handleDayItemClick(date)}
-                onDoubleClick={handleDayItemDoubleClick}
               >
                 <WeeklyCalendar__DayCell model={dayCellModel} />
               </Button>

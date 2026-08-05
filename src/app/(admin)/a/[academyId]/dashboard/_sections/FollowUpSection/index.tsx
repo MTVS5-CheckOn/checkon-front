@@ -1,10 +1,12 @@
 import { cn } from "@/ui/utils/tailwind/cn";
 
 import { CardMoreBottomButton } from "@/ui/components/CardMoreBottomButton";
+import { Separator } from "@/ui/components/Separator";
 import { SignalItem } from "@/ui/components/SignalListItem/SignalItem";
 import { StatusLabel } from "@/ui/components/StatusLabel";
 import { overlay } from "overlay-kit";
 import { useFormContext } from "react-hook-form";
+import { Fragment } from "react/jsx-runtime";
 import { FollowUpDetailDialog } from "./components/FollowUpDetailDialog";
 import { useFollowUpSection } from "./hooks/useFollowUpSection";
 
@@ -34,7 +36,7 @@ export const Dashboard__FollowUpSection = () => {
   };
 
   return (
-    <div className={cn("flex flex-col items-start justify-start gap-3")}>
+    <div className={cn("flex w-full flex-col items-start justify-start gap-3")}>
       {/* 헤더 */}
       <div className={cn("flex w-full items-center justify-between")}>
         <div className={cn("flex items-center justify-start gap-2")}>
@@ -42,7 +44,7 @@ export const Dashboard__FollowUpSection = () => {
             <div
               className={cn(
                 // 2. Typography
-                "ods__typo__title-small font-semibold",
+                "ods__typo__title-medium font-medium",
                 // 3. Color
                 "text-ods__base-600",
               )}
@@ -68,11 +70,10 @@ export const Dashboard__FollowUpSection = () => {
         )}
       >
         {data.items.map((item) => (
-          <SignalItem
-            key={item.title + item.caption}
-            model={item}
-            onClick={handleItemClick}
-          />
+          <Fragment key={item.title + item.caption}>
+            <SignalItem model={item} onClick={handleItemClick} />
+            <Separator thickness="1px" />
+          </Fragment>
         ))}
 
         {/* 더보기 버튼 */}

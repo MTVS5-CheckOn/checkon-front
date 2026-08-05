@@ -18,7 +18,7 @@ export const Dashboard__TodayTodoSection = () => {
   const { data } = useTodayTodoSection(watch("selectedDate"));
 
   return (
-    <div className={cn("flex w-75 shrink-0 flex-col")}>
+    <div className={cn("flex w-full flex-col")}>
       <div className={cn("flex w-full flex-col gap-3")}>
         {/* Header Section */}
         <div className={cn("flex gap-2")}>
@@ -26,7 +26,7 @@ export const Dashboard__TodayTodoSection = () => {
             <div
               className={cn(
                 // 2. Typography
-                "ods__typo__title-small font-semibold",
+                "ods__typo__title-medium font-medium",
                 // 3. Color
                 "text-ods__base-600",
               )}

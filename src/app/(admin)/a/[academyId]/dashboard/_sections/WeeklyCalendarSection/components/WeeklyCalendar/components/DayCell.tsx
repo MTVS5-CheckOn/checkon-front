@@ -42,7 +42,7 @@ export const WeeklyCalendar__DayCell = ({
     <div
       className={cn(
         // 1. Layout
-        "flex h-full flex-1 flex-col items-center justify-start gap-1 px-1 py-2",
+        "flex h-full flex-1 flex-col items-center justify-start gap-2 px-1 py-2",
         // 3. Color
         isSelected ? "bg-ods__blue-20" : "bg-ods__white",
         // 4. Shadow & Border
@@ -56,7 +56,7 @@ export const WeeklyCalendar__DayCell = ({
         <div
           className={cn(
             // 2. Typography
-            "ods__typo__label-medium font-normal",
+            "ods__typo__label-large font-medium",
             // 3. Color
             isHolyday ? "text-ods__red-400" : "text-ods__base-400",
           )}
@@ -68,7 +68,7 @@ export const WeeklyCalendar__DayCell = ({
         <div
           className={cn(
             // 2. Typography
-            "ods__typo__label-medium font-bold",
+            "ods__typo__label-large font-bold",
             // 3. Color
             (() => {
               if (isHolyday) {
@@ -90,7 +90,7 @@ export const WeeklyCalendar__DayCell = ({
         <div
           className={cn(
             // 1. Layout
-            "flex flex-col items-center justify-center px-1",
+            "flex flex-col items-center justify-center px-2",
             // 3. Color
             isSelected ? "bg-ods__base-600" : "bg-ods__base-100",
             // 4. Shadow & Border
@@ -100,7 +100,7 @@ export const WeeklyCalendar__DayCell = ({
           <div
             className={cn(
               // 2. Typography
-              "ods__typo__label-medium text-center",
+              "ods__typo__label-large text-center",
               isSelected ? "font-bold" : "font-normal",
               // 3. Color
               isSelected ? "text-ods__base-50" : "text-ods__base-600",

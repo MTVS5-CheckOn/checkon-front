@@ -14,9 +14,6 @@ description: Enforces Tailwind CSS class ordering and cn() usage for checkon-fro
 - 한 문자열 안에 서로 다른 레이어를 섞지 말고, **레이어가 바뀌면 다음 `cn()` 인자에서 분리**합니다.
 - `cn` import 경로: `@/ui/utils/tailwind/cn`
 - 스타일은 별도 변수로 분리하여 참조하지 않고 className에 인라인으로 작성합니다.
-- inline-flex와 같은 'inline-*' 계통 CSS는 flex로 변환합니다.
-- self-stretch는 w-full로 변환합니다.
-- tracking-tight는 제거합니다.
 
 ### 적용 제외 (조건부 스타일링)
 

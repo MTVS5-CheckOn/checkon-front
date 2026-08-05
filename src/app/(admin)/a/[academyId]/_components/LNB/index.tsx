@@ -14,7 +14,11 @@ export const LNB = () => {
   const { academyId } = useParams<{ academyId: string }>();
 
   return (
-    <div className={cn("flex w-65 shrink-0 flex-col items-start justify-start gap-5 px-3 py-2")}>
+    <div
+      className={cn(
+        "flex w-60 shrink-0 flex-col items-start justify-start gap-5 px-3 py-2",
+      )}
+    >
       <Link href={`/a/${academyId}/dashboard`}>
         <LogoHorizontal />
       </Link>

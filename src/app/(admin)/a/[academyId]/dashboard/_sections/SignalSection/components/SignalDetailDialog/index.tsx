@@ -31,7 +31,7 @@ export const SignalDetailDialog = ({
         <div
           className={cn(
             // 2. Typography
-            "ods__typo__title-medium font-medium",
+            "ods__typo__title-large",
             // 3. Color
             "text-ods__base-500",
           )}

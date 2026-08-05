@@ -15,7 +15,7 @@ export const CardMoreBottomButton = ({
     <button
       className={cn(
         // 1. Layout
-        "flex h-10 w-full items-center justify-center p-3",
+        "flex w-full items-center justify-center p-4",
         // 5. Interaction
         "ods__animate__default hover:bg-ods__hover",
         className,
@@ -33,13 +33,13 @@ export const CardMoreBottomButton = ({
         <span
           className={cn(
             // 2. Typography
-            "ods__typo__label-medium text-center font-medium",
+            "ods__typo__label-large text-center font-medium",
           )}
         >
           {children}
         </span>
 
-        <ArrowRightIcon className="size-3" />
+        <ArrowRightIcon className="size-3.5" />
       </div>
     </button>
   );

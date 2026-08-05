@@ -32,7 +32,7 @@ export const WeeklyCalendar = () => {
     <div
       className={cn(
         // 1. Layout
-        "flex shrink-0 flex-col items-start justify-start",
+        "flex w-full shrink-0 flex-col items-start justify-start",
         // 4. Shadow & Border
         "border-ods__border rounded-xl border",
         // 6. Utility
