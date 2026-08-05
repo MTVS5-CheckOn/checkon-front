@@ -24,13 +24,13 @@ export const FollowUpDetailDialog__FollowUpStatusSection = ({
     <section
       className={cn(
         // 1. Layout
-        "flex w-full flex-col items-start justify-start gap-2.5",
+        "flex w-full flex-col items-start justify-start gap-3",
       )}
     >
       <div
         className={cn(
           // 2. Typography
-          "ods__typo__title-small font-semibold",
+          "ods__typo__title-medium font-medium",
           // 3. Color
           "text-ods__base-500",
         )}

@@ -47,7 +47,7 @@ export const SignalItem = ({ model, onClick }: SignalItemProps) => {
       <div
         className={cn(
           // 1. Layout
-          "flex min-h-27.5 w-full flex-col items-start justify-start gap-2 px-5 py-4",
+          "flex min-h-26 w-full flex-col items-start justify-start gap-2 px-5 py-4",
           // 3. Color
           colorPalette.bgColor && colorPalette.bgColor,
           // 5. Interaction
