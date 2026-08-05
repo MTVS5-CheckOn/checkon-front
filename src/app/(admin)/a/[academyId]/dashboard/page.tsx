@@ -39,7 +39,7 @@ export default function Page() {
       <div
         className={cn(
           // 1. Layout
-          "flex h-full w-full flex-col",
+          "flex h-full w-full flex-col items-center",
           // 3. Color
           "bg-ods__white",
           // 4. Shadow & Border
@@ -52,7 +52,9 @@ export default function Page() {
 
         {activeTab === "briefing" && (
           <div
-            className={cn("flex h-full w-full flex-col gap-8 px-6 pt-5 pb-10")}
+            className={cn(
+              "max-w-ods__layout-container-max-width flex w-full flex-col items-center gap-12 px-6 pt-6 pb-10",
+            )}
           >
             <Suspense fallback={<div />}>
               <Dashboard__WeeklyCalendarSection />
@@ -70,7 +72,7 @@ export default function Page() {
               }
             >
               <div className={cn("flex w-full gap-6")}>
-                <div className={cn("flex w-full flex-col gap-8")}>
+                <div className={cn("flex w-full flex-col gap-12")}>
                   <Dashboard__SignalSection />
 
                   <Dashboard__FollowUpSection />

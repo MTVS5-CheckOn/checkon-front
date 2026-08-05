@@ -47,7 +47,7 @@ export const SignalItem = ({ model, onClick }: SignalItemProps) => {
       <div
         className={cn(
           // 1. Layout
-          "flex min-h-20.5 w-full flex-col items-start justify-start gap-2 p-3",
+          "flex min-h-27.5 w-full flex-col items-start justify-start gap-2 px-5 py-4",
           // 3. Color
           colorPalette.bgColor && colorPalette.bgColor,
           // 5. Interaction
@@ -73,7 +73,7 @@ export const SignalItem = ({ model, onClick }: SignalItemProps) => {
               <div
                 className={cn(
                   // 2. Typography
-                  "ods__typo__label-medium font-semibold",
+                  "ods__typo__label-large font-medium",
                   // 3. Color
                   "text-ods__base-500",
                 )}
@@ -110,9 +110,9 @@ export const SignalItem = ({ model, onClick }: SignalItemProps) => {
           <p
             className={cn(
               // 2. Typography
-              "ods__typo__body-small text-start whitespace-pre-line",
+              "ods__typo__body-medium text-start whitespace-pre-line",
               // 3. Color
-              "text-ods__base-500",
+              "text-ods__base-400",
             )}
           >
             {model.content}

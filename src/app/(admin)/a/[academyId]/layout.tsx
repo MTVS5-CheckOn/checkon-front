@@ -10,16 +10,26 @@ export default function layout({ children }: { children: React.ReactNode }) {
     <div
       className={cn(
         // 1. Layout
-        "min-w-breakpoint-w flex h-screen w-full flex-col",
+        "min-w-breakpoint-tablet flex h-screen w-full flex-col",
         // 3. Color
         "bg-ods__baselayout-bgcolor",
       )}
     >
       <div className={cn("flex h-full w-full flex-1")}>
-        <LNB />
+        <div className={cn("flex max-md:hidden")}>
+          <LNB />
+        </div>
 
-        <div className={cn("flex w-full flex-col", "overflow-auto")}>
+        <div
+          className={cn(
+            // 1. Layout
+            "flex w-full flex-col",
+            // 6. Utility
+            "overflow-auto",
+          )}
+        >
           <GNB />
+
           {children}
         </div>
       </div>

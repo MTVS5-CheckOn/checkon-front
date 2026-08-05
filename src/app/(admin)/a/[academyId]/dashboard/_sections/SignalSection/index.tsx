@@ -7,6 +7,8 @@ import { overlay } from "overlay-kit";
 import { useFormContext } from "react-hook-form";
 import { SignalDetailDialog } from "./components/SignalDetailDialog";
 import { useSignalSection } from "./hooks/useSignalSection";
+import { Fragment } from "react/jsx-runtime";
+import { Separator } from "@/ui/components/Separator";
 
 export const Dashboard__SignalSection = () => {
   /**
@@ -38,7 +40,7 @@ export const Dashboard__SignalSection = () => {
             <div
               className={cn(
                 // 2. Typography
-                "ods__typo__title-small font-semibold",
+                "ods__typo__title-medium font-medium",
                 // 3. Color
                 "text-ods__base-600",
               )}
@@ -64,11 +66,10 @@ export const Dashboard__SignalSection = () => {
         )}
       >
         {data.items.map((item) => (
-          <SignalItem
-            key={item.title + item.caption}
-            model={item}
-            onClick={handleItemClick}
-          />
+          <Fragment key={item.title + item.caption}>
+            <SignalItem model={item} onClick={handleItemClick} />
+            <Separator thickness="1px" />
+          </Fragment>
         ))}
 
         {/* 더보기 버튼 */}

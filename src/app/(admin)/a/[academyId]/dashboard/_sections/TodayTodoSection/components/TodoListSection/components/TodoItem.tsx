@@ -47,7 +47,7 @@ export const TodoItem = ({ model, onClick }: TodoItemProps) => {
       <div
         className={cn(
           // 1. Layout
-          "flex w-full gap-2.5 px-3.5 py-2.5",
+          "flex w-full gap-2.5 px-5 py-4",
           // 3. Color
           colorPalette.bgColor,
           // 4. Shadow & Border
@@ -57,7 +57,7 @@ export const TodoItem = ({ model, onClick }: TodoItemProps) => {
         )}
       >
         {/* Checkbox */}
-        <div className={cn("flex pt-px")}>
+        <div className={cn("flex pt-0.5")}>
           <div
             className={cn(
               // 1. Layout
@@ -71,7 +71,7 @@ export const TodoItem = ({ model, onClick }: TodoItemProps) => {
         </div>
 
         {/* Top Section */}
-        <div className={cn("flex flex-1 flex-col")}>
+        <div className={cn("flex flex-1 flex-col gap-1")}>
           <div className={cn("flex gap-2")}>
             <div className={cn("flex flex-1 flex-col")}>
               <div
@@ -79,7 +79,7 @@ export const TodoItem = ({ model, onClick }: TodoItemProps) => {
                   // 1. Layout
                   "flex justify-start",
                   // 2. Typography
-                  "ods__typo__label-medium font-medium",
+                  "ods__typo__label-large font-medium",
                   // 3. Color
                   "text-ods__base-500",
                 )}

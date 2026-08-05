@@ -12,7 +12,7 @@ export const Dashboard__TodayTodoSection__TodoCompletionRateSection = ({
     <div
       className={cn(
         // 1. Layout
-        "flex flex-col px-3.5 py-3",
+        "flex flex-col p-5",
         // 4. Shadow & Border
         "border-ods__border rounded-xl border",
       )}
@@ -21,7 +21,7 @@ export const Dashboard__TodayTodoSection__TodoCompletionRateSection = ({
         <div
           className={cn(
             // 2. Typography
-            "ods__typo__label-medium font-medium",
+            "ods__typo__label-large font-medium",
             // 3. Color
             "text-ods__base-400",
           )}

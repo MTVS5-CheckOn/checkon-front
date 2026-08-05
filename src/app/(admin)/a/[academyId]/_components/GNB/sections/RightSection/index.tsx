@@ -7,7 +7,7 @@ import { cn } from "@/ui/utils/tailwind/cn";
 
 export const GNB__RightSection = () => {
   return (
-    <div className={cn("flex gap-2 p-2")}>
+    <div className={cn("flex gap-2 py-2 pr-6")}>
       <NotificationIconButton />
       <ProfileAvatar />
     </div>
