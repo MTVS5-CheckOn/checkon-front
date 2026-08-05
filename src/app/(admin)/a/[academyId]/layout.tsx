@@ -16,7 +16,7 @@ export default function layout({ children }: { children: React.ReactNode }) {
       )}
     >
       <div className={cn("flex h-full w-full flex-1")}>
-        <div className={cn("flex max-md:hidden")}>
+        <div className={cn("flex max-xl:hidden")}>
           <LNB />
         </div>
 

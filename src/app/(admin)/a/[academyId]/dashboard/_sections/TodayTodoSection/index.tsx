@@ -18,7 +18,7 @@ export const Dashboard__TodayTodoSection = () => {
   const { data } = useTodayTodoSection(watch("selectedDate"));
 
   return (
-    <div className={cn("flex w-90 shrink-0 flex-col")}>
+    <div className={cn("flex w-full flex-col")}>
       <div className={cn("flex w-full flex-col gap-3")}>
         {/* Header Section */}
         <div className={cn("flex gap-2")}>

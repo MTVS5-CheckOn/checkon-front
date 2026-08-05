@@ -36,7 +36,7 @@ export const Dashboard__FollowUpSection = () => {
   };
 
   return (
-    <div className={cn("flex flex-col items-start justify-start gap-3")}>
+    <div className={cn("flex w-full flex-col items-start justify-start gap-3")}>
       {/* 헤더 */}
       <div className={cn("flex w-full items-center justify-between")}>
         <div className={cn("flex items-center justify-start gap-2")}>

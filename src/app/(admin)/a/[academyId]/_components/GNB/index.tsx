@@ -29,7 +29,7 @@ const LeftSectionByResponsive = () => {
   const { academyId } = useParams<{ academyId: string }>();
 
   return (
-    <div className={cn("flex w-full pl-2 md:hidden")}>
+    <div className={cn("flex w-full pl-3 xl:hidden")}>
       <Ods__IconButton
         className={cn(
           // 1. Layout

@@ -43,7 +43,7 @@ export default function Page() {
           // 3. Color
           "bg-ods__white",
           // 4. Shadow & Border
-          "border-ods__border rounded-tl-4xl border",
+          "border-ods__border rounded-tl-4xl border max-xl:rounded-none",
           // 6. Utility
           "overflow-auto",
         )}
@@ -71,14 +71,26 @@ export default function Page() {
                 </div>
               }
             >
-              <div className={cn("flex w-full gap-6")}>
-                <div className={cn("flex w-full flex-col gap-12")}>
+              <div
+                className={cn(
+                  "grid w-full grid-cols-[repeat(8,1fr)_360px] gap-x-6 gap-y-12 max-xl:grid-cols-[repeat(8,1fr)]",
+                )}
+              >
+                <div className={cn("col-span-8 max-lg:col-span-full")}>
                   <Dashboard__SignalSection />
+                </div>
 
+                <div className={cn("col-span-8 max-lg:col-span-full")}>
                   <Dashboard__FollowUpSection />
                 </div>
 
-                <Dashboard__TodayTodoSection />
+                <div
+                  className={cn(
+                    "max-lg:col-start-none max-lg:row-start-none col-span-4 col-start-9 row-start-1 max-lg:col-span-full",
+                  )}
+                >
+                  <Dashboard__TodayTodoSection />
+                </div>
               </div>
             </Suspense>
           </div>
