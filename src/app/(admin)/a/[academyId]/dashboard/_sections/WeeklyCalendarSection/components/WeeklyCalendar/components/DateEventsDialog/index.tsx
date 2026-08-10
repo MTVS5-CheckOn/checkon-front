@@ -63,17 +63,17 @@ const Content = ({ selectedDate }: { selectedDate: Date }) => {
     <div
       className={cn(
         // 1. Layout
-        "flex w-full flex-col items-start justify-start gap-4",
+        "flex w-full flex-col items-start justify-start gap-6",
         // 6. Utility
         "overflow-hidden",
       )}
     >
-      <Separator variants="dashed" />
+      <Separator thickness="1px" />
 
       <div
         className={cn(
           // 1. Layout
-          "flex w-full flex-col items-start justify-start",
+          "flex w-full flex-col items-start justify-start gap-1",
           // 6. Utility
           "overflow-hidden",
         )}
