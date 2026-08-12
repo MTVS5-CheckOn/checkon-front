@@ -9,6 +9,7 @@ import { LoadingFallback } from "@/ui/components/LoadingFallback";
 import { cn } from "@/ui/utils/tailwind/cn";
 import { zodResolver } from "@hookform/resolvers/zod";
 
+import { PageRootContainer } from "../_components/PageRootContainer";
 import { Dashboard__FollowUpSection } from "./_sections/FollowUpSection";
 import { Dashboard__SignalSection } from "./_sections/SignalSection";
 import { Dashboard__TabsSection } from "./_sections/TabsSection";
@@ -36,18 +37,7 @@ export default function Page() {
 
   return (
     <FormProvider {...formMethods}>
-      <div
-        className={cn(
-          // 1. Layout
-          "flex h-full w-full flex-col items-center",
-          // 3. Color
-          "bg-ods__white",
-          // 4. Shadow & Border
-          "border-ods__border rounded-tl-4xl border max-xl:rounded-none",
-          // 6. Utility
-          "overflow-auto",
-        )}
-      >
+      <PageRootContainer>
         <Dashboard__TabsSection />
 
         {activeTab === "briefing" && (
@@ -98,7 +88,7 @@ export default function Page() {
 
         {/* TODO: 통계 섹션 추가 */}
         {activeTab === "stats" && <div>통계</div>}
-      </div>
+      </PageRootContainer>
     </FormProvider>
   );
 }
