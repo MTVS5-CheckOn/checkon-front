@@ -1,6 +1,5 @@
-import { CheckIcon, ChevronDownIcon } from "lucide-react";
-
 import { cn } from "@/ui/utils/tailwind/cn";
+import SelectorParts from "@/ui/components/Selector/Parts";
 import { Select } from "@base-ui/react/select";
 import { Separator } from "@base-ui/react/separator";
 
@@ -26,51 +25,19 @@ export const LNB__AcademySelector = () => {
   };
 
   return (
-    <Select.Root
+    <SelectorParts.Root
       items={academies}
       value={academyId}
       onValueChange={(v) => {
         handleAcademyItemClick(v as string);
       }}
     >
-      <Select.Trigger
-        className={cn(
-          // 1. Layout
-          "flex w-full justify-between px-3 py-2",
-          // 3. Color
-          "bg-ods__white",
-          // 4. Shadow & Border
-          "border-ods__base-200 rounded-lg border",
-        )}
-      >
-        <Select.Value
-          className={cn("ods__typo__label-medium", "text-ods__base-600")}
-        />
+      <SelectorParts.Trigger size="medium" />
 
-        <Select.Icon className={cn("flex items-center", "text-ods__base-400")}>
-          <ChevronDownIcon className={cn("size-4")} />
-        </Select.Icon>
-      </Select.Trigger>
-
-      <Select.Portal>
-        <Select.Positioner>
-          <Select.Popup
-            className={cn(
-              // 1. Layout
-              "ml-1.75 h-fit p-1",
-              // 3. Color
-              "bg-ods__white",
-              // 4. Shadow & Border
-              "border-ods__border rounded-lg border shadow-md",
-              // 5. Interaction
-              "ods__animate__popup-open",
-            )}
-            style={{
-              // 셀렉터 width 동기화
-              width: "var(--anchor-width)",
-            }}
-          >
-            <Select.List className={cn("flex flex-1 flex-col gap-1")}>
+      <SelectorParts.Portal>
+        <SelectorParts.Positioner>
+          <SelectorParts.Popup className={cn("ml-1.75")}>
+            <SelectorParts.List>
               <button onClick={handleMyAcademyClick}>
                 <Select.Label
                   className={cn(
@@ -103,37 +70,19 @@ export const LNB__AcademySelector = () => {
                   const isSelected = academyId === value;
 
                   return (
-                    <button key={label}>
-                      <Select.Item
-                        value={value}
-                        className={cn(
-                          // 1. Layout
-                          "flex gap-2 p-2",
-                          // 2. Typography
-                          "ods__typo__body-small",
-                          // 3. Color
-                          "text-ods__base-600",
-                          isSelected && "bg-ods__base-100",
-                          // 4. Shadow & Border
-                          "rounded-sm",
-                          // 5. Interaction
-                          "ods__animate__default hover:bg-ods__hover",
-                        )}
-                      >
-                        <Select.Icon className={cn("size-4")}>
-                          {isSelected && <CheckIcon className={cn("size-4")} />}
-                        </Select.Icon>
-
-                        <Select.ItemText>{label}</Select.ItemText>
-                      </Select.Item>
-                    </button>
+                    <SelectorParts.Item
+                      key={label}
+                      value={value}
+                      label={label}
+                      isSelected={isSelected}
+                    />
                   );
                 })}
               </div>
-            </Select.List>
-          </Select.Popup>
-        </Select.Positioner>
-      </Select.Portal>
-    </Select.Root>
+            </SelectorParts.List>
+          </SelectorParts.Popup>
+        </SelectorParts.Positioner>
+      </SelectorParts.Portal>
+    </SelectorParts.Root>
   );
 };

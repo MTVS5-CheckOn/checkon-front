@@ -9,6 +9,7 @@ import { cn } from "@/ui/utils/tailwind/cn";
 
 import { PageRootContainer } from "../../_components/PageRootContainer";
 import { QuestionStudio__HeaderSection } from "../_components/HeaderSection";
+import { Selector } from "@/ui/components/Selector";
 
 export default function Page() {
   return (
@@ -74,7 +75,28 @@ export default function Page() {
                 <FieldLabel required>난이도</FieldLabel>
 
                 {/* TODO: Selector로 변경하기 */}
-                <Input defaultValue={"하"} />
+                {/* <Input defaultValue={"하"} /> */}
+                <Selector
+                  size="large"
+                  items={[
+                    {
+                      label: "하",
+                      value: "하",
+                    },
+                    {
+                      label: "중",
+                      value: "중",
+                    },
+                    {
+                      label: "상",
+                      value: "상",
+                    },
+                  ]}
+                  value={"하"}
+                  onValueChange={(v) => {
+                    console.log(v);
+                  }}
+                />
               </div>
             </div>
           </div>
