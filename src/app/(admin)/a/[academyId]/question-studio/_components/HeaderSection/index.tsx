@@ -1,6 +1,6 @@
-import { QuestionStudio__Stepper } from "../../_components/Stepper";
+import { QuestionStudio__Stepper } from "../Stepper";
 
-export const QuestionStudio__Header = () => {
+export const QuestionStudio__HeaderSection = () => {
   return (
     <div className="flex w-full flex-col">
       {/* TODO: Breadcrumb 컴포넌트 추가하기 */}

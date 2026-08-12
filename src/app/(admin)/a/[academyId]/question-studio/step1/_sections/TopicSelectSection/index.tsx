@@ -67,7 +67,7 @@ export const QuestionStudio__TopicSelect__Section = () => {
 
 const Header = () => {
   return (
-    <div className={cn("flex flex-col items-start gap-0")}>
+    <div className={cn("flex flex-col items-start")}>
       <span
         className={cn(
           // 2. Typography

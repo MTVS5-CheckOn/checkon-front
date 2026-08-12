@@ -1,28 +1,12 @@
 "use client";
 
-import { cn } from "@/ui/utils/tailwind/cn";
-
-import { PageRootContainer } from "../_components/PageRootContainer";
-import { QuestionStudio__Header } from "./_sections/HeaderSection";
-import { QuestionStudio__TargetStudents__Section } from "./_sections/TargetStudentsSection";
-import { QuestionStudio__TopicSelect__Section } from "./_sections/TopicSelectSection";
-import { Button } from "@/ui/components/Button";
+import { redirect } from "next/navigation";
+import { useEffect } from "react";
 
 export default function Page() {
-  return (
-    <PageRootContainer>
-      <div className={cn("flex w-full flex-col gap-8 p-6")}>
-        <QuestionStudio__Header />
+  useEffect(() => {
+    redirect("./question-studio/step1");
+  });
 
-        <div className={cn("flex w-full flex-col gap-8")}>
-          <QuestionStudio__TargetStudents__Section />
-          <QuestionStudio__TopicSelect__Section />
-        </div>
-
-        <Button size="large" color="blue" className={cn("w-full")}>
-          다음
-        </Button>
-      </div>
-    </PageRootContainer>
-  );
+  return <div>asd</div>;
 }
