@@ -72,7 +72,7 @@ export const Dashboard__FollowUpSection = () => {
         {data.items.map((item) => (
           <Fragment key={item.title + item.caption}>
             <SignalItem model={item} onClick={handleItemClick} />
-            <Separator thickness="1px" />
+            <Separator />
           </Fragment>
         ))}
 

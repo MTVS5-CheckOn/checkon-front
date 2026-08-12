@@ -68,7 +68,7 @@ const Content = ({ selectedDate }: { selectedDate: Date }) => {
         "overflow-hidden",
       )}
     >
-      <Separator thickness="1px" />
+      <Separator />
 
       <div
         className={cn(

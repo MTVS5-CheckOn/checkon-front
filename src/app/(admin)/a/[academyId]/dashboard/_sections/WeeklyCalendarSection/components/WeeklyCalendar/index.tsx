@@ -40,7 +40,7 @@ export const WeeklyCalendar = () => {
       )}
     >
       <WeeklyCalendar__HeaderSection selectedDate={field.value} />
-      <Separator variants="dashed" thickness="2px" />
+      <Separator variants="dashed" />
 
       <WeeklyCalendar__WeekSection
         dates={dates}

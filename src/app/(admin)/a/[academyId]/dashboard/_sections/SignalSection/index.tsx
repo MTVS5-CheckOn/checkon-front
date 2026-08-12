@@ -68,7 +68,7 @@ export const Dashboard__SignalSection = () => {
         {data.items.map((item) => (
           <Fragment key={item.title + item.caption}>
             <SignalItem model={item} onClick={handleItemClick} />
-            <Separator thickness="1px" />
+            <Separator />
           </Fragment>
         ))}
 

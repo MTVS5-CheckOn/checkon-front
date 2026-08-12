@@ -66,7 +66,7 @@ const Content = ({ signalId }: { signalId: string }) => {
         "overflow-hidden",
       )}
     >
-      <Separator thickness="1px" />
+      <Separator />
 
       <div
         className={cn(

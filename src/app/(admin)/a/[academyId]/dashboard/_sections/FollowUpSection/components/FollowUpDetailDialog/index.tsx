@@ -65,7 +65,7 @@ const Content = ({ followUpId }: { followUpId: string }) => {
         "overflow-hidden",
       )}
     >
-      <Separator thickness="1px" />
+      <Separator />
 
       <div
         className={cn(

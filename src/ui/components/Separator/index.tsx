@@ -2,11 +2,23 @@ import { cn } from "@/ui/utils/tailwind/cn";
 
 export const Separator = ({
   variants = "default",
-  thickness = "2px",
+  thickness = "1px",
 }: {
   variants?: "default" | "dashed";
   thickness?: string;
 }) => {
+  if (variants === "default") {
+    return (
+      <div
+        className={cn(
+          // 1. Layout
+          "bg-ods__border w-full",
+          `h-[${thickness}]`,
+        )}
+      />
+    );
+  }
+
   return (
     <svg
       width="100%"
