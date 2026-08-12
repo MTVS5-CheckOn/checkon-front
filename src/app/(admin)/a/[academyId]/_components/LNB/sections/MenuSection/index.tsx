@@ -1,10 +1,11 @@
 import { cn } from "@/ui/utils/tailwind/cn";
 import {
-  CalendarDaysIcon,
+  BookCheckIcon,
   LayoutDashboardIcon,
-  MessageSquareIcon,
-  SettingsIcon,
+  NotebookPenIcon,
+  ShapesIcon,
   UsersIcon,
+  UserStarIcon,
 } from "lucide-react";
 
 const items = [
@@ -13,20 +14,24 @@ const items = [
     label: "대시보드",
   },
   {
-    icon: <MessageSquareIcon size={16} />,
-    label: "학부모 360",
+    icon: <ShapesIcon size={16} />,
+    label: "클래스 관리",
   },
   {
     icon: <UsersIcon size={16} />,
-    label: "학생 목록",
+    label: "학생 관리",
   },
   {
-    icon: <CalendarDaysIcon size={16} />,
-    label: "상담 일정",
+    icon: <UserStarIcon size={16} />,
+    label: "학부모 관리",
   },
   {
-    icon: <SettingsIcon size={16} />,
-    label: "설정",
+    icon: <NotebookPenIcon size={16} />,
+    label: "문제 출제 스튜디오",
+  },
+  {
+    icon: <BookCheckIcon size={16} />,
+    label: "리포트 스튜디오",
   },
 ];
 
@@ -63,7 +68,7 @@ const MenuItem = ({
     <div
       className={cn(
         // 1. Layout
-        "flex items-center gap-2 p-2",
+        "flex items-center gap-2 px-3 py-2",
         // 2. Typography
         "ods__typo__label-large font-medium",
         // 3. Color
@@ -73,7 +78,7 @@ const MenuItem = ({
         // 5. Interaction
         "ods__animate__default hover:bg-ods__hover",
         //
-        isActive && "text-ods__blue-600 bg-ods__blue-20",
+        isActive && "text-ods__base-600 bg-ods__base-50",
       )}
     >
       <span>{icon}</span>

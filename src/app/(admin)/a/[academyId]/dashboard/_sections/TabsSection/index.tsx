@@ -61,11 +61,11 @@ export const Dashboard__TabsSection = () => {
               key={value}
               className={cn(
                 // 1. Layout
-                "flex min-w-25 flex-col items-center justify-center px-2.5 py-2",
+                "flex min-w-25 flex-col items-center justify-center px-3 py-2",
                 // 2. Typography
                 "ods__typo__label-large font-normal data-active:font-semibold",
                 // 3. Color
-                "text-ods__base-400 data-active:bg-ods__blue-20 data-active:text-ods__blue-500",
+                "text-ods__base-400 data-active:bg-ods__base-50 data-active:text-ods__base-500",
                 // 4. Shadow & Border
                 "rounded-tl-lg rounded-tr-lg",
                 // 5. Interaction

@@ -12,7 +12,7 @@ export const Dashboard__TodayTodoSection__TodoCompletionRateSection = ({
     <div
       className={cn(
         // 1. Layout
-        "flex flex-col p-5",
+        "flex flex-col gap-2 p-5",
         // 4. Shadow & Border
         "border-ods__border rounded-xl border",
       )}
@@ -23,7 +23,7 @@ export const Dashboard__TodayTodoSection__TodoCompletionRateSection = ({
             // 2. Typography
             "ods__typo__label-large font-medium",
             // 3. Color
-            "text-ods__base-400",
+            "text-ods__base-500",
           )}
         >
           오늘 완료율
@@ -34,14 +34,14 @@ export const Dashboard__TodayTodoSection__TodoCompletionRateSection = ({
             // 2. Typography
             "ods__typo__label-medium font-bold",
             // 3. Color
-            "text-ods__base-400",
+            "text-ods__base-500",
           )}
         >
           {`${completionRate}%`}
         </div>
       </div>
 
-      <div className={cn("flex flex-col items-start justify-start pt-1.5")}>
+      <div className={cn("flex flex-col items-start justify-start")}>
         <ProgressBar value={completionRate} />
       </div>
     </div>

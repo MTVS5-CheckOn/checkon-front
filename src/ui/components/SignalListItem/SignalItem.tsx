@@ -75,7 +75,7 @@ export const SignalItem = ({ model, onClick }: SignalItemProps) => {
                   // 2. Typography
                   "ods__typo__label-large font-medium",
                   // 3. Color
-                  "text-ods__base-500",
+                  "text-ods__base-600",
                 )}
               >
                 {model.title}
@@ -112,7 +112,7 @@ export const SignalItem = ({ model, onClick }: SignalItemProps) => {
               // 2. Typography
               "ods__typo__body-medium text-start whitespace-pre-line",
               // 3. Color
-              "text-ods__base-400",
+              "text-ods__base-500",
             )}
           >
             {model.content}

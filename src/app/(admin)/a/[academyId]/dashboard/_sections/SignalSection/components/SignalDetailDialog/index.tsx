@@ -61,17 +61,17 @@ const Content = ({ signalId }: { signalId: string }) => {
     <div
       className={cn(
         // 1. Layout
-        "flex w-full flex-col items-start justify-start",
+        "flex w-full flex-col items-start justify-start gap-6",
         // 6. Utility
         "overflow-hidden",
       )}
     >
-      <Separator variants="dashed" />
+      <Separator />
 
       <div
         className={cn(
           // 1. Layout
-          "flex w-full flex-col items-start justify-start gap-7 pt-6",
+          "flex w-full flex-col items-start justify-start gap-7",
         )}
       >
         {/* Layer 1: Student Info */}
