@@ -73,9 +73,6 @@ export default function Page() {
 
               <div className={cn("flex w-full flex-col gap-1")}>
                 <FieldLabel required>난이도</FieldLabel>
-
-                {/* TODO: Selector로 변경하기 */}
-                {/* <Input defaultValue={"하"} /> */}
                 <Selector
                   size="large"
                   items={[
