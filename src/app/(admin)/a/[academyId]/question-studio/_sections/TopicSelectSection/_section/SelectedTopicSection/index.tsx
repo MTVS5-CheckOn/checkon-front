@@ -9,7 +9,7 @@ const MOCK_SELECTED_TOPICS = [
   { id: "4", label: "독서 x 사실적 이해", questionCount: 12 },
 ];
 
-export const Test = () => {
+export const SelectedTopics__Section = () => {
   return (
     <div
       className={cn(
@@ -54,8 +54,9 @@ export const Test = () => {
         {MOCK_SELECTED_TOPICS.map((topic) => (
           <SelectedTopicGridItem
             key={topic.id}
-            label={topic.label}
-            questionCount={topic.questionCount}
+            title={topic.label}
+            value={topic.questionCount}
+            onChange={() => {}}
           />
         ))}
       </div>

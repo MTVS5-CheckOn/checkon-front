@@ -9,6 +9,7 @@ export type FieldLabelProps = {
 export const FieldLabel = ({
   required = false,
   className,
+  children,
   ...props
 }: FieldLabelProps) => {
   return (
@@ -24,7 +25,7 @@ export const FieldLabel = ({
       )}
       {...props}
     >
-      <span>학원명</span>
+      <span>{children}</span>
 
       {required && <RequiredIndicator />}
     </div>

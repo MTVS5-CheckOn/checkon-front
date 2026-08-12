@@ -18,7 +18,7 @@ export const Button = ({
     <button
       className={cn(
         // 1. Layout
-        "flex w-full items-center justify-center px-4",
+        "flex items-center justify-center px-4",
         // 2. Typography
         "ods__typo__label-large font-semibold",
         // 4. Shadow & Border

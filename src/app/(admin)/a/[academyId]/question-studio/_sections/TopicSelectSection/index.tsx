@@ -1,11 +1,8 @@
 import { cn } from "@/ui/utils/tailwind/cn";
 
-import { WeekMap, WeekMapRowDataItemModel } from "@/ui/components/WeekMap";
 import { Separator } from "@/ui/components/Separator";
-import { Test } from "./test";
-import { Input } from "@/ui/components/Input";
-import { FieldLabel } from "@/ui/components/FieldLabel";
-import { Button } from "@/ui/components/Button";
+import { WeekMap, WeekMapRowDataItemModel } from "@/ui/components/WeekMap";
+import { SelectedTopics__Section } from "./_section/SelectedTopicSection";
 
 const WEEK_MAP_ROW_DATA: WeekMapRowDataItemModel[][] = [
   [
@@ -44,14 +41,6 @@ export const QuestionStudio__TopicSelect__Section = () => {
   return (
     <div className={cn("flex w-full flex-col")}>
       <div className={cn("flex w-full flex-col gap-2")}>
-        <div className={cn("flex w-full flex-col")}>
-          <FieldLabel required />
-          <Input disabled value="asdasdasdasdasd" />
-          <Button color="blue" disabled>
-            출제 영역 선택
-          </Button>
-        </div>
-
         <Header />
 
         <div
@@ -69,7 +58,7 @@ export const QuestionStudio__TopicSelect__Section = () => {
             <Separator />
           </div>
 
-          <Test />
+          <SelectedTopics__Section />
         </div>
       </div>
     </div>
