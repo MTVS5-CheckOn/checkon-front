@@ -31,7 +31,7 @@ export const Button = ({
         color === "red" && "bg-ods__red-100 text-ods__red-400",
         color === "default" && "bg-ods__base-50 text-ods__base-500",
         // Size
-        size === "small" && "h-8",
+        size === "small" && "h-8 px-3",
         size === "large" && "h-12",
         // Disabled
         disabled &&
