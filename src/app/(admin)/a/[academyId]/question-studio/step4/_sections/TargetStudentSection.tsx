@@ -3,6 +3,8 @@ import { Table } from "@/ui/components/Table/parts/Table";
 import { TableParts } from "@/ui/components/Table/parts";
 import { TableRow } from "@/ui/components/Table/parts/TableRow";
 import { cn } from "@/ui/utils/tailwind/cn";
+import { overlay } from "overlay-kit";
+import { QuestionsSavedConfirm } from "../_components/QuestionsSavedConfirm";
 
 /**
  * 과제 발행 대상 학생 섹션
@@ -53,9 +55,7 @@ export const TargetStudentSection = () => {
           </Table>
         </TableParts.Container>
 
-        <Button size="large" color="blue" className={cn("w-full")}>
-          과제로 발행
-        </Button>
+        <ButtonSection />
       </div>
     </section>
   );
@@ -79,6 +79,27 @@ const Header = () => {
       >
         대상 학생
       </span>
+    </div>
+  );
+};
+
+const ButtonSection = () => {
+  const handlePublishHomework = () => {
+    overlay.open(({ isOpen, close }) => (
+      <QuestionsSavedConfirm isOpen={isOpen} onClose={close} />
+    ));
+  };
+
+  return (
+    <div className={cn("flex w-full items-center gap-3")}>
+      <Button
+        size="large"
+        color="blue"
+        className={cn("w-full")}
+        onClick={handlePublishHomework}
+      >
+        과제로 발행
+      </Button>
     </div>
   );
 };

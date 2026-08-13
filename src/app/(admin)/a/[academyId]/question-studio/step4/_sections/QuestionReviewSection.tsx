@@ -1,6 +1,8 @@
 import { cn } from "@/ui/utils/tailwind/cn";
 import { Button } from "@/ui/components/Button";
 import { SelectableQuestionCard } from "../_components/SelectableQuestionCard";
+import { overlay } from "overlay-kit";
+import { HomeWorkConfirm } from "../_components/HomeWorkConfirm";
 
 /**
  * 문항 선택 섹션
@@ -94,13 +96,28 @@ const CardList = () => {
 };
 
 const ButtonSection = () => {
+  const handleDownloadPDF = () => {
+    alert("TODO: PDF 다운로드");
+  };
+
+  const handleSaveQuestions = () => {
+    overlay.open(({ isOpen, close }) => (
+      <HomeWorkConfirm isOpen={isOpen} onClose={close} />
+    ));
+  };
+
   return (
     <div className={cn("flex w-full items-center gap-3")}>
-      <Button size="large" className={cn("w-full")}>
+      <Button size="large" className={cn("w-full")} onClick={handleDownloadPDF}>
         PDF 다운로드
       </Button>
 
-      <Button size="large" color="blue" className={cn("w-full")}>
+      <Button
+        size="large"
+        color="blue"
+        className={cn("w-full")}
+        onClick={handleSaveQuestions}
+      >
         문항 저장하기
       </Button>
     </div>
