@@ -21,8 +21,8 @@ export const QuestionReviewSection = () => {
           "flex w-full flex-col items-start justify-start gap-6",
         )}
       >
-        {MOCK_QUESTIONS.map((question) => (
-          <QuestionCard key={question.statusLabel.text} {...question} />
+        {MOCK_QUESTIONS.map((question, index) => (
+          <QuestionCard key={index} {...question} />
         ))}
       </div>
     </div>
@@ -70,37 +70,37 @@ const MOCK_CHOICES = Array.from({ length: 5 }, () => ({
 
 const MOCK_QUESTIONS: QuestionCardProps[] = [
   {
-    statusLabel: { status: "Positive", text: "검증 통과" },
+    statusLabel: { status: "Positive", children: "검증 통과" },
     title: "Q1. 다음 중 음운 변동의 유형이 나머지와 다른것은?",
-    choices: MOCK_CHOICES.map((choice, index) => ({
+    choiceProps: MOCK_CHOICES.map((choice, index) => ({
       ...choice,
       isSelected: index === 0,
     })),
     reason: "기준 자료의 비음화 탈락 항목",
   },
   {
-    statusLabel: { status: "Warning", text: "검토 필요" },
+    statusLabel: { status: "Warning", children: "검토 필요" },
     title: "Q1. 다음 중 음운 변동의 유형이 나머지와 다른것은?",
-    choices: MOCK_CHOICES.map((choice, index) => ({
+    choiceProps: MOCK_CHOICES.map((choice, index) => ({
       ...choice,
       isSelected: index === 0,
     })),
     reason: "기준 자료의 비음화 탈락 항목",
-    alert: {
+    alertProps: {
       variant: "Warning",
       title: "검토 필요",
       description: "문제 의도가 목표와 맞는지 확인이 필요합니다.",
     },
   },
   {
-    statusLabel: { status: "Danger", text: "검증 불가" },
+    statusLabel: { status: "Danger", children: "검증 불가" },
     title: "Q1. 다음 중 음운 변동의 유형이 나머지와 다른것은?",
-    choices: MOCK_CHOICES.map((choice, index) => ({
+    choiceProps: MOCK_CHOICES.map((choice, index) => ({
       ...choice,
       isSelected: index === 0,
     })),
     reason: "기준 자료의 비음화 탈락 항목",
-    alert: {
+    alertProps: {
       variant: "Danger",
       title: "검증 불가",
       description:
@@ -108,14 +108,14 @@ const MOCK_QUESTIONS: QuestionCardProps[] = [
     },
   },
   {
-    statusLabel: { status: "Default", text: "폐기됨" },
+    statusLabel: { status: "Default", children: "폐기됨" },
     title: "Q1. 다음 중 음운 변동의 유형이 나머지와 다른것은?",
-    choices: MOCK_CHOICES.map((choice, index) => ({
+    choiceProps: MOCK_CHOICES.map((choice, index) => ({
       ...choice,
       isSelected: index === 0,
     })),
     reason: "기준 자료의 비음화 탈락 항목",
-    alert: {
+    alertProps: {
       variant: "Default",
       title: "폐기/제외됨",
       description: `아래 사유로 문항 생성에 실패했습니다.

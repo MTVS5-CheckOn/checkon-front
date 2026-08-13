@@ -1,40 +1,30 @@
-import { EllipsisIcon } from "lucide-react";
-
-import { Alert, AlertVariant } from "@/ui/components/Alert";
-import {
-  StatusLabel,
-  type StatusLabelStatus,
-} from "@/ui/components/StatusLabel";
+import { Alert, AlertProps } from "@/ui/components/Alert";
+import { StatusLabel, StatusLabelProps } from "@/ui/components/StatusLabel";
 import { cn } from "@/ui/utils/tailwind/cn";
 
 import {
   QuestionChoiceItem,
   QuestionChoiceItemProps,
 } from "../QuestionChoiceItem";
-import { overlay } from "overlay-kit";
-import { QuestionVersionsDialog } from "../../../../_components/QuestionVersionsDialog";
+import { QuestionCardOptionMenu } from "../QuestionCardOptionMenu";
 
 export type QuestionCardProps = {
-  statusLabel: {
-    status: StatusLabelStatus;
-    text: string;
-  };
+  statusLabel: StatusLabelProps;
   title: string;
-  choices: QuestionChoiceItemProps[];
+  choiceProps: QuestionChoiceItemProps[];
   reason: string;
-  alert?: {
-    variant: AlertVariant;
-    title: string;
-    description: string;
-  };
+  alertProps?: AlertProps;
 };
 
+/**
+ * 문항 카드
+ */
 export const QuestionCard = ({
   statusLabel,
   title,
-  choices,
+  choiceProps,
   reason,
-  alert,
+  alertProps,
 }: QuestionCardProps) => {
   return (
     <div
@@ -61,19 +51,19 @@ export const QuestionCard = ({
             "flex w-full flex-col items-start justify-start gap-4",
           )}
         >
-          <Header statusLabel={statusLabel} title={title} />
+          <Header statusLabelProps={statusLabel} title={title} />
 
-          <Choices choices={choices} />
+          <Choices choices={choiceProps} />
         </div>
 
         <Reason reason={reason} />
 
         {/* 경고 알림 */}
-        {alert && (
+        {alertProps && (
           <Alert
-            variant={alert.variant}
-            title={alert.title}
-            description={alert.description}
+            variant={alertProps.variant}
+            title={alertProps.title}
+            description={alertProps.description}
           />
         )}
       </div>
@@ -85,13 +75,10 @@ export const QuestionCard = ({
  * 헤더
  */
 const Header = ({
-  statusLabel,
+  statusLabelProps,
   title,
 }: {
-  statusLabel: {
-    status: StatusLabelStatus;
-    text: string;
-  };
+  statusLabelProps: StatusLabelProps;
   title: string;
 }) => {
   return (
@@ -102,7 +89,7 @@ const Header = ({
       )}
     >
       {/* 상태 라벨 */}
-      <StatusLabel status={statusLabel.status}>{statusLabel.text}</StatusLabel>
+      <StatusLabel {...statusLabelProps} />
 
       {/* 문항 제목 */}
       <div
@@ -123,24 +110,7 @@ const Header = ({
         </span>
 
         {/* 문항 옵션 버튼 */}
-        <button
-          type="button"
-          className={cn(
-            // 1. Layout
-            "flex size-8 items-center justify-center",
-            // 4. Shadow & Border
-            "border-ods__border rounded-sm border",
-            // 5. Interaction
-            "ods__animate__default hover:bg-ods__hover",
-          )}
-          onClick={() => {
-            overlay.open(({ isOpen, close }) => {
-              return <QuestionVersionsDialog isOpen={isOpen} onClose={close} />;
-            });
-          }}
-        >
-          <EllipsisIcon className="text-ods__base-600" />
-        </button>
+        <QuestionCardOptionMenu />
       </div>
     </div>
   );
