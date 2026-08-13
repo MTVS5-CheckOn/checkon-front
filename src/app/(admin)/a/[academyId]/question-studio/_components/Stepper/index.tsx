@@ -27,6 +27,7 @@ export const Stepper = ({
       {steps.map((model, index) => {
         const isLast = index === steps.length - 1;
         const isActive = model.step === activatedStepNumber;
+        const disabled = model.step > activatedStepNumber;
 
         return (
           <div
@@ -42,6 +43,8 @@ export const Stepper = ({
               className={cn(
                 // 1. Layout
                 "flex flex-1",
+                // 2. State
+                disabled && "pointer-events-none",
               )}
               onClick={() => onActivateStepNumber(model.step)}
             >
