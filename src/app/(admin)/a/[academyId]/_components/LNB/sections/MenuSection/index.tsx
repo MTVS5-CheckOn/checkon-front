@@ -1,3 +1,4 @@
+import { ProtectedLink } from "@/ui/routers/ProtectedNavigation";
 import { cn } from "@/ui/utils/tailwind/cn";
 import {
   BookCheckIcon,
@@ -12,6 +13,7 @@ const items = [
   {
     icon: <LayoutDashboardIcon size={16} />,
     label: "대시보드",
+    href: "/dashboard",
   },
   {
     icon: <ShapesIcon size={16} />,
@@ -28,6 +30,7 @@ const items = [
   {
     icon: <NotebookPenIcon size={16} />,
     label: "문제 출제 스튜디오",
+    href: "/question-studio",
   },
   {
     icon: <BookCheckIcon size={16} />,
@@ -46,9 +49,9 @@ export const LNB__MenuSection = () => {
         const isActive = index === 0;
 
         return (
-          <button key={it.label}>
+          <ProtectedLink key={it.label} href={it.href ?? "/dashboard"}>
             <MenuItem isActive={isActive} icon={it.icon} label={it.label} />
-          </button>
+          </ProtectedLink>
         );
       })}
     </div>
