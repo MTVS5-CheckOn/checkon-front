@@ -18,7 +18,7 @@ export const QuestionCardChoiceItem = ({
     <button
       className={cn(
         // 1. Layout
-        "flex h-12 w-full flex-col items-start justify-center px-3",
+        "flex min-h-12 w-full flex-col items-start justify-start p-3",
         // 4. Shadow & Border
         "border-ods__border rounded-lg border",
         // 5. Interaction
@@ -34,7 +34,7 @@ export const QuestionCardChoiceItem = ({
       <span
         className={cn(
           // 2. Typography
-          "ods__typo__label-large",
+          "ods__typo__label-large text-start",
           // 3. Color
           "text-ods__base-500",
         )}

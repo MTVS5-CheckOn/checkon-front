@@ -2,7 +2,9 @@ import { cn } from "@/ui/utils/tailwind/cn";
 import { Button } from "@/ui/components/Button";
 import { SelectableQuestionCard } from "../_components/SelectableQuestionCard";
 import { overlay } from "overlay-kit";
-import { HomeWorkConfirm } from "../_components/HomeWorkConfirm";
+import { QuestionsSavedConfirm } from "../_components/QuestionsSavedConfirm";
+import { QuestionStudioPageModel } from "../../layout";
+import { useFormContext } from "react-hook-form";
 
 /**
  * 문항 선택 섹션
@@ -21,6 +23,11 @@ export const QuestionSelectSection = () => {
 };
 
 const Header = () => {
+  const { watch } = useFormContext<QuestionStudioPageModel>();
+  const generatedQuestionModels = watch("generatedQuestionModels");
+
+  const totalQuestionCount = generatedQuestionModels.length;
+
   return (
     <div
       className={cn(
@@ -47,62 +54,50 @@ const Header = () => {
           "text-ods__base-500",
         )}
       >
-        10개
+        {totalQuestionCount}개
       </span>
     </div>
   );
 };
 
 const CardList = () => {
+  const { watch } = useFormContext<QuestionStudioPageModel>();
+  const generatedQuestionModels = watch("generatedQuestionModels");
+
   return (
     <div className={cn("flex w-full flex-col gap-6")}>
-      <SelectableQuestionCard
-        title={"Q1. 다음 중 음운 변동의 유형이 나머지와 다른것은?"}
-        choiceProps={[
-          { label: "국물 → 궁물", isSelected: true },
-          { label: "국물 → 궁물", isSelected: false },
-          { label: "국물 → 궁물", isSelected: false },
-          { label: "국물 → 궁물", isSelected: false },
-          { label: "국물 → 궁물", isSelected: false },
-        ]}
-        reason={"기준 자료의 비음화 탈락 항목"}
-      />
-
-      <SelectableQuestionCard
-        title={"Q1. 다음 중 음운 변동의 유형이 나머지와 다른것은?"}
-        choiceProps={[
-          { label: "국물 → 궁물", isSelected: true },
-          { label: "국물 → 궁물", isSelected: false },
-          { label: "국물 → 궁물", isSelected: false },
-          { label: "국물 → 궁물", isSelected: false },
-          { label: "국물 → 궁물", isSelected: false },
-        ]}
-        reason={"기준 자료의 비음화 탈락 항목"}
-      />
-
-      <SelectableQuestionCard
-        title={"Q1. 다음 중 음운 변동의 유형이 나머지와 다른것은?"}
-        choiceProps={[
-          { label: "국물 → 궁물", isSelected: true },
-          { label: "국물 → 궁물", isSelected: false },
-          { label: "국물 → 궁물", isSelected: false },
-          { label: "국물 → 궁물", isSelected: false },
-          { label: "국물 → 궁물", isSelected: false },
-        ]}
-        reason={"기준 자료의 비음화 탈락 항목"}
-      />
+      {generatedQuestionModels.map((model) => (
+        <SelectableQuestionCard
+          key={model.questionId}
+          title={model.title}
+          choiceProps={model.choices.map((choice) => ({
+            label: choice,
+            isSelected: model.answer === choice,
+          }))}
+          reason={model.generatedReason}
+        />
+      ))}
     </div>
   );
 };
 
 const ButtonSection = () => {
+  const { watch } = useFormContext<QuestionStudioPageModel>();
+  const generatedQuestionModels = watch("generatedQuestionModels");
+  const questionCount = generatedQuestionModels.length;
+
   const handleDownloadPDF = () => {
-    alert("TODO: PDF 다운로드");
+    // TODO: PDF 다운로드
+    alert("PDF 다운로드 기능은 준비중이에요");
   };
 
   const handleSaveQuestions = () => {
     overlay.open(({ isOpen, close }) => (
-      <HomeWorkConfirm isOpen={isOpen} onClose={close} />
+      <QuestionsSavedConfirm
+        isOpen={isOpen}
+        onClose={close}
+        questionCount={questionCount}
+      />
     ));
   };
 

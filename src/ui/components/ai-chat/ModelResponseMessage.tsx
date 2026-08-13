@@ -14,7 +14,7 @@ export const ModelResponseMessage = ({
     <p
       className={cn(
         // 2. Typography
-        "ods__typo__body-large flex-1 whitespace-pre-line",
+        "ods__typo__body-large flex-1 text-start whitespace-pre-line",
         // 3. Color
         "text-ods__base-700",
         className,

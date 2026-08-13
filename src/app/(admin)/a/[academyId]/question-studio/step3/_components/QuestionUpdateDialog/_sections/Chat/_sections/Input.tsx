@@ -3,6 +3,7 @@ import { StatusLabel } from "@/ui/components/StatusLabel";
 import { Button } from "@/ui/components/Button";
 
 import TextareaAutosize from "react-textarea-autosize";
+import { useState } from "react";
 
 const SUGGESTION_CHIPS = [
   "선지 자연스럽게",
@@ -13,7 +14,22 @@ const SUGGESTION_CHIPS = [
 /**
  * 문항 수정 다이얼로그 - 채팅 섹션 - 입력 섹션
  */
-export const InputSection = () => {
+export const InputSection = ({
+  onSend,
+}: {
+  onSend: (message: string) => void;
+}) => {
+  const [value, setValue] = useState("");
+
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setValue(e.currentTarget.value);
+  };
+
+  const handleSend = (v: string) => {
+    onSend(v);
+    setValue("");
+  };
+
   return (
     <section
       className={cn(
@@ -22,7 +38,7 @@ export const InputSection = () => {
     >
       <div className={cn("flex items-start justify-start gap-2")}>
         {SUGGESTION_CHIPS.map((chip) => (
-          <button key={chip}>
+          <button key={chip} onClick={() => handleSend(chip)}>
             <StatusLabel status="Default">{chip}</StatusLabel>
           </button>
         ))}
@@ -41,7 +57,7 @@ export const InputSection = () => {
             )}
           >
             <TextareaAutosize
-              defaultValue="문제 수정해줘"
+              placeholder="문항 수정을 요청해보세요."
               maxRows={5}
               className={cn(
                 // 1. Layout
@@ -63,6 +79,8 @@ export const InputSection = () => {
                 // Disabled
                 // disabled && "pointer-events-none opacity-30",
               )}
+              value={value}
+              onChange={handleChange}
               onKeyDown={(e) => {
                 // 한글 등 IME 입력 시 엔터 중복 입력(두 번 실행) 방지
                 if (e.nativeEvent.isComposing) {
@@ -77,7 +95,7 @@ export const InputSection = () => {
                 // 일반 Enter -> 전송
                 if (e.key === "Enter" && !e.shiftKey) {
                   e.preventDefault(); // 줄바꿈 기본 동작 방지
-                  alert("전송");
+                  handleSend(value);
                 }
               }}
             />
@@ -87,7 +105,12 @@ export const InputSection = () => {
                 "flex w-full items-center justify-end px-3 pt-1 pb-3",
               )}
             >
-              <Button size="small" color="blue">
+              <Button
+                size="small"
+                color="blue"
+                disabled={!value}
+                onClick={() => handleSend(value)}
+              >
                 보내기
               </Button>
             </div>

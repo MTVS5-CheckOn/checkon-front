@@ -9,7 +9,10 @@ import { useController, useFormContext } from "react-hook-form";
 import { QuestionReplaceConfirm } from "../../../QuestionReplaceConfirm";
 import { QuestionVersionsDialog } from "../../../QuestionVersionsDialog";
 import { QuestionDeleteConfirm } from "../../../QuestionDeleteConfirm";
-import { QuestionUpdateDialog } from "../../../QuestionUpdateDialog";
+import {
+  QuestionPreviewModel,
+  QuestionUpdateDialog,
+} from "../../../QuestionUpdateDialog";
 import { QuestionStudioPageModel } from "../../../../../layout";
 import { groupBy, sortBy } from "es-toolkit/array";
 import { format } from "date-fns";
@@ -22,15 +25,68 @@ export const QuestionCardOptionMenu = ({
 }: {
   questionId: string;
 }) => {
-  const { control, getValues } = useFormContext<QuestionStudioPageModel>();
+  const { control } = useFormContext<QuestionStudioPageModel>();
   const { field } = useController({
     control,
     name: "generatedQuestionModels",
   });
 
-  const handleUpdatebyAi = () => {
+  const handleUpdatebyAi = (questionId: string) => {
+    const targetQuestion = field.value.find(
+      (it) => it.questionId === questionId,
+    )!!;
+
+    const handleConfirm = (model: QuestionPreviewModel) => {
+      field.onChange(
+        field.value.map((it) => {
+          if (it.questionId === model.questionId) {
+            const newQuestion = {
+              questionId,
+              topic: model.topic,
+              type: model.type,
+              title: model.title,
+              choices: model.choices,
+              answer: model.answer,
+              level: model.level,
+              status: model.status,
+              statusReason: model.statusReason,
+              generatedReason: model.generatedReason,
+              version: model.version,
+              createdAt: model.createdAt,
+            };
+
+            GeneratedQuestionModelsMockRepo.createItem(newQuestion);
+
+            return newQuestion;
+          }
+
+          return it;
+        }),
+      );
+    };
+
     overlay.open(({ isOpen, close }) => {
-      return <QuestionUpdateDialog isOpen={isOpen} onClose={close} />;
+      return (
+        <QuestionUpdateDialog
+          isOpen={isOpen}
+          onClose={close}
+          initialModel={{
+            questionId,
+            topic: targetQuestion.topic,
+            type: targetQuestion.type,
+            title: targetQuestion.title,
+            choices: targetQuestion.choices,
+            answer: targetQuestion.answer,
+            level: targetQuestion.level,
+            status: targetQuestion.status,
+            statusReason: targetQuestion.statusReason,
+            generatedReason: targetQuestion.generatedReason,
+            version: targetQuestion.version,
+            createdAt: targetQuestion.createdAt,
+          }}
+          onConfirm={handleConfirm}
+        />
+      );
     });
   };
 
@@ -162,7 +218,7 @@ export const QuestionCardOptionMenu = ({
         </div>
       }
     >
-      <MenuParts.Item isButton onClick={handleUpdatebyAi}>
+      <MenuParts.Item isButton onClick={() => handleUpdatebyAi(questionId)}>
         AI로 수정하기
       </MenuParts.Item>
       <MenuParts.Item

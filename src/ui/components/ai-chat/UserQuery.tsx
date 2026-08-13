@@ -14,9 +14,9 @@ export const UserQueryBubble = ({
     <div
       className={cn(
         // 1. Layout
-        "flex max-w-125 items-center justify-center px-4 py-3",
+        "flex max-w-125 items-center justify-start px-4 py-3",
         // 2. Typography
-        "ods__typo__body-large flex-1 whitespace-pre-line",
+        "ods__typo__body-large whitespace-pre-line",
         // 3. Color
         "bg-ods__base-50 text-ods__base-700",
         // 4. Shadow & Border

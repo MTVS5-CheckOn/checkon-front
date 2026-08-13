@@ -3,7 +3,7 @@ import { cn } from "@/ui/utils/tailwind/cn";
 import { format } from "date-fns";
 
 export type FollowUpDetailDialog__FollowUpStatusSectionProps = {
-  variant: "warning" | "danger" | "success" | "default";
+  variant: "Warning" | "Danger" | "Positive" | "Default";
   statusTitle: string;
   statusDescription: string;
   statusCreatedAt: Date;

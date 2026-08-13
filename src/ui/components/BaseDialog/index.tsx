@@ -68,7 +68,7 @@ export const BaseDialog = ({
             <section
               className={cn(
                 // 1. Layout
-                "flex w-full flex-col",
+                "flex h-full w-full flex-col",
                 // 6. Utility
                 "overflow-hidden",
               )}

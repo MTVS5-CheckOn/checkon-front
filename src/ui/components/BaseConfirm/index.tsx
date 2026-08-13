@@ -98,39 +98,43 @@ export const BaseConfirm = ({
             </div>
 
             {/* 버튼 영역 */}
-            <div className={cn("flex w-full items-start justify-start gap-2")}>
-              {cancelButtonProps &&
-                (() => {
-                  const { onClick, ...restProps } = cancelButtonProps;
+            {(cancelButtonProps || confirmButtonProps) && (
+              <div
+                className={cn("flex w-full items-start justify-start gap-2")}
+              >
+                {cancelButtonProps &&
+                  (() => {
+                    const { onClick, ...restProps } = cancelButtonProps;
 
-                  return (
-                    <Button
-                      className="w-full"
-                      onClick={(e) => {
-                        onClick?.(e);
-                        onClose?.();
-                      }}
-                      {...restProps}
-                    />
-                  );
-                })()}
+                    return (
+                      <Button
+                        className="w-full"
+                        onClick={(e) => {
+                          onClick?.(e);
+                          onClose?.();
+                        }}
+                        {...restProps}
+                      />
+                    );
+                  })()}
 
-              {confirmButtonProps &&
-                (() => {
-                  const { onClick, ...restProps } = confirmButtonProps;
+                {confirmButtonProps &&
+                  (() => {
+                    const { onClick, ...restProps } = confirmButtonProps;
 
-                  return (
-                    <Button
-                      className="w-full"
-                      onClick={(e) => {
-                        onClick?.(e);
-                        onClose?.();
-                      }}
-                      {...restProps}
-                    />
-                  );
-                })()}
-            </div>
+                    return (
+                      <Button
+                        className="w-full"
+                        onClick={(e) => {
+                          onClick?.(e);
+                          onClose?.();
+                        }}
+                        {...restProps}
+                      />
+                    );
+                  })()}
+              </div>
+            )}
           </div>
         </AlertDialog.Popup>
       </AlertDialog.Portal>

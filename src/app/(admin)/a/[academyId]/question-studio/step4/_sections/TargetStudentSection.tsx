@@ -4,12 +4,20 @@ import { TableParts } from "@/ui/components/Table/parts";
 import { TableRow } from "@/ui/components/Table/parts/TableRow";
 import { cn } from "@/ui/utils/tailwind/cn";
 import { overlay } from "overlay-kit";
-import { QuestionsSavedConfirm } from "../_components/QuestionsSavedConfirm";
+import { HomeWorkConfirm } from "../_components/HomeWorkConfirm";
+import { QuestionStudioPageModel } from "../../layout";
+import { useFormContext } from "react-hook-form";
 
 /**
  * 과제 발행 대상 학생 섹션
  */
 export const TargetStudentSection = () => {
+  const { watch } = useFormContext<QuestionStudioPageModel>();
+  const targetStudentId = watch("targetStudentId");
+  const targetStudentName = "박지호";
+  const targetStudentClass = "수능 국어 대비 반";
+  const targetStudentSpecialNote = "최근 한 달 동안 이상 신호 2건 발생";
+
   return (
     <section className={cn("flex w-full flex-col gap-3")}>
       <Header />
@@ -22,7 +30,7 @@ export const TargetStudentSection = () => {
                 <TableParts.HeaderCell className={cn("w-43")}>
                   ID
                 </TableParts.HeaderCell>
-                <TableParts.Cell>asd</TableParts.Cell>
+                <TableParts.Cell>{targetStudentId}</TableParts.Cell>
               </TableRow>
             </TableParts.Body>
 
@@ -31,7 +39,7 @@ export const TargetStudentSection = () => {
                 <TableParts.HeaderCell className={cn("w-43")}>
                   클래스
                 </TableParts.HeaderCell>
-                <TableParts.Cell>asd</TableParts.Cell>
+                <TableParts.Cell>{targetStudentClass}</TableParts.Cell>
               </TableRow>
             </TableParts.Body>
 
@@ -40,7 +48,7 @@ export const TargetStudentSection = () => {
                 <TableParts.HeaderCell className={cn("w-43")}>
                   이름
                 </TableParts.HeaderCell>
-                <TableParts.Cell>asd</TableParts.Cell>
+                <TableParts.Cell>{targetStudentName}</TableParts.Cell>
               </TableRow>
             </TableParts.Body>
 
@@ -49,7 +57,7 @@ export const TargetStudentSection = () => {
                 <TableParts.HeaderCell className={cn("w-43")}>
                   특이사항
                 </TableParts.HeaderCell>
-                <TableParts.Cell>asd</TableParts.Cell>
+                <TableParts.Cell>{targetStudentSpecialNote}</TableParts.Cell>
               </TableRow>
             </TableParts.Body>
           </Table>
@@ -84,9 +92,21 @@ const Header = () => {
 };
 
 const ButtonSection = () => {
+  const { watch } = useFormContext<QuestionStudioPageModel>();
+  const questionCount = watch("generatedQuestionModels").length;
+  const targetStudentName = "박지호";
+
   const handlePublishHomework = () => {
     overlay.open(({ isOpen, close }) => (
-      <QuestionsSavedConfirm isOpen={isOpen} onClose={close} />
+      <HomeWorkConfirm
+        isOpen={isOpen}
+        onClose={close}
+        studentName={targetStudentName}
+        questionCount={questionCount}
+        onConfirm={() => {
+          // TODO: 과제 발행 로직
+        }}
+      />
     ));
   };
 

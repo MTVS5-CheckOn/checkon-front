@@ -12,7 +12,7 @@ export const QuestionCardTitle = ({
     <span
       className={cn(
         // 2. Typography
-        "ods__typo__title-medium whitespace-pre-line",
+        "ods__typo__title-medium text-start whitespace-pre-line",
         // 3. Color
         "text-ods__base-600",
         className,

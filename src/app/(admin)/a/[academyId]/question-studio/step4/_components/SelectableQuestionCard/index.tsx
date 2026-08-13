@@ -104,24 +104,29 @@ const Header = ({
     <button
       className={cn(
         // 1. Layout
-        "flex w-full items-center justify-between",
+        "flex w-full items-start justify-between",
       )}
       onClick={onCollapseClick}
     >
-      <div className={cn("flex items-center gap-4")}>
+      <div className={cn("flex items-start gap-4")}>
         <Checkbox
+          className={cn("mt-0.5")}
           size="small"
           onCheckedChange={onCheckedChange}
           checked={isChecked}
         />
 
-        <QuestionCardParts.Title>{title}</QuestionCardParts.Title>
+        <QuestionCardParts.Title
+          className={cn(!isCollapsed && "line-clamp-1 overflow-hidden")}
+        >
+          {title}
+        </QuestionCardParts.Title>
       </div>
 
       <div
         className={cn(
           // 1. Layout
-          "flex size-6 items-center justify-center",
+          "flex size-6 shrink-0 items-center justify-center",
           // 2. Typography
           "text-ods__base-400",
           // 4. Shadow & Border

@@ -71,6 +71,8 @@ const Content = ({ followUpId }: { followUpId: string }) => {
         className={cn(
           // 1. Layout
           "flex w-full flex-col items-start justify-start gap-7",
+          // 6. Utility
+          "overflow-auto",
         )}
       >
         {/* Layer 1: Student Info */}
