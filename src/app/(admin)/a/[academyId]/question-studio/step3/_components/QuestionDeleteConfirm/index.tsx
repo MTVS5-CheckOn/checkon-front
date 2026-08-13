@@ -6,9 +6,11 @@ import { BaseConfirm } from "@/ui/components/BaseConfirm";
 export const QuestionDeleteConfirm = ({
   isOpen,
   onClose,
+  onRemove,
 }: {
   isOpen: boolean;
   onClose: () => void;
+  onRemove: () => void;
 }) => {
   return (
     <BaseConfirm
@@ -24,7 +26,7 @@ export const QuestionDeleteConfirm = ({
         children: "삭제하기",
         color: "red",
         className: "w-36 flex-none",
-        onClick: () => {},
+        onClick: onRemove,
       }}
     />
   );

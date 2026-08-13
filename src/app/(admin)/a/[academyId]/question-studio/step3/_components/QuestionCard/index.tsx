@@ -13,6 +13,7 @@ export type QuestionCardProps = {
   reason: string;
   alertProps?: AlertProps;
   readonly?: boolean;
+  questionId: string;
 };
 
 /**
@@ -25,6 +26,7 @@ export const QuestionCard = ({
   reason,
   alertProps,
   readonly = false,
+  questionId,
 }: QuestionCardProps) => {
   return (
     <div
@@ -55,6 +57,7 @@ export const QuestionCard = ({
             statusLabelProps={statusLabel}
             title={title}
             readonly={readonly}
+            questionId={questionId}
           />
 
           <Choices choices={choiceProps} readonly={readonly} />
@@ -82,10 +85,12 @@ const Header = ({
   statusLabelProps,
   title,
   readonly = false,
+  questionId,
 }: {
   statusLabelProps: StatusLabelProps;
   title: string;
   readonly?: boolean;
+  questionId: string;
 }) => {
   return (
     <div
@@ -101,13 +106,13 @@ const Header = ({
       <div
         className={cn(
           // 1. Layout
-          "flex w-full items-center justify-between",
+          "flex w-full items-start justify-between gap-3",
         )}
       >
         <QuestionCardParts.Title>{title}</QuestionCardParts.Title>
 
         {/* 문항 옵션 버튼 */}
-        {!readonly && <QuestionCardOptionMenu />}
+        {!readonly && <QuestionCardOptionMenu questionId={questionId} />}
       </div>
     </div>
   );

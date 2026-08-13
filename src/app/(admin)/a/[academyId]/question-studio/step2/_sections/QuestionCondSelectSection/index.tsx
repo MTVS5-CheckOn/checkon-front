@@ -51,16 +51,16 @@ export const QuestionStudio__QuestionCondSelect__Section = () => {
             size="large"
             items={[
               {
-                label: "하",
-                value: "하",
+                label: "상",
+                value: "상",
               },
               {
                 label: "중",
                 value: "중",
               },
               {
-                label: "상",
-                value: "상",
+                label: "하",
+                value: "하",
               },
             ]}
             value={model.level}

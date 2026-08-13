@@ -5,6 +5,7 @@ import { QuestionVersionHistoryItem } from "../_components/HistoryItem";
 export type QuestionVersionHistoryGroupSectionProps = {
   date: string;
   items: QuestionVersionHistoryItemProps[];
+  onItemClick?: (questionId: string, version: number) => void;
 };
 
 /**
@@ -13,6 +14,7 @@ export type QuestionVersionHistoryGroupSectionProps = {
 export const QuestionVersionHistoryGroupSection = ({
   date,
   items,
+  onItemClick,
 }: QuestionVersionHistoryGroupSectionProps) => {
   return (
     <div
@@ -35,15 +37,17 @@ export const QuestionVersionHistoryGroupSection = ({
       <div
         className={cn(
           // 1. Layout
-          "flex w-full flex-col items-start justify-start gap-2",
+          "flex w-full flex-col items-start justify-start gap-3",
         )}
       >
         {items.map((item) => (
           <QuestionVersionHistoryItem
-            key={item.version}
+            key={item.questionId + item.version}
+            questionId={item.questionId}
             title={item.title}
             time={item.time}
             version={item.version}
+            onClick={() => onItemClick?.(item.questionId, item.version)}
           />
         ))}
       </div>

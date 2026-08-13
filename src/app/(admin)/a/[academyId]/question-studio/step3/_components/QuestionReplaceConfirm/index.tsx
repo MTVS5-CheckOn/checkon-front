@@ -6,9 +6,11 @@ import { BaseConfirm } from "@/ui/components/BaseConfirm";
 export const QuestionReplaceConfirm = ({
   isOpen,
   onClose,
+  onConfirm,
 }: {
   isOpen: boolean;
   onClose: () => void;
+  onConfirm: () => void;
 }) => {
   return (
     <BaseConfirm
@@ -20,12 +22,11 @@ export const QuestionReplaceConfirm = ({
 교체된 문항은 버전으로 기록되고 버전 선택으로 이전 상태로 되돌릴 수 있어요.`}
       cancelButtonProps={{
         children: "취소",
-        onClick: () => {},
       }}
       confirmButtonProps={{
         color: "blue",
         children: "교체하기",
-        onClick: () => {},
+        onClick: onConfirm,
       }}
     />
   );

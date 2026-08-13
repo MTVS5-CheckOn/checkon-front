@@ -1,9 +1,11 @@
 import { cn } from "@/ui/utils/tailwind/cn";
 
 export type QuestionVersionHistoryItemProps = {
+  questionId: string;
   title: string;
   time: string;
   version: number;
+  onClick?: () => void;
 };
 
 /**
@@ -13,6 +15,7 @@ export const QuestionVersionHistoryItem = ({
   title,
   time,
   version,
+  onClick,
 }: QuestionVersionHistoryItemProps) => {
   return (
     <button
@@ -20,6 +23,7 @@ export const QuestionVersionHistoryItem = ({
         // 1. Layout
         "flex w-full",
       )}
+      onClick={onClick}
     >
       <div
         className={cn(
@@ -36,19 +40,19 @@ export const QuestionVersionHistoryItem = ({
         <div
           className={cn(
             // 1. Layout
-            "flex w-full flex-col items-start justify-start gap-1",
+            "flex w-full flex-col items-start justify-start gap-2",
           )}
         >
           <div
             className={cn(
               // 1. Layout
-              "flex w-full items-center justify-between gap-2",
+              "flex w-full items-start justify-between gap-2",
             )}
           >
             <span
               className={cn(
                 // 2. Typography
-                "ods__typo__title-small",
+                "ods__typo__title-small text-start",
                 // 3. Color
                 "text-ods__base-600",
               )}

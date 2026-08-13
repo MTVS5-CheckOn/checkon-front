@@ -1,13 +1,13 @@
 import { BaseDialog } from "@/ui/components/BaseDialog";
 import { cn } from "@/ui/utils/tailwind/cn";
-import {
-  QuestionVersionHistoryGroupSection,
-  QuestionVersionHistoryGroupSectionProps,
-} from "./_sections/HistoryGroupSection";
+import { QuestionVersionHistoryGroupSection } from "./_sections/HistoryGroupSection";
+import { QuestionVersionHistoryItemProps } from "./_components/HistoryItem";
 
 export type QuestionVersionsDialogProps = {
   isOpen: boolean;
   onClose?: () => void;
+  versionGroups: { date: string; items: QuestionVersionHistoryItemProps[] }[];
+  onItemClick?: (questionId: string, version: number) => void;
 };
 
 /**
@@ -16,14 +16,14 @@ export type QuestionVersionsDialogProps = {
 export const QuestionVersionsDialog = ({
   isOpen,
   onClose,
+  versionGroups,
+  onItemClick,
 }: QuestionVersionsDialogProps) => {
-  const versionGroups = MOCK_VERSION_HISTORY;
-
   return (
     <BaseDialog
       isOpen={isOpen}
       onClose={onClose}
-      containerClassName={cn("w-125 max-w-125")}
+      containerClassName={cn("w-full max-w-200")}
       dialogTitle={
         <span
           className={cn(
@@ -60,6 +60,10 @@ export const QuestionVersionsDialog = ({
                 key={group.date + index}
                 date={group.date}
                 items={group.items}
+                onItemClick={(questionId, version) => {
+                  onItemClick?.(questionId, version);
+                  onClose?.();
+                }}
               />
             ))}
           </div>
@@ -68,158 +72,3 @@ export const QuestionVersionsDialog = ({
     />
   );
 };
-
-// ==============================================
-
-const MOCK_VERSION_HISTORY: QuestionVersionHistoryGroupSectionProps[] = [
-  {
-    date: "2026-08-12",
-    items: [
-      {
-        title: "객관적인 문항으로 수정",
-        time: "23:00",
-        version: 5,
-      },
-      {
-        title: "객관적인 문항으로 수정",
-        time: "22:00",
-        version: 4,
-      },
-    ],
-  },
-  {
-    date: "2026-08-11",
-    items: [
-      {
-        title: "객관적인 문항으로 수정",
-        time: "23:00",
-        version: 3,
-      },
-      {
-        title: "객관적인 문항으로 수정",
-        time: "22:00",
-        version: 2,
-      },
-    ],
-  },
-  {
-    date: "2026-08-11",
-    items: [
-      {
-        title: "객관적인 문항으로 수정",
-        time: "23:00",
-        version: 3,
-      },
-      {
-        title: "객관적인 문항으로 수정",
-        time: "22:00",
-        version: 2,
-      },
-    ],
-  },
-  {
-    date: "2026-08-11",
-    items: [
-      {
-        title: "객관적인 문항으로 수정",
-        time: "23:00",
-        version: 3,
-      },
-      {
-        title: "객관적인 문항으로 수정",
-        time: "22:00",
-        version: 2,
-      },
-    ],
-  },
-  {
-    date: "2026-08-11",
-    items: [
-      {
-        title: "객관적인 문항으로 수정",
-        time: "23:00",
-        version: 3,
-      },
-      {
-        title: "객관적인 문항으로 수정",
-        time: "22:00",
-        version: 2,
-      },
-    ],
-  },
-  {
-    date: "2026-08-11",
-    items: [
-      {
-        title: "객관적인 문항으로 수정",
-        time: "23:00",
-        version: 3,
-      },
-      {
-        title: "객관적인 문항으로 수정",
-        time: "22:00",
-        version: 2,
-      },
-    ],
-  },
-  {
-    date: "2026-08-11",
-    items: [
-      {
-        title: "객관적인 문항으로 수정",
-        time: "23:00",
-        version: 3,
-      },
-      {
-        title: "객관적인 문항으로 수정",
-        time: "22:00",
-        version: 2,
-      },
-    ],
-  },
-  {
-    date: "2026-08-11",
-    items: [
-      {
-        title: "객관적인 문항으로 수정",
-        time: "23:00",
-        version: 3,
-      },
-      {
-        title: "객관적인 문항으로 수정",
-        time: "22:00",
-        version: 2,
-      },
-    ],
-  },
-  {
-    date: "2026-08-11",
-    items: [
-      {
-        title: "객관적인 문항으로 수정",
-        time: "23:00",
-        version: 3,
-      },
-      {
-        title: "객관적인 문항으로 수정",
-        time: "22:00",
-        version: 2,
-      },
-    ],
-  },
-  {
-    date: "2026-08-11",
-    items: [
-      {
-        title: "객관적인 문항으로 수정",
-        time: "23:00",
-        version: 3,
-      },
-      {
-        title: "객관적인 문항으로 수정",
-        time: "22:00",
-        version: 2,
-      },
-    ],
-  },
-];

@@ -2,17 +2,52 @@
 
 import { Button } from "@/ui/components/Button";
 import { cn } from "@/ui/utils/tailwind/cn";
+import { GeneratedQuestionModelsMockRepo } from "@/mocks/question-mocks";
 
 import { QuestionStudio__QuestionCondSelect__Section } from "./_sections/QuestionCondSelectSection";
 import { useRouter } from "next/navigation";
+import { QuestionStudioPageModel } from "../layout";
+import { useFormContext } from "react-hook-form";
 
 export default function Page() {
   const router = useRouter();
 
+  const { watch, setValue } = useFormContext<QuestionStudioPageModel>();
+  const model = watch();
+
   const handleSubmit = () => {
+    const totalQuestionCount = model.selectedTopics.reduce(
+      (acc, curr) => acc + curr.questionCount,
+      0,
+    );
+
+    // TODO: 임시 로직
+    (() => {
+      const filteredGeneratedQuestionModelsMock =
+        GeneratedQuestionModelsMockRepo.getSuffledItems().filter((it) => {
+          if (it.level !== model.level) {
+            return false;
+          }
+          if (model.selectedTopics.length) {
+            return !model.selectedTopics.some(
+              (topicModel) =>
+                topicModel.topic === it.topic && topicModel.type === it.type,
+            );
+          }
+
+          return true;
+        });
+
+      const generatedQuestionModels = Array.from(
+        { length: totalQuestionCount },
+        (_, index) => filteredGeneratedQuestionModelsMock[index],
+      ).filter((it) => !!it);
+
+      setValue("generatedQuestionModels", generatedQuestionModels);
+    })();
+
     router.push("./step3");
   };
-
   return (
     <div className={cn("flex w-full flex-col gap-8")}>
       <div className={cn("flex w-full flex-col gap-3")}>

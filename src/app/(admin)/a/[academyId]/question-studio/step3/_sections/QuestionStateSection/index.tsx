@@ -1,8 +1,37 @@
 import { cn } from "@/ui/utils/tailwind/cn";
 
+import { QuestionStudioPageModel } from "../../../layout";
 import { StateCard } from "./_components/StateCard";
+import { useFormContext } from "react-hook-form";
+import { groupBy } from "es-toolkit/array";
 
 export const QuestionStateSection = () => {
+  const { watch } = useFormContext<QuestionStudioPageModel>();
+  const model = watch();
+
+  const groupedQuestionModels = groupBy(
+    model.generatedQuestionModels ?? [],
+    (it) => it.status,
+  );
+  const statusWithCount = Object.entries(groupedQuestionModels).map(
+    ([status, questionModels]) => {
+      return {
+        status: status as
+          "Passed" | "ReviewNeeded" | "VerificationFailed" | "Rejected",
+        count: questionModels.length,
+      };
+    },
+  );
+  const passedCount =
+    statusWithCount.find((it) => it.status === "Passed")?.count ?? 0;
+  const reviewNeededCount =
+    statusWithCount.find((it) => it.status === "ReviewNeeded")?.count ?? 0;
+  const verificationFailedCount =
+    statusWithCount.find((it) => it.status === "VerificationFailed")?.count ??
+    0;
+  const rejectedCount =
+    statusWithCount.find((it) => it.status === "Rejected")?.count ?? 0;
+
   return (
     <div
       className={cn(
@@ -33,13 +62,21 @@ export const QuestionStateSection = () => {
           "overflow-hidden",
         )}
       >
-        <StateCard variant="Positive" title="검증 통과" count={7} />
-        <StateCard variant="Warning" title="검토 필요" count={1} />
-        <StateCard variant="Danger" title="검증 불가" count={1} />
+        <StateCard variant="Positive" title="검증 통과" count={passedCount} />
+        <StateCard
+          variant="Warning"
+          title="검토 필요"
+          count={reviewNeededCount}
+        />
+        <StateCard
+          variant="Danger"
+          title="검증 불가"
+          count={verificationFailedCount}
+        />
         <StateCard
           variant="Default"
           title="폐기·제외"
-          count={1}
+          count={rejectedCount}
           className="border-r-0"
         />
       </div>

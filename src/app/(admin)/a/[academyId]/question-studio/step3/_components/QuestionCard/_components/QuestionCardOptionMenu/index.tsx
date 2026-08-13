@@ -3,37 +3,144 @@ import { EllipsisIcon } from "lucide-react";
 import { Menu } from "@/ui/components/Menu";
 import MenuParts from "@/ui/components/Menu/Parts";
 import { cn } from "@/ui/utils/tailwind/cn";
+import { GeneratedQuestionModelsMockRepo } from "@/mocks/question-mocks";
 import { overlay } from "overlay-kit";
+import { useController, useFormContext } from "react-hook-form";
 import { QuestionReplaceConfirm } from "../../../QuestionReplaceConfirm";
 import { QuestionVersionsDialog } from "../../../QuestionVersionsDialog";
 import { QuestionDeleteConfirm } from "../../../QuestionDeleteConfirm";
 import { QuestionUpdateDialog } from "../../../QuestionUpdateDialog";
+import { QuestionStudioPageModel } from "../../../../../layout";
+import { groupBy, sortBy } from "es-toolkit/array";
+import { format } from "date-fns";
 
 /**
  * 문항 카드 옵션 메뉴
  */
-export const QuestionCardOptionMenu = () => {
+export const QuestionCardOptionMenu = ({
+  questionId,
+}: {
+  questionId: string;
+}) => {
+  const { control, getValues } = useFormContext<QuestionStudioPageModel>();
+  const { field } = useController({
+    control,
+    name: "generatedQuestionModels",
+  });
+
   const handleUpdatebyAi = () => {
     overlay.open(({ isOpen, close }) => {
       return <QuestionUpdateDialog isOpen={isOpen} onClose={close} />;
     });
   };
 
-  const handleReplaceWithNewQuestion = () => {
+  const handleReplaceWithNewQuestion = (questionId: string) => {
+    const handleConfirm = () => {
+      field.onChange(
+        field.value.map((it) => {
+          if (it.questionId === questionId) {
+            const newQuestion = {
+              ...GeneratedQuestionModelsMockRepo.getRandomItem(),
+              questionId,
+              version: it.version + 1,
+              createdAt: new Date(),
+            };
+
+            GeneratedQuestionModelsMockRepo.createItem(newQuestion as any);
+
+            return newQuestion;
+          }
+
+          return it;
+        }),
+      );
+    };
+
     overlay.open(({ isOpen, close }) => {
-      return <QuestionReplaceConfirm isOpen={isOpen} onClose={close} />;
+      return (
+        <QuestionReplaceConfirm
+          isOpen={isOpen}
+          onClose={close}
+          onConfirm={handleConfirm}
+        />
+      );
     });
   };
 
-  const handleSelectVersion = () => {
+  const handleSelectVersion = (questionId: string) => {
+    const targetQuestions =
+      GeneratedQuestionModelsMockRepo.getItems().filter(
+        (it) => it.questionId === questionId,
+      ) ?? [];
+
+    const grouped = groupBy(targetQuestions, (it) =>
+      format(it.createdAt, "yyyy-MM-dd"),
+    );
+
+    const versionGroups = sortBy(
+      Object.entries(grouped).map(([date, items]) => {
+        const sortedDescItems = sortBy(items, [(it) => it.createdAt])
+          .reverse()
+          .map((it) => {
+            return {
+              questionId: it.questionId,
+              title: it.title,
+              time: format(it.createdAt, "HH:mm"),
+              version: it.version,
+            };
+          });
+
+        return {
+          date,
+          items: sortedDescItems,
+        };
+      }),
+      [(it) => it.date],
+    ).reverse();
+
+    const handleItemClick = (questionId: string, version: number) => {
+      const targetQuestion = GeneratedQuestionModelsMockRepo.getItems().find(
+        (it) => it.questionId === questionId && it.version === version,
+      );
+
+      field.onChange(
+        field.value.map((it) => {
+          if (it.questionId === questionId) {
+            return targetQuestion;
+          }
+
+          return it;
+        }),
+      );
+    };
+
     overlay.open(({ isOpen, close }) => {
-      return <QuestionVersionsDialog isOpen={isOpen} onClose={close} />;
+      return (
+        <QuestionVersionsDialog
+          isOpen={isOpen}
+          onClose={close}
+          versionGroups={versionGroups}
+          onItemClick={handleItemClick}
+        />
+      );
     });
   };
 
-  const handleDelete = () => {
+  const handleDelete = (questionId: string) => {
+    const handleRemove = () => {
+      field.onChange(
+        field.value.filter((it) => it.questionId !== questionId), //
+      );
+    };
+
     overlay.open(({ isOpen, close }) => {
-      return <QuestionDeleteConfirm isOpen={isOpen} onClose={close} />;
+      return (
+        <QuestionDeleteConfirm
+          isOpen={isOpen}
+          onClose={close}
+          onRemove={handleRemove}
+        />
+      );
     });
   };
 
@@ -58,13 +165,16 @@ export const QuestionCardOptionMenu = () => {
       <MenuParts.Item isButton onClick={handleUpdatebyAi}>
         AI로 수정하기
       </MenuParts.Item>
-      <MenuParts.Item isButton onClick={handleReplaceWithNewQuestion}>
+      <MenuParts.Item
+        isButton
+        onClick={() => handleReplaceWithNewQuestion(questionId)}
+      >
         새 문항으로 교체하기
       </MenuParts.Item>
-      <MenuParts.Item isButton onClick={handleSelectVersion}>
+      <MenuParts.Item isButton onClick={() => handleSelectVersion(questionId)}>
         버전 선택하기
       </MenuParts.Item>
-      <MenuParts.Item isButton onClick={handleDelete}>
+      <MenuParts.Item isButton onClick={() => handleDelete(questionId)}>
         삭제하기
       </MenuParts.Item>
     </Menu>
