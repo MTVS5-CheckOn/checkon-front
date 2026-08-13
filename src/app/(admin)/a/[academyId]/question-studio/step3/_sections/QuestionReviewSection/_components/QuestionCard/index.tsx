@@ -11,6 +11,8 @@ import {
   QuestionChoiceItem,
   QuestionChoiceItemProps,
 } from "../QuestionChoiceItem";
+import { overlay } from "overlay-kit";
+import { BaseConfirm } from "@/ui/components/BaseConfirm";
 
 export type QuestionCardProps = {
   statusLabel: {
@@ -128,7 +130,25 @@ const Header = ({
             "flex size-8 items-center justify-center",
             // 4. Shadow & Border
             "border-ods__border rounded-sm border",
+            // 5. Interaction
+            "ods__animate__default hover:bg-ods__hover",
           )}
+          onClick={() => {
+            overlay.open(({ isOpen, close }) => {
+              return (
+                <BaseConfirm
+                  isOpen={isOpen}
+                  onClose={close}
+                  title="문항 교체"
+                  description={`해당 문항을 기존 조건에 맞춰 새로 생성해요.
+
+교체된 문항은 버전으로 기록되고 버전 선택으로 이전 상태로 되돌릴 수 있어요.`}
+                  cancelButton={{ label: "취소", onClick: close }}
+                  confirmButton={{ label: "교체", onClick: close }}
+                />
+              );
+            });
+          }}
         >
           <EllipsisIcon className="text-ods__base-600" />
         </button>
