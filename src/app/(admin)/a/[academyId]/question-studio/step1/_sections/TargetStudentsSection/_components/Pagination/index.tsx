@@ -1,36 +1,38 @@
 import { Pagination } from "@/ui/components/Pagination";
-import { PaginationItem } from "@/ui/components/Pagination/PaginationItem";
-import { PaginationEllipsis } from "@/ui/components/Pagination/PaginationEllipsis";
-import { PaginationNext } from "@/ui/components/Pagination/PaginationNext";
-import { PaginationPrev } from "@/ui/components/Pagination/PaginationPrev";
 import { cn } from "@/ui/utils/tailwind/cn";
 
-const PAGINATION_PAGES = [1, 2, 3, 4, 5] as const;
+import { parseAsInteger, useQueryState } from "nuqs";
 
-export const QuestionStudio__TargetStudents__Pagination = () => (
-  <div
-    className={cn(
-      // 1. Layout
-      "flex w-full flex-col items-end px-4 py-3",
-      // 3. Color
-      "bg-white",
-      // 4. Shadow & Border
-      "border-ods__border border-t",
-    )}
-  >
-    <Pagination>
-      {PAGINATION_PAGES.map((page) => (
-        <PaginationItem key={page} isActive={page === 1}>
-          {page}
-        </PaginationItem>
-      ))}
+export const QuestionStudio__TargetStudents__Pagination = () => {
+  const [selectedPage, setSelectedPage] = useQueryState(
+    "page",
+    parseAsInteger.withDefault(1),
+  );
 
-      <PaginationEllipsis />
+  const metadata = {
+    totalPageCount: 50,
+  };
 
-      <PaginationItem>{50}</PaginationItem>
+  const handlePageChange = (page: number) => {
+    setSelectedPage(page);
+  };
 
-      <PaginationPrev disabled />
-      <PaginationNext />
-    </Pagination>
-  </div>
-);
+  return (
+    <div
+      className={cn(
+        // 1. Layout
+        "flex w-full flex-col items-end px-4 py-3",
+        // 3. Color
+        "bg-white",
+        // 4. Shadow & Border
+        "border-ods__border border-t",
+      )}
+    >
+      <Pagination
+        page={selectedPage}
+        count={metadata.totalPageCount}
+        onPageChange={handlePageChange}
+      />
+    </div>
+  );
+};

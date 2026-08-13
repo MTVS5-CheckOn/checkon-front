@@ -29,9 +29,12 @@ const CELL_STATUS_STYLES: Record<
   },
 };
 
-export const WeekMapCell = ({ status, ...props }: WeekMapCellProps) => (
+export const WeekMapCell = ({
+  status,
+  className,
+  ...props
+}: WeekMapCellProps) => (
   <div
-    data-status={status}
     className={cn(
       // 1. Layout
       "flex h-12 w-44 items-center justify-center",
@@ -42,6 +45,7 @@ export const WeekMapCell = ({ status, ...props }: WeekMapCellProps) => (
       CELL_STATUS_STYLES[status].textColor,
       // 4. Shadow & Border
       "rounded-lg",
+      className,
     )}
     {...props}
   />

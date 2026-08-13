@@ -6,15 +6,15 @@ import { cn } from "@/ui/utils/tailwind/cn";
 
 export type SelectedTopicGridItemProps = {
   title: string;
-  value: number;
-  onChange: (value: number) => void;
+  questionCount: number;
+  onQuestionCountChange: (newQuestionCount: number) => void;
   onRemove?: () => void;
 };
 
 export const SelectedTopicGridItem = ({
   title,
-  value,
-  onChange,
+  questionCount,
+  onQuestionCountChange,
   onRemove,
 }: SelectedTopicGridItemProps) => (
   <div
@@ -53,8 +53,8 @@ export const SelectedTopicGridItem = ({
 
       <Input
         type="number"
-        value={value}
-        onChange={(e) => onChange(Number(e.target.value))}
+        value={questionCount}
+        onChange={(e) => onQuestionCountChange(Number(e.target.value))}
       />
     </div>
   </div>

@@ -9,9 +9,13 @@ import {
 import { Separator } from "@/ui/components/Separator";
 import { ComponentPropsWithRef } from "react";
 
-const model = {
-  columnHeaders: ["사실적 이해", "추론적 이해", "비판적 이해", "어휘·개념"],
-  rowHeaders: ["독서 (비문학)", "문학", "화법과 작문", "언어", "매체"],
+export const WeekMapMatrixModel = {
+  topics: ["독서 (비문학)", "문학", "화법과 작문", "언어", "매체"],
+  types: ["사실적 이해", "추론적 이해", "비판적 이해", "어휘·개념"],
+};
+
+const WeekMapModel = {
+  matrix: WeekMapMatrixModel,
   statusLabels: [
     { status: "Positive", label: "양호 (평균)" },
     { status: "Warning", label: "약점 신호" },
@@ -27,12 +31,19 @@ export type WeekMapRowDataItemModel = {
 
 export type WeekMapProps = {
   data: WeekMapRowDataItemModel[][];
+  selectedPairs?: { topic: string; type: string }[];
+  onCellClick?: (model: {
+    rowIndex: number;
+    columnIndex: number;
+    topic: string;
+    type: string;
+  }) => void;
 };
 
 /**
  * 학생 약점 맵
  */
-export const WeekMap = ({ data }: WeekMapProps) => {
+export const WeekMap = ({ data, selectedPairs, onCellClick }: WeekMapProps) => {
   return (
     <div
       className={cn(
@@ -44,7 +55,7 @@ export const WeekMap = ({ data }: WeekMapProps) => {
         "overflow-hidden",
       )}
     >
-      {/* ── Header Section: 제목 · 설명 · 상태 범례 ── */}
+      {/*  Header Section: 제목 · 설명 · 상태 범례  */}
       <div className={cn("flex w-full items-end justify-between")}>
         <div className={cn("flex flex-col items-start justify-center gap-1")}>
           <p
@@ -77,7 +88,7 @@ export const WeekMap = ({ data }: WeekMapProps) => {
             "overflow-hidden",
           )}
         >
-          {model.statusLabels.map(({ status, label }) => (
+          {WeekMapModel.statusLabels.map(({ status, label }) => (
             <StatusLabel key={status} status={status as StatusLabelStatus}>
               {label}
             </StatusLabel>
@@ -85,10 +96,10 @@ export const WeekMap = ({ data }: WeekMapProps) => {
         </div>
       </div>
 
-      {/* ── Divider Section ── */}
+      {/*  Divider Section  */}
       <Separator />
 
-      {/* ── Matrix Section: 출제 영역 × 유형 히트맵 ── */}
+      {/*  Matrix Section: 출제 영역 × 유형 히트맵  */}
       <div
         className={cn("flex w-full flex-col items-start justify-start gap-2.5")}
       >
@@ -102,15 +113,15 @@ export const WeekMap = ({ data }: WeekMapProps) => {
               "overflow-hidden",
             )}
           >
-            {model.columnHeaders.map((header) => (
+            {WeekMapModel.matrix.types.map((header) => (
               <ColumnHeader key={header}>{header}</ColumnHeader>
             ))}
           </div>
 
           {/* Data Rows */}
-          {model.rowHeaders.map((rowHeaderValue, rowHeaderIndex) => (
+          {WeekMapModel.matrix.topics.map((topic, topicIndex) => (
             <div
-              key={rowHeaderValue + `-${rowHeaderIndex}`}
+              key={topic + `-${topicIndex}`}
               className={cn(
                 "flex w-full items-center justify-between",
                 "overflow-hidden",
@@ -125,19 +136,49 @@ export const WeekMap = ({ data }: WeekMapProps) => {
                   "text-ods__base-600",
                 )}
               >
-                {rowHeaderValue}
+                {topic}
               </span>
 
               {/* Row Data Cells */}
               <div className={cn("flex items-center justify-start gap-3")}>
-                {data[rowHeaderIndex].map((rowDataItem, rowDataItemIndex) => (
-                  <WeekMapCell
-                    key={`${rowDataItem.value}-${rowDataItemIndex}`}
-                    status={rowDataItem.status as StatusLabelStatus}
-                  >
-                    {rowDataItem.value}
-                  </WeekMapCell>
-                ))}
+                {data[topicIndex].map((itemModel, ItemModelIndex) => {
+                  const isReadonly = !onCellClick;
+
+                  const questionType = WeekMapMatrixModel.types[ItemModelIndex];
+                  const isSelected = selectedPairs?.some(
+                    (pair) =>
+                      pair.topic === topic && pair.type === questionType,
+                  );
+
+                  const textPrefix = isSelected ? "✔️ " : "";
+                  const textValue = `${itemModel.value ? `${itemModel.value}%` : "-"}`;
+                  const fullText = `${textPrefix}${textValue}`;
+
+                  return (
+                    <WeekMapCell
+                      key={`${itemModel.value}-${ItemModelIndex}`}
+                      status={itemModel.status as StatusLabelStatus}
+                      className={cn(
+                        !isReadonly &&
+                          "ods__animate__default cursor-pointer hover:opacity-60",
+                        isSelected && "text-ods__base-800 font-bold",
+                      )}
+                      onClick={() => {
+                        if (isReadonly) {
+                          return;
+                        }
+                        onCellClick?.({
+                          rowIndex: topicIndex,
+                          columnIndex: ItemModelIndex,
+                          topic: topic,
+                          type: questionType,
+                        });
+                      }}
+                    >
+                      {fullText}
+                    </WeekMapCell>
+                  );
+                })}
               </div>
             </div>
           ))}
