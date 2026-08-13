@@ -99,7 +99,7 @@ export default function Page() {
           </div>
         </div>
 
-        <Link href="./step2">
+        <Link href="./step3">
           <Button size="large" color="blue" className={cn("w-full")}>
             다음
           </Button>

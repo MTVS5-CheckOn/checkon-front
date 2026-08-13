@@ -13,10 +13,10 @@ const model = {
   columnHeaders: ["사실적 이해", "추론적 이해", "비판적 이해", "어휘·개념"],
   rowHeaders: ["독서 (비문학)", "문학", "화법과 작문", "언어", "매체"],
   statusLabels: [
-    { status: "POSITIVE", label: "양호 (평균)" },
-    { status: "WARNING", label: "약점 신호" },
-    { status: "DANGER", label: "약점 확정" },
-    { status: "DEFAULT", label: "판단 보류" },
+    { status: "Positive", label: "양호 (평균)" },
+    { status: "Warning", label: "약점 신호" },
+    { status: "Danger", label: "약점 확정" },
+    { status: "Default", label: "판단 보류" },
   ],
 };
 

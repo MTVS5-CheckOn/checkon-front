@@ -30,19 +30,19 @@ const mocks: {
   items: [
     {
       title: "마리화이 프로션 미팅 준비",
-      status: "DEFAULT",
+      status: "Default",
       statusLabel: "이해 저하",
       deadlinedAt: new Date(),
     },
     {
       title: "중간대비 부재 구성 ㅡ 3개별 방문",
-      status: "DEFAULT",
+      status: "Default",
       statusLabel: "이해 저하",
       deadlinedAt: new Date(),
     },
     {
       title: "최수아 재출 피책 확인",
-      status: "DANGER",
+      status: "Danger",
       statusLabel: "이해 저하",
       deadlinedAt: new Date(),
     },

@@ -19,17 +19,17 @@ export type SignalItemProps = {
 export const SignalItem = ({ model, onClick }: SignalItemProps) => {
   const colorPalette = (() => {
     switch (model.status) {
-      case "POSITIVE":
+      case "Positive":
         return {
           signalDotColor: "bg-ods__blue-300",
           bgColor: undefined,
         };
-      case "WARNING":
+      case "Warning":
         return {
           signalDotColor: "bg-ods__yellow-200",
           bgColor: undefined,
         };
-      case "DANGER":
+      case "Danger":
         return {
           signalDotColor: "bg-ods__red-400",
           bgColor: "bg-ods__red-20",

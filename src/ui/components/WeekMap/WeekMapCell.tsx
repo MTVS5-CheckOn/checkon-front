@@ -11,19 +11,19 @@ const CELL_STATUS_STYLES: Record<
   StatusLabelStatus,
   { bgColor: string; textColor: string }
 > = {
-  POSITIVE: {
+  Positive: {
     bgColor: "bg-ods__blue-40",
     textColor: "text-ods__blue-500",
   },
-  WARNING: {
+  Warning: {
     bgColor: "bg-ods__yellow-20",
     textColor: "text-ods__bronze-500",
   },
-  DANGER: {
+  Danger: {
     bgColor: "bg-ods__red-20",
     textColor: "text-ods__red-500",
   },
-  DEFAULT: {
+  Default: {
     bgColor: "bg-ods__base-50",
     textColor: "text-ods__base-700",
   },
