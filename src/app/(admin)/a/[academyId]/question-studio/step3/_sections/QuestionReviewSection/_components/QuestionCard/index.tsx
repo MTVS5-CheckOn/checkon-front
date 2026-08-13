@@ -12,7 +12,7 @@ import {
   QuestionChoiceItemProps,
 } from "../QuestionChoiceItem";
 import { overlay } from "overlay-kit";
-import { BaseConfirm } from "@/ui/components/BaseConfirm";
+import { QuestionVersionsDialog } from "../../../../_components/QuestionVersionsDialog";
 
 export type QuestionCardProps = {
   statusLabel: {
@@ -135,18 +135,7 @@ const Header = ({
           )}
           onClick={() => {
             overlay.open(({ isOpen, close }) => {
-              return (
-                <BaseConfirm
-                  isOpen={isOpen}
-                  onClose={close}
-                  title="문항 교체"
-                  description={`해당 문항을 기존 조건에 맞춰 새로 생성해요.
-
-교체된 문항은 버전으로 기록되고 버전 선택으로 이전 상태로 되돌릴 수 있어요.`}
-                  cancelButton={{ label: "취소", onClick: close }}
-                  confirmButton={{ label: "교체", onClick: close }}
-                />
-              );
+              return <QuestionVersionsDialog isOpen={isOpen} onClose={close} />;
             });
           }}
         >

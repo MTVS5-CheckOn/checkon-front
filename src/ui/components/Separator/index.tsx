@@ -5,7 +5,7 @@ export const Separator = () => {
     <div
       className={cn(
         // 1. Layout
-        "bg-ods__border h-px w-full",
+        "bg-ods__border h-px min-h-px w-full",
       )}
     />
   );

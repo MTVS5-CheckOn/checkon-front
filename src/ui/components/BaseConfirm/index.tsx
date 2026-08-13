@@ -1,24 +1,22 @@
 import { AlertDialog } from "@base-ui/react/alert-dialog";
 
+import { Button, type ButtonProps } from "@/ui/components/Button";
 import { cn } from "@/ui/utils/tailwind/cn";
 
-import { Button } from "../Button";
+export type BaseConfirmButtonProps = {
+  label: string;
+  onClick?: () => void;
+  color?: ButtonProps["color"];
+  className?: string;
+};
 
 export type BaseConfirmProps = {
   isOpen: boolean;
   onClose?: () => void;
   title: string;
   description?: string;
-  cancelButton?: {
-    label?: string;
-    onClick?: () => void;
-    autoClose?: boolean;
-  };
-  confirmButton?: {
-    label?: string;
-    onClick?: () => void;
-    autoClose?: boolean;
-  };
+  cancelButtonProps?: ButtonProps;
+  confirmButtonProps?: ButtonProps;
   dismissible?: boolean;
 };
 
@@ -30,8 +28,8 @@ export const BaseConfirm = ({
   onClose,
   title,
   description,
-  cancelButton,
-  confirmButton,
+  cancelButtonProps,
+  confirmButtonProps,
   dismissible = true,
 }: BaseConfirmProps) => {
   return (
@@ -85,36 +83,53 @@ export const BaseConfirm = ({
                 {title}
               </h6>
 
-              <p
-                className={cn(
-                  // 2. Typography
-                  "ods__typo__body-medium whitespace-pre-line",
-                  // 3. Color
-                  "text-ods__base-500",
-                )}
-              >
-                {description}
-              </p>
+              {description && (
+                <p
+                  className={cn(
+                    // 2. Typography
+                    "ods__typo__body-medium whitespace-pre-line",
+                    // 3. Color
+                    "text-ods__base-500",
+                  )}
+                >
+                  {description}
+                </p>
+              )}
             </div>
 
+            {/* 버튼 영역 */}
             <div className={cn("flex w-full items-start justify-start gap-2")}>
-              <Button
-                color="default"
-                size="medium"
-                className="w-full"
-                onClick={cancelButton?.onClick}
-              >
-                {cancelButton?.label}
-              </Button>
+              {cancelButtonProps &&
+                (() => {
+                  const { onClick, ...restProps } = cancelButtonProps;
 
-              <Button
-                color="blue"
-                size="medium"
-                className="w-full"
-                onClick={confirmButton?.onClick}
-              >
-                {confirmButton?.label}
-              </Button>
+                  return (
+                    <Button
+                      className="w-full"
+                      onClick={(e) => {
+                        onClick?.(e);
+                        onClose?.();
+                      }}
+                      {...restProps}
+                    />
+                  );
+                })()}
+
+              {confirmButtonProps &&
+                (() => {
+                  const { onClick, ...restProps } = confirmButtonProps;
+
+                  return (
+                    <Button
+                      className="w-full"
+                      onClick={(e) => {
+                        onClick?.(e);
+                        onClose?.();
+                      }}
+                      {...restProps}
+                    />
+                  );
+                })()}
             </div>
           </div>
         </AlertDialog.Popup>
