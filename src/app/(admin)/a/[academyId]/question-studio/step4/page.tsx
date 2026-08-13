@@ -7,8 +7,6 @@ import { cn } from "@/ui/utils/tailwind/cn";
 
 import { PageRootContainer } from "../../_components/PageRootContainer";
 import { QuestionStudio__HeaderSection } from "../_components/HeaderSection";
-import { QuestionStateSection } from "./_sections/QuestionStateSection";
-import { QuestionReviewSection } from "./_sections/QuestionReviewSection";
 
 export default function Page() {
   return (
@@ -16,12 +14,9 @@ export default function Page() {
       <div className={cn("flex w-full flex-col gap-8 p-6")}>
         <QuestionStudio__HeaderSection />
 
-        <div className={cn("flex w-full flex-col gap-12")}>
-          <QuestionStateSection />
-          <QuestionReviewSection />
-        </div>
+        <div className={cn("flex w-full flex-col gap-12")}></div>
 
-        <Link href="./step3">
+        <Link href="./step2">
           <Button size="large" color="blue" className={cn("w-full")}>
             다음
           </Button>
