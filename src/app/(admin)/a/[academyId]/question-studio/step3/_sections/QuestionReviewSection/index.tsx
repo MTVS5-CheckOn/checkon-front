@@ -1,9 +1,8 @@
+import { cn } from "@/ui/utils/tailwind/cn";
 import {
   QuestionCard,
-  type QuestionCardProps,
-} from "./_components/QuestionCard";
-
-import { cn } from "@/ui/utils/tailwind/cn";
+  QuestionCardProps,
+} from "../../_components/QuestionCard";
 
 export const QuestionReviewSection = () => {
   return (

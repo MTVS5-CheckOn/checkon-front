@@ -29,6 +29,8 @@ export const Input = ({ size, disabled, className, ...props }: InputProps) => {
           "rounded-[8px]",
           // 5. Interaction
           "ods__animate__default hover:opacity-80",
+          // 6. Utility
+          "focus:outline-none",
 
           // Placeholder
           "placeholder:text-ods__base-400 font-light",

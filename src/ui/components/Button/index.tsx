@@ -20,7 +20,7 @@ export const Button = ({
         // 1. Layout
         "flex h-10 items-center justify-center px-4",
         // 2. Typography
-        "ods__typo__label-large font-semibold",
+        "ods__typo__label-large font-semibold whitespace-nowrap",
         // 4. Shadow & Border
         "rounded-[8px]",
         // 5. Interaction

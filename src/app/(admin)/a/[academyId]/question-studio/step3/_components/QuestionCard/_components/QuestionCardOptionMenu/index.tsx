@@ -4,16 +4,19 @@ import { Menu } from "@/ui/components/Menu";
 import MenuParts from "@/ui/components/Menu/Parts";
 import { cn } from "@/ui/utils/tailwind/cn";
 import { overlay } from "overlay-kit";
-import { QuestionReplaceConfirm } from "../../../../_components/QuestionReplaceConfirm";
-import { QuestionVersionsDialog } from "../../../../_components/QuestionVersionsDialog";
-import { QuestionDeleteConfirm } from "../../../../_components/QuestionDeleteConfirm";
+import { QuestionReplaceConfirm } from "../../../QuestionReplaceConfirm";
+import { QuestionVersionsDialog } from "../../../QuestionVersionsDialog";
+import { QuestionDeleteConfirm } from "../../../QuestionDeleteConfirm";
+import { QuestionUpdateDialog } from "../../../QuestionUpdateDialog";
 
 /**
  * 문항 카드 옵션 메뉴
  */
 export const QuestionCardOptionMenu = () => {
   const handleUpdatebyAi = () => {
-    console.log("AI로 수정하기");
+    overlay.open(({ isOpen, close }) => {
+      return <QuestionUpdateDialog isOpen={isOpen} onClose={close} />;
+    });
   };
 
   const handleReplaceWithNewQuestion = () => {

@@ -5,8 +5,8 @@ import { cn } from "@/ui/utils/tailwind/cn";
 import {
   QuestionChoiceItem,
   QuestionChoiceItemProps,
-} from "../QuestionChoiceItem";
-import { QuestionCardOptionMenu } from "../QuestionCardOptionMenu";
+} from "./_components/QuestionChoiceItem";
+import { QuestionCardOptionMenu } from "./_components/QuestionCardOptionMenu";
 
 export type QuestionCardProps = {
   statusLabel: StatusLabelProps;
@@ -14,6 +14,7 @@ export type QuestionCardProps = {
   choiceProps: QuestionChoiceItemProps[];
   reason: string;
   alertProps?: AlertProps;
+  readonly?: boolean;
 };
 
 /**
@@ -25,6 +26,7 @@ export const QuestionCard = ({
   choiceProps,
   reason,
   alertProps,
+  readonly = false,
 }: QuestionCardProps) => {
   return (
     <div
@@ -51,9 +53,13 @@ export const QuestionCard = ({
             "flex w-full flex-col items-start justify-start gap-4",
           )}
         >
-          <Header statusLabelProps={statusLabel} title={title} />
+          <Header
+            statusLabelProps={statusLabel}
+            title={title}
+            readonly={readonly}
+          />
 
-          <Choices choices={choiceProps} />
+          <Choices choices={choiceProps} readonly={readonly} />
         </div>
 
         <Reason reason={reason} />
@@ -77,9 +83,11 @@ export const QuestionCard = ({
 const Header = ({
   statusLabelProps,
   title,
+  readonly = false,
 }: {
   statusLabelProps: StatusLabelProps;
   title: string;
+  readonly?: boolean;
 }) => {
   return (
     <div
@@ -110,7 +118,7 @@ const Header = ({
         </span>
 
         {/* 문항 옵션 버튼 */}
-        <QuestionCardOptionMenu />
+        {!readonly && <QuestionCardOptionMenu />}
       </div>
     </div>
   );
@@ -119,7 +127,13 @@ const Header = ({
 /**
  * 선지 목록
  */
-const Choices = ({ choices }: { choices: QuestionChoiceItemProps[] }) => {
+const Choices = ({
+  choices,
+  readonly = false,
+}: {
+  choices: QuestionChoiceItemProps[];
+  readonly?: boolean;
+}) => {
   return (
     <div
       className={cn(
@@ -132,6 +146,7 @@ const Choices = ({ choices }: { choices: QuestionChoiceItemProps[] }) => {
           key={`${choice.label}-${index}`}
           label={choice.label}
           isSelected={choice.isSelected}
+          readonly={readonly}
         />
       ))}
     </div>
@@ -152,7 +167,7 @@ const Reason = ({ reason }: { reason: string }) => {
       <span
         className={cn(
           // 2. Typography
-          "ods__typo__body-medium font-semibold",
+          "ods__typo__title-small font-medium",
           // 3. Color
           "text-ods__base-500",
         )}
@@ -164,7 +179,7 @@ const Reason = ({ reason }: { reason: string }) => {
           // 2. Typography
           "ods__typo__body-medium",
           // 3. Color
-          "text-ods__base-500",
+          "text-ods__base-400",
         )}
       >
         {reason}

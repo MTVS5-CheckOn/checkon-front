@@ -3,11 +3,13 @@ import { cn } from "@/ui/utils/tailwind/cn";
 export type QuestionChoiceItemProps = {
   label: string;
   isSelected?: boolean;
+  readonly?: boolean;
 };
 
 export const QuestionChoiceItem = ({
   label,
   isSelected = false,
+  readonly = false,
 }: QuestionChoiceItemProps) => {
   return (
     <button
@@ -22,7 +24,8 @@ export const QuestionChoiceItem = ({
         "overflow-hidden",
 
         // Cond
-        isSelected ? "bg-ods__blue-40" : "bg-white",
+        isSelected ? "bg-ods__blue-40" : "bg-ods__white",
+        readonly && "pointer-events-none",
       )}
     >
       <span
@@ -30,7 +33,7 @@ export const QuestionChoiceItem = ({
           // 2. Typography
           "ods__typo__label-large",
           // 3. Color
-          "text-ods__base-700",
+          "text-ods__base-500",
         )}
       >
         {label}
