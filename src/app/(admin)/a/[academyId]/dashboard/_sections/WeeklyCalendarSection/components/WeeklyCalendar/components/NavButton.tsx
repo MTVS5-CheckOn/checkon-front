@@ -29,7 +29,7 @@ export const WeeklyCalendar__NavButton = ({
         // 5. Interaction
         "ods__animate__default hover:bg-ods__hover",
         //
-        disabled && "pointer-events-none opacity-50",
+        disabled && "bg-ods__base-50 text-ods__base-300 pointer-events-none",
       )}
       onClick={onClick}
     >

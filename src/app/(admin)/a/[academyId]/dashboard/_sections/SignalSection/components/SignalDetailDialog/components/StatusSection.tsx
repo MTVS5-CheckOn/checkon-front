@@ -3,7 +3,7 @@ import { cn } from "@/ui/utils/tailwind/cn";
 import { format } from "date-fns";
 
 export type SignalDetailDialog__SignalStatusSectionProps = {
-  variant: "warning" | "danger" | "success" | "default";
+  variant: "Warning" | "Danger" | "Positive" | "Default";
   statusTitle: string;
   statusDescription: string;
   statusCreatedAt: Date;

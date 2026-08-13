@@ -54,7 +54,7 @@ export const Dashboard__FollowUpSection = () => {
           </div>
 
           {/* 팔로업 개수 */}
-          <StatusLabel status="POSITIVE">{`${data.followUpCount}건`}</StatusLabel>
+          <StatusLabel status="Positive">{`${data.followUpCount}건`}</StatusLabel>
         </div>
       </div>
 

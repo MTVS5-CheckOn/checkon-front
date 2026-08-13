@@ -3,22 +3,26 @@ import { Dialog } from "@base-ui/react/dialog";
 import { cn } from "@/ui/utils/tailwind/cn";
 import { XIcon } from "lucide-react";
 
+export type BaseDialogProps = {
+  isOpen: boolean;
+  onClose?: () => void;
+  fullScreen?: boolean;
+  containerClassName?: string;
+  dialogTitle?: React.ReactNode;
+  dialogContent?: React.ReactNode;
+};
+
 /**
  * 기본 다이얼로그
  */
 export const BaseDialog = ({
   isOpen,
   onClose,
+  fullScreen,
   containerClassName,
   dialogTitle,
   dialogContent,
-}: {
-  isOpen: boolean;
-  onClose?: () => void;
-  containerClassName?: string;
-  dialogTitle?: React.ReactNode;
-  dialogContent?: React.ReactNode;
-}) => {
+}: BaseDialogProps) => {
   return (
     <Dialog.Root open={isOpen}>
       <Dialog.Portal>
@@ -34,10 +38,11 @@ export const BaseDialog = ({
         />
 
         <Dialog.Popup
+          data-open={isOpen}
           className={cn(
             // 1. Layout
             "fixed top-1/2 left-1/2 z-9999 flex -translate-x-1/2 -translate-y-1/2 flex-col",
-            // 6. Utility
+            // 5. Interaction
             "ods__animate__popup-open",
           )}
         >
@@ -51,6 +56,8 @@ export const BaseDialog = ({
               "border-ods__border rounded-[20px] border",
               // 6. Utility
               "overflow-hidden",
+              fullScreen &&
+                "h-screen max-h-none w-screen max-w-none rounded-none border-none",
               containerClassName,
             )}
           >
@@ -61,7 +68,7 @@ export const BaseDialog = ({
             <section
               className={cn(
                 // 1. Layout
-                "flex w-full flex-col",
+                "flex h-full w-full flex-col",
                 // 6. Utility
                 "overflow-hidden",
               )}

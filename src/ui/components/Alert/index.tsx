@@ -6,8 +6,10 @@ import {
   XCircleIcon,
 } from "lucide-react";
 
+export type AlertVariant = "Default" | "Positive" | "Warning" | "Danger";
+
 export type AlertProps = {
-  variant?: "default" | "success" | "warning" | "danger";
+  variant?: AlertVariant;
   /**
    * undefined인 경우, 기본 아이콘 반환
    *
@@ -20,7 +22,7 @@ export type AlertProps = {
 };
 
 export const Alert = ({
-  variant = "default",
+  variant = "Default",
   icon,
   title,
   description,
@@ -36,13 +38,13 @@ export const Alert = ({
      */
     if (icon === undefined) {
       switch (variant) {
-        case "default":
+        case "Default":
           return <InfoIcon />;
-        case "success":
+        case "Positive":
           return <CheckCircleIcon />;
-        case "warning":
+        case "Warning":
           return <TriangleAlertIcon />;
-        case "danger":
+        case "Danger":
           return <XCircleIcon />;
       }
     }
@@ -55,28 +57,28 @@ export const Alert = ({
 
   const colorPalette = (() => {
     switch (variant) {
-      case "default":
+      case "Default":
         return {
           bgColor: "bg-ods__base-50",
           iconColor: "text-ods__base-600",
           titleColor: "text-ods__base-700",
           descriptionColor: "text-ods__base-600",
         };
-      case "success":
+      case "Positive":
         return {
           bgColor: "bg-ods__blue-20",
           iconColor: "text-ods__blue-600",
           titleColor: "text-ods__blue-700",
           descriptionColor: "text-ods__blue-600",
         };
-      case "warning":
+      case "Warning":
         return {
           bgColor: "bg-ods__yellow-20",
           iconColor: "text-ods__bronze-600",
           titleColor: "text-ods__bronze-700",
           descriptionColor: "text-ods__bronze-600",
         };
-      case "danger":
+      case "Danger":
         return {
           bgColor: "bg-ods__red-20",
           iconColor: "text-ods__red-600",
@@ -85,6 +87,8 @@ export const Alert = ({
         };
     }
   })();
+
+  console.log(variant);
 
   return (
     <div

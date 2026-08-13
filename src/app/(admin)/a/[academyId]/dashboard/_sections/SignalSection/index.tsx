@@ -50,7 +50,7 @@ export const Dashboard__SignalSection = () => {
           </div>
 
           {/* 신호 개수 */}
-          <StatusLabel status="POSITIVE">{`${data.signalCount}건`}</StatusLabel>
+          <StatusLabel status="Positive">{`${data.signalCount}건`}</StatusLabel>
         </div>
       </div>
 

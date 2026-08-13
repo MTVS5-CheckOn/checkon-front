@@ -20,7 +20,7 @@ export const Input = ({ size, disabled, className, ...props }: InputProps) => {
       <input
         className={cn(
           // 1. Layout
-          "w-full p-3",
+          "h-10 w-full p-3",
           // 2. Typography
           "ods__typo__body-medium",
           // 3. Color
@@ -29,6 +29,8 @@ export const Input = ({ size, disabled, className, ...props }: InputProps) => {
           "rounded-[8px]",
           // 5. Interaction
           "ods__animate__default hover:opacity-80",
+          // 6. Utility
+          "focus:outline-none",
 
           // Placeholder
           "placeholder:text-ods__base-400 font-light",
@@ -36,7 +38,6 @@ export const Input = ({ size, disabled, className, ...props }: InputProps) => {
           // Size
           size === "small" && "h-8",
           size === "large" && "h-12",
-          !size && "h-10",
           // Disabled
           disabled && "pointer-events-none opacity-30",
           className,

@@ -1,6 +1,6 @@
 import { cn } from "@/ui/utils/tailwind/cn";
 
-export type StatusLabelStatus = "POSITIVE" | "WARNING" | "DANGER" | "DEFAULT";
+export type StatusLabelStatus = "Positive" | "Warning" | "Danger" | "Default";
 
 export type StatusLabelProps = {
   status?: StatusLabelStatus;
@@ -11,22 +11,22 @@ export type StatusLabelProps = {
  * 상태 라벨
  */
 export const StatusLabel = ({
-  status = "DEFAULT",
+  status = "Default",
   children,
 }: StatusLabelProps) => {
   const colorPalette = (() => {
     switch (status) {
-      case "POSITIVE":
+      case "Positive":
         return {
           textColor: "text-ods__blue-500",
           bgColor: "bg-ods__blue-40",
         };
-      case "WARNING":
+      case "Warning":
         return {
           textColor: "text-ods__bronze-500",
           bgColor: "bg-ods__yellow-40",
         };
-      case "DANGER":
+      case "Danger":
         return {
           textColor: "text-ods__red-500",
           bgColor: "bg-ods__red-40",

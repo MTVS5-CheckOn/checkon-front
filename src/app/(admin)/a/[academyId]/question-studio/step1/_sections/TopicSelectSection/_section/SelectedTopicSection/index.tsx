@@ -1,15 +1,68 @@
 import { cn } from "@/ui/utils/tailwind/cn";
 
 import { SelectedTopicGridItem } from "./_components/SelectedTopicGridItem";
+import {
+  QuestionStudioPageModel,
+  QuestionStudioPageModelHelper,
+} from "../../../../../layout";
 
-const MOCK_SELECTED_TOPICS = [
-  { id: "1", label: "독서 x 사실적 이해", questionCount: 12 },
-  { id: "2", label: "독서 x 사실적 이해", questionCount: 12 },
-  { id: "3", label: "독서 x 사실적 이해", questionCount: 12 },
-  { id: "4", label: "독서 x 사실적 이해", questionCount: 12 },
-];
+import { useController, useFormContext } from "react-hook-form";
 
 export const SelectedTopics__Section = () => {
+  const { control } = useFormContext<QuestionStudioPageModel>();
+  const { field } = useController({
+    control,
+    name: "selectedTopics",
+  });
+  const selectedTopics = field.value;
+
+  const handleQuestionCountChange = (
+    topicModel: { topic: string; type: string },
+    newQuestionCount: number,
+  ) => {
+    if (newQuestionCount < 1 || newQuestionCount > 20) {
+      return;
+    }
+
+    const oldSelectedTopics = selectedTopics;
+    const newTopicModel = { ...topicModel, questionCount: newQuestionCount };
+
+    /**
+     * 이미 선택된 출제 영역인지
+     */
+    const found = oldSelectedTopics.find((it) =>
+      QuestionStudioPageModelHelper.equalsTopic(it, topicModel),
+    );
+
+    /**
+     * 새로운 출제 영역 선택
+     */
+    if (!found) {
+      field.onChange([...selectedTopics, newTopicModel]);
+      return;
+    }
+
+    /**
+     * 이미 선택된 출제 영역이면 수정
+     */
+    const updated = selectedTopics.map((it) => {
+      if (QuestionStudioPageModelHelper.equalsTopic(it, topicModel)) {
+        return { ...it, questionCount: newQuestionCount };
+      }
+
+      return it;
+    });
+
+    field.onChange(updated);
+  };
+
+  const handleRemove = (topicModel: { topic: string; type: string }) => {
+    const filteredTopics = selectedTopics.filter(
+      (it) => !QuestionStudioPageModelHelper.equalsTopic(it, topicModel),
+    );
+    field.onChange(filteredTopics);
+  };
+
   return (
     <div
       className={cn(
@@ -38,7 +91,7 @@ export const SelectedTopics__Section = () => {
             "text-ods__base-500",
           )}
         >
-          {MOCK_SELECTED_TOPICS.length}개
+          {selectedTopics.length}개
         </span>
       </div>
 
@@ -51,12 +104,15 @@ export const SelectedTopics__Section = () => {
           "overflow-hidden",
         )}
       >
-        {MOCK_SELECTED_TOPICS.map((topic) => (
+        {selectedTopics.map((topicModel) => (
           <SelectedTopicGridItem
-            key={topic.id}
-            title={topic.label}
-            value={topic.questionCount}
-            onChange={() => {}}
+            key={`${topicModel.topic}-${topicModel.type}`}
+            title={`${topicModel.topic} x ${topicModel.type}`}
+            questionCount={topicModel.questionCount}
+            onQuestionCountChange={(newQuestionCount) => {
+              handleQuestionCountChange(topicModel, newQuestionCount);
+            }}
+            onRemove={() => handleRemove(topicModel)}
           />
         ))}
       </div>

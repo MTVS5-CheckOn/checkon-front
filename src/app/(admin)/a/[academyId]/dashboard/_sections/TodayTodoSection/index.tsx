@@ -35,7 +35,7 @@ export const Dashboard__TodayTodoSection = () => {
             </div>
           </div>
 
-          <StatusLabel status={"DEFAULT"}>{`${data.todoCount}건`}</StatusLabel>
+          <StatusLabel status={"Default"}>{`${data.todoCount}건`}</StatusLabel>
         </div>
 
         {/* Todo List Section */}

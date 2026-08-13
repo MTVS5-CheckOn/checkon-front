@@ -1,43 +1,87 @@
 import { cn } from "@/ui/utils/tailwind/cn";
 
 import { Separator } from "@/ui/components/Separator";
-import { WeekMap, WeekMapRowDataItemModel } from "@/ui/components/WeekMap";
+import {
+  WeekMap,
+  WeekMapRowDataItemModel,
+} from "@/ui/domain-components/student/WeekMap";
 import { SelectedTopics__Section } from "./_section/SelectedTopicSection";
+import { useController, useFormContext } from "react-hook-form";
+import {
+  QuestionStudioPageModel,
+  QuestionStudioPageModelHelper,
+} from "../../../layout";
 
 const WEEK_MAP_ROW_DATA: WeekMapRowDataItemModel[][] = [
   [
-    { status: "POSITIVE", value: "88%" },
-    { status: "WARNING", value: "75%" },
-    { status: "DANGER", value: "61%" },
-    { status: "DEFAULT", value: "-" },
+    { status: "Danger", value: "47" },
+    { status: "Positive", value: "91" },
+    { status: "Warning", value: "73" },
+    { status: "Positive", value: "86" },
   ],
   [
-    { status: "POSITIVE", value: "88%" },
-    { status: "WARNING", value: "75%" },
-    { status: "DANGER", value: "61%" },
-    { status: "DEFAULT", value: "-" },
+    { status: "Warning", value: "67" },
+    { status: "Danger", value: "58" },
+    { status: "Positive", value: "88" },
+    { status: "Default", value: "" },
   ],
   [
-    { status: "POSITIVE", value: "88%" },
-    { status: "WARNING", value: "75%" },
-    { status: "DANGER", value: "61%" },
-    { status: "DEFAULT", value: "-" },
+    { status: "Positive", value: "95" },
+    { status: "Warning", value: "76" },
+    { status: "Default", value: "" },
+    { status: "Danger", value: "39" },
   ],
   [
-    { status: "POSITIVE", value: "88%" },
-    { status: "WARNING", value: "75%" },
-    { status: "DANGER", value: "61%" },
-    { status: "DEFAULT", value: "-" },
+    { status: "Warning", value: "69" },
+    { status: "Positive", value: "82" },
+    { status: "Danger", value: "55" },
+    { status: "Warning", value: "78" },
   ],
   [
-    { status: "POSITIVE", value: "88%" },
-    { status: "WARNING", value: "75%" },
-    { status: "DANGER", value: "61%" },
-    { status: "DEFAULT", value: "-" },
+    { status: "Default", value: "" },
+    { status: "Danger", value: "51" },
+    { status: "Warning", value: "64" },
+    { status: "Positive", value: "93" },
   ],
 ];
 
 export const QuestionStudio__TopicSelect__Section = () => {
+  const { control } = useFormContext<QuestionStudioPageModel>();
+  const { field } = useController({
+    control,
+    name: "selectedTopics",
+  });
+  const handleTopicSelect = ({
+    topic,
+    type,
+  }: {
+    topic: string;
+    type: string;
+  }) => {
+    const oldSelectedTopics: { topic: string; type: string }[] = field.value;
+
+    /**
+     * 이미 선택된 출제 영역이면 제거
+     */
+    const found = oldSelectedTopics.find((it) =>
+      QuestionStudioPageModelHelper.equalsTopic(it, { topic, type }),
+    );
+    if (found) {
+      field.onChange(
+        oldSelectedTopics.filter(
+          (it) =>
+            !QuestionStudioPageModelHelper.equalsTopic(it, { topic, type }),
+        ),
+      );
+      return;
+    }
+
+    /**
+     * 새로운 출제 영역 선택
+     */
+    field.onChange([...oldSelectedTopics, { topic, type, questionCount: 1 }]);
+  };
+
   return (
     <div className={cn("flex w-full flex-col")}>
       <div className={cn("flex w-full flex-col gap-2")}>
@@ -54,7 +98,13 @@ export const QuestionStudio__TopicSelect__Section = () => {
           )}
         >
           <div className={cn("flex w-full flex-col gap-5")}>
-            <WeekMap data={WEEK_MAP_ROW_DATA} />
+            <WeekMap
+              data={WEEK_MAP_ROW_DATA}
+              selectedPairs={field.value}
+              onCellClick={(model) => {
+                handleTopicSelect(model);
+              }}
+            />
             <Separator />
           </div>
 

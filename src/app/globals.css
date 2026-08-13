@@ -6,6 +6,22 @@
     button {
       cursor: pointer;
     }
+
+    /* 스크롤바 너비 설정 */
+    ::-webkit-scrollbar {
+      width: 8px; /* 세로 스크롤바 너비 */
+      height: 8px; /* 가로 스크롤바 높이 */
+    }
+
+    /* 스크롤바 막대(Thumb) */
+    ::-webkit-scrollbar-thumb {
+      background-color: #bbb;
+      border-radius: 4px;
+
+      &:hover {
+        background-color: #aaa;
+      }
+    }
   }
   html {
     max-width: 100%;

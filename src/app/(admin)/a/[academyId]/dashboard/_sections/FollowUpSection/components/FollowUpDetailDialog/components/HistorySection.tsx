@@ -4,7 +4,7 @@ import { cn } from "@/ui/utils/tailwind/cn";
 
 export type FollowUpDetailDialog__FollowUpHistorySectionProps = {
   followUpHistoryItems: Array<{
-    variant: "warning" | "default" | "danger" | "success";
+    variant: "Warning" | "Default" | "Danger" | "Positive";
     title: string;
     description: string;
     caption: string;
