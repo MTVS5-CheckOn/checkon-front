@@ -1,17 +1,15 @@
 import { Alert, AlertProps } from "@/ui/components/Alert";
 import { StatusLabel, StatusLabelProps } from "@/ui/components/StatusLabel";
 import { cn } from "@/ui/utils/tailwind/cn";
+import { QuestionCardParts } from "@/ui/domain-components/question/QuestionCard/parts";
 
-import {
-  QuestionChoiceItem,
-  QuestionChoiceItemProps,
-} from "./_components/QuestionChoiceItem";
 import { QuestionCardOptionMenu } from "./_components/QuestionCardOptionMenu";
+import { ComponentPropsWithRef } from "react";
 
 export type QuestionCardProps = {
   statusLabel: StatusLabelProps;
   title: string;
-  choiceProps: QuestionChoiceItemProps[];
+  choiceProps: ComponentPropsWithRef<typeof QuestionCardParts.ChoiceItem>[];
   reason: string;
   alertProps?: AlertProps;
   readonly?: boolean;
@@ -62,7 +60,7 @@ export const QuestionCard = ({
           <Choices choices={choiceProps} readonly={readonly} />
         </div>
 
-        <Reason reason={reason} />
+        <QuestionCardParts.Reason reason={reason} />
 
         {/* 경고 알림 */}
         {alertProps && (
@@ -106,16 +104,7 @@ const Header = ({
           "flex w-full items-center justify-between",
         )}
       >
-        <span
-          className={cn(
-            // 2. Typography
-            "ods__typo__title-medium",
-            // 3. Color
-            "text-ods__base-600",
-          )}
-        >
-          {title}
-        </span>
+        <QuestionCardParts.Title>{title}</QuestionCardParts.Title>
 
         {/* 문항 옵션 버튼 */}
         {!readonly && <QuestionCardOptionMenu />}
@@ -131,7 +120,7 @@ const Choices = ({
   choices,
   readonly = false,
 }: {
-  choices: QuestionChoiceItemProps[];
+  choices: ComponentPropsWithRef<typeof QuestionCardParts.ChoiceItem>[];
   readonly?: boolean;
 }) => {
   return (
@@ -142,48 +131,13 @@ const Choices = ({
       )}
     >
       {choices.map((choice, index) => (
-        <QuestionChoiceItem
+        <QuestionCardParts.ChoiceItem
           key={`${choice.label}-${index}`}
           label={choice.label}
           isSelected={choice.isSelected}
           readonly={readonly}
         />
       ))}
-    </div>
-  );
-};
-
-/**
- * 출제 근거
- */
-const Reason = ({ reason }: { reason: string }) => {
-  return (
-    <div
-      className={cn(
-        // 1. Layout
-        "flex w-full flex-col items-start justify-start gap-1",
-      )}
-    >
-      <span
-        className={cn(
-          // 2. Typography
-          "ods__typo__title-small font-medium",
-          // 3. Color
-          "text-ods__base-500",
-        )}
-      >
-        출제 근거
-      </span>
-      <span
-        className={cn(
-          // 2. Typography
-          "ods__typo__body-medium",
-          // 3. Color
-          "text-ods__base-400",
-        )}
-      >
-        {reason}
-      </span>
     </div>
   );
 };

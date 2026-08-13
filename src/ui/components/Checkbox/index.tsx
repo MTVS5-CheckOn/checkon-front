@@ -24,6 +24,8 @@ export const Checkbox = ({
         "border-ods__border rounded-sm border-2",
         // 4. Background
         "bg-ods__white",
+        // 6. Utility
+        "cursor-pointer",
 
         // Cond
         "data-checked:text-ods__blue-50 data-checked:border-blue-400 data-checked:bg-blue-400",

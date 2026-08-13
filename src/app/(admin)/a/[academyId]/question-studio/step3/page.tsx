@@ -21,7 +21,7 @@ export default function Page() {
           <QuestionReviewSection />
         </div>
 
-        <Link href="./step3">
+        <Link href="./step4">
           <Button size="large" color="blue" className={cn("w-full")}>
             다음
           </Button>

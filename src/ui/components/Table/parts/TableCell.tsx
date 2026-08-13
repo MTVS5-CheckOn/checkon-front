@@ -1,9 +1,7 @@
 import { cn } from "@/ui/utils/tailwind/cn";
-import type { ComponentPropsWithRef, ReactNode } from "react";
+import type { ComponentPropsWithRef } from "react";
 
-export type TableCellProps = {
-  children: ReactNode;
-} & ComponentPropsWithRef<"td">;
+export type TableCellProps = ComponentPropsWithRef<"td">;
 
 export const TableCell = ({
   className,

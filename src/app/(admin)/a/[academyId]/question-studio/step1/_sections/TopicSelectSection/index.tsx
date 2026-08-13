@@ -1,7 +1,7 @@
 import { cn } from "@/ui/utils/tailwind/cn";
 
 import { Separator } from "@/ui/components/Separator";
-import { WeekMap, WeekMapRowDataItemModel } from "@/ui/components/WeekMap";
+import { WeekMap, WeekMapRowDataItemModel } from "@/ui/domain-components/student/WeekMap";
 import { SelectedTopics__Section } from "./_section/SelectedTopicSection";
 
 const WEEK_MAP_ROW_DATA: WeekMapRowDataItemModel[][] = [

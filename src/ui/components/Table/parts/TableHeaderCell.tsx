@@ -1,9 +1,7 @@
 import { cn } from "@/ui/utils/tailwind/cn";
-import type { ComponentPropsWithRef, ReactNode } from "react";
+import type { ComponentPropsWithRef } from "react";
 
-export type TableHeaderCellProps = {
-  children: ReactNode;
-} & ComponentPropsWithRef<"th">;
+export type TableHeaderCellProps = ComponentPropsWithRef<"th">;
 
 export const TableHeaderCell = ({
   className,
@@ -18,7 +16,7 @@ export const TableHeaderCell = ({
         // 2. Typography
         "ods__typo__label-large",
         // 3. Color
-        "text-ods__base-500",
+        "bg-ods__base-50 text-ods__base-500",
         className,
       )}
       {...props}

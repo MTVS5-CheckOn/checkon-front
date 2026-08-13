@@ -2,13 +2,13 @@ import { cn } from "@/ui/utils/tailwind/cn";
 
 import { QuestionStudio__TargetStudents__Pagination } from "../Pagination";
 
-import { TableCell } from "@/ui/components/Table/TableCell";
-import { TableRow } from "@/ui/components/Table/TableRow";
-import { TableBody } from "@/ui/components/Table/TableBody";
-import { Table } from "@/ui/components/Table";
-import { TableContainer } from "@/ui/components/Table/TableContainer";
-import { TableHeader } from "@/ui/components/Table/TableHeader";
-import { TableHeaderCell } from "@/ui/components/Table/TableHeaderCell";
+import { TableCell } from "@/ui/components/Table/parts/TableCell";
+import { TableRow } from "@/ui/components/Table/parts/TableRow";
+import { TableBody } from "@/ui/components/Table/parts/TableBody";
+import { Table } from "@/ui/components/Table/parts/Table";
+import { TableContainer } from "@/ui/components/Table/parts/TableContainer";
+import { TableHeader } from "@/ui/components/Table/parts/TableHeader";
+import { TableHeaderCell } from "@/ui/components/Table/parts/TableHeaderCell";
 
 const TableHeaderModels = [
   {

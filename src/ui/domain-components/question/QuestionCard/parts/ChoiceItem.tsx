@@ -1,16 +1,19 @@
 import { cn } from "@/ui/utils/tailwind/cn";
 
-export type QuestionChoiceItemProps = {
+export type QuestionCardChoiceItemProps = {
   label: string;
   isSelected?: boolean;
   readonly?: boolean;
 };
 
-export const QuestionChoiceItem = ({
+/**
+ * 선지 아이템
+ */
+export const QuestionCardChoiceItem = ({
   label,
   isSelected = false,
   readonly = false,
-}: QuestionChoiceItemProps) => {
+}: QuestionCardChoiceItemProps) => {
   return (
     <button
       className={cn(
