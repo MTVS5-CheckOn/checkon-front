@@ -1,3 +1,4 @@
+import { SignalState } from "@/domain/signal/state";
 import { SignalItemModel } from "@/ui/components/SignalListItem/SignalItem";
 import { useSuspenseQuery } from "@tanstack/react-query";
 
@@ -24,7 +25,7 @@ export const useDateEventsDialog = (selectedDate: Date) => {
 const mocks: SignalItemModel[] = [
   {
     title: "박서연",
-    status: "Positive",
+    status: SignalState.Positive,
     statusLabel: "숨은 신호 · 풀이시간 급증",
     caption: "09:00",
     content:
@@ -32,7 +33,7 @@ const mocks: SignalItemModel[] = [
   },
   {
     title: "이지훈",
-    status: "Positive",
+    status: SignalState.Positive,
     statusLabel: "학습 습관 개선",
     caption: "09:15",
     content:
@@ -40,7 +41,7 @@ const mocks: SignalItemModel[] = [
   },
   {
     title: "김민준",
-    status: "Warning",
+    status: SignalState.Warning,
     statusLabel: "숨은 신호 · 풀이시간 급증",
     caption: "10:00",
     content:
@@ -48,7 +49,7 @@ const mocks: SignalItemModel[] = [
   },
   {
     title: "최유나",
-    status: "Warning",
+    status: SignalState.Warning,
     statusLabel: "정답률 하락",
     caption: "10:30",
     content:
@@ -56,7 +57,7 @@ const mocks: SignalItemModel[] = [
   },
   {
     title: "정도현",
-    status: "Default",
+    status: SignalState.Default,
     statusLabel: "경과 양호",
     caption: "11:00",
     content:
@@ -64,7 +65,7 @@ const mocks: SignalItemModel[] = [
   },
   {
     title: "한예린",
-    status: "Danger",
+    status: SignalState.Danger,
     statusLabel: "출석 이상",
     caption: "12:00",
     content:
@@ -72,14 +73,14 @@ const mocks: SignalItemModel[] = [
   },
   {
     title: "박서연",
-    status: "Danger",
+    status: SignalState.Danger,
     statusLabel: "숨은 신호 · 풀이시간 급증",
     caption: "13:00",
     content: "결석 2회 후 오늘 첫 등원.\n가볍게 안부를 물어봐 주세요.",
   },
   {
     title: "오지훈",
-    status: "Positive",
+    status: SignalState.Positive,
     statusLabel: "성취도 향상",
     caption: "14:00",
     content:
@@ -87,7 +88,7 @@ const mocks: SignalItemModel[] = [
   },
   {
     title: "박서연",
-    status: "Default",
+    status: SignalState.Default,
     statusLabel: "경과 양호",
     caption: "15:00",
     content:
@@ -95,7 +96,7 @@ const mocks: SignalItemModel[] = [
   },
   {
     title: "김하은",
-    status: "Warning",
+    status: SignalState.Warning,
     statusLabel: "학습 집중도 저하",
     caption: "15:30",
     content:
@@ -103,7 +104,7 @@ const mocks: SignalItemModel[] = [
   },
   {
     title: "윤태성",
-    status: "Positive",
+    status: SignalState.Positive,
     statusLabel: "오답 관리 우수",
     caption: "16:00",
     content:
@@ -111,7 +112,7 @@ const mocks: SignalItemModel[] = [
   },
   {
     title: "송지아",
-    status: "Danger",
+    status: SignalState.Danger,
     statusLabel: "학습 공백 감지",
     caption: "17:00",
     content:
@@ -119,7 +120,7 @@ const mocks: SignalItemModel[] = [
   },
   {
     title: "강민재",
-    status: "Default",
+    status: SignalState.Default,
     statusLabel: "안정적인 학습",
     caption: "18:00",
     content:

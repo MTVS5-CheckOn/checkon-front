@@ -4,6 +4,7 @@ import { QuestionStudioPageModel } from "../../../layout";
 import { StatusLabelProps } from "@/ui/components/StatusLabel";
 import { AlertProps } from "@/ui/components/Alert";
 import { useFormContext } from "react-hook-form";
+import { SignalState } from "@/domain/signal/state";
 
 export const QuestionReviewSection = () => {
   const { watch } = useFormContext<QuestionStudioPageModel>();
@@ -32,22 +33,22 @@ export const QuestionReviewSection = () => {
             switch (question.status) {
               case "Passed":
                 return {
-                  status: "Positive",
+                  status: SignalState.Positive,
                   children: "검증 통과",
                 };
               case "ReviewNeeded":
                 return {
-                  status: "Warning",
+                  status: SignalState.Warning,
                   children: "검토 필요",
                 };
               case "VerificationFailed":
                 return {
-                  status: "Danger",
+                  status: SignalState.Danger,
                   children: "검증 불가",
                 };
               case "Rejected":
                 return {
-                  status: "Default",
+                  status: SignalState.Default,
                   children: "폐기·제외",
                 };
             }
@@ -59,19 +60,19 @@ export const QuestionReviewSection = () => {
                 return undefined;
               case "ReviewNeeded":
                 return {
-                  variant: "Warning",
+                  variant: SignalState.Warning,
                   title: "검증 필요",
                   description: question.statusReason,
                 };
               case "VerificationFailed":
                 return {
-                  variant: "Danger",
+                  variant: SignalState.Danger,
                   title: "검증 불가",
                   description: question.statusReason,
                 };
               case "Rejected":
                 return {
-                  variant: "Default",
+                  variant: SignalState.Default,
                   title: "폐기·제외",
                   description: question.statusReason,
                 };

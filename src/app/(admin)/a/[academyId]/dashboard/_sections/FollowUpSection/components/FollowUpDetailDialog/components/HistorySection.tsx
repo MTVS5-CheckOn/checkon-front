@@ -1,10 +1,11 @@
+import { SignalState } from "@/domain/signal/state";
 import { Alert } from "@/ui/components/Alert";
 import { CardMoreBottomButton } from "@/ui/components/CardMoreBottomButton";
 import { cn } from "@/ui/utils/tailwind/cn";
 
 export type FollowUpDetailDialog__FollowUpHistorySectionProps = {
   followUpHistoryItems: Array<{
-    variant: "Warning" | "Default" | "Danger" | "Positive";
+    variant: SignalState;
     title: string;
     description: string;
     caption: string;

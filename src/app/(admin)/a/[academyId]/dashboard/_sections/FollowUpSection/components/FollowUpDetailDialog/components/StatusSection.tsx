@@ -1,9 +1,10 @@
+import { SignalState } from "@/domain/signal/state";
 import { Alert } from "@/ui/components/Alert";
 import { cn } from "@/ui/utils/tailwind/cn";
 import { format } from "date-fns";
 
 export type FollowUpDetailDialog__FollowUpStatusSectionProps = {
-  variant: "Warning" | "Danger" | "Positive" | "Default";
+  variant: SignalState;
   statusTitle: string;
   statusDescription: string;
   statusCreatedAt: Date;
