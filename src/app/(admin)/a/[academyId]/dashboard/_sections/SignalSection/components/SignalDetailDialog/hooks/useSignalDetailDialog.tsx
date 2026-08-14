@@ -12,7 +12,7 @@ export const useSignalDetailDialog = (signalId: string) => {
       const data: {
         studentName: string;
         studentClassTitle: string;
-        signalStatusVariant: "Warning" | "Danger" | "Positive" | "default";
+        signalStatusVariant: "Warning" | "Danger" | "Positive" | "Default";
         signalStatusTitle: string;
         signalStatusDescription: string;
         signalReasonContent: string;

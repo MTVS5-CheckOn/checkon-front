@@ -89,9 +89,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     },
   });
 
-  const asd = formMethods.watch();
-  console.log(asd);
-
   return (
     <FormProvider {...formMethods}>
       <PageRootContainer>
