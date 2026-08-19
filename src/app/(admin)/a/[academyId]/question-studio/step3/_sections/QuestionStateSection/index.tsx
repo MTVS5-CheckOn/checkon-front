@@ -4,6 +4,7 @@ import { QuestionStudioPageModel } from "../../../layout";
 import { StateCard } from "./_components/StateCard";
 import { useFormContext } from "react-hook-form";
 import { groupBy } from "es-toolkit/array";
+import { SignalState } from "@/domain/signal/state";
 
 export const QuestionStateSection = () => {
   const { watch } = useFormContext<QuestionStudioPageModel>();
@@ -62,19 +63,23 @@ export const QuestionStateSection = () => {
           "overflow-hidden",
         )}
       >
-        <StateCard variant="Positive" title="검증 통과" count={passedCount} />
         <StateCard
-          variant="Warning"
+          variant={SignalState.Positive}
+          title="검증 통과"
+          count={passedCount}
+        />
+        <StateCard
+          variant={SignalState.Warning}
           title="검토 필요"
           count={reviewNeededCount}
         />
         <StateCard
-          variant="Danger"
+          variant={SignalState.Danger}
           title="검증 불가"
           count={verificationFailedCount}
         />
         <StateCard
-          variant="Default"
+          variant={SignalState.Default}
           title="폐기·제외"
           count={rejectedCount}
           className="border-r-0"

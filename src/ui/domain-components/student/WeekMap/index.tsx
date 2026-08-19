@@ -8,6 +8,7 @@ import {
 } from "@/ui/components/StatusLabel";
 import { Separator } from "@/ui/components/Separator";
 import { ComponentPropsWithRef } from "react";
+import { SignalState } from "@/domain/signal/state";
 
 export const WeekMapMatrixModel = {
   topics: ["독서 (비문학)", "문학", "화법과 작문", "언어", "매체"],
@@ -17,10 +18,10 @@ export const WeekMapMatrixModel = {
 const WeekMapModel = {
   matrix: WeekMapMatrixModel,
   statusLabels: [
-    { status: "Positive", label: "양호 (평균)" },
-    { status: "Warning", label: "약점 신호" },
-    { status: "Danger", label: "약점 확정" },
-    { status: "Default", label: "판단 보류" },
+    { status: SignalState.Positive, label: "양호 (평균)" },
+    { status: SignalState.Warning, label: "약점 신호" },
+    { status: SignalState.Danger, label: "약점 확정" },
+    { status: SignalState.Default, label: "판단 보류" },
   ],
 };
 

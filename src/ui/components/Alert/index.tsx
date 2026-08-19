@@ -88,8 +88,6 @@ export const Alert = ({
     }
   })();
 
-  console.log(variant);
-
   return (
     <div
       className={cn(

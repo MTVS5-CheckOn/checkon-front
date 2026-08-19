@@ -2,31 +2,11 @@
 
 import { Alert } from "@/ui/components/Alert";
 import { BaseDialog } from "@/ui/components/BaseDialog";
-import { Button } from "@/ui/components/Button";
 import { FieldLabel } from "@/ui/components/FieldLabel";
 import { Separator } from "@/ui/components/Separator";
 import { cn } from "@/ui/utils/tailwind/cn";
-import { useState } from "react";
 
 const INVITE_CODE = "a4428651366141d987e4ad31b7b72b69";
-
-export default function Page() {
-  const [isOpen, setIsOpen] = useState(true);
-
-  return (
-    <div
-      className={cn(
-        "flex h-screen w-full flex-col items-center justify-center gap-4 p-8",
-      )}
-    >
-      <Button color="blue" onClick={() => setIsOpen(true)}>
-        학생 초대
-      </Button>
-
-      <StudentInviteDialog isOpen={isOpen} onClose={() => setIsOpen(false)} />
-    </div>
-  );
-}
 
 export type StudentInviteDialogProps = {
   isOpen: boolean;

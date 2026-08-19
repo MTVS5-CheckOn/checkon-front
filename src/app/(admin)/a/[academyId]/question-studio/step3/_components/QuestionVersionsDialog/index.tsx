@@ -23,7 +23,7 @@ export const QuestionVersionsDialog = ({
     <BaseDialog
       isOpen={isOpen}
       onClose={onClose}
-      containerClassName={cn("w-full max-w-200")}
+      className={cn("w-full max-w-200")}
       dialogTitle={
         <span
           className={cn(

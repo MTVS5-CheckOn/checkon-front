@@ -1,9 +1,9 @@
+import { SignalState } from "@/domain/signal/state";
 import { cn } from "@/ui/utils/tailwind/cn";
 
 import { ComponentPropsWithRef } from "react";
 
-export type QuestionStateVariant =
-  "Positive" | "Warning" | "Danger" | "Default";
+export type QuestionStateVariant = SignalState;
 
 export type StateCardProps = {
   variant: QuestionStateVariant;

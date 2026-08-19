@@ -8,7 +8,7 @@ export const Table = ({ className, ...props }: TableProps) => {
     <table
       className={cn(
         // 1. Layout
-        "flex w-full flex-col",
+        "flex h-full w-full flex-col",
         className,
       )}
       {...props}

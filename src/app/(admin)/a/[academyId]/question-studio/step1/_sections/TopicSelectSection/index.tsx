@@ -11,37 +11,38 @@ import {
   QuestionStudioPageModel,
   QuestionStudioPageModelHelper,
 } from "../../../layout";
+import { SignalState } from "@/domain/signal/state";
 
 const WEEK_MAP_ROW_DATA: WeekMapRowDataItemModel[][] = [
   [
-    { status: "Danger", value: "47" },
-    { status: "Positive", value: "91" },
-    { status: "Warning", value: "73" },
-    { status: "Positive", value: "86" },
+    { status: SignalState.Danger, value: "47" },
+    { status: SignalState.Positive, value: "91" },
+    { status: SignalState.Warning, value: "73" },
+    { status: SignalState.Positive, value: "86" },
   ],
   [
-    { status: "Warning", value: "67" },
-    { status: "Danger", value: "58" },
-    { status: "Positive", value: "88" },
-    { status: "Default", value: "" },
+    { status: SignalState.Warning, value: "67" },
+    { status: SignalState.Danger, value: "58" },
+    { status: SignalState.Positive, value: "88" },
+    { status: SignalState.Default, value: "" },
   ],
   [
-    { status: "Positive", value: "95" },
-    { status: "Warning", value: "76" },
-    { status: "Default", value: "" },
-    { status: "Danger", value: "39" },
+    { status: SignalState.Positive, value: "95" },
+    { status: SignalState.Warning, value: "76" },
+    { status: SignalState.Default, value: "" },
+    { status: SignalState.Danger, value: "39" },
   ],
   [
-    { status: "Warning", value: "69" },
-    { status: "Positive", value: "82" },
-    { status: "Danger", value: "55" },
-    { status: "Warning", value: "78" },
+    { status: SignalState.Warning, value: "69" },
+    { status: SignalState.Positive, value: "82" },
+    { status: SignalState.Danger, value: "55" },
+    { status: SignalState.Warning, value: "78" },
   ],
   [
-    { status: "Default", value: "" },
-    { status: "Danger", value: "51" },
-    { status: "Warning", value: "64" },
-    { status: "Positive", value: "93" },
+    { status: SignalState.Default, value: "" },
+    { status: SignalState.Danger, value: "51" },
+    { status: SignalState.Warning, value: "64" },
+    { status: SignalState.Positive, value: "93" },
   ],
 ];
 

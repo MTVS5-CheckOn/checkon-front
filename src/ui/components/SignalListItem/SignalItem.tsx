@@ -1,11 +1,10 @@
-import { StatusLabel, StatusLabelStatus } from "@/ui/components/StatusLabel";
+import { SignalState } from "@/domain/signal/state";
+import { StatusLabel } from "@/ui/components/StatusLabel";
 import { cn } from "@/ui/utils/tailwind/cn";
-
-export type SignalItemStatus = StatusLabelStatus;
 
 export type SignalItemModel = {
   title: string;
-  status: SignalItemStatus;
+  status: SignalState;
   statusLabel: string;
   caption: string;
   content: string;
@@ -19,17 +18,17 @@ export type SignalItemProps = {
 export const SignalItem = ({ model, onClick }: SignalItemProps) => {
   const colorPalette = (() => {
     switch (model.status) {
-      case "Positive":
+      case SignalState.Positive:
         return {
           signalDotColor: "bg-ods__blue-300",
           bgColor: undefined,
         };
-      case "Warning":
+      case SignalState.Warning:
         return {
           signalDotColor: "bg-ods__yellow-200",
           bgColor: undefined,
         };
-      case "Danger":
+      case SignalState.Danger:
         return {
           signalDotColor: "bg-ods__red-400",
           bgColor: "bg-ods__red-20",

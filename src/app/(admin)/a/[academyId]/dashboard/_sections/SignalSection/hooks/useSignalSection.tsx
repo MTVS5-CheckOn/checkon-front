@@ -1,3 +1,4 @@
+import { SignalState } from "@/domain/signal/state";
 import { SignalItemModel } from "@/ui/components/SignalListItem/SignalItem";
 import { useSuspenseQuery } from "@tanstack/react-query";
 
@@ -28,7 +29,7 @@ const mocks: {
   items: [
     {
       title: "박서연",
-      status: "Positive",
+      status: SignalState.Positive,
       statusLabel: "숨은 신호 · 풀이시간 급증",
       caption: "5일 전",
       content:
@@ -36,7 +37,7 @@ const mocks: {
     },
     {
       title: "김민준",
-      status: "Warning",
+      status: SignalState.Warning,
       statusLabel: "숨은 신호 · 풀이시간 급증",
       caption: "4일 전",
       content:
@@ -44,7 +45,7 @@ const mocks: {
     },
     {
       title: "박서연",
-      status: "Danger",
+      status: SignalState.Danger,
       statusLabel: "숨은 신호 · 풀이시간 급증",
       caption: "3일 전",
       content: "결석 2회 후 오늘 첫 등원.\n가볍게 안부를 물어봐 주세요.",

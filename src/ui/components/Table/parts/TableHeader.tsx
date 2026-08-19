@@ -14,7 +14,7 @@ export const TableHeader = ({
   <thead
     className={cn(
       // 1. Layout
-      "flex w-full flex-1 items-center",
+      "flex w-full items-center",
       // 4. Shadow & Border
       hasBorderBottom && "border-ods__border border-b",
       className,
