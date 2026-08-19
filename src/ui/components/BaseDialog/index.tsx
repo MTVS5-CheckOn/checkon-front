@@ -7,7 +7,7 @@ export type BaseDialogProps = {
   isOpen: boolean;
   onClose?: () => void;
   fullScreen?: boolean;
-  containerClassName?: string;
+  className?: string;
   dialogTitle?: React.ReactNode;
   dialogContent?: React.ReactNode;
 };
@@ -19,7 +19,7 @@ export const BaseDialog = ({
   isOpen,
   onClose,
   fullScreen,
-  containerClassName,
+  className,
   dialogTitle,
   dialogContent,
 }: BaseDialogProps) => {
@@ -58,7 +58,7 @@ export const BaseDialog = ({
               "overflow-hidden",
               fullScreen &&
                 "h-screen max-h-none w-screen max-w-none rounded-none border-none",
-              containerClassName,
+              className,
             )}
           >
             {/* Header */}

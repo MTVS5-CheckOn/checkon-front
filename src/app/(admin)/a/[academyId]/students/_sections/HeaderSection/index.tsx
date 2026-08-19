@@ -2,8 +2,16 @@ import { Button } from "@/ui/components/Button";
 import { cn } from "@/ui/utils/tailwind/cn";
 
 import { MOCK_STUDENTS } from "../TableSection/_components/Table";
+import { overlay } from "overlay-kit";
+import { StudentInviteDialog } from "../../components/StudentInviteDialog";
 
 export const Students__HeaderSection = () => {
+  const handleItemClick = () => {
+    overlay.open(({ isOpen, close }) => (
+      <StudentInviteDialog isOpen={isOpen} onClose={close} />
+    ));
+  };
+
   return (
     <div
       className={cn(
@@ -34,7 +42,9 @@ export const Students__HeaderSection = () => {
         </span>
       </div>
 
-      <Button color="blue">학생 초대</Button>
+      <Button color="blue" onClick={handleItemClick}>
+        학생 초대
+      </Button>
     </div>
   );
 };
