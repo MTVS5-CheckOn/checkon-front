@@ -41,8 +41,6 @@ const Header = () => {
           className={cn(
             // 1. Layout
             "flex w-full flex-col items-start gap-2.5 px-6",
-            // 4. Shadow & Border
-            "border-ods__border border-b",
           )}
         >
           <TabsParts.Root value={activeTab} onValueChange={setActiveTab}>
@@ -64,6 +62,7 @@ const Header = () => {
             </TabsParts.List>
           </TabsParts.Root>
         </div>
+
         <div
           className={cn(
             // 1. Layout
