@@ -16,9 +16,15 @@ export const useProtectedNavigation = () => {
     router.push(`/a/${academyId}${cleanPath}`);
   };
 
+  const replace = (path: string) => {
+    const cleanPath = path.startsWith("/") ? path : `/${path}`;
+    router.replace(`/a/${academyId}${cleanPath}`);
+  };
+
   return {
     academyId,
     push,
+    replace,
   };
 };
 
