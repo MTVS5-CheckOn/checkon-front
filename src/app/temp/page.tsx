@@ -1,135 +1,23 @@
 "use client";
 
-import { Alert } from "@/ui/components/Alert";
-import { BaseDialog } from "@/ui/components/BaseDialog";
-import { Button } from "@/ui/components/Button";
-import { FieldLabel } from "@/ui/components/FieldLabel";
-import { Separator } from "@/ui/components/Separator";
-import { cn } from "@/ui/utils/tailwind/cn";
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 
-const INVITE_CODE = "a4428651366141d987e4ad31b7b72b69";
+import { Breadcrumb } from "@/ui/components/Breadcrumb";
+import { Button } from "@/ui/components/Button";
+import { TableParts } from "@/ui/components/Table/parts";
+import { TabsParts } from "@/ui/components/Tabs/parts";
+import { Table } from "@/ui/components/Table/parts/Table";
+import { TableRow } from "@/ui/components/Table/parts/TableRow";
+import { cn } from "@/ui/utils/tailwind/cn";
 
 export default function Page() {
-  const [isOpen, setIsOpen] = useState(true);
-
   return (
     <div
       className={cn(
         "flex h-screen w-full flex-col items-center justify-center gap-4 p-8",
       )}
     >
-      <Button color="blue" onClick={() => setIsOpen(true)}>
-        학생 초대
-      </Button>
-
-      <StudentInviteDialog isOpen={isOpen} onClose={() => setIsOpen(false)} />
+      asd
     </div>
   );
 }
-
-export type StudentInviteDialogProps = {
-  isOpen: boolean;
-  onClose: () => void;
-};
-
-export const StudentInviteDialog = ({
-  isOpen,
-  onClose,
-}: StudentInviteDialogProps) => {
-  return (
-    <BaseDialog
-      isOpen={isOpen}
-      onClose={onClose}
-      className="w-125"
-      dialogTitle={
-        <div
-          className={cn(
-            // 2. Typography
-            "ods__typo__title-large",
-            // 3. Color
-            "text-ods__base-500",
-          )}
-        >
-          학생 초대
-        </div>
-      }
-      dialogContent={<Content />}
-    />
-  );
-};
-
-const Content = () => {
-  return (
-    <div
-      className={cn(
-        // 1. Layout
-        "flex w-full flex-col items-start gap-6",
-        // 6. Utility
-        "overflow-hidden",
-      )}
-    >
-      <Separator />
-
-      <div
-        className={cn(
-          // 1. Layout
-          "flex w-full flex-col items-start gap-7",
-          // 6. Utility
-          "overflow-auto",
-        )}
-      >
-        <Alert
-          variant="Default"
-          title="계정 초대하기"
-          description={
-            "아래 초대 코드를 학생/학부모 앱에서 등록하면 강사님이 관리할 수 있는 계정으로 등록돼요.\n\n초대 코드를 클릭해서 클립보드로 복사할 수 있어요."
-          }
-        />
-
-        <div
-          className={cn(
-            // 1. Layout
-            "flex w-full flex-col gap-1",
-          )}
-        >
-          <FieldLabel>초대 코드</FieldLabel>
-          <InviteCodeField code={INVITE_CODE} />
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const InviteCodeField = ({ code }: { code: string }) => {
-  return (
-    <div
-      className={cn(
-        // 1. Layout
-        "flex h-10 w-full flex-col justify-center px-3",
-        // 3. Color
-        "bg-ods__white",
-        // 4. Shadow & Border
-        "border-ods__border rounded-lg border",
-        // 5. Interaction
-        "ods__animate__default hover:opacity-80",
-        // 6. Utility
-        "overflow-hidden",
-      )}
-    >
-      <button
-        type="button"
-        className={cn(
-          // 1. Layout
-          "w-full text-start",
-          // 2. Typography
-          "ods__typo__label-large underline",
-          // 3. Color
-          "text-ods__blue-400",
-        )}
-      >
-        {code}
-      </button>
-    </div>
-  );
-};
