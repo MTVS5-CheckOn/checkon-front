@@ -20,7 +20,7 @@ export const CardHeader = ({ model }: CardHeaderProps) => {
         <span
           className={cn(
             // 2. Typography
-            "ods__typo__title-medium font-semibold",
+            "ods__typo__title-large font-semibold",
             // 3. Color
             "text-ods__base-600",
           )}
