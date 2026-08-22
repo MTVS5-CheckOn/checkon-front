@@ -71,7 +71,7 @@ const CardList = () => {
           key={model.questionId}
           title={model.title}
           choiceProps={model.choices.map((choice) => ({
-            label: choice,
+            title: choice,
             isSelected: model.answer === choice,
           }))}
           reason={model.generatedReason}

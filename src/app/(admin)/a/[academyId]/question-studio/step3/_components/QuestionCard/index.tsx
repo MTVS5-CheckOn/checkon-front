@@ -1,15 +1,22 @@
 import { Alert, AlertProps } from "@/ui/components/Alert";
 import { StatusLabel, StatusLabelProps } from "@/ui/components/StatusLabel";
+import {
+  QuestionChoiceItem,
+  QuestionChoiceItemProps,
+} from "@/ui/domain-components/question/QuestionChoiceItem";
 import { cn } from "@/ui/utils/tailwind/cn";
 import { QuestionCardParts } from "@/ui/domain-components/question/QuestionCard/parts";
 
 import { QuestionCardOptionMenu } from "./_components/QuestionCardOptionMenu";
-import { ComponentPropsWithRef } from "react";
+
+type QuestionCardChoiceProps = Pick<QuestionChoiceItemProps, "title"> & {
+  isSelected?: boolean;
+};
 
 export type QuestionCardProps = {
   statusLabel: StatusLabelProps;
   title: string;
-  choiceProps: ComponentPropsWithRef<typeof QuestionCardParts.ChoiceItem>[];
+  choiceProps: QuestionCardChoiceProps[];
   reason: string;
   alertProps?: AlertProps;
   readonly?: boolean;
@@ -60,7 +67,7 @@ export const QuestionCard = ({
             questionId={questionId}
           />
 
-          <Choices choices={choiceProps} readonly={readonly} />
+          <Choices choices={choiceProps} />
         </div>
 
         <QuestionCardParts.Reason reason={reason} />
@@ -123,10 +130,8 @@ const Header = ({
  */
 const Choices = ({
   choices,
-  readonly = false,
 }: {
-  choices: ComponentPropsWithRef<typeof QuestionCardParts.ChoiceItem>[];
-  readonly?: boolean;
+  choices: QuestionCardChoiceProps[];
 }) => {
   return (
     <div
@@ -136,11 +141,10 @@ const Choices = ({
       )}
     >
       {choices.map((choice, index) => (
-        <QuestionCardParts.ChoiceItem
-          key={`${choice.label}-${index}`}
-          label={choice.label}
-          isSelected={choice.isSelected}
-          readonly={readonly}
+        <QuestionChoiceItem
+          key={`${choice.title}-${index}`}
+          state={choice.isSelected ? "Answer" : "Default"}
+          title={choice.title}
         />
       ))}
     </div>
