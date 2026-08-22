@@ -18,12 +18,16 @@ export type {
 
 export type HomeworkResultCardProps = {
   model: HomeworkResultCardModel;
+  onClick?: () => void;
 };
 
 /**
  * 과제 결과 카드
  */
-export const HomeworkResultCard = ({ model }: HomeworkResultCardProps) => {
+export const HomeworkResultCard = ({
+  model,
+  onClick,
+}: HomeworkResultCardProps) => {
   return (
     <div
       className={cn(
@@ -33,9 +37,8 @@ export const HomeworkResultCard = ({ model }: HomeworkResultCardProps) => {
         "bg-ods__white",
         // 4. Shadow & Border
         "border-ods__border rounded-xl border",
-        // 6. Utility
-        "overflow-hidden",
       )}
+      onClick={onClick}
     >
       <div className={cn("flex w-full flex-col items-start gap-2 px-5 py-4")}>
         <CardHeader model={model} />

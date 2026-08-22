@@ -88,7 +88,7 @@ export const QuestionReviewSection = () => {
               }}
               title={`${questionNumber} ${question.title}`}
               choiceProps={question.choices.map((choice, index) => ({
-                label: `${index + 1}. ${choice}`,
+                title: `${index + 1}. ${choice}`,
                 isSelected: choice === question.answer,
               }))}
               reason={question.generatedReason}

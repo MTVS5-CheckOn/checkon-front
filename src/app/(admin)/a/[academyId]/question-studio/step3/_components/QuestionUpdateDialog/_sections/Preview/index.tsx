@@ -32,7 +32,7 @@ export const PreviewSection = ({ onConfirm }: { onConfirm?: () => void }) => {
         }}
         title={model.title}
         choiceProps={model.choices.map((choice) => ({
-          label: choice,
+          title: choice,
           isSelected: choice === model.answer,
         }))}
         reason={model.generatedReason}

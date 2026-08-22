@@ -1,15 +1,17 @@
 import { Checkbox } from "@/ui/components/Checkbox";
+import {
+  QuestionChoiceItem,
+  QuestionChoiceItemProps,
+} from "@/ui/domain-components/question/QuestionChoiceItem";
 import { cn } from "@/ui/utils/tailwind/cn";
 import { QuestionCardParts } from "@/ui/domain-components/question/QuestionCard/parts";
 import { ChevronDown, ChevronUp } from "lucide-react";
-import { ComponentPropsWithRef } from "react";
 import { useToggle } from "react-use";
 import { Collapsible } from "@base-ui/react/collapsible";
 
-type ChoiceProps = Omit<
-  ComponentPropsWithRef<typeof QuestionCardParts.ChoiceItem>,
-  "readonly"
->;
+type ChoiceProps = Pick<QuestionChoiceItemProps, "title"> & {
+  isSelected?: boolean;
+};
 
 export type SelectableQuestionCardProps = {
   title: string;
@@ -155,11 +157,10 @@ const Choices = ({ choices }: { choices: ChoiceProps[] }) => {
       )}
     >
       {choices.map((choice, index) => (
-        <QuestionCardParts.ChoiceItem
-          key={`${choice.label}-${index}`}
-          label={choice.label}
-          isSelected={choice.isSelected}
-          readonly
+        <QuestionChoiceItem
+          key={`${choice.title}-${index}`}
+          state={choice.isSelected ? "Answer" : "Default"}
+          title={choice.title}
         />
       ))}
     </div>

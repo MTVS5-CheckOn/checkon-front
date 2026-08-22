@@ -5,8 +5,16 @@ import {
   HomeworkResultCardModel,
 } from "@/ui/domain-components/question/HomeworkResultCard";
 import { cn } from "@/ui/utils/tailwind/cn";
+import { overlay } from "overlay-kit";
+import { HomeworkDetailDialog } from "./_components/HomeworkDetailDialog";
 
 export default function Page() {
+  const handleClick = () => {
+    overlay.open(({ isOpen, close }) => (
+      <HomeworkDetailDialog isOpen={isOpen} onClose={close} />
+    ));
+  };
+
   return (
     <div
       className={cn(
@@ -17,7 +25,11 @@ export default function Page() {
       )}
     >
       {HOMEWORK_RESULT_CARDS.map((card, index) => (
-        <HomeworkResultCard key={`${card.title}-${index}`} model={card} />
+        <HomeworkResultCard
+          key={`${card.title}-${index}`}
+          model={card}
+          onClick={handleClick}
+        />
       ))}
     </div>
   );

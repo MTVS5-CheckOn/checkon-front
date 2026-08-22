@@ -22,8 +22,6 @@ export const StudentInfoCard = () => {
         className={cn(
           // 1. Layout
           "flex w-full flex-col items-start gap-2",
-          // 6. Utility
-          "overflow-hidden",
         )}
       >
         <div className={cn("flex w-full flex-col items-start gap-4")}>
@@ -34,7 +32,7 @@ export const StudentInfoCard = () => {
               <span
                 className={cn(
                   // 2. Typography
-                  "ods__typo__title-medium font-semibold",
+                  "ods__typo__title-large font-semibold",
                   // 3. Color
                   "text-ods__base-600",
                 )}
@@ -60,8 +58,6 @@ export const StudentInfoCard = () => {
               "flex w-full flex-col",
               // 4. Shadow & Border
               "border-ods__border border-t",
-              // 6. Utility
-              "overflow-hidden",
             )}
           >
             <Table>
