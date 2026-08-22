@@ -38,12 +38,20 @@ export default function Page() {
 const HOMEWORK_RESULT_CARDS = [
   new HomeworkResultCardModel({
     title: "독서x사실적 이해 외 2영역",
-    date: new Date("2026-08-16"),
+    subtitle: "2026-08-16",
     totalQuestionCount: 100,
+    labelModel: {
+      status: "Default",
+      label: "미제출",
+    },
   }),
   new HomeworkResultCardModel({
     title: "문학x어휘개념 외 4영역",
-    date: new Date("2026-08-16"),
+    subtitle: "2026-08-16",
+    labelModel: {
+      status: "Default",
+      label: "미제출",
+    },
     submissionInfo: {
       solveTimeSeconds: 900,
       correctAnswerCount: 60,
@@ -54,7 +62,11 @@ const HOMEWORK_RESULT_CARDS = [
   }),
   new HomeworkResultCardModel({
     title: "문학x어휘개념 외 4영역",
-    date: new Date("2026-08-16"),
+    subtitle: "2026-08-16",
+    labelModel: {
+      status: "Default",
+      label: "미제출",
+    },
     submissionInfo: {
       solveTimeSeconds: 900,
       correctAnswerCount: 40,
@@ -65,7 +77,11 @@ const HOMEWORK_RESULT_CARDS = [
   }),
   new HomeworkResultCardModel({
     title: "문학x어휘개념 외 4영역",
-    date: new Date("2026-08-16"),
+    subtitle: "2026-08-16",
+    labelModel: {
+      status: "Default",
+      label: "미제출",
+    },
     submissionInfo: {
       solveTimeSeconds: 900,
       correctAnswerCount: 80,
@@ -76,7 +92,11 @@ const HOMEWORK_RESULT_CARDS = [
   }),
   new HomeworkResultCardModel({
     title: "문학x어휘개념 외 4영역",
-    date: new Date("2026-08-16"),
+    subtitle: "2026-08-16",
+    labelModel: {
+      status: "Default",
+      label: "미제출",
+    },
     submissionInfo: {
       solveTimeSeconds: 540,
       correctAnswerCount: 65,
@@ -87,7 +107,11 @@ const HOMEWORK_RESULT_CARDS = [
   }),
   new HomeworkResultCardModel({
     title: "문학x어휘개념 외 4영역",
-    date: new Date("2026-08-16"),
+    subtitle: "2026-08-16",
+    labelModel: {
+      status: "Default",
+      label: "미제출",
+    },
     submissionInfo: {
       solveTimeSeconds: 1200,
       correctAnswerCount: 92,
@@ -98,7 +122,11 @@ const HOMEWORK_RESULT_CARDS = [
   }),
   new HomeworkResultCardModel({
     title: "문학x어휘개념 외 4영역",
-    date: new Date("2026-08-16"),
+    subtitle: "2026-08-16",
+    labelModel: {
+      status: "Default",
+      label: "미제출",
+    },
     submissionInfo: {
       solveTimeSeconds: 45,
       correctAnswerCount: 12,
@@ -109,7 +137,11 @@ const HOMEWORK_RESULT_CARDS = [
   }),
   new HomeworkResultCardModel({
     title: "독해x논리 외 3영역",
-    date: new Date("2026-08-16"),
+    subtitle: "2026-08-16",
+    labelModel: {
+      status: "Default",
+      label: "미제출",
+    },
     submissionInfo: {
       solveTimeSeconds: 720,
       correctAnswerCount: 50,

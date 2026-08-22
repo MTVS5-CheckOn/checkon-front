@@ -12,7 +12,7 @@ export type CardHeaderProps = {
  * HomeworkResultCard에서 사용
  */
 export const CardHeader = ({ model }: CardHeaderProps) => {
-  const labelModel = model.getStatusLabelModel();
+  const { labelModel } = model;
 
   return (
     <div className={cn("flex w-full items-start justify-between")}>
@@ -36,7 +36,7 @@ export const CardHeader = ({ model }: CardHeaderProps) => {
             "text-ods__base-400",
           )}
         >
-          {model.date.toISOString()}
+          {model.subtitle}
         </span>
       </div>
 

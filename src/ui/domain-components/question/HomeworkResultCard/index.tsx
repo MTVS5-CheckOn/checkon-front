@@ -51,7 +51,9 @@ export const HomeworkResultCard = ({
               <CorrectAnswerQuestionCount model={model} />
             </div>
 
-            <SolveTime model={model} />
+            {model.submissionInfo?.solveTimeSeconds && (
+              <SolveTime model={model} />
+            )}
           </div>
 
           <Separator />

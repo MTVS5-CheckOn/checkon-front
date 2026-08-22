@@ -10,7 +10,11 @@ import { QuestionTopicAreaCard } from "./_components/QuestionTopicAreaCard";
 
 const HOMEWORK_RESULT_CARD_MODEL = new HomeworkResultCardModel({
   title: "문학x어휘개념 외 4영역",
-  date: new Date("2026-08-16"),
+  subtitle: "2026-08-16",
+  labelModel: {
+    status: "Default",
+    label: "제출",
+  },
   submissionInfo: {
     solveTimeSeconds: 1290,
     correctAnswerCount: 80,

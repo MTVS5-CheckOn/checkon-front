@@ -8,7 +8,7 @@ export type HomeworkResultCardSubmissionInfo = {
   /**
    * 풀이시간 (초)
    */
-  solveTimeSeconds: number;
+  solveTimeSeconds?: number;
   /**
    * 정답 문항 수
    */
@@ -24,6 +24,14 @@ export type HomeworkResultCardSubmissionInfo = {
 };
 
 /**
+ * 상태 라벨 모델
+ */
+export type HomeworkResultCardStatusLabelModel = {
+  status: StatusLabelStatus;
+  label: string;
+};
+
+/**
  * 카드 상태
  */
 export type HomeworkResultCardState =
@@ -34,19 +42,22 @@ export type HomeworkResultCardState =
  */
 export class HomeworkResultCardModel {
   readonly title: string;
-  readonly date: Date;
+  readonly subtitle: string;
   readonly totalQuestionCount: number;
+  readonly labelModel: HomeworkResultCardStatusLabelModel;
   readonly submissionInfo?: HomeworkResultCardSubmissionInfo;
 
   constructor(input: {
     title: string;
-    date: Date;
+    subtitle: string;
     totalQuestionCount: number;
+    labelModel: HomeworkResultCardStatusLabelModel;
     submissionInfo?: HomeworkResultCardSubmissionInfo;
   }) {
     this.title = input.title;
-    this.date = input.date;
+    this.subtitle = input.subtitle;
     this.totalQuestionCount = input.totalQuestionCount;
+    this.labelModel = input.labelModel;
     this.submissionInfo = input.submissionInfo;
   }
 
@@ -83,30 +94,10 @@ export class HomeworkResultCardModel {
   }
 
   /**
-   * 상태 라벨 모델 계산
-   */
-  getStatusLabelModel(): {
-    status: StatusLabelStatus;
-    label: string;
-  } {
-    if (!this.submissionInfo) {
-      return {
-        status: "Default",
-        label: "미제출",
-      };
-    }
-
-    return {
-      status: "Positive",
-      label: "채점 완료",
-    };
-  }
-
-  /**
    * 풀이시간 포맷 mm분 ss초
    */
   formatSolveTime(): string {
-    if (!this.submissionInfo) {
+    if (!this.submissionInfo?.solveTimeSeconds) {
       return "-";
     }
 

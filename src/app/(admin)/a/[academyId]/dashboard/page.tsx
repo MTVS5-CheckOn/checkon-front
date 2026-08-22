@@ -9,6 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { PageRootContainer } from "../_components/PageRootContainer";
 import { Dashboard__BriefingSection } from "./_sections/BriefingSection";
 import { Dashboard__TabsSection } from "./_sections/BriefingSection/_sections/TabsSection";
+import { Dashboard__HomeworkSection } from "./_sections/HomeworkSection";
 
 export const DashboardPageModel = z.object({
   /**
@@ -36,8 +37,7 @@ export default function Page() {
 
         {activeTab === "briefing" && <Dashboard__BriefingSection />}
 
-        {/* TODO: 통계 섹션 추가 */}
-        {activeTab === "stats" && <div>통계</div>}
+        {activeTab === "homework" && <Dashboard__HomeworkSection />}
       </PageRootContainer>
     </FormProvider>
   );

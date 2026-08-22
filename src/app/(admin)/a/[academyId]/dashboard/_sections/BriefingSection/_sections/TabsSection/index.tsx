@@ -8,8 +8,8 @@ const dashboardTabs = [
     value: "briefing",
   },
   {
-    label: "통계",
-    value: "stats",
+    label: "과제 대시보드",
+    value: "homework",
   },
 ] as const;
 
