@@ -1,5 +1,7 @@
 "use client";
 
+import { SignalState } from "@/domain/signal/state";
+
 import { Alert } from "@/ui/components/Alert";
 import { BaseDialog } from "@/ui/components/BaseDialog";
 import { FieldLabel } from "@/ui/components/FieldLabel";
@@ -60,7 +62,7 @@ const Content = () => {
         )}
       >
         <Alert
-          variant="Default"
+          variant={SignalState.Default}
           title="계정 초대하기"
           description={
             "아래 초대 코드를 학생/학부모 앱에서 등록하면 강사님이 관리할 수 있는 계정으로 등록돼요.\n\n초대 코드를 클릭해서 클립보드로 복사할 수 있어요."

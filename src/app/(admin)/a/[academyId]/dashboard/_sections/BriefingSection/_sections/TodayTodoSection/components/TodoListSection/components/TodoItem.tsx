@@ -1,10 +1,12 @@
 import { cn } from "@/ui/utils/tailwind/cn";
 
+import { SignalState } from "@/domain/signal/state";
+
 import { StatusLabel } from "@/ui/components/StatusLabel";
 import { DateUtilForKo } from "@/ui/utils/date/date-util";
 import { CircleIcon } from "lucide-react";
 
-export type TodoItemStatus = "Default" | "Danger";
+export type TodoItemStatus = SignalState.Default | SignalState.Danger;
 
 export type TodoItemModel = {
   title: string;
@@ -22,7 +24,7 @@ export const TodoItem = ({ model, onClick }: TodoItemProps) => {
   const { title, status, statusLabel, deadlinedAt } = model;
 
   const colorPalette = (() => {
-    if (status === "Danger") {
+    if (status === SignalState.Danger) {
       return {
         bgColor: "bg-ods__red-20",
         deadlineColor: "text-ods__red-500",

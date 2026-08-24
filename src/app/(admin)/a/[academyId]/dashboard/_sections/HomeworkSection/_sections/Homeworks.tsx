@@ -2,6 +2,8 @@
 
 import { overlay } from "overlay-kit";
 
+import { SignalState } from "@/domain/signal/state";
+
 import {
   HomeworkResultCard,
   HomeworkResultCardModel,
@@ -43,7 +45,7 @@ const MONTHLY_HOMEWORK_RESULT_CARDS = [
     subtitle: "학습 현황",
     totalQuestionCount: 100,
     labelModel: {
-      status: "Default",
+      status: SignalState.Default,
       label: "과제 1개",
     },
     submissionInfo: {
@@ -57,7 +59,7 @@ const MONTHLY_HOMEWORK_RESULT_CARDS = [
     subtitle: "학습 현황",
     totalQuestionCount: 100,
     labelModel: {
-      status: "Default",
+      status: SignalState.Default,
       label: "과제 1개",
     },
     submissionInfo: {
@@ -71,7 +73,7 @@ const MONTHLY_HOMEWORK_RESULT_CARDS = [
     subtitle: "학습 현황",
     totalQuestionCount: 100,
     labelModel: {
-      status: "Default",
+      status: SignalState.Default,
       label: "과제 1개",
     },
     submissionInfo: {
@@ -85,7 +87,7 @@ const MONTHLY_HOMEWORK_RESULT_CARDS = [
     subtitle: "학습 현황",
     totalQuestionCount: 100,
     labelModel: {
-      status: "Default",
+      status: SignalState.Default,
       label: "과제 1개",
     },
   }),
@@ -94,21 +96,7 @@ const MONTHLY_HOMEWORK_RESULT_CARDS = [
     subtitle: "학습 현황",
     totalQuestionCount: 100,
     labelModel: {
-      status: "Default",
-      label: "과제 1개",
-    },
-    submissionInfo: {
-      correctAnswerCount: 80,
-      wrongAnswerCount: 20,
-      memoCount: 20,
-    },
-  }),
-  new HomeworkResultCardModel({
-    title: "홍길동",
-    subtitle: "학습 현황",
-    totalQuestionCount: 100,
-    labelModel: {
-      status: "Default",
+      status: SignalState.Default,
       label: "과제 1개",
     },
     submissionInfo: {
@@ -122,7 +110,7 @@ const MONTHLY_HOMEWORK_RESULT_CARDS = [
     subtitle: "학습 현황",
     totalQuestionCount: 100,
     labelModel: {
-      status: "Default",
+      status: SignalState.Default,
       label: "과제 1개",
     },
     submissionInfo: {
@@ -136,7 +124,21 @@ const MONTHLY_HOMEWORK_RESULT_CARDS = [
     subtitle: "학습 현황",
     totalQuestionCount: 100,
     labelModel: {
-      status: "Default",
+      status: SignalState.Default,
+      label: "과제 1개",
+    },
+    submissionInfo: {
+      correctAnswerCount: 80,
+      wrongAnswerCount: 20,
+      memoCount: 20,
+    },
+  }),
+  new HomeworkResultCardModel({
+    title: "홍길동",
+    subtitle: "학습 현황",
+    totalQuestionCount: 100,
+    labelModel: {
+      status: SignalState.Default,
       label: "과제 1개",
     },
     submissionInfo: {

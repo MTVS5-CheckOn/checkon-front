@@ -1,5 +1,7 @@
 "use client";
 
+import { SignalState } from "@/domain/signal/state";
+
 import { Alert } from "@/ui/components/Alert";
 import { StatusLabel, StatusLabelStatus } from "@/ui/components/StatusLabel";
 import {
@@ -80,17 +82,17 @@ const CARD_STYLE: Record<
 > = {
   Answer: {
     bgColor: "bg-ods__blue-20",
-    badgeStatus: "Positive",
+    badgeStatus: SignalState.Positive,
     badgeLabel: "정답",
   },
   Wrong: {
     bgColor: "bg-ods__red-20",
-    badgeStatus: "Danger",
+    badgeStatus: SignalState.Danger,
     badgeLabel: "오답",
   },
   Default: {
     bgColor: "bg-ods__white",
-    badgeStatus: "Default",
+    badgeStatus: SignalState.Default,
     badgeLabel: "미채점",
   },
 };
@@ -137,8 +139,8 @@ export const HomeworkQuestionCard = ({ state }: HomeworkQuestionCardProps) => {
           <div className={cn("flex w-full flex-col items-start gap-1")}>
             <div className={cn("flex w-full items-start justify-between")}>
               <div className={cn("flex items-center gap-2")}>
-                <StatusLabel status="Default">난이도: 하</StatusLabel>
-                <StatusLabel status="Default">풀이시간: 15분 10초</StatusLabel>
+                <StatusLabel status={SignalState.Default}>난이도: 하</StatusLabel>
+                <StatusLabel status={SignalState.Default}>풀이시간: 15분 10초</StatusLabel>
               </div>
 
               <StatusLabel status={cardStyle.badgeStatus}>

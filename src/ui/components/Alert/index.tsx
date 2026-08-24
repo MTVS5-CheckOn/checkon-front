@@ -1,3 +1,4 @@
+import { SignalState } from "@/domain/signal/state";
 import { cn } from "@/ui/utils/tailwind/cn";
 import {
   CheckCircleIcon,
@@ -6,7 +7,7 @@ import {
   XCircleIcon,
 } from "lucide-react";
 
-export type AlertVariant = "Default" | "Positive" | "Warning" | "Danger";
+export type AlertVariant = SignalState;
 
 export type AlertProps = {
   variant?: AlertVariant;
@@ -22,7 +23,7 @@ export type AlertProps = {
 };
 
 export const Alert = ({
-  variant = "Default",
+  variant = SignalState.Default,
   icon,
   title,
   description,
@@ -38,13 +39,13 @@ export const Alert = ({
      */
     if (icon === undefined) {
       switch (variant) {
-        case "Default":
+        case SignalState.Default:
           return <InfoIcon />;
-        case "Positive":
+        case SignalState.Positive:
           return <CheckCircleIcon />;
-        case "Warning":
+        case SignalState.Warning:
           return <TriangleAlertIcon />;
-        case "Danger":
+        case SignalState.Danger:
           return <XCircleIcon />;
       }
     }
@@ -57,28 +58,28 @@ export const Alert = ({
 
   const colorPalette = (() => {
     switch (variant) {
-      case "Default":
+      case SignalState.Default:
         return {
           bgColor: "bg-ods__base-50",
           iconColor: "text-ods__base-600",
           titleColor: "text-ods__base-700",
           descriptionColor: "text-ods__base-600",
         };
-      case "Positive":
+      case SignalState.Positive:
         return {
           bgColor: "bg-ods__blue-20",
           iconColor: "text-ods__blue-600",
           titleColor: "text-ods__blue-700",
           descriptionColor: "text-ods__blue-600",
         };
-      case "Warning":
+      case SignalState.Warning:
         return {
           bgColor: "bg-ods__yellow-20",
           iconColor: "text-ods__bronze-600",
           titleColor: "text-ods__bronze-700",
           descriptionColor: "text-ods__bronze-600",
         };
-      case "Danger":
+      case SignalState.Danger:
         return {
           bgColor: "bg-ods__red-20",
           iconColor: "text-ods__red-600",

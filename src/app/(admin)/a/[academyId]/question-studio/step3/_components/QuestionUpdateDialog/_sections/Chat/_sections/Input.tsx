@@ -1,3 +1,4 @@
+import { SignalState } from "@/domain/signal/state";
 import { cn } from "@/ui/utils/tailwind/cn";
 import { StatusLabel } from "@/ui/components/StatusLabel";
 import { Button } from "@/ui/components/Button";
@@ -39,7 +40,7 @@ export const InputSection = ({
       <div className={cn("flex items-start justify-start gap-2")}>
         {SUGGESTION_CHIPS.map((chip) => (
           <button key={chip} onClick={() => handleSend(chip)}>
-            <StatusLabel status="Default">{chip}</StatusLabel>
+            <StatusLabel status={SignalState.Default}>{chip}</StatusLabel>
           </button>
         ))}
       </div>

@@ -1,5 +1,7 @@
 import * as React from "react";
 
+import { SignalState } from "@/domain/signal/state";
+
 import { StatusLabelStatus } from "@/ui/components/StatusLabel";
 import { cn } from "@/ui/utils/tailwind/cn";
 
@@ -17,11 +19,11 @@ interface CircularProgressProps {
 
 const getProgressStrokeColor = (status: StatusLabelStatus) => {
   switch (status) {
-    case "Positive":
+    case SignalState.Positive:
       return "stroke-ods__blue-300";
-    case "Warning":
+    case SignalState.Warning:
       return "stroke-ods__yellow-200";
-    case "Danger":
+    case SignalState.Danger:
       return "stroke-ods__red-400";
     default:
       return "stroke-ods__base-300";
@@ -31,7 +33,7 @@ const getProgressStrokeColor = (status: StatusLabelStatus) => {
 export const CircularProgress = ({
   value,
   label,
-  status = "Default",
+  status = SignalState.Default,
 }: CircularProgressProps) => {
   const circumference = Math.ceil(2 * Math.PI * RADIUS);
   const percentage = Math.ceil(circumference * ((100 - value) / 100));

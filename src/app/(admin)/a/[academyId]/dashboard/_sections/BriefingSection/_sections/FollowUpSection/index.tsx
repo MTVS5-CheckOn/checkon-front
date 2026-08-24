@@ -1,3 +1,4 @@
+import { SignalState } from "@/domain/signal/state";
 import { cn } from "@/ui/utils/tailwind/cn";
 
 import { CardMoreBottomButton } from "@/ui/components/CardMoreBottomButton";
@@ -54,7 +55,7 @@ export const Dashboard__FollowUpSection = () => {
           </div>
 
           {/* 팔로업 개수 */}
-          <StatusLabel status="Positive">{`${data.followUpCount}건`}</StatusLabel>
+          <StatusLabel status={SignalState.Positive}>{`${data.followUpCount}건`}</StatusLabel>
         </div>
       </div>
 

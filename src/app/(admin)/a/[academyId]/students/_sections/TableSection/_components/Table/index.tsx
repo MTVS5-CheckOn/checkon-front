@@ -5,8 +5,15 @@ import { TableHeader } from "@/ui/components/Table/parts/TableHeader";
 import { TableHeaderCell } from "@/ui/components/Table/parts/TableHeaderCell";
 import { TableRow } from "@/ui/components/Table/parts/TableRow";
 import { cn } from "@/ui/utils/tailwind/cn";
+import { useRouter } from "next/navigation";
 
 export const Students__Table = () => {
+  const router = useRouter();
+
+  const handleItemClick = (studentId: string) => {
+    router.push(`./students/${studentId}/basic-info`);
+  };
+
   return (
     <Table>
       <TableHeader hasBorderBottom>
@@ -27,7 +34,12 @@ export const Students__Table = () => {
 
       <TableBody>
         {MOCK_STUDENTS.map((student, index) => (
-          <TableRow key={`${student.id}-${index}`} hasBorderBottom>
+          <TableRow
+            key={`${student.id}-${index}`}
+            className={cn("cursor-pointer")}
+            hasBorderBottom
+            onClick={() => handleItemClick(student.id)}
+          >
             <TableCell
               className={cn(TABLE_COLUMNS[0].width, TABLE_COLUMNS[0].align)}
             >

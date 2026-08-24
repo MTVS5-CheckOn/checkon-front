@@ -22,6 +22,7 @@ const items = [
   {
     icon: <UsersIcon size={16} />,
     label: "학생 관리",
+    href: "/students",
   },
   {
     icon: <UserStarIcon size={16} />,
