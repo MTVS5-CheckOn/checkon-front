@@ -1,7 +1,7 @@
-import { AchievementGrid } from "@/app/temp/_components/AchievementGrid";
 import { SignalState } from "@/domain/signal/state";
 
 import { cn } from "@/ui/utils/tailwind/cn";
+import { AchievementGrid } from "./_components/AchievementGrid";
 
 export const AchievementGridContentSection = () => {
   return (
