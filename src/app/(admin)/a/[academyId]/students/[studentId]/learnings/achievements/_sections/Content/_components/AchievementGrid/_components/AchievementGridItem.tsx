@@ -9,12 +9,16 @@ import {
 
 export type AchievementGridItemProps = {
   status: SignalState;
+  onClick: () => void;
 };
 
 /**
  * Achievement Grid Item
  */
-export const AchievementGridItem = ({ status }: AchievementGridItemProps) => {
+export const AchievementGridItem = ({
+  status,
+  onClick,
+}: AchievementGridItemProps) => {
   const { bgColor, iconColor, Icon } = Styles[status];
 
   return (
@@ -27,6 +31,7 @@ export const AchievementGridItem = ({ status }: AchievementGridItemProps) => {
         // 4. Shadow & Border
         "rounded-lg",
       )}
+      onClick={onClick}
     >
       {Icon && (
         <div

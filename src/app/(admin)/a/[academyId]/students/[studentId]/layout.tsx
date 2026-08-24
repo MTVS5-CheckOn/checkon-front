@@ -12,7 +12,7 @@ import { useState } from "react";
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <PageRootContainer>
-      <div className={cn("flex w-full flex-1 flex-col items-start gap-7 py-8")}>
+      <div className={cn("flex w-full flex-1 flex-col items-start gap-7")}>
         <Header />
 
         {children}
@@ -26,7 +26,13 @@ const Header = () => {
   const [activeLearningTab, setActiveLearningTab] = useState("homeworks");
 
   return (
-    <div className={cn("flex w-full flex-col items-start gap-5")}>
+    <div
+      className={cn(
+        "sticky top-0 z-10 flex w-full flex-col items-start gap-5 pt-8",
+        // 3. Color
+        "bg-ods__white",
+      )}
+    >
       <Breadcrumb
         items={[
           { label: "학생 목록", link: "./students" },

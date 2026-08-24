@@ -21,7 +21,7 @@ export default function Page() {
     <div
       className={cn(
         // 1. Layout
-        "grid w-full grid-cols-4 gap-3 px-6",
+        "grid w-full grid-cols-4 gap-3 px-6 pb-8",
         // 6. Utility
         "overflow-hidden",
       )}

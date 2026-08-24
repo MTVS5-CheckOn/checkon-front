@@ -4,6 +4,8 @@ import { Fragment } from "react/jsx-runtime";
 import { AchievementGridHeader } from "./_components/AchievementGridHeader";
 import { AchievementGridItem } from "./_components/AchievementGridItem";
 import { AchievementGridTopic } from "./_components/AchievementGridTopic";
+import { overlay } from "overlay-kit";
+import { AchievementDetailDialog } from "../AchievementDetailDialog";
 
 /**
  * 성취도 난이도
@@ -49,6 +51,12 @@ export type AchievementGridProps = {
 };
 
 export const AchievementGrid = ({ topic, rows }: AchievementGridProps) => {
+  const handleItemClick = () => {
+    overlay.open(({ isOpen, close }) => (
+      <AchievementDetailDialog isOpen={isOpen} onClose={close} />
+    ));
+  };
+
   return (
     <div
       className={cn(
@@ -73,7 +81,11 @@ export const AchievementGrid = ({ topic, rows }: AchievementGridProps) => {
           )}
         >
           {rows.row1.levelLow.map((level) => (
-            <AchievementGridItem key={level.id} status={level.status} />
+            <AchievementGridItem
+              key={level.id}
+              status={level.status}
+              onClick={handleItemClick}
+            />
           ))}
         </div>
 
@@ -84,7 +96,11 @@ export const AchievementGrid = ({ topic, rows }: AchievementGridProps) => {
           )}
         >
           {rows.row1.levelMiddle.map((level) => (
-            <AchievementGridItem key={level.id} status={level.status} />
+            <AchievementGridItem
+              key={level.id}
+              status={level.status}
+              onClick={handleItemClick}
+            />
           ))}
         </div>
 
@@ -95,7 +111,11 @@ export const AchievementGrid = ({ topic, rows }: AchievementGridProps) => {
           )}
         >
           {rows.row1.levelHigh.map((level) => (
-            <AchievementGridItem key={level.id} status={level.status} />
+            <AchievementGridItem
+              key={level.id}
+              status={level.status}
+              onClick={handleItemClick}
+            />
           ))}
         </div>
       </Fragment>
@@ -111,7 +131,11 @@ export const AchievementGrid = ({ topic, rows }: AchievementGridProps) => {
           )}
         >
           {rows.row2.levelLow.map((level) => (
-            <AchievementGridItem key={level.id} status={level.status} />
+            <AchievementGridItem
+              key={level.id}
+              status={level.status}
+              onClick={handleItemClick}
+            />
           ))}
         </div>
 
@@ -122,7 +146,11 @@ export const AchievementGrid = ({ topic, rows }: AchievementGridProps) => {
           )}
         >
           {rows.row2.levelMiddle.map((level) => (
-            <AchievementGridItem key={level.id} status={level.status} />
+            <AchievementGridItem
+              key={level.id}
+              status={level.status}
+              onClick={handleItemClick}
+            />
           ))}
         </div>
 
@@ -133,7 +161,11 @@ export const AchievementGrid = ({ topic, rows }: AchievementGridProps) => {
           )}
         >
           {rows.row2.levelHigh.map((level) => (
-            <AchievementGridItem key={level.id} status={level.status} />
+            <AchievementGridItem
+              key={level.id}
+              status={level.status}
+              onClick={handleItemClick}
+            />
           ))}
         </div>
       </Fragment>
@@ -149,7 +181,11 @@ export const AchievementGrid = ({ topic, rows }: AchievementGridProps) => {
           )}
         >
           {rows.row3.levelLow.map((level) => (
-            <AchievementGridItem key={level.id} status={level.status} />
+            <AchievementGridItem
+              key={level.id}
+              status={level.status}
+              onClick={handleItemClick}
+            />
           ))}
         </div>
 
@@ -160,7 +196,11 @@ export const AchievementGrid = ({ topic, rows }: AchievementGridProps) => {
           )}
         >
           {rows.row3.levelMiddle.map((level) => (
-            <AchievementGridItem key={level.id} status={level.status} />
+            <AchievementGridItem
+              key={level.id}
+              status={level.status}
+              onClick={handleItemClick}
+            />
           ))}
         </div>
 
@@ -171,7 +211,11 @@ export const AchievementGrid = ({ topic, rows }: AchievementGridProps) => {
           )}
         >
           {rows.row3.levelHigh.map((level) => (
-            <AchievementGridItem key={level.id} status={level.status} />
+            <AchievementGridItem
+              key={level.id}
+              status={level.status}
+              onClick={handleItemClick}
+            />
           ))}
         </div>
       </Fragment>
@@ -187,7 +231,11 @@ export const AchievementGrid = ({ topic, rows }: AchievementGridProps) => {
           )}
         >
           {rows.row4.levelLow.map((level) => (
-            <AchievementGridItem key={level.id} status={level.status} />
+            <AchievementGridItem
+              key={level.id}
+              status={level.status}
+              onClick={handleItemClick}
+            />
           ))}
         </div>
 
@@ -198,7 +246,11 @@ export const AchievementGrid = ({ topic, rows }: AchievementGridProps) => {
           )}
         >
           {rows.row4.levelMiddle.map((level) => (
-            <AchievementGridItem key={level.id} status={level.status} />
+            <AchievementGridItem
+              key={level.id}
+              status={level.status}
+              onClick={handleItemClick}
+            />
           ))}
         </div>
 
@@ -209,7 +261,11 @@ export const AchievementGrid = ({ topic, rows }: AchievementGridProps) => {
           )}
         >
           {rows.row4.levelHigh.map((level) => (
-            <AchievementGridItem key={level.id} status={level.status} />
+            <AchievementGridItem
+              key={level.id}
+              status={level.status}
+              onClick={handleItemClick}
+            />
           ))}
         </div>
       </Fragment>

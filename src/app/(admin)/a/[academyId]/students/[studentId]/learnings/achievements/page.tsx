@@ -1,19 +1,12 @@
 "use client";
 
-import { AchievementGridHeaderSection } from "@/app/(admin)/a/[academyId]/students/[studentId]/learnings/achievements/_sections/Header";
-
 import { cn } from "@/ui/utils/tailwind/cn";
 import { AchievementGridContentSection } from "./_sections/Content";
+import { AchievementGridHeaderSection } from "./_sections/Header";
 
 export default function Page() {
-  // const handleClick = () => {
-  //   overlay.open(({ isOpen, close }) => (
-  //     <HomeworkDetailDialog isOpen={isOpen} onClose={close} />
-  //   ));
-  // };
-
   return (
-    <div className="flex w-full flex-col gap-5 px-6">
+    <div className="flex w-full flex-col gap-5 px-6 pb-8">
       <div
         className={cn(
           // 1. Layout
