@@ -84,6 +84,9 @@ const Header = () => {
               <TabsParts.Tab value="homeworks">
                 <span>과제 관리</span>
               </TabsParts.Tab>
+              <TabsParts.Tab value="achievements">
+                <span>성취도 분석</span>
+              </TabsParts.Tab>
             </TabsParts.List>
           </TabsParts.Root>
         </div>

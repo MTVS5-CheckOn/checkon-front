@@ -1,5 +1,7 @@
 import { cn } from "@/ui/utils/tailwind/cn";
 
+import { SignalState } from "@/domain/signal/state";
+
 import { StatusLabel } from "@/ui/components/StatusLabel";
 import { useFormContext } from "react-hook-form";
 import { Dashboard__TodayTodoSection__TodoCompletionRateSection } from "./components/TodoCompletionRateSection";
@@ -35,7 +37,7 @@ export const Dashboard__TodayTodoSection = () => {
             </div>
           </div>
 
-          <StatusLabel status={"Default"}>{`${data.todoCount}건`}</StatusLabel>
+          <StatusLabel status={SignalState.Default}>{`${data.todoCount}건`}</StatusLabel>
         </div>
 
         {/* Todo List Section */}

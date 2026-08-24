@@ -1,3 +1,4 @@
+import { SignalState } from "@/domain/signal/state";
 import { cn } from "@/ui/utils/tailwind/cn";
 import { Button } from "@/ui/components/Button";
 import { QuestionCard } from "../../../QuestionCard";
@@ -27,7 +28,7 @@ export const PreviewSection = ({ onConfirm }: { onConfirm?: () => void }) => {
         readonly
         questionId={model.questionId}
         statusLabel={{
-          status: "Positive",
+          status: SignalState.Positive,
           children: "검증 통과",
         }}
         title={model.title}

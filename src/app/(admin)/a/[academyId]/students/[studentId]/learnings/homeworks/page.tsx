@@ -1,5 +1,7 @@
 "use client";
 
+import { SignalState } from "@/domain/signal/state";
+
 import {
   HomeworkResultCard,
   HomeworkResultCardModel,
@@ -41,7 +43,7 @@ const HOMEWORK_RESULT_CARDS = [
     subtitle: "2026-08-16",
     totalQuestionCount: 100,
     labelModel: {
-      status: "Default",
+      status: SignalState.Default,
       label: "미제출",
     },
   }),
@@ -49,7 +51,7 @@ const HOMEWORK_RESULT_CARDS = [
     title: "문학x어휘개념 외 4영역",
     subtitle: "2026-08-16",
     labelModel: {
-      status: "Default",
+      status: SignalState.Default,
       label: "미제출",
     },
     submissionInfo: {
@@ -64,7 +66,7 @@ const HOMEWORK_RESULT_CARDS = [
     title: "문학x어휘개념 외 4영역",
     subtitle: "2026-08-16",
     labelModel: {
-      status: "Default",
+      status: SignalState.Default,
       label: "미제출",
     },
     submissionInfo: {
@@ -79,7 +81,7 @@ const HOMEWORK_RESULT_CARDS = [
     title: "문학x어휘개념 외 4영역",
     subtitle: "2026-08-16",
     labelModel: {
-      status: "Default",
+      status: SignalState.Default,
       label: "미제출",
     },
     submissionInfo: {
@@ -94,7 +96,7 @@ const HOMEWORK_RESULT_CARDS = [
     title: "문학x어휘개념 외 4영역",
     subtitle: "2026-08-16",
     labelModel: {
-      status: "Default",
+      status: SignalState.Default,
       label: "미제출",
     },
     submissionInfo: {
@@ -109,7 +111,7 @@ const HOMEWORK_RESULT_CARDS = [
     title: "문학x어휘개념 외 4영역",
     subtitle: "2026-08-16",
     labelModel: {
-      status: "Default",
+      status: SignalState.Default,
       label: "미제출",
     },
     submissionInfo: {
@@ -124,7 +126,7 @@ const HOMEWORK_RESULT_CARDS = [
     title: "문학x어휘개념 외 4영역",
     subtitle: "2026-08-16",
     labelModel: {
-      status: "Default",
+      status: SignalState.Default,
       label: "미제출",
     },
     submissionInfo: {
@@ -139,7 +141,7 @@ const HOMEWORK_RESULT_CARDS = [
     title: "독해x논리 외 3영역",
     subtitle: "2026-08-16",
     labelModel: {
-      status: "Default",
+      status: SignalState.Default,
       label: "미제출",
     },
     submissionInfo: {

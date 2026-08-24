@@ -1,3 +1,4 @@
+import { SignalState } from "@/domain/signal/state";
 import { StatusLabelStatus } from "@/ui/components/StatusLabel";
 import { isNil } from "es-toolkit/predicate";
 
@@ -34,8 +35,7 @@ export type HomeworkResultCardStatusLabelModel = {
 /**
  * 카드 상태
  */
-export type HomeworkResultCardState =
-  "Default" | "Warning" | "Danger" | "Positive";
+export type HomeworkResultCardState = SignalState;
 
 /**
  * 과제 결과 카드 모델
@@ -81,16 +81,16 @@ export class HomeworkResultCardModel {
     const answerRatio = this.getAnswerRatio();
 
     if (isNil(answerRatio)) {
-      return "Default";
+      return SignalState.Default;
     }
     if (answerRatio >= 80) {
-      return "Positive";
+      return SignalState.Positive;
     }
     if (answerRatio >= 60) {
-      return "Warning";
+      return SignalState.Warning;
     }
 
-    return "Danger";
+    return SignalState.Danger;
   }
 
   /**
@@ -118,13 +118,13 @@ export class HomeworkResultCardModel {
   getAnswerRatioChartColor(): string {
     const state = this.getCardState();
 
-    if (state === "Positive") {
+    if (state === SignalState.Positive) {
       return "bg-ods__blue-300";
     }
-    if (state === "Warning") {
+    if (state === SignalState.Warning) {
       return "bg-ods__yellow-200";
     }
-    if (state === "Danger") {
+    if (state === SignalState.Danger) {
       return "bg-ods__red-400";
     }
 

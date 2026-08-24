@@ -1,3 +1,4 @@
+import { SignalState } from "@/domain/signal/state";
 import { BaseDialog } from "@/ui/components/BaseDialog";
 import { cn } from "@/ui/utils/tailwind/cn";
 import { HomeworkQuestionCard } from "./_components/HomeworkQuestionCard";
@@ -12,7 +13,7 @@ const HOMEWORK_RESULT_CARD_MODEL = new HomeworkResultCardModel({
   title: "문학x어휘개념 외 4영역",
   subtitle: "2026-08-16",
   labelModel: {
-    status: "Default",
+    status: SignalState.Default,
     label: "제출",
   },
   submissionInfo: {
