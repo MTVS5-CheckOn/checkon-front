@@ -6,8 +6,7 @@ import { Breadcrumb } from "@/ui/components/Breadcrumb";
 import { TabsParts } from "@/ui/components/Tabs/parts";
 
 import { PageRootContainer } from "../../_components/PageRootContainer";
-
-import { useState } from "react";
+import { useStudentDetailTabs } from "./_hooks/useStudentDetailTabs";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -22,8 +21,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 }
 
 const Header = () => {
-  const [activeTab, setActiveTab] = useState("info");
-  const [activeLearningTab, setActiveLearningTab] = useState("homeworks");
+  const {
+    activeTab,
+    activeLearningTab,
+    isNestedTab,
+    handleActiveTabChange,
+    handleActiveLearningTabChange,
+  } = useStudentDetailTabs();
 
   return (
     <div
@@ -43,17 +47,23 @@ const Header = () => {
 
       {/* Tabs */}
       <div className={cn("flex w-full flex-col items-start gap-2")}>
+        {/* 최상위 탭 */}
         <div
           className={cn(
             // 1. Layout
             "flex w-full flex-col items-start gap-2.5 px-6",
+            // 4. Shadow & Border
+            !isNestedTab && "border-ods__border border-b",
           )}
         >
-          <TabsParts.Root value={activeTab} onValueChange={setActiveTab}>
+          <TabsParts.Root
+            value={activeTab}
+            onValueChange={handleActiveTabChange}
+          >
             <TabsParts.List>
               <TabsParts.Indicator />
 
-              <TabsParts.Tab value="info">
+              <TabsParts.Tab value="basic-info">
                 <span>학생 정보</span>
               </TabsParts.Tab>
               <TabsParts.Tab value="signal">
@@ -69,33 +79,36 @@ const Header = () => {
           </TabsParts.Root>
         </div>
 
-        <div
-          className={cn(
-            // 1. Layout
-            "flex w-full flex-col items-start gap-2.5 px-6",
-            // 4. Shadow & Border
-            "border-ods__border border-b",
-          )}
-        >
-          <TabsParts.Root
-            value={activeLearningTab}
-            onValueChange={setActiveLearningTab}
+        {/* 학업 관리 하위 탭 */}
+        {activeTab === "learnings" && (
+          <div
+            className={cn(
+              // 1. Layout
+              "flex w-full flex-col items-start gap-2.5 px-6",
+              // 4. Shadow & Border
+              "border-ods__border border-b",
+            )}
           >
-            <TabsParts.List>
-              <TabsParts.Indicator />
+            <TabsParts.Root
+              value={activeLearningTab}
+              onValueChange={handleActiveLearningTabChange}
+            >
+              <TabsParts.List>
+                <TabsParts.Indicator />
 
-              <TabsParts.Tab value="analysis">
-                <span>학업 분석</span>
-              </TabsParts.Tab>
-              <TabsParts.Tab value="homeworks">
-                <span>과제 관리</span>
-              </TabsParts.Tab>
-              <TabsParts.Tab value="achievements">
-                <span>성취도 분석</span>
-              </TabsParts.Tab>
-            </TabsParts.List>
-          </TabsParts.Root>
-        </div>
+                <TabsParts.Tab value="analysis">
+                  <span>학업 분석</span>
+                </TabsParts.Tab>
+                <TabsParts.Tab value="homeworks">
+                  <span>과제 관리</span>
+                </TabsParts.Tab>
+                <TabsParts.Tab value="achievements">
+                  <span>성취도 분석</span>
+                </TabsParts.Tab>
+              </TabsParts.List>
+            </TabsParts.Root>
+          </div>
+        )}
       </div>
     </div>
   );
