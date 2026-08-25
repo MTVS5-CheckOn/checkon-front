@@ -10,6 +10,8 @@ import { TableHeader } from "@/ui/components/Table/parts/TableHeader";
 import { TableHeaderCell } from "@/ui/components/Table/parts/TableHeaderCell";
 import { TableRow } from "@/ui/components/Table/parts/TableRow";
 import { cn } from "@/ui/utils/tailwind/cn";
+import { overlay } from "overlay-kit";
+import { ReportViewerDialog } from "../../_components/ReportViewerDialog";
 
 type ReportStatusLabel = {
   label: string;
@@ -108,6 +110,12 @@ const MOCK_REPORTS: ReportRow[] = [
 const PAGINATION_PAGES = [1, 2, 3, 4, 5] as const;
 
 export const TableSection = () => {
+  const handleReportClick = () => {
+    overlay.open(({ isOpen, close }) => (
+      <ReportViewerDialog isOpen={isOpen} onClose={close} />
+    ));
+  };
+
   return (
     <section
       className={cn(
@@ -136,8 +144,9 @@ export const TableSection = () => {
             {MOCK_REPORTS.map((report, index) => (
               <TableRow
                 key={report.id}
+                className={cn("cursor-pointer")}
                 hasBorderBottom={index !== MOCK_REPORTS.length - 1}
-                hoverable={false}
+                onClick={handleReportClick}
               >
                 <TableCell
                   className={cn(
@@ -146,7 +155,12 @@ export const TableSection = () => {
                     "px-4 py-0",
                   )}
                 >
-                  <Checkbox defaultChecked={report.isSelected} />
+                  <Checkbox
+                    defaultChecked={report.isSelected}
+                    onClickCapture={(e) => {
+                      e.stopPropagation();
+                    }}
+                  />
                 </TableCell>
                 <TableCell
                   className={cn(
