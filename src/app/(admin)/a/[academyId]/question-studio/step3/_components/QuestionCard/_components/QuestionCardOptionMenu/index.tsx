@@ -34,7 +34,7 @@ export const QuestionCardOptionMenu = ({
   const handleUpdatebyAi = (questionId: string) => {
     const targetQuestion = field.value.find(
       (it) => it.questionId === questionId,
-    )!!;
+    )!;
 
     const handleConfirm = (model: QuestionPreviewModel) => {
       field.onChange(

@@ -16,7 +16,7 @@ export const TableRow = ({
   <tr
     className={cn(
       // 1. Layout
-      "flex w-full items-start",
+      "flex w-full items-center",
       // 4. Shadow & Border
       hasBorderBottom && "border-ods__border border-b",
       hoverable && "ods__animate__default hover:bg-ods__hover",
