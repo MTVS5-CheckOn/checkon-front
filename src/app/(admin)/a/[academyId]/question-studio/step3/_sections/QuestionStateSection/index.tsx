@@ -1,7 +1,7 @@
 import { cn } from "@/ui/utils/tailwind/cn";
 
 import { QuestionStudioPageModel } from "../../../layout";
-import { StateCard } from "./_components/StateCard";
+import { StatisticsCard } from "@/ui/domain-components/statistics/StatisticsCard";
 import { useFormContext } from "react-hook-form";
 import { groupBy } from "es-toolkit/array";
 import { SignalState } from "@/domain/signal/state";
@@ -63,22 +63,22 @@ export const QuestionStateSection = () => {
           "overflow-hidden",
         )}
       >
-        <StateCard
+        <StatisticsCard
           variant={SignalState.Positive}
           title="검증 통과"
           count={passedCount}
         />
-        <StateCard
+        <StatisticsCard
           variant={SignalState.Warning}
           title="검토 필요"
           count={reviewNeededCount}
         />
-        <StateCard
+        <StatisticsCard
           variant={SignalState.Danger}
           title="검증 불가"
           count={verificationFailedCount}
         />
-        <StateCard
+        <StatisticsCard
           variant={SignalState.Default}
           title="폐기·제외"
           count={rejectedCount}

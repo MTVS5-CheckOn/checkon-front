@@ -3,21 +3,21 @@ import { cn } from "@/ui/utils/tailwind/cn";
 
 import { ComponentPropsWithRef } from "react";
 
-export type QuestionStateVariant = SignalState;
+export type StatisticsCardVariant = SignalState;
 
-export type StateCardProps = {
-  variant: QuestionStateVariant;
+export type StatisticsCardProps = {
+  variant: StatisticsCardVariant;
   title: string;
   count: number;
 } & Omit<ComponentPropsWithRef<"div">, "children">;
 
-export const StateCard = ({
+export const StatisticsCard = ({
   variant,
   title,
   count,
   className,
   ...props
-}: StateCardProps) => {
+}: StatisticsCardProps) => {
   const styles = VARIANT_STYLES[variant];
 
   return (
@@ -59,7 +59,7 @@ export const StateCard = ({
 };
 
 const VARIANT_STYLES: Record<
-  QuestionStateVariant,
+  StatisticsCardVariant,
   {
     bgColor?: string;
     labelColor: string;
