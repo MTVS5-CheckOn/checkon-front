@@ -7,8 +7,17 @@ import { TableHeader } from "@/ui/components/Table/parts/TableHeader";
 import { TableHeaderCell } from "@/ui/components/Table/parts/TableHeaderCell";
 import { TableRow } from "@/ui/components/Table/parts/TableRow";
 import { cn } from "@/ui/utils/tailwind/cn";
+import { overlay } from "overlay-kit";
+
+import { InquiryThreadDialog } from "../../../../_components/InquiryThreadDialog";
 
 export const ParentInquiries__Table = () => {
+  const handleRowClick = () => {
+    overlay.open(({ isOpen, close }) => (
+      <InquiryThreadDialog isOpen={isOpen} onClose={close} />
+    ));
+  };
+
   return (
     <Table>
       <TableHeader hasBorderBottom>
@@ -31,8 +40,9 @@ export const ParentInquiries__Table = () => {
         {MOCK_INQUIRY_THREADS.map((inquiry, index) => (
           <TableRow
             key={`${inquiry.id}-${index}`}
+            className={cn("cursor-pointer")}
             hasBorderBottom={index < MOCK_INQUIRY_THREADS.length - 1}
-            hoverable={false}
+            onClick={handleRowClick}
           >
             <TableCell
               className={cn(TABLE_COLUMNS[0].width, TABLE_COLUMNS[0].align)}

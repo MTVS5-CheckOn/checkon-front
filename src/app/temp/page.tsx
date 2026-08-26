@@ -26,358 +26,108 @@ export default function Page() {
   );
 }
 
-const Temp = () => {
+export const Temp = () => {
   return (
-    <div className="size-lf-stretch outline-Ods-Semantic-Token-Ods-Border inline-flex flex-col items-center justify-start gap-3 overflow-hidden rounded-tl-2xl bg-white outline outline-1 outline-offset-[-1px]">
-      <div className="flex flex-1 flex-col items-start justify-start gap-7 self-stretch">
-        <div className="flex flex-col items-start justify-start gap-5 self-stretch pt-6">
-          <div className="size- inline-flex items-center justify-center gap-1 overflow-hidden px-6">
-            <div className="text-Ods-Base-Ods-Base-400 justify-start font-['Pretendard'] text-sm leading-5 font-normal tracking-tight">
-              학부모 목록
-            </div>
-            <div className="relative size-3.5 overflow-hidden">
-              <div className="outline-Ods-Base-Ods-Base-400 absolute top-[3.50px] left-[5.25px] h-1.5 w-1 outline outline-1 outline-offset-[-0.50px]" />
-            </div>
-            <div className="text-Ods-Base-Ods-Base-400 justify-start font-['Pretendard'] text-sm leading-5 font-normal tracking-tight">
-              학부모 상세
-            </div>
-            <div className="relative size-3.5 overflow-hidden">
-              <div className="outline-Ods-Base-Ods-Base-400 absolute top-[3.50px] left-[5.25px] h-1.5 w-1 outline outline-1 outline-offset-[-0.50px]" />
-            </div>
-            <div className="text-Ods-Base-Ods-Base-500 justify-start font-['Pretendard'] text-sm leading-5 font-medium tracking-tight">
-              김영희
-            </div>
-          </div>
-          <div className="flex flex-col items-center justify-center self-stretch">
-            <div className="border-Ods-Semantic-Token-Ods-Border flex w-full max-w-[1200px] flex-col items-start justify-start gap-2.5 border-b px-6">
-              <div className="inline-flex items-start justify-start gap-1 self-stretch overflow-hidden rounded-tl-lg rounded-tr-lg bg-white">
-                <div
-                  data-active="True"
-                  className="size- bg-Ods-Base-Ods-Base-50 inline-flex min-w-24 flex-col items-center justify-center gap-2 rounded-tl-lg rounded-tr-lg px-3 pt-2"
-                >
-                  <div className="text-Ods-Base-Ods-Base-500 justify-start font-['Pretendard'] text-sm leading-5 font-semibold tracking-tight">
-                    학부모 정보
-                  </div>
-                  <div className="outline-Ods-Blue-Ods-Blue-400 h-0 self-stretch opacity-60 outline outline-2"></div>
+    <div className="size-lf-stretch inline-flex justify-start items-center gap-6">
+    <div className="flex-1 self-stretch rounded-xl outline outline-1 outline-offset-[-1px] outline-Ods-Semantic-Token-Ods-Border inline-flex flex-col justify-between items-start">
+        <div className="self-stretch flex-1 flex flex-col justify-center items-start gap-4">
+            <div className="self-stretch px-6 pt-5 pb-4 border-b border-Ods-Semantic-Token-Ods-Border inline-flex justify-start items-center gap-2.5">
+                <div className="size- inline-flex flex-col justify-start items-start">
+                    <div className="justify-start text-Ods-Base-Ods-Base-600 text-xl font-semibold font-['Pretendard'] leading-7">학부모 문의 쓰레드</div>
+                    <div className="justify-start text-Ods-Base-Ods-Base-400 text-sm font-normal font-['Pretendard'] leading-5 tracking-tight">메세지 오발송을 방지하기 위해 보내기 전에 확인 Alert가 발생해요.</div>
                 </div>
-                <div
-                  data-active="False"
-                  className="size- inline-flex min-w-24 flex-col items-center justify-center gap-2 rounded-tl-lg rounded-tr-lg px-3 pt-2"
-                >
-                  <div className="text-Ods-Base-Ods-Base-400 justify-start font-['Pretendard'] text-sm leading-5 font-normal tracking-tight">
-                    라벨 관리
-                  </div>
-                  <div className="h-0 self-stretch"></div>
-                </div>
-                <div
-                  data-active="False"
-                  className="size- inline-flex min-w-24 flex-col items-center justify-center gap-2 rounded-tl-lg rounded-tr-lg px-3 pt-2"
-                >
-                  <div className="text-Ods-Base-Ods-Base-400 justify-start font-['Pretendard'] text-sm leading-5 font-normal tracking-tight">
-                    문의 관리
-                  </div>
-                  <div className="h-0 self-stretch"></div>
-                </div>
-              </div>
             </div>
-          </div>
+            <div className="self-stretch flex-1 px-6 flex flex-col justify-start items-start gap-6 overflow-hidden">
+                <div className="self-stretch inline-flex justify-start items-start gap-2.5">
+                    <div data-ismine="False" className="w-[530px] inline-flex flex-col justify-start items-start gap-2">
+                        <div className="justify-start text-Ods-Base-Ods-Base-700 text-base font-medium font-['Pretendard'] leading-6 tracking-tight">김영희</div>
+                        <div className="self-stretch inline-flex justify-start items-start gap-2">
+                            <div className="flex-1 inline-flex flex-col justify-start items-start gap-2">
+                                <div className="self-stretch px-4 py-3 bg-Ods-Base-Ods-Base-50 rounded-lg inline-flex justify-center items-center overflow-hidden">
+                                    <div className="flex-1 justify-start text-Ods-Base-Ods-Base-700 text-base font-normal font-['Pretendard'] leading-6 tracking-tight">What is Lorem Ipsum?<br/><br/>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library in London, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset&apos;s Body Type sheets. It has survived not only many decades, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised thanks to these sheets and more recently with desktop publishing software like Aldus PageMaker and Microsoft Word including versions of Lorem Ipsum.</div>
+                                </div>
+                                <div className="self-stretch inline-flex justify-end items-start overflow-hidden">
+                                    <div data-status="Default" className="size- px-2 py-0.5 bg-Ods-Base-Ods-Base-100 rounded-lg inline-flex flex-col justify-center items-center">
+                                        <div className="justify-start text-Ods-Base-Ods-Base-500 text-xs font-medium font-['Pretendard'] leading-4 tracking-tight">AI로 답변하기</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="self-stretch pb-7 flex justify-end items-end gap-2.5">
+                                <div className="justify-start text-Ods-Base-Ods-Base-500 text-xs font-normal font-['Pretendard'] leading-4 tracking-tight">22:00</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="self-stretch inline-flex justify-end items-start gap-2.5">
+                    <div data-ismine="True" className="w-[530px] inline-flex flex-col justify-start items-start gap-2">
+                        <div className="self-stretch inline-flex justify-start items-start gap-2">
+                            <div className="self-stretch flex justify-end items-end gap-2.5">
+                                <div className="justify-start text-Ods-Base-Ods-Base-500 text-xs font-normal font-['Pretendard'] leading-4 tracking-tight">22:00</div>
+                            </div>
+                            <div className="flex-1 inline-flex flex-col justify-start items-start gap-2">
+                                <div className="self-stretch px-4 py-3 bg-Ods-Blue-Ods-Blue-50 rounded-lg inline-flex justify-center items-center overflow-hidden">
+                                    <div className="flex-1 justify-start text-Ods-Base-Ods-Base-700 text-base font-normal font-['Pretendard'] leading-6 tracking-tight">What is Lorem Ipsum?<br/><br/>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library in London, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset&apos;s Body Type sheets. It has survived not only many decades, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised thanks to these sheets and more recently with desktop publishing software like Aldus PageMaker and Microsoft Word including versions of Lorem Ipsum.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div className="flex flex-col items-start justify-start gap-6 self-stretch px-6">
-          <div className="flex flex-col items-start justify-start gap-12 self-stretch">
-            <div className="flex flex-col items-start justify-start gap-2 self-stretch">
-              <div className="inline-flex items-end justify-between self-stretch">
-                <div
-                  data-required="false"
-                  className="size- flex items-start justify-start gap-0.5"
-                >
-                  <div className="text-Ods-Base-Ods-Base-500 justify-start font-['Pretendard'] text-base leading-6 font-normal tracking-tight">
-                    기본 정보
-                  </div>
+        <div className="self-stretch px-6 pt-2 pb-6 flex flex-col justify-start items-start gap-2">
+            <div className="self-stretch inline-flex justify-end items-end gap-2">
+                <div data-placeholder="False" data-size="Medium" data-state="Default" className="flex-1 p-3 bg-Ods-White rounded-lg outline outline-1 outline-offset-[-1px] outline-Ods-Semantic-Token-Ods-Border inline-flex flex-col justify-center items-start overflow-hidden">
+                    <div className="self-stretch justify-start text-Ods-Base-Ods-Base-600 text-sm font-normal font-['Pretendard'] leading-5 tracking-tight line-clamp-4">안녕하세요 어머님, dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library in London, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset&apos;s Body Type sheets. It has survived not only many decades, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised thanks to these sheets and more recently with desktop </div>
                 </div>
-                <div className="size- flex items-center justify-center gap-2 overflow-hidden rounded-lg">
-                  <div
-                    data-color="Red"
-                    data-size="Small"
-                    data-state="Default"
-                    className="bg-Ods-Red-Ods-Red-100 inline-flex h-8 flex-col items-center justify-center overflow-hidden rounded-lg px-3"
-                  >
-                    <div className="text-Ods-Red-Ods-Red-400 justify-start font-['Pretendard'] text-sm leading-5 font-semibold tracking-tight">
-                      삭제
-                    </div>
-                  </div>
+                <div data-color="Blue" data-size="Medium" data-state="Default" className="h-10 px-4 bg-Ods-Blue-Ods-Blue-300 rounded-lg inline-flex flex-col justify-center items-center overflow-hidden">
+                    <div className="justify-start text-Ods-Blue-Ods-Blue-50 text-sm font-semibold font-['Pretendard'] leading-5 tracking-tight">보내기</div>
                 </div>
-              </div>
-              <div className="outline-Ods-Semantic-Token-Ods-Border flex flex-col items-start justify-start self-stretch overflow-hidden rounded-lg outline outline-1 outline-offset-[-1px]">
-                <div className="border-Ods-Semantic-Token-Ods-Border inline-flex items-start justify-start self-stretch border-b">
-                  <div className="flex flex-1 items-start justify-start">
-                    <div className="bg-Ods-Base-Ods-Base-50 inline-flex w-44 flex-col items-start justify-center overflow-hidden p-4">
-                      <div className="text-Ods-Base-Ods-Base-500 justify-start font-['Pretendard'] text-sm leading-5 font-normal tracking-tight">
-                        ID
-                      </div>
-                    </div>
-                    <div className="inline-flex flex-1 flex-col items-start justify-center overflow-hidden p-4">
-                      <div className="text-Ods-Base-Ods-Base-600 justify-start font-['Pretendard'] text-sm leading-5 font-medium tracking-tight">
-                        019fd78d-deb7-772c-89e1-318d374a6ddc
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex flex-1 items-start justify-start">
-                    <div className="bg-Ods-Base-Ods-Base-50 inline-flex w-44 flex-col items-start justify-center overflow-hidden p-4">
-                      <div className="text-Ods-Base-Ods-Base-500 justify-start font-['Pretendard'] text-sm leading-5 font-normal tracking-tight">
-                        등록일시
-                      </div>
-                    </div>
-                    <div className="inline-flex flex-1 flex-col items-start justify-center overflow-hidden p-4">
-                      <div className="text-Ods-Base-Ods-Base-600 justify-start font-['Pretendard'] text-sm leading-5 font-medium tracking-tight">
-                        2026-08-06 11:11:11
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="border-Ods-Semantic-Token-Ods-Border inline-flex items-start justify-start self-stretch border-b">
-                  <div className="flex flex-1 items-start justify-start">
-                    <div className="bg-Ods-Base-Ods-Base-50 inline-flex w-44 flex-col items-start justify-center overflow-hidden p-4">
-                      <div className="text-Ods-Base-Ods-Base-500 justify-start font-['Pretendard'] text-sm leading-5 font-normal tracking-tight">
-                        이름
-                      </div>
-                    </div>
-                    <div className="inline-flex flex-1 flex-col items-start justify-center overflow-hidden p-4">
-                      <div className="text-Ods-Base-Ods-Base-600 justify-start font-['Pretendard'] text-sm leading-5 font-medium tracking-tight underline">
-                        김영희
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex flex-1 items-start justify-start">
-                    <div className="bg-Ods-Base-Ods-Base-50 inline-flex w-44 flex-col items-start justify-center overflow-hidden p-4">
-                      <div className="text-Ods-Base-Ods-Base-500 justify-start font-['Pretendard'] text-sm leading-5 font-normal tracking-tight">
-                        성별
-                      </div>
-                    </div>
-                    <div className="inline-flex flex-1 flex-col items-start justify-center overflow-hidden p-4">
-                      <div className="text-Ods-Base-Ods-Base-600 justify-start font-['Pretendard'] text-sm leading-5 font-medium tracking-tight">
-                        여자
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="border-Ods-Semantic-Token-Ods-Border inline-flex items-start justify-start self-stretch border-b">
-                  <div className="flex flex-1 items-start justify-start">
-                    <div className="bg-Ods-Base-Ods-Base-50 inline-flex w-44 flex-col items-start justify-center overflow-hidden p-4">
-                      <div className="text-Ods-Base-Ods-Base-500 justify-start font-['Pretendard'] text-sm leading-5 font-normal tracking-tight">
-                        휴대폰 번호
-                      </div>
-                    </div>
-                    <div className="inline-flex flex-1 flex-col items-start justify-center overflow-hidden p-4">
-                      <div className="text-Ods-Base-Ods-Base-600 justify-start font-['Pretendard'] text-sm leading-5 font-medium tracking-tight">
-                        010-1234-5678
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="inline-flex items-start justify-start self-stretch">
-                  <div className="flex flex-1 items-start justify-start">
-                    <div className="bg-Ods-Base-Ods-Base-50 inline-flex w-44 flex-col items-start justify-center self-stretch overflow-hidden p-4">
-                      <div className="text-Ods-Base-Ods-Base-500 justify-start font-['Pretendard'] text-sm leading-5 font-normal tracking-tight">
-                        메모
-                      </div>
-                    </div>
-                    <div className="inline-flex flex-1 flex-col items-start justify-center overflow-hidden p-4">
-                      <div className="text-Ods-Base-Ods-Base-600 justify-start font-['Pretendard'] text-sm leading-5 font-medium tracking-tight">
-                        성적에 민감함. 일주일에 한 번은 연락해야 문제 안 생김.
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
-            <div className="flex flex-col items-start justify-start gap-6 self-stretch">
-              <div className="flex flex-col items-start justify-start gap-2 self-stretch">
-                <div className="inline-flex items-end justify-between self-stretch">
-                  <div
-                    data-required="false"
-                    className="size- flex items-start justify-start gap-0.5"
-                  >
-                    <div className="text-Ods-Base-Ods-Base-500 justify-start font-['Pretendard'] text-base leading-6 font-normal tracking-tight">
-                      학생 정보
-                    </div>
-                  </div>
-                </div>
-                <div className="outline-Ods-Semantic-Token-Ods-Border flex flex-col items-start justify-start self-stretch overflow-hidden rounded-lg outline outline-1 outline-offset-[-1px]">
-                  <div className="border-Ods-Semantic-Token-Ods-Border inline-flex items-start justify-start self-stretch border-b">
-                    <div className="flex flex-1 items-start justify-start">
-                      <div className="bg-Ods-Base-Ods-Base-50 inline-flex w-44 flex-col items-start justify-center overflow-hidden p-4">
-                        <div className="text-Ods-Base-Ods-Base-500 justify-start font-['Pretendard'] text-sm leading-5 font-normal tracking-tight">
-                          ID
-                        </div>
-                      </div>
-                      <div className="inline-flex flex-1 flex-col items-start justify-center overflow-hidden p-4">
-                        <div className="text-Ods-Base-Ods-Base-600 justify-start font-['Pretendard'] text-sm leading-5 font-medium tracking-tight">
-                          019fd78d-deb7-772c-89e1-318d374a6ddc
-                        </div>
-                      </div>
-                    </div>
-                    <div className="flex flex-1 items-start justify-start">
-                      <div className="bg-Ods-Base-Ods-Base-50 inline-flex w-44 flex-col items-start justify-center overflow-hidden p-4">
-                        <div className="text-Ods-Base-Ods-Base-500 justify-start font-['Pretendard'] text-sm leading-5 font-normal tracking-tight">
-                          등록일시
-                        </div>
-                      </div>
-                      <div className="inline-flex flex-1 flex-col items-start justify-center overflow-hidden p-4">
-                        <div className="text-Ods-Base-Ods-Base-600 justify-start font-['Pretendard'] text-sm leading-5 font-medium tracking-tight">
-                          2026-08-06 11:11:11
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="border-Ods-Semantic-Token-Ods-Border inline-flex items-start justify-start self-stretch border-b">
-                    <div className="flex flex-1 items-start justify-start">
-                      <div className="bg-Ods-Base-Ods-Base-50 inline-flex w-44 flex-col items-start justify-center overflow-hidden p-4">
-                        <div className="text-Ods-Base-Ods-Base-500 justify-start font-['Pretendard'] text-sm leading-5 font-normal tracking-tight">
-                          이름
-                        </div>
-                      </div>
-                      <div className="inline-flex flex-1 flex-col items-start justify-center overflow-hidden p-4">
-                        <div className="text-Ods-Base-Ods-Base-600 justify-start font-['Pretendard'] text-sm leading-5 font-medium tracking-tight">
-                          홍길동
-                        </div>
-                      </div>
-                    </div>
-                    <div className="flex flex-1 items-start justify-start">
-                      <div className="bg-Ods-Base-Ods-Base-50 inline-flex w-44 flex-col items-start justify-center overflow-hidden p-4">
-                        <div className="text-Ods-Base-Ods-Base-500 justify-start font-['Pretendard'] text-sm leading-5 font-normal tracking-tight">
-                          성별
-                        </div>
-                      </div>
-                      <div className="inline-flex flex-1 flex-col items-start justify-center overflow-hidden p-4">
-                        <div className="text-Ods-Base-Ods-Base-600 justify-start font-['Pretendard'] text-sm leading-5 font-medium tracking-tight">
-                          남자
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="border-Ods-Semantic-Token-Ods-Border inline-flex items-start justify-start self-stretch border-b">
-                    <div className="flex flex-1 items-start justify-start">
-                      <div className="bg-Ods-Base-Ods-Base-50 inline-flex w-44 flex-col items-start justify-center overflow-hidden p-4">
-                        <div className="text-Ods-Base-Ods-Base-500 justify-start font-['Pretendard'] text-sm leading-5 font-normal tracking-tight">
-                          생년월일
-                        </div>
-                      </div>
-                      <div className="inline-flex flex-1 flex-col items-start justify-center overflow-hidden p-4">
-                        <div className="text-Ods-Base-Ods-Base-600 justify-start font-['Pretendard'] text-sm leading-5 font-medium tracking-tight">
-                          2000-01-01 (26세)
-                        </div>
-                      </div>
-                    </div>
-                    <div className="flex flex-1 items-start justify-start">
-                      <div className="bg-Ods-Base-Ods-Base-50 inline-flex w-44 flex-col items-start justify-center overflow-hidden p-4">
-                        <div className="text-Ods-Base-Ods-Base-500 justify-start font-['Pretendard'] text-sm leading-5 font-normal tracking-tight">
-                          학교명
-                        </div>
-                      </div>
-                      <div className="inline-flex flex-1 flex-col items-start justify-center overflow-hidden p-4">
-                        <div className="text-Ods-Base-Ods-Base-600 justify-start font-['Pretendard'] text-sm leading-5 font-medium tracking-tight">
-                          부천 북 고등학교
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="inline-flex items-start justify-start self-stretch">
-                    <div className="flex flex-1 items-start justify-start">
-                      <div className="bg-Ods-Base-Ods-Base-50 inline-flex w-44 flex-col items-start justify-center overflow-hidden p-4">
-                        <div className="text-Ods-Base-Ods-Base-500 justify-start font-['Pretendard'] text-sm leading-5 font-normal tracking-tight">
-                          연락처
-                        </div>
-                      </div>
-                      <div className="inline-flex flex-1 flex-col items-start justify-center overflow-hidden p-4">
-                        <div className="text-Ods-Base-Ods-Base-600 justify-start font-['Pretendard'] text-sm leading-5 font-medium tracking-tight">
-                          010-1234-5678
-                        </div>
-                      </div>
-                    </div>
-                    <div className="flex flex-1 items-start justify-start">
-                      <div className="bg-Ods-Base-Ods-Base-50 inline-flex w-44 flex-col items-start justify-center overflow-hidden p-4">
-                        <div className="text-Ods-Base-Ods-Base-500 justify-start font-['Pretendard'] text-sm leading-5 font-normal tracking-tight">
-                          집 주소
-                        </div>
-                      </div>
-                      <div className="inline-flex flex-1 flex-col items-start justify-center overflow-hidden p-4">
-                        <div className="text-Ods-Base-Ods-Base-600 justify-start font-['Pretendard'] text-sm leading-5 font-medium tracking-tight">
-                          경기도 성남시 분당구 판교역로
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="flex flex-col items-start justify-start gap-2 self-stretch">
-                <div className="inline-flex items-end justify-between self-stretch">
-                  <div
-                    data-required="false"
-                    className="size- flex items-start justify-start gap-0.5"
-                  >
-                    <div className="text-Ods-Base-Ods-Base-500 justify-start font-['Pretendard'] text-sm leading-5 font-normal tracking-tight">
-                      학생 관리 정보
-                    </div>
-                  </div>
-                  <div
-                    data-color="Default"
-                    data-size="Small"
-                    data-state="Default"
-                    className="bg-Ods-Base-Ods-Base-50 inline-flex h-8 flex-col items-center justify-center overflow-hidden rounded-lg px-3"
-                  >
-                    <div className="text-Ods-Base-Ods-Base-500 justify-start font-['Pretendard'] text-sm leading-5 font-semibold tracking-tight">
-                      관리 정보 수정
-                    </div>
-                  </div>
-                </div>
-                <div className="outline-Ods-Semantic-Token-Ods-Border flex flex-col items-start justify-start self-stretch overflow-hidden rounded-lg outline outline-1 outline-offset-[-1px]">
-                  <div className="border-Ods-Semantic-Token-Ods-Border inline-flex items-start justify-start self-stretch border-b">
-                    <div className="flex flex-1 items-start justify-start">
-                      <div className="bg-Ods-Base-Ods-Base-50 inline-flex w-44 flex-col items-start justify-center overflow-hidden p-4">
-                        <div className="text-Ods-Base-Ods-Base-500 justify-start font-['Pretendard'] text-sm leading-5 font-normal tracking-tight">
-                          클래스
-                        </div>
-                      </div>
-                      <div className="inline-flex flex-1 flex-col items-start justify-center overflow-hidden p-4">
-                        <div className="text-Ods-Base-Ods-Base-600 justify-start font-['Pretendard'] text-sm leading-5 font-medium tracking-tight underline">
-                          수능 국어 대비 반
-                        </div>
-                      </div>
-                    </div>
-                    <div className="flex flex-1 items-start justify-start">
-                      <div className="bg-Ods-Base-Ods-Base-50 inline-flex w-44 flex-col items-start justify-center overflow-hidden p-4">
-                        <div className="text-Ods-Base-Ods-Base-500 justify-start font-['Pretendard'] text-sm leading-5 font-normal tracking-tight">
-                          특이사항
-                        </div>
-                      </div>
-                      <div className="inline-flex flex-1 flex-col items-start justify-center overflow-hidden p-4">
-                        <div className="text-Ods-Red-Ods-Red-500 justify-start font-['Pretendard'] text-sm leading-5 font-medium tracking-tight">
-                          최근 한 달 동안 이상 신호 2건 발생
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="inline-flex items-start justify-start self-stretch">
-                    <div className="flex flex-1 items-start justify-start">
-                      <div className="bg-Ods-Base-Ods-Base-50 inline-flex w-44 flex-col items-start justify-center self-stretch overflow-hidden p-4">
-                        <div className="text-Ods-Base-Ods-Base-500 justify-start font-['Pretendard'] text-sm leading-5 font-normal tracking-tight">
-                          메모
-                        </div>
-                      </div>
-                      <div className="inline-flex flex-1 flex-col items-start justify-center overflow-hidden p-4">
-                        <div className="text-Ods-Base-Ods-Base-600 justify-start font-['Pretendard'] text-sm leading-5 font-medium tracking-tight">
-                          학부모님이 성적에 민감하며 감정적임, 자주 오프라인
-                          방문을 원함.
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
+    <div className="w-[684px] self-stretch rounded-xl outline outline-1 outline-offset-[-1px] outline-Ods-Semantic-Token-Ods-Border inline-flex flex-col justify-between items-start">
+        <div className="self-stretch flex-1 flex flex-col justify-center items-start gap-4">
+            <div className="self-stretch px-6 pt-5 pb-4 border-b border-Ods-Semantic-Token-Ods-Border inline-flex justify-start items-center gap-2.5">
+                <div className="size- inline-flex flex-col justify-start items-start gap-2.5">
+                    <div className="justify-start text-Ods-Base-Ods-Base-600 text-xl font-semibold font-['Pretendard'] leading-7">AI로 답변 초안 생성하기</div>
+                    <div className="justify-start text-Ods-Base-Ods-Base-400 text-sm font-normal font-['Pretendard'] leading-5 tracking-tight">AI에게 답변 초안을 작성을 요청하고 복사할 수 있어요.</div>
+                </div>
+            </div>
+            <div className="self-stretch flex-1 px-6 flex flex-col justify-start items-start gap-6 overflow-hidden">
+                <div className="self-stretch inline-flex justify-end items-start gap-2.5">
+                    <div className="w-[500px] px-4 py-3 bg-Ods-Blue-Ods-Blue-50 rounded-lg flex justify-center items-center overflow-hidden">
+                        <div className="flex-1 justify-start text-Ods-Base-Ods-Base-700 text-base font-normal font-['Pretendard'] leading-6 tracking-tight">What is Lorem Ipsum?<br/><br/>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library in London, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset&apos;s Body Type sheets. It has survived not only many decades, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised thanks to these sheets and more recently with desktop publishing software like Aldus PageMaker and Microsoft Word including versions of Lorem Ipsum.</div>
+                    </div>
+                </div>
+                <div className="self-stretch h-60 relative">
+                    <div className="w-[634px] left-0 top-0 absolute justify-start text-Ods-Base-Ods-Base-700 text-base font-normal font-['Pretendard'] leading-6 tracking-tight">Where does it come from?<br/><br/>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of &quot;de Finibus Bonorum et Malorum&quot; (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, &quot;Lorem ipsum dolor sit amet..&quot;, comes from a line in section 1.10.32.</div>
+                </div>
+            </div>
+        </div>
+        <div className="self-stretch px-6 pt-2 pb-6 flex flex-col justify-start items-start gap-2">
+            <div className="self-stretch flex flex-col justify-start items-start gap-2">
+                <div className="size- inline-flex justify-start items-start gap-2">
+                    <div data-status="Default" className="size- px-2 py-0.5 bg-Ods-Base-Ods-Base-100 rounded-lg inline-flex flex-col justify-center items-center">
+                        <div className="justify-start text-Ods-Base-Ods-Base-500 text-xs font-medium font-['Pretendard'] leading-4 tracking-tight">결론 먼저</div>
+                    </div>
+                    <div data-status="Default" className="size- px-2 py-0.5 bg-Ods-Base-Ods-Base-100 rounded-lg inline-flex flex-col justify-center items-center">
+                        <div className="justify-start text-Ods-Base-Ods-Base-500 text-xs font-medium font-['Pretendard'] leading-4 tracking-tight">정답률 강조</div>
+                    </div>
+                    <div data-status="Default" className="size- px-2 py-0.5 bg-Ods-Base-Ods-Base-100 rounded-lg inline-flex flex-col justify-center items-center">
+                        <div className="justify-start text-Ods-Base-Ods-Base-500 text-xs font-medium font-['Pretendard'] leading-4 tracking-tight">상담 일정 제안</div>
+                    </div>
+                </div>
+                <div className="self-stretch inline-flex justify-start items-start gap-2">
+                    <div data-placeholder="False" data-size="Medium" data-state="Default" className="flex-1 h-10 px-3 bg-Ods-White rounded-lg outline outline-1 outline-offset-[-1px] outline-Ods-Semantic-Token-Ods-Border inline-flex flex-col justify-center items-start overflow-hidden">
+                        <div className="justify-start text-Ods-Base-Ods-Base-600 text-sm font-normal font-['Pretendard'] leading-5 tracking-tight">답안 수정해줘</div>
+                    </div>
+                    <div data-color="Blue" data-size="Medium" data-state="Default" className="h-10 px-4 bg-Ods-Blue-Ods-Blue-300 rounded-lg inline-flex flex-col justify-center items-center overflow-hidden">
+                        <div className="justify-start text-Ods-Blue-Ods-Blue-50 text-sm font-semibold font-['Pretendard'] leading-5 tracking-tight">보내기</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
   );
 };
