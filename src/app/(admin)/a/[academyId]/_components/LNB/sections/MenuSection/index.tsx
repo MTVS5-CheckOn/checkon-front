@@ -36,6 +36,7 @@ const items = [
   {
     icon: <BookCheckIcon size={16} />,
     label: "리포트 스튜디오",
+    href: "/report-studio",
   },
 ];
 

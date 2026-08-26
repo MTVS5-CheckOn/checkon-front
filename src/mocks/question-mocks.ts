@@ -1,7 +1,7 @@
 import { shuffle } from "es-toolkit/array";
 import z from "zod";
 
-const m = z.object({
+const generatedQuestionModelSchema = z.object({
   questionId: z.string().describe("문항 ID (UUIDv7)"),
   topic: z
     .enum(["독서", "문학", "화법과 작문", "언어", "매체"])
@@ -28,9 +28,9 @@ const m = z.object({
   createdAt: z.date().describe("생성 일시"),
 });
 
-const ma = z.array(m);
-
-export const GENERATED_QUESTION_MODELS_MOCK: z.infer<typeof ma> = [
+export const GENERATED_QUESTION_MODELS_MOCK: z.infer<
+  typeof generatedQuestionModelSchema
+>[] = [
   {
     questionId: "019ffbdf-bf88-7e08-9606-97316184125f",
     topic: "독서",
@@ -1898,15 +1898,17 @@ export class GeneratedQuestionModelsMockRepo {
     return GENERATED_QUESTION_MODELS_MOCK;
   }
 
-  static createItem(p: z.infer<typeof m>) {
-    GENERATED_QUESTION_MODELS_MOCK.push(p);
+  static createItem(p: z.infer<typeof generatedQuestionModelSchema>) {
+    const parsed = generatedQuestionModelSchema.parse(p);
+    GENERATED_QUESTION_MODELS_MOCK.push(parsed);
 
     console.log(
       GENERATED_QUESTION_MODELS_MOCK.find(
-        (it) => it.questionId === p.questionId && it.version === p.version,
+        (it) =>
+          it.questionId === parsed.questionId && it.version === parsed.version,
       ),
     );
 
-    return p.questionId;
+    return parsed.questionId;
   }
 }

@@ -54,7 +54,7 @@ export const StatusLabel = ({
       <div
         className={cn(
           // 2. Typography
-          "ods__typo__body-small font-medium",
+          "ods__typo__body-small font-medium whitespace-nowrap",
           // 3. Color
           colorPalette.textColor,
         )}

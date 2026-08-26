@@ -1,6 +1,6 @@
 import { cn } from "@/ui/utils/tailwind/cn";
 
-import { InputSection } from "./_sections/Input";
+import { ChatInput, DEFAULT_SUGGESTION_CHIPS } from "@/ui/components/ai-chat/ChatInput";
 import { MessagesSection } from "./_sections/Messages";
 import { v7 as uuidv7 } from "uuid";
 import { useFormContext } from "react-hook-form";
@@ -64,7 +64,10 @@ export const ChatSection = () => {
     >
       <MessagesSection messages={messages} />
 
-      <InputSection onSend={handleSend} />
+      <ChatInput
+        onSend={handleSend}
+        suggestionChips={[...DEFAULT_SUGGESTION_CHIPS]}
+      />
     </section>
   );
 };
