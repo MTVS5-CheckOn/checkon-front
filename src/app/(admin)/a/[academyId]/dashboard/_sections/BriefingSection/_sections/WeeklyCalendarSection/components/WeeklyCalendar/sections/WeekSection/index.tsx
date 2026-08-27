@@ -2,15 +2,15 @@ import { cn } from "@/ui/utils/tailwind/cn";
 
 import { DateUtilForKo } from "@/ui/utils/date/date-util";
 import { Button } from "@base-ui/react/button";
-import { isSameDay, isWeekend } from "date-fns";
+import { format, isSameDay, isWeekend } from "date-fns";
 import { Swiper, SwiperSlide } from "swiper/react";
 import {
   WeeklyCalendar__DayCell,
   WeeklyCalendar__DayCellModel,
 } from "../../components/DayCell";
 import { WeeklyCalendar__NavButton } from "../../components/NavButton";
-import { useWeeklyCalendar__EventCountEachDate } from "../../hooks/useEventCountEachDate";
 import { useWeeklyCalendar__Swiper } from "../../hooks/useSwiper";
+import { useCalendarDataFetch } from "../../../../../../hooks/useCalendarDataFetch";
 
 /**
  * 표시할 날짜 수
@@ -54,7 +54,10 @@ export const WeeklyCalendar__WeekSection = ({
   /**
    * 날짜별 이벤트 개수 조회
    */
-  const { data } = useWeeklyCalendar__EventCountEachDate(dates);
+  const { data } = useCalendarDataFetch({
+    startedAt: format(dates[0], "yyyy-MM-dd"),
+    endedAt: format(dates[dates.length - 1], "yyyy-MM-dd"),
+  });
 
   /**
    * 날짜 아이템 클릭 핸들러
