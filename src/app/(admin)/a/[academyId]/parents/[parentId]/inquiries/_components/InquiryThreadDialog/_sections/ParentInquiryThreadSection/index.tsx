@@ -6,10 +6,25 @@ import { UserMessageBubble } from "@/ui/components/ai-chat/UserMessageBubble";
 import { StatusLabel } from "@/ui/components/StatusLabel";
 import { cn } from "@/ui/utils/tailwind/cn";
 
-const MOCK_PARENT_MESSAGE =
-  "What is Lorem Ipsum?\n\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library in London, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset's Body Type sheets. It has survived not only many decades, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised thanks to these sheets and more recently with desktop publishing software like Aldus PageMaker and Microsoft Word including versions of Lorem Ipsum.";
+export type ParentThreadMessage = {
+  id: string;
+  isMine: boolean;
+  sender?: string;
+  content: string;
+  timestamp: string;
+};
 
-export const ParentInquiryThreadSection = () => {
+type ParentInquiryThreadSectionProps = {
+  messages: ParentThreadMessage[];
+  onReplyWithAi: () => void;
+  onSend: (message: string) => void;
+};
+
+export const ParentInquiryThreadSection = ({
+  messages,
+  onReplyWithAi,
+  onSend,
+}: ParentInquiryThreadSectionProps) => {
   return (
     <section
       className={cn(
@@ -30,27 +45,30 @@ export const ParentInquiryThreadSection = () => {
             "flex w-full flex-1 flex-col gap-6 overflow-y-auto px-6",
           )}
         >
-          <UserMessageBubble
-            isMine={false}
-            sender="김영희"
-            timestamp="22:00"
-            options={
-              <StatusLabel status={SignalState.Default}>
-                AI로 답변하기
-              </StatusLabel>
-            }
-          >
-            {MOCK_PARENT_MESSAGE}
-          </UserMessageBubble>
-
-          <UserMessageBubble isMine timestamp="22:00">
-            {MOCK_PARENT_MESSAGE}
-          </UserMessageBubble>
+          {messages.map((message) => (
+            <UserMessageBubble
+              key={message.id}
+              isMine={message.isMine}
+              sender={message.sender}
+              timestamp={message.timestamp}
+              options={
+                !message.isMine ? (
+                  <button type="button" onClick={onReplyWithAi}>
+                    <StatusLabel status={SignalState.Default}>
+                      AI로 답변하기
+                    </StatusLabel>
+                  </button>
+                ) : undefined
+              }
+            >
+              {message.content}
+            </UserMessageBubble>
+          ))}
         </div>
       </div>
 
       <div className={cn("flex w-full flex-col px-6 pt-2 pb-6")}>
-        <ChatInput onSend={() => {}} />
+        <ChatInput onSend={onSend} />
       </div>
     </section>
   );

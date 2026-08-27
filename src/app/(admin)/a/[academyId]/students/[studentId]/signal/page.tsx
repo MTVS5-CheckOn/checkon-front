@@ -25,7 +25,7 @@ export default function Page() {
         />
       </div>
 
-      <div className={cn("flex w-full flex-col gap-6")}>
+      <div className={cn("flex w-full flex-col gap-6 pb-8")}>
         <div className={cn("flex w-full flex-col items-start gap-2")}>
           <span
             className={cn(
