@@ -116,7 +116,7 @@ export default function Page() {
                       이름
                     </TableParts.HeaderCell>
                     <TableParts.Cell className={cn("underline")}>
-                      홍길동
+                      김민준
                     </TableParts.Cell>
                   </TableRow>
                 </TableParts.Body>

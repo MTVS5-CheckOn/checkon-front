@@ -14,8 +14,6 @@ export const StudentInfoCard = () => {
         "bg-ods__white",
         // 4. Shadow & Border
         "border-ods__border rounded-xl border",
-        // 6. Utility
-        "overflow-hidden",
       )}
     >
       <div
@@ -78,7 +76,7 @@ export const StudentInfoCard = () => {
                     이름
                   </TableParts.HeaderCell>
                   <TableParts.Cell className={cn("flex-1 font-medium")}>
-                    홍길동
+                    김민준
                   </TableParts.Cell>
                 </TableRow>
               </TableParts.Body>

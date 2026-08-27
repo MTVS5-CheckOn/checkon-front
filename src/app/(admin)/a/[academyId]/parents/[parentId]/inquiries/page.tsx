@@ -3,6 +3,7 @@
 import { cn } from "@/ui/utils/tailwind/cn";
 
 import { ParentInquiries__InquiryThreadTableSection } from "./_sections/InquiryThreadTableSection";
+import { InquiryFrequencyChart } from "./_components/InquiryFrequencyChart";
 
 export default function Page() {
   return (
@@ -34,7 +35,9 @@ export default function Page() {
               "overflow-hidden",
             )}
           >
-            <div className={cn("relative h-72 w-full")} />
+            <div className={cn("relative h-72 w-full")}>
+              <InquiryFrequencyChart />
+            </div>
           </div>
         </div>
 

@@ -14,7 +14,7 @@ import { useFormContext } from "react-hook-form";
 export const TargetStudentSection = () => {
   const { watch } = useFormContext<QuestionStudioPageModel>();
   const targetStudentId = watch("targetStudentId");
-  const targetStudentName = "박지호";
+  const targetStudentName = "김민준";
   const targetStudentClass = "수능 국어 대비 반";
   const targetStudentSpecialNote = "최근 한 달 동안 이상 신호 2건 발생";
 
@@ -94,7 +94,7 @@ const Header = () => {
 const ButtonSection = () => {
   const { watch } = useFormContext<QuestionStudioPageModel>();
   const questionCount = watch("generatedQuestionModels").length;
-  const targetStudentName = "박지호";
+  const targetStudentName = "김민준";
 
   const handlePublishHomework = () => {
     overlay.open(({ isOpen, close }) => (

@@ -2,6 +2,8 @@ import { SignalState } from "@/domain/signal/state";
 import { StatisticsCard } from "@/ui/domain-components/statistics/StatisticsCard";
 import { cn } from "@/ui/utils/tailwind/cn";
 
+import { StatisticsDateSelector } from "./_components/StatisticsDateSelector";
+
 const STATISTICS_CARDS = [
   {
     variant: SignalState.Default,
@@ -33,16 +35,7 @@ export const StatisticsSection = () => {
         "flex w-full flex-col gap-6",
       )}
     >
-      <div
-        className={cn(
-          // 1. Layout
-          "h-9 w-40",
-          // 3. Color
-          "bg-ods__red-50",
-          // 4. Shadow & Border
-          "border-ods__border rounded-lg border",
-        )}
-      />
+      <StatisticsDateSelector />
 
       <div
         className={cn(

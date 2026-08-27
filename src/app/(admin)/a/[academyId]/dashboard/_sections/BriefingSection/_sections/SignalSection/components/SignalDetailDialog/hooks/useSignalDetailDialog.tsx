@@ -20,7 +20,7 @@ export const useSignalDetailDialog = (signalId: string) => {
         signalCreatedAt: Date;
         studentProfileImageUrl: string;
       } = {
-        studentName: "김지민",
+        studentName: "김민준",
         studentClassTitle: "고1 수능 국어반",
         signalStatusVariant: SignalState.Warning,
         signalStatusTitle: "숨은 신호",

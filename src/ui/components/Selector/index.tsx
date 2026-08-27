@@ -31,7 +31,7 @@ export const Selector = ({
       <SelectorParts.Trigger size={size} disabled={disabled} />
 
       <SelectorParts.Portal>
-        <SelectorParts.Positioner className={cn("ml-6")} size={size}>
+        <SelectorParts.Positioner className={cn("z-9999 ml-6")} size={size}>
           <SelectorParts.Popup>
             <SelectorParts.List>
               {items.map(({ label, value: itemValue }, index) => {

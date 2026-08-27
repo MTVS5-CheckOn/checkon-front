@@ -41,7 +41,7 @@ export const MonthlyHomeworkSection = () => {
 
 const MONTHLY_HOMEWORK_RESULT_CARDS = [
   new HomeworkResultCardModel({
-    title: "홍길동",
+    title: "김민준",
     subtitle: "학습 현황",
     totalQuestionCount: 100,
     labelModel: {
@@ -55,7 +55,7 @@ const MONTHLY_HOMEWORK_RESULT_CARDS = [
     },
   }),
   new HomeworkResultCardModel({
-    title: "홍길동",
+    title: "이서연",
     subtitle: "학습 현황",
     totalQuestionCount: 100,
     labelModel: {
@@ -69,7 +69,7 @@ const MONTHLY_HOMEWORK_RESULT_CARDS = [
     },
   }),
   new HomeworkResultCardModel({
-    title: "홍길동",
+    title: "박지호",
     subtitle: "학습 현황",
     totalQuestionCount: 100,
     labelModel: {
@@ -83,7 +83,7 @@ const MONTHLY_HOMEWORK_RESULT_CARDS = [
     },
   }),
   new HomeworkResultCardModel({
-    title: "홍길동",
+    title: "최유나",
     subtitle: "학습 현황",
     totalQuestionCount: 100,
     labelModel: {
@@ -92,21 +92,7 @@ const MONTHLY_HOMEWORK_RESULT_CARDS = [
     },
   }),
   new HomeworkResultCardModel({
-    title: "홍길동",
-    subtitle: "학습 현황",
-    totalQuestionCount: 100,
-    labelModel: {
-      status: SignalState.Default,
-      label: "과제 1개",
-    },
-    submissionInfo: {
-      correctAnswerCount: 80,
-      wrongAnswerCount: 20,
-      memoCount: 20,
-    },
-  }),
-  new HomeworkResultCardModel({
-    title: "홍길동",
+    title: "정하율",
     subtitle: "학습 현황",
     totalQuestionCount: 100,
     labelModel: {
@@ -120,7 +106,7 @@ const MONTHLY_HOMEWORK_RESULT_CARDS = [
     },
   }),
   new HomeworkResultCardModel({
-    title: "홍길동",
+    title: "박서연",
     subtitle: "학습 현황",
     totalQuestionCount: 100,
     labelModel: {
@@ -134,7 +120,21 @@ const MONTHLY_HOMEWORK_RESULT_CARDS = [
     },
   }),
   new HomeworkResultCardModel({
-    title: "홍길동",
+    title: "송지아",
+    subtitle: "학습 현황",
+    totalQuestionCount: 100,
+    labelModel: {
+      status: SignalState.Default,
+      label: "과제 1개",
+    },
+    submissionInfo: {
+      correctAnswerCount: 80,
+      wrongAnswerCount: 20,
+      memoCount: 20,
+    },
+  }),
+  new HomeworkResultCardModel({
+    title: "한예린",
     subtitle: "학습 현황",
     totalQuestionCount: 100,
     labelModel: {

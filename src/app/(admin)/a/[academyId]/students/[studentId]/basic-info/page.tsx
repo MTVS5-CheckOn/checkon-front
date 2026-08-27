@@ -49,7 +49,7 @@ export default function Page() {
                     <TableParts.HeaderCell className={cn("w-43")}>
                       이름
                     </TableParts.HeaderCell>
-                    <TableParts.Cell>홍길동</TableParts.Cell>
+                    <TableParts.Cell>김민준</TableParts.Cell>
                   </TableRow>
                 </TableParts.Body>
 
