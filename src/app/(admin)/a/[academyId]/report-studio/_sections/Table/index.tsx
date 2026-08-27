@@ -53,7 +53,7 @@ const MOCK_REPORTS: ReportRow[] = [
   {
     id: "1",
     number: 1,
-    studentName: "홍길동",
+    studentName: "김민준",
     parentName: "김영희",
     achievementEvaluation: { label: "긍정적", status: SignalState.Positive },
     publishType: "월간",
@@ -64,8 +64,8 @@ const MOCK_REPORTS: ReportRow[] = [
   {
     id: "2",
     number: 1,
-    studentName: "홍길동",
-    parentName: "김영희",
+    studentName: "이서연",
+    parentName: "이정숙",
     achievementEvaluation: { label: "부정적", status: SignalState.Danger },
     publishType: "월간",
     reportStatus: { label: "생성 실패", status: SignalState.Danger },
@@ -75,8 +75,8 @@ const MOCK_REPORTS: ReportRow[] = [
   {
     id: "3",
     number: 1,
-    studentName: "홍길동",
-    parentName: "김영희",
+    studentName: "박지호",
+    parentName: "박미경",
     achievementEvaluation: { label: "긍정적", status: SignalState.Positive },
     publishType: "월간",
     reportStatus: { label: "발송 완료", status: SignalState.Positive },
@@ -86,8 +86,8 @@ const MOCK_REPORTS: ReportRow[] = [
   {
     id: "4",
     number: 1,
-    studentName: "홍길동",
-    parentName: "김영희",
+    studentName: "최유나",
+    parentName: "최은정",
     achievementEvaluation: { label: "-", status: SignalState.Default },
     publishType: "월간",
     reportStatus: { label: "데이터 부족", status: SignalState.Warning },
@@ -97,8 +97,8 @@ const MOCK_REPORTS: ReportRow[] = [
   {
     id: "5",
     number: 1,
-    studentName: "홍길동",
-    parentName: "김영희",
+    studentName: "정하율",
+    parentName: "정소영",
     achievementEvaluation: { label: "긍정적", status: SignalState.Positive },
     publishType: "월간",
     reportStatus: { label: "생성 완료", status: SignalState.Default },

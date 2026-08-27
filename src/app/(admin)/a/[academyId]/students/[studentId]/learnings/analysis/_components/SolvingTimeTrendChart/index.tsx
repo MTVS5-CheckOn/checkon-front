@@ -43,7 +43,7 @@ export const SolvingTimeTrendChart = () => {
       <ResponsiveContainer height="100%" width="100%">
         <AreaChart
           data={MOCK_SOLVING_TIME_TREND_DATA}
-          margin={{ top: 8, right: 12, left: -8, bottom: 0 }}
+          margin={{ top: 8, right: 12, left: 0, bottom: 0 }}
         >
           <defs>
             <linearGradient
@@ -86,7 +86,7 @@ export const SolvingTimeTrendChart = () => {
             domain={[0, "dataMax + 1"]}
             tick={{ fill: CHART_COLORS.axis, fontSize: 12 }}
             tickLine={false}
-            width={28}
+            width={36}
           />
 
           <Tooltip content={<SolvingTimeTrendTooltip />} cursor={false} />

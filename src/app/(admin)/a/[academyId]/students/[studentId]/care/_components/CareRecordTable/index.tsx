@@ -56,7 +56,7 @@ const MOCK_CARE_RECORDS: CareRecordRow[] = [
     category: "학부모 연락",
     followUpStatus: { status: SignalState.Default, text: "진행중" },
     content:
-      "최근 수업 중에 자주 졸고 집중하지 못하는 모습이 보임, 학부모에게서 길동이가 요즘 롤에 빠져있다는 내용 확인.",
+      "최근 수업 중에 자주 졸고 집중하지 못하는 모습이 보임, 학부모에게서 민준이가 요즘 롤에 빠져있다는 내용 확인.",
     caredAt: "2026-08-09 11:11:11",
   },
   {

@@ -41,7 +41,7 @@ const Header = () => {
         items={[
           { label: "학생 목록", link: "." },
           { label: "학생 상세", link: "./1" },
-          { label: "홍길동" },
+          { label: "김민준" },
         ]}
       />
 

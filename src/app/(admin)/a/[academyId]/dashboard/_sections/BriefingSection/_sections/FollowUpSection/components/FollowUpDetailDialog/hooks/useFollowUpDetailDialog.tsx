@@ -25,7 +25,7 @@ export const useFollowUpDetailDialog = (followUpId: string) => {
           caption: string;
         }>;
       } = {
-        studentName: "김지민",
+        studentName: "김민준",
         studentClassTitle: "고1 수능 국어반",
         followUpStatusVariant: SignalState.Warning,
         followUpStatusTitle: "숨은 신호",

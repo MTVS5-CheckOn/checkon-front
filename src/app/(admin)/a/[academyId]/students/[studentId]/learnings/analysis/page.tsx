@@ -41,11 +41,9 @@ export default function Page() {
             <div
               className={cn(
                 // 1. Layout
-                "flex w-full flex-col px-2 py-3",
+                "flex w-full flex-col py-3 pr-2 pl-4",
                 // 4. Shadow & Border
                 "border-ods__border rounded-lg border",
-                // 6. Utility
-                "overflow-hidden",
               )}
             >
               <div className={cn("relative h-72 w-full")}>
@@ -69,11 +67,9 @@ export default function Page() {
             <div
               className={cn(
                 // 1. Layout
-                "flex w-full flex-col px-2 py-3",
+                "flex w-full flex-col py-3 pr-2 pl-4",
                 // 4. Shadow & Border
                 "border-ods__border rounded-lg border",
-                // 6. Utility
-                "overflow-hidden",
               )}
             >
               <div className={cn("relative h-72 w-full")}>

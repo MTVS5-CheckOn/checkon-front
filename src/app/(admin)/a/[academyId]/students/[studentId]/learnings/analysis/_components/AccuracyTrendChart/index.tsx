@@ -43,7 +43,7 @@ export const AccuracyTrendChart = () => {
       <ResponsiveContainer height="100%" width="100%">
         <AreaChart
           data={MOCK_ACCURACY_TREND_DATA}
-          margin={{ top: 8, right: 12, left: -8, bottom: 0 }}
+          margin={{ top: 8, right: 12, left: 0, bottom: 0 }}
         >
           <defs>
             <linearGradient
@@ -86,7 +86,7 @@ export const AccuracyTrendChart = () => {
             domain={[0, 100]}
             tick={{ fill: CHART_COLORS.axis, fontSize: 12 }}
             tickLine={false}
-            width={28}
+            width={36}
           />
 
           <Tooltip content={<AccuracyTrendTooltip />} cursor={false} />
