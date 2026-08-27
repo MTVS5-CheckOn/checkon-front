@@ -4,7 +4,6 @@ import {
   BookCheckIcon,
   LayoutDashboardIcon,
   NotebookPenIcon,
-  ShapesIcon,
   UsersIcon,
   UserStarIcon,
 } from "lucide-react";
@@ -14,10 +13,6 @@ const items = [
     icon: <LayoutDashboardIcon size={16} />,
     label: "대시보드",
     href: "/dashboard",
-  },
-  {
-    icon: <ShapesIcon size={16} />,
-    label: "클래스 관리",
   },
   {
     icon: <UsersIcon size={16} />,

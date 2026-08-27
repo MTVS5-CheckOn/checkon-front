@@ -14,8 +14,6 @@ export const StudentInfoCard = () => {
         "bg-ods__white",
         // 4. Shadow & Border
         "border-ods__border rounded-xl border",
-        // 6. Utility
-        "overflow-hidden",
       )}
     >
       <div

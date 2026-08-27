@@ -146,7 +146,6 @@ export const TableSection = () => {
                 key={report.id}
                 className={cn("cursor-pointer")}
                 hasBorderBottom={index !== MOCK_REPORTS.length - 1}
-                onClick={handleReportClick}
               >
                 <TableCell
                   className={cn(
@@ -155,12 +154,7 @@ export const TableSection = () => {
                     "px-4 py-0",
                   )}
                 >
-                  <Checkbox
-                    defaultChecked={report.isSelected}
-                    onClickCapture={(e) => {
-                      e.stopPropagation();
-                    }}
-                  />
+                  <Checkbox defaultChecked={report.isSelected} />
                 </TableCell>
                 <TableCell
                   className={cn(
@@ -177,6 +171,7 @@ export const TableSection = () => {
                     TABLE_COLUMNS[2].align,
                     "font-medium",
                   )}
+                  onClick={handleReportClick}
                 >
                   {report.studentName}
                 </TableCell>

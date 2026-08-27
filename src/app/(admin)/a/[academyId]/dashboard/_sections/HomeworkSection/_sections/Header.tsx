@@ -1,5 +1,8 @@
 "use client";
+
 import { cn } from "@/ui/utils/tailwind/cn";
+
+import { HomeworkDateSelector } from "../_components/HomeworkDateSelector";
 
 export const MonthlyHomeworkHeader = () => {
   return (
@@ -33,17 +36,7 @@ export const MonthlyHomeworkHeader = () => {
         </span>
       </div>
 
-      {/* TODO: 날짜 셀렉터 구현 */}
-      <div
-        className={cn(
-          // 1. Layout
-          "h-9 w-40",
-          // 3. Color
-          "bg-red-500/20",
-          // 4. Shadow & Border
-          "rounded-lg border border-red-500",
-        )}
-      />
+      <HomeworkDateSelector />
     </div>
   );
 };
