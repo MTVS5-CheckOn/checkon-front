@@ -1,18 +1,18 @@
 import { BaseDialog } from "@/ui/components/BaseDialog";
-import { Separator } from "@/ui/components/Separator";
-import { cn } from "@/ui/utils/tailwind/cn";
-
 import { LoadingFallback } from "@/ui/components/LoadingFallback";
+import { Separator } from "@/ui/components/Separator";
+import { useProtectedNavigation } from "@/ui/routers/ProtectedNavigation";
+import { cn } from "@/ui/utils/tailwind/cn";
 import { Suspense } from "react";
+import { ISignalSectionData } from "../../hooks/useSignalSection";
 import { SignalDetailDialog__SignalReasonSection } from "./components/ReasonSection";
 import { SignalDetailDialog__SignalStatusSection } from "./components/StatusSection";
 import { SignalDetailDialog__StudentInfoSection } from "./components/StudentInfoSection";
-import { useSignalDetailDialog } from "./hooks/useSignalDetailDialog";
 
 export type SignalDetailDialogProps = {
   isOpen: boolean;
   onClose: () => void;
-  signalId: string;
+  model: ISignalSectionData;
 };
 
 /**
@@ -21,8 +21,15 @@ export type SignalDetailDialogProps = {
 export const SignalDetailDialog = ({
   isOpen,
   onClose,
-  signalId,
+  model,
 }: SignalDetailDialogProps) => {
+  const { push } = useProtectedNavigation();
+
+  const handleMoreClick = () => {
+    onClose();
+    push(`/students/${model.student.id}`);
+  };
+
   return (
     <BaseDialog
       isOpen={isOpen}
@@ -47,16 +54,20 @@ export const SignalDetailDialog = ({
             />
           }
         >
-          <Content signalId={signalId} />
+          <Content model={model} onMoreClick={handleMoreClick} />
         </Suspense>
       }
     />
   );
 };
 
-const Content = ({ signalId }: { signalId: string }) => {
-  const { data } = useSignalDetailDialog(signalId);
-
+const Content = ({
+  model,
+  onMoreClick,
+}: {
+  model: ISignalSectionData;
+  onMoreClick: () => void;
+}) => {
   return (
     <div
       className={cn(
@@ -76,22 +87,25 @@ const Content = ({ signalId }: { signalId: string }) => {
       >
         {/* Layer 1: Student Info */}
         <SignalDetailDialog__StudentInfoSection
-          studentName={data.studentName}
-          studentClassTitle={data.studentClassTitle}
-          studentProfileImageUrl={data.studentProfileImageUrl}
+          studentName={model.student.name}
+          studentClassTitle={model.student.className}
+          studentProfileImageUrl={"https://placehold.co/150"}
         />
 
         {/* Layer 2: Signal Status */}
         <SignalDetailDialog__SignalStatusSection
-          variant={data.signalStatusVariant}
-          statusTitle={data.signalStatusTitle}
-          statusDescription={data.signalStatusDescription}
-          statusCreatedAt={data.signalCreatedAt}
+          variant={model.label.status}
+          statusTitle={model.label.text}
+          statusDescription={model.briefingText}
+          statusCreatedAt={model.createdAt}
         />
 
         {/* Layer 3: Signal Reason */}
         <SignalDetailDialog__SignalReasonSection
-          signalReasonContent={data.signalReasonContent}
+          signalReasonContent={model.evidences
+            .map((evidence) => evidence.text)
+            .join("\n")}
+          onMoreClick={onMoreClick}
         />
       </div>
     </div>
