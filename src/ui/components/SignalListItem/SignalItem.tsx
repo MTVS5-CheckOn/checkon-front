@@ -68,20 +68,22 @@ export const SignalItem = ({ model, onClick }: SignalItemProps) => {
               />
             </div>
 
-            <div className={cn("flex flex-col items-start justify-start")}>
+            <div className={cn("flex items-start justify-start gap-2")}>
               <div
                 className={cn(
                   // 2. Typography
-                  "ods__typo__label-large font-medium",
+                  "ods__typo__label-large text-start font-medium",
                   // 3. Color
                   "text-ods__base-600",
                 )}
               >
                 {model.title}
               </div>
-            </div>
 
-            <StatusLabel status={model.status}>{model.statusLabel}</StatusLabel>
+              <StatusLabel status={model.status}>
+                {model.statusLabel}
+              </StatusLabel>
+            </div>
           </div>
 
           <div className={cn("flex flex-col items-start justify-start")}>

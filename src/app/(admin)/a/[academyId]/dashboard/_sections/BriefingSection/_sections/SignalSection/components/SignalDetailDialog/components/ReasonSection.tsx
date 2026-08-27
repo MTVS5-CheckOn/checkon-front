@@ -3,16 +3,13 @@ import { cn } from "@/ui/utils/tailwind/cn";
 
 export type SignalDetailDialog__SignalReasonSectionProps = {
   signalReasonContent: string;
+  onMoreClick: () => void;
 };
 
 export const SignalDetailDialog__SignalReasonSection = ({
   signalReasonContent,
+  onMoreClick,
 }: SignalDetailDialog__SignalReasonSectionProps) => {
-  const handleMoreClick = () => {
-    // TODO: 해당 학생 상세 페이지로 이동.
-    alert("TODO: 해당 학생 상세 페이지로 이동.");
-  };
-
   return (
     <section
       className={cn(
@@ -66,7 +63,7 @@ export const SignalDetailDialog__SignalReasonSection = ({
             // 4. Shadow & Border
             "border-ods__border rounded-lg border",
           )}
-          onClick={handleMoreClick}
+          onClick={onMoreClick}
         >
           <CardMoreBottomButton />
         </div>

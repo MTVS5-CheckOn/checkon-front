@@ -1,4 +1,5 @@
 import { SignalState } from "@/domain/signal/state";
+import { DateUtilForKo } from "@/ui/utils/date/date-util";
 import { cn } from "@/ui/utils/tailwind/cn";
 
 import { CardMoreBottomButton } from "@/ui/components/CardMoreBottomButton";
@@ -10,6 +11,7 @@ import { SignalDetailDialog } from "./components/SignalDetailDialog";
 import { useSignalSection } from "./hooks/useSignalSection";
 import { Fragment } from "react/jsx-runtime";
 import { Separator } from "@/ui/components/Separator";
+import { format } from "date-fns";
 
 export const Dashboard__SignalSection = () => {
   /**
@@ -20,16 +22,23 @@ export const Dashboard__SignalSection = () => {
   /**
    * 신호 목록 데이터
    */
-  const { data } = useSignalSection(watch("selectedDate"));
+  const { data } = useSignalSection(
+    format(watch("selectedDate"), "yyyy-MM-dd"),
+  );
 
-  const handleItemClick = () => {
+  const handleItemClick = (signalId: string) => {
+    const item = data.find((item) => item.id === signalId);
+    if (!item) {
+      return;
+    }
+
     overlay.open(({ isOpen, close }) => (
-      <SignalDetailDialog isOpen={isOpen} onClose={close} signalId={"TODO:"} />
+      <SignalDetailDialog isOpen={isOpen} onClose={close} model={item} />
     ));
   };
 
   const handleSignalItemMoreClick = () => {
-    alert("확인이 필요한 신호 더보기");
+    alert("준비중인 기능입니다.");
   };
 
   return (
@@ -51,7 +60,9 @@ export const Dashboard__SignalSection = () => {
           </div>
 
           {/* 신호 개수 */}
-          <StatusLabel status={SignalState.Positive}>{`${data.signalCount}건`}</StatusLabel>
+          <StatusLabel
+            status={SignalState.Positive}
+          >{`${data.length}건`}</StatusLabel>
         </div>
       </div>
 
@@ -66,9 +77,21 @@ export const Dashboard__SignalSection = () => {
           "overflow-hidden",
         )}
       >
-        {data.items.map((item) => (
-          <Fragment key={item.title + item.caption}>
-            <SignalItem model={item} onClick={handleItemClick} />
+        {data.map((item) => (
+          <Fragment key={item.student.id + item.createdAt.toISOString()}>
+            <SignalItem
+              model={{
+                title: item.student.name,
+                status: item.label.status,
+                statusLabel: item.label.text,
+                caption: DateUtilForKo.formatDistanceToNow({
+                  date: item.createdAt,
+                  options: { addSuffix: true },
+                }),
+                content: item.briefingText,
+              }}
+              onClick={() => handleItemClick(item.id)}
+            />
             <Separator />
           </Fragment>
         ))}

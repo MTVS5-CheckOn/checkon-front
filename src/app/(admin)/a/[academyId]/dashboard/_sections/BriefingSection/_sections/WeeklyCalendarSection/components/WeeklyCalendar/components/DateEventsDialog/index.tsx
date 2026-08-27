@@ -6,7 +6,10 @@ import { cn } from "@/ui/utils/tailwind/cn";
 import { format } from "date-fns";
 import { ko } from "date-fns/locale/ko";
 import { Suspense } from "react";
-import { useDateEventsDialog } from "./hooks/useDateEventsDialog";
+import {
+  DateEventsDialogItemModel,
+  useDateEventsDialog,
+} from "./hooks/useDateEventsDialog";
 
 export type WeeklyCalendar__DateEventsDialogProps = {
   isOpen: boolean;
@@ -23,10 +26,14 @@ export const WeeklyCalendar__DateEventsDialog = ({
     locale: ko,
   });
 
+  const { data } = useDateEventsDialog(format(selectedDate, "yyyy-MM-dd"));
+  const items = data;
+
   return (
     <BaseDialog
       isOpen={isOpen}
       onClose={onClose}
+      className="w-200"
       dialogTitle={
         <div
           className={cn(
@@ -49,16 +56,14 @@ export const WeeklyCalendar__DateEventsDialog = ({
             />
           }
         >
-          <Content selectedDate={selectedDate} />
+          <Content items={items} />
         </Suspense>
       }
     />
   );
 };
 
-const Content = ({ selectedDate }: { selectedDate: Date }) => {
-  const { data } = useDateEventsDialog(selectedDate);
-
+const Content = ({ items }: { items: DateEventsDialogItemModel[] }) => {
   return (
     <div
       className={cn(
@@ -86,7 +91,7 @@ const Content = ({ selectedDate }: { selectedDate: Date }) => {
             "text-ods__base-500",
           )}
         >
-          {`이벤트 (${data?.length}개)`}
+          {`이벤트 (${items?.length}개)`}
         </div>
 
         <div
@@ -97,12 +102,12 @@ const Content = ({ selectedDate }: { selectedDate: Date }) => {
             "overflow-auto",
           )}
         >
-          {data?.map((item, index) => {
-            const isLast = index === data?.length - 1;
+          {items?.map((item, index) => {
+            const isLast = index === items?.length - 1;
 
             return (
               <div
-                key={item.title + item.caption}
+                key={item.id}
                 className={cn(
                   // 1. Layout
                   "flex w-full",
@@ -111,7 +116,15 @@ const Content = ({ selectedDate }: { selectedDate: Date }) => {
                   isLast && "border-b-0",
                 )}
               >
-                <SignalItem model={item} />
+                <SignalItem
+                  model={{
+                    title: item.title,
+                    status: item.label.status,
+                    statusLabel: item.label.text,
+                    caption: item.caption,
+                    content: item.content,
+                  }}
+                />
               </div>
             );
           })}

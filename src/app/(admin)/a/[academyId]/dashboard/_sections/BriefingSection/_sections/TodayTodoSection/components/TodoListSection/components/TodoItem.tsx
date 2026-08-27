@@ -6,9 +6,10 @@ import { StatusLabel } from "@/ui/components/StatusLabel";
 import { DateUtilForKo } from "@/ui/utils/date/date-util";
 import { CircleIcon } from "lucide-react";
 
-export type TodoItemStatus = SignalState.Default | SignalState.Danger;
+export type TodoItemStatus = SignalState;
 
 export type TodoItemModel = {
+  id: string;
   title: string;
   status: TodoItemStatus;
   statusLabel: string;
