@@ -47,9 +47,9 @@ const NotificationIconButton = () => {
 
 const ProfileAvatar = () => {
   const profileImageUrl =
-    "https://static.cdn.kmong.com/gigs/12gtG1768751356.jpg?w=200";
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiYhAxtZTI-VAz5HRCa11zLPMeDbq6XvncDRts4nFcpz0Ye-grVn0oSXRi&s=10";
   const fallbackImageUrl =
-    "https://static.cdn.kmong.com/gigs/12gtG1768751356.jpg?w=200";
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiYhAxtZTI-VAz5HRCa11zLPMeDbq6XvncDRts4nFcpz0Ye-grVn0oSXRi&s=10";
 
   const handleClick = () => {
     // TODO: 아바타 클릭시 팝업메뉴[마이페이지, 로그아웃] 노출

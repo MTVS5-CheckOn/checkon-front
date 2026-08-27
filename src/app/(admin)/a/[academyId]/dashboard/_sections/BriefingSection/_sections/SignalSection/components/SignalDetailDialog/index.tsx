@@ -89,7 +89,9 @@ const Content = ({
         <SignalDetailDialog__StudentInfoSection
           studentName={model.student.name}
           studentClassTitle={model.student.className}
-          studentProfileImageUrl={"https://placehold.co/150"}
+          studentProfileImageUrl={
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiYhAxtZTI-VAz5HRCa11zLPMeDbq6XvncDRts4nFcpz0Ye-grVn0oSXRi&s=10"
+          }
         />
 
         {/* Layer 2: Signal Status */}
