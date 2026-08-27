@@ -10,6 +10,7 @@ import { useFormContext } from "react-hook-form";
 import { Fragment } from "react/jsx-runtime";
 import { FollowUpDetailDialog } from "./components/FollowUpDetailDialog";
 import { useFollowUpSection } from "./hooks/useFollowUpSection";
+import { DateUtilForKo } from "@/ui/utils/date/date-util";
 
 export const Dashboard__FollowUpSection = () => {
   /**
@@ -33,7 +34,7 @@ export const Dashboard__FollowUpSection = () => {
   };
 
   const handleFollowUpItemMoreClick = () => {
-    alert("팔로업 진행 중 더보기");
+    alert("준비중인 기능입니다.");
   };
 
   return (
@@ -55,7 +56,9 @@ export const Dashboard__FollowUpSection = () => {
           </div>
 
           {/* 팔로업 개수 */}
-          <StatusLabel status={SignalState.Positive}>{`${data.followUpCount}건`}</StatusLabel>
+          <StatusLabel
+            status={SignalState.Positive}
+          >{`${data.length}건`}</StatusLabel>
         </div>
       </div>
 
@@ -70,9 +73,21 @@ export const Dashboard__FollowUpSection = () => {
           "overflow-hidden",
         )}
       >
-        {data.items.map((item) => (
-          <Fragment key={item.title + item.caption}>
-            <SignalItem model={item} onClick={handleItemClick} />
+        {data.map((item) => (
+          <Fragment key={item.id}>
+            <SignalItem
+              model={{
+                title: item.student.name,
+                status: item.label.status,
+                statusLabel: item.label.text,
+                caption: DateUtilForKo.formatDistanceToNow({
+                  date: item.createdAt,
+                  options: { addSuffix: true },
+                }),
+                content: item.content,
+              }}
+              onClick={handleItemClick}
+            />
             <Separator />
           </Fragment>
         ))}

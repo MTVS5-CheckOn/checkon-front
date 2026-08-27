@@ -38,7 +38,7 @@ export const Dashboard__SignalSection = () => {
   };
 
   const handleSignalItemMoreClick = () => {
-    alert("확인이 필요한 신호 더보기");
+    alert("준비중인 기능입니다.");
   };
 
   return (
