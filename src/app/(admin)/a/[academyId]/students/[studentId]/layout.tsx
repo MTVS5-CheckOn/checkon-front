@@ -67,7 +67,7 @@ const Header = () => {
                 <span>학생 정보</span>
               </TabsParts.Tab>
               <TabsParts.Tab value="signal">
-                <span>이상신호</span>
+                <span>이상 신호</span>
               </TabsParts.Tab>
               <TabsParts.Tab value="learnings">
                 <span>학업 관리</span>
