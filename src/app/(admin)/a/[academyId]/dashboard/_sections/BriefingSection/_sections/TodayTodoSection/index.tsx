@@ -7,6 +7,7 @@ import { useFormContext } from "react-hook-form";
 import { Dashboard__TodayTodoSection__TodoCompletionRateSection } from "./components/TodoCompletionRateSection";
 import { Dashboard__TodayTodoSection__TodoListSection } from "./components/TodoListSection";
 import { useTodayTodoSection } from "./hooks/useTodayTodoSection";
+import { format } from "date-fns";
 
 export const Dashboard__TodayTodoSection = () => {
   /**
@@ -17,7 +18,16 @@ export const Dashboard__TodayTodoSection = () => {
   /**
    * 오늘 할 일 데이터
    */
-  const { data } = useTodayTodoSection(watch("selectedDate"));
+  const { data } = useTodayTodoSection(
+    format(watch("selectedDate"), "yyyy-MM-dd"),
+  );
+
+  /**
+   * 진행도
+   */
+  const completionRate = Math.round(
+    (data.filter((item) => item.isCompleted).length / data.length) * 100,
+  );
 
   return (
     <div className={cn("flex w-full flex-col")}>
@@ -37,18 +47,29 @@ export const Dashboard__TodayTodoSection = () => {
             </div>
           </div>
 
-          <StatusLabel status={SignalState.Default}>{`${data.todoCount}건`}</StatusLabel>
+          <StatusLabel
+            status={SignalState.Default}
+          >{`${data.length}건`}</StatusLabel>
         </div>
 
         {/* Todo List Section */}
         <div className={cn("flex flex-col")}>
-          <Dashboard__TodayTodoSection__TodoListSection items={data.items} />
+          <Dashboard__TodayTodoSection__TodoListSection
+            selectedDate={new Date(watch("selectedDate"))}
+            items={data.map((item) => ({
+              id: item.id,
+              title: item.text,
+              status: item.label.status,
+              statusLabel: item.label.text,
+              deadlinedAt: item.deadline,
+            }))}
+          />
         </div>
 
         {/* Today Completion Rate Section */}
         <div className={cn("flex flex-col")}>
           <Dashboard__TodayTodoSection__TodoCompletionRateSection
-            completionRate={data.completionRate}
+            completionRate={completionRate}
           />
         </div>
       </div>

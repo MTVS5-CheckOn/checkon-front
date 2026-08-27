@@ -6,24 +6,24 @@ import { WeeklyCalendar__DateEventsDialog } from "../../../WeeklyCalendarSection
 import { TodoItem, TodoItemModel } from "./components/TodoItem";
 
 export type Dashboard__TodayTodoSection__TodoListSectionProps = {
+  selectedDate: Date;
   items: TodoItemModel[];
 };
 
 export const Dashboard__TodayTodoSection__TodoListSection = ({
+  selectedDate,
   items,
 }: Dashboard__TodayTodoSection__TodoListSectionProps) => {
   const handleTodoItemClick = () => {
-    alert(`해당 할 일 상세 페이지로 이동`);
+    alert("준비중인 기능입니다.");
   };
 
   const handleTodoListMoreClick = () => {
-    const today = new Date();
-
     overlay.open(({ isOpen, close }) => (
       <WeeklyCalendar__DateEventsDialog
         isOpen={isOpen}
         onClose={close}
-        selectedDate={today}
+        selectedDate={selectedDate}
       />
     ));
   };
@@ -40,7 +40,7 @@ export const Dashboard__TodayTodoSection__TodoListSection = ({
       )}
     >
       {items.map((item) => (
-        <TodoItem key={item.title} model={item} onClick={handleTodoItemClick} />
+        <TodoItem key={item.id} model={item} onClick={handleTodoItemClick} />
       ))}
 
       <CardMoreBottomButton onClick={handleTodoListMoreClick} />
