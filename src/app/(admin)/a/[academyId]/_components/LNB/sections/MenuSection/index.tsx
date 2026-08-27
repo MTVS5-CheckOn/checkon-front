@@ -27,6 +27,7 @@ const items = [
   {
     icon: <UserStarIcon size={16} />,
     label: "학부모 관리",
+    href: "/parents",
   },
   {
     icon: <NotebookPenIcon size={16} />,
